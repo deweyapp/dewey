@@ -141,6 +141,20 @@ function AppCtrl($scope, $filter) {
     return false;
   };
 
+  $scope.removeCustomTag = function(bookmark) {
+    var tags = [];
+    for (var i = bookmark.tags.length - 1; i > 0; i--) {
+      if (bookmark.tags[i].custom) {
+        bookmark.tags.splice(i, 1);
+      }
+    }
+    if (customTags[bookmark.id]) {
+      delete customTags[bookmark.id];
+    }
+
+    chrome.storage.sync.set({'customTags': customTags});
+  };
+
   $scope.saveNewTag = function() {
     
     if ($scope.newTag && $scope.newTag.length > 0) {
