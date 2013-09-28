@@ -8,7 +8,7 @@
   "description": "A plain text description",
 
   "permissions": [
-    "bookmarks"
+    "bookmarks", "history"
   ],
 
   "app": {

@@ -54,9 +54,10 @@ function AppCtrl($scope) {
   $scope.bookmarks = [];
   $scope.orders = [{title:'Title', value: 'title'},
                     {title:'Date created', value: 'date'},
-                    {title:'Last visited', value: 'visited'}
+                    {title:'Last visited', value: 'visited'},
+                    {title:'Visited count', value: 'visitedCount'}
                   ];
-  $scope.currentOrder = $scope.orders[0]
+  $scope.currentOrder = $scope.orders[3]; // visitedCount is by default
 
   var enumerateChildren = function(tree, tags) {
     if (tree) {
@@ -68,12 +69,27 @@ function AppCtrl($scope) {
                 }
                 enumerateChildren(c.children, t);
             } else {
-                $scope.bookmarks.push({
+                var bookmark = {
                     title: c.title,
                     url: c.url,
                     tags: angular.copy(tags),
-                    date: c.dateAdded
+                    date: c.dateAdded,
+                    visited: c.dateAdded,
+                    visitedCount: 0
+                };
+
+                chrome.history.search({text: c.url}, function(history) {
+                  var visitedCount 
+                  angular.forEach(history, function(hItem) {
+                    if (hItem.lastVisitTime > bookmark.visited) {
+                      bookmark.visited = hItem.lastVisitTime;
+                    }
+
+                    bookmark.visitedCount += hItem.visitCount;
+                  })
                 });
+
+                $scope.bookmarks.push(bookmark);
             }
         });
     }
