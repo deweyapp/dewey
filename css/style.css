@@ -2,3 +2,7 @@
 body {
   padding-top: 100px;
 }
+
+.badge-pointer { 
+  cursor: pointer !important;
+}

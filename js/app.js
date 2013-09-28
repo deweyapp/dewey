@@ -1,7 +1,8 @@
 angular.module('Bookmarks', []).
   filter('bookmarksFilter', function($filter) {
     var standardFilter = $filter('filter');
-    return function(input, search) {
+    var orderBy = $filter('orderBy');
+    return function(input, search, order) {
       var expression = {};
 
       var i = 0;
@@ -40,16 +41,22 @@ angular.module('Bookmarks', []).
       }
 
       if (!expression.title && !expression.tags && !expression.url) {
-        return standardFilter(input, search);
+        return orderBy(standardFilter(input, search), order, order !== 'title');
       } else {
-        return standardFilter(input, expression);
+        return orderBy(standardFilter(input, expression), order, order !== 'title');
       }
     } 
   });
 
 
 function AppCtrl($scope) {
+  
   $scope.bookmarks = [];
+  $scope.orders = [{title:'Title', value: 'title'},
+                    {title:'Date created', value: 'date'},
+                    {title:'Last visited', value: 'visited'}
+                  ];
+  $scope.currentOrder = $scope.orders[0]
 
   var enumerateChildren = function(tree, tags) {
     if (tree) {
@@ -78,5 +85,13 @@ function AppCtrl($scope) {
     $scope.$apply();
   });
  
-  
+  $scope.selectTag = function(tag) {
+    $scope.searchText = '@tags:' + tag;
+    $scope.$apply();
+  };
+
+  $scope.changeOrder = function(order) {
+    $scope.currentOrder = order;
+    //$scope.$apply();
+  }
 }

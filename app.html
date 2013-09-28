@@ -23,26 +23,32 @@
                     <span class="help-block">Use <strong>@tags:</strong> to search by tags, <strong>@url:</strong> to search by url and <strong>@title:</strong> to search by title.</span>
                   </div>
                 </form>
+                <ul class="nav navbar-nav navbar-right">
+                  <span class="navbar-text">Order:</span>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentOrder.title}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a href="#">{{order.title}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
             </div>
         </div>
         <div class="container">
-               <!-- <span>{{remaining()}} of {{bookmarks.length}} remaining</span>
-              [ <a href="" ng-click="archive()">archive</a> ] 
-              <form ng-submit="addTodo()">
-                <input type="text" ng-model="todoText"  size="30"
-                       placeholder="add new todo here">
-                <input class="btn-primary" type="submit" value="add">
-              </form>-->
               <div class="row row-offcanvas row-offcanvas-right">
                   <ul class="list-unstyled">
-                    <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText">
-                      <a href="{{bookmark.url}}">{{bookmark.title}}</a>
-                      <span>{{bookmark.date | date:'medium'}}</span>
-                      <ul class="list-inline">
-                        <li ng-repeat="tag in bookmark.tags">
-                            <span>{{tag}}</span>
-                        </li>
-                      </ul>
+                    <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                              <a href="{{bookmark.url}}">{{bookmark.title}}</a>
+                              <span>{{bookmark.date | date:'medium'}}</span>
+                              <ul class="list-inline">
+                                <li ng-repeat="tag in bookmark.tags">
+                                    <span class="badge badge-pointer" ng-click="selectTag(tag)">{{tag}}</span>
+                                </li>
+                              </ul>
+                            </div>
+                        </div>
                     </li>
                   </ul>
               </div>
