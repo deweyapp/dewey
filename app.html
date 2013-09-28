@@ -1,20 +1,31 @@
 <!doctype html>
-<html ng-app>
+<html lang="en" ng-app="Bookmarks">
     <head>
-        <title>GDG demo</title>
         <meta charset="utf-8" />
+        <title>GDG demo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/bootstrap.min.css">
         <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="./css/pace.theme.css">
+        <link rel="stylesheet" href="./css/style.css">
         <script src="./js/jquery.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/angular.js"></script>
         <script src="./js/app.js"></script>
+        <!--<script src="./js/pace.min.js"></script>-->
     </head>
-    <body>
+    <body ng-controller="AppCtrl">
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <form class="navbar-form navbar-left" role="search">
+                  <div class="form-group">
+                    <input type="search" class="form-control" placeholder="Search" ng-model="searchText">
+                    <span class="help-block">Use <strong>@tags:</strong> to search by tags, <strong>@url:</strong> to search by url and <strong>@title:</strong> to search by title.</span>
+                  </div>
+                </form>
+            </div>
+        </div>
         <div class="container">
-            <h1>Test</h1>
-            <div ng-controller="AppCtrl">
                <!-- <span>{{remaining()}} of {{bookmarks.length}} remaining</span>
               [ <a href="" ng-click="archive()">archive</a> ] 
               <form ng-submit="addTodo()">
@@ -22,19 +33,19 @@
                        placeholder="add new todo here">
                 <input class="btn-primary" type="submit" value="add">
               </form>-->
-              <ul>
-                <li ng-repeat="bookmark in bookmarks">
-                  <a href="{{bookmark.url}}">{{bookmark.text}}</a>
-                  <span>{{bookmark.date | date:'medium'}}</span>
-                  <ul>
-                    <li ng-repeat="tag in bookmark.tags">
-                        <span>{{tag}}</span>
+              <div class="row row-offcanvas row-offcanvas-right">
+                  <ul class="list-unstyled">
+                    <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText">
+                      <a href="{{bookmark.url}}">{{bookmark.title}}</a>
+                      <span>{{bookmark.date | date:'medium'}}</span>
+                      <ul class="list-inline">
+                        <li ng-repeat="tag in bookmark.tags">
+                            <span>{{tag}}</span>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
-                </li>
-              </ul>
-              
-            </div>
+              </div>
         </div>
     </body>
 </html>
