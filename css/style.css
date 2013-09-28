@@ -6,3 +6,9 @@ body {
 .badge-pointer { 
   cursor: pointer !important;
 }
+
+.breadcrumb {
+  margin-bottom: 0px !important;
+  padding: 0px !important;
+  display: inline !important;
+}

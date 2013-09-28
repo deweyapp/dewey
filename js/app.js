@@ -57,7 +57,7 @@ function AppCtrl($scope) {
                     {title:'Last visited', value: 'visited'},
                     {title:'Visited count', value: 'visitedCount'}
                   ];
-  $scope.currentOrder = $scope.orders[3]; // visitedCount is by default
+  $scope.currentOrder = $scope.orders[0]; // visitedCount is by default
 
   var enumerateChildren = function(tree, tags) {
     if (tree) {

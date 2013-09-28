@@ -41,12 +41,20 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                               <a href="{{bookmark.url}}">{{bookmark.title}}</a>
-                              <span>{{bookmark.date | date:'medium'}}</span>
-                              <ul class="list-inline">
-                                <li ng-repeat="tag in bookmark.tags">
-                                    <span class="badge badge-pointer" ng-click="selectTag(tag)">{{tag}}</span>
-                                </li>
-                              </ul>
+                              
+                            </div>
+                            <div class="panel-footer">
+                                <ol class="breadcrumb">
+                                  <li><small><span class="text-muted">Created:</span> {{bookmark.date | date:'medium'}}</small></li>
+                                  <li><small><span class="text-muted">Visited:</span> {{bookmark.visited | date:'medium'}}</small></li>
+                                  <li><small><span class="text-muted">Visited count:</span> {{bookmark.visitedCount}}</small></li>
+                                </ol>
+
+                                <ul class="list-inline pull-right clearfix">
+                                    <li ng-repeat="tag in bookmark.tags">
+                                        <span class="badge badge-pointer" ng-click="selectTag(tag)">{{tag}}</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </li>
