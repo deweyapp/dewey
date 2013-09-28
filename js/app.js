@@ -49,7 +49,7 @@ angular.module('Bookmarks', []).
   });
 
 
-function AppCtrl($scope) {
+function AppCtrl($scope, $filter) {
   
   $scope.bookmarks = [];
   $scope.orders = [{title:'Title', value: 'title'},
@@ -58,6 +58,10 @@ function AppCtrl($scope) {
                     {title:'Visited count', value: 'visitedCount'}
                   ];
   $scope.currentOrder = $scope.orders[0]; // visitedCount is by default
+  $scope.bookmarkEdit = null;
+  $scope.newTag = '';
+
+  var customTags = {};
 
   var enumerateChildren = function(tree, tags) {
     if (tree) {
@@ -72,11 +76,22 @@ function AppCtrl($scope) {
                 var bookmark = {
                     title: c.title,
                     url: c.url,
-                    tags: angular.copy(tags),
+                    tags: [],
                     date: c.dateAdded,
                     visited: c.dateAdded,
-                    visitedCount: 0
+                    visitedCount: 0,
+                    id: c.id
                 };
+
+                angular.forEach(tags, function(tag) {
+                  bookmark.tags.push({text: tag, custom: false});
+                });
+
+                if (customTags[bookmark.id]) {
+                  angular.forEach(customTags[bookmark.id], function(tag){
+                    bookmark.tags.push({text: tag, custom: true});
+                  });
+                }
 
                 chrome.history.search({text: c.url}, function(history) {
                   var visitedCount 
@@ -95,19 +110,61 @@ function AppCtrl($scope) {
     }
   }
 
-  chrome.bookmarks.getTree(function(tree) {
-    var tags = [];
-    enumerateChildren(tree, tags);
-    $scope.$apply();
+  chrome.storage.sync.get('customTags', function(data) {
+
+    if (data && data.customTags) {
+      customTags = data.customTags;
+    }
+
+    chrome.bookmarks.getTree(function(tree) {
+      var tags = [];
+      enumerateChildren(tree, tags);
+      $scope.$apply();
+    });
   });
  
   $scope.selectTag = function(tag) {
     $scope.searchText = '@tags:' + tag;
-    $scope.$apply();
   };
 
   $scope.changeOrder = function(order) {
     $scope.currentOrder = order;
-    //$scope.$apply();
-  }
+  };
+
+  $scope.addTag = function(bookmark) {
+    $scope.bookmarkEdit = bookmark;
+    $scope.newTag = '';
+    $('#addTagModal').modal({
+      keyboard: true,
+      show: true
+    });
+    return false;
+  };
+
+  $scope.saveNewTag = function() {
+    
+    if ($scope.newTag && $scope.newTag.length > 0) {
+      $scope.bookmarkEdit.tags.push({ text: $scope.newTag, custom: true});
+      if (!customTags[$scope.bookmarkEdit.id]) {
+        customTags[$scope.bookmarkEdit.id] = []
+      }
+
+      customTags[$scope.bookmarkEdit.id].push($scope.newTag);
+
+      chrome.storage.sync.set({'customTags': customTags});
+    }
+    $('#addTagModal').modal('hide');
+  };
+
+  $scope.navigateToFirst = function() {
+     var bookmarksFilter = $filter('bookmarksFilter');
+     var result = bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+     if (result.length > 0) {
+       window.location.href = result[0].url;
+     } 
+  };
 }
+
+$("#addTagModal").on('shown', function() {
+    $(this).find("[autofocus]:first").focus();
+});

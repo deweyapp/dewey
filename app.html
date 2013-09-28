@@ -17,9 +17,9 @@
     <body ng-controller="AppCtrl">
         <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
             <div class="container">
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search" ng-submit="navigateToFirst()">
                   <div class="form-group">
-                    <input type="search" class="form-control" placeholder="Search" ng-model="searchText">
+                    <input type="search" class="form-control" placeholder="Search" ng-model="searchText" autofocus="true">
                     <span class="help-block">Use <strong>@tags:</strong> to search by tags, <strong>@url:</strong> to search by url and <strong>@title:</strong> to search by title.</span>
                   </div>
                 </form>
@@ -41,7 +41,6 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                               <a href="{{bookmark.url}}">{{bookmark.title}}</a>
-                              
                             </div>
                             <div class="panel-footer">
                                 <ol class="breadcrumb">
@@ -52,14 +51,45 @@
 
                                 <ul class="list-inline pull-right clearfix">
                                     <li ng-repeat="tag in bookmark.tags">
-                                        <span class="badge badge-pointer" ng-click="selectTag(tag)">{{tag}}</span>
+                                        <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
                                     </li>
+                                    <li><a href="#" ng-click="addTag(bookmark)">add</a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                   </ul>
               </div>
+        </div>
+
+        <div class="modal fade" id="addTagModal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add tag for bookmark <em>{{bookmarkEdit.title}}</em></h4>
+              </div>
+              <div class="modal-body">
+                <form ng-submit="saveNewTag()">
+                  <div class="form-group" >
+                    <label for="newTag">Tag</label>
+                    <input type="text" class="form-control" id="newTag" autofocus="true" placeholder="Enter tag name" ng-model="newTag">
+                  </div >
+                </form>
+
+                  <h5>Current tags</h5>
+                    <ul>
+                        <li ng-repeat="tag in bookmarkEdit.tags">
+                            <span>{{tag.text}}</span>
+                        </li>
+                    </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="saveNewTag()">Add</button>
+              </div>
+            </div>
+          </div>
         </div>
     </body>
 </html>

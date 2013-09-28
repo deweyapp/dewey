@@ -12,3 +12,7 @@ body {
   padding: 0px !important;
   display: inline !important;
 }
+
+.badge-custom {
+  background-color: #309134;
+}
