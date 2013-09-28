@@ -14,5 +14,9 @@ body {
 }
 
 .badge-custom {
-  background-color: #309134;
+  background-color: #309134 !important;
+}
+
+.link-custom {
+  color: #309134 !important;
 }
