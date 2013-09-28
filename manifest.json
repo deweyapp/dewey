@@ -1,0 +1,21 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "GDG demo",
+  "version": "0.1",
+
+  // Recommended
+  "description": "A plain text description",
+
+  "permissions": [
+    "bookmarks"
+  ],
+
+  "app": {
+      "launch": {
+         "local_path": "app.html"
+      }
+   },
+
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
