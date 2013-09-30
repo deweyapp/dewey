@@ -1,4 +1,4 @@
-# ltagger (chrome application)
+# chrome-bookmarks (chrome application)
 
 ltagger is a chrome application, which allows you to:
 
