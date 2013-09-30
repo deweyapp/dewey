@@ -1,6 +1,6 @@
 # chrome-bookmarks (chrome application)
 
-ltagger is a chrome application, which allows you to:
+chrome-bookmarks is a chrome application, which allows you to:
 
   * do advanced search by tags/url or title
   * add custom tags for bookmarks
