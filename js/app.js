@@ -10,41 +10,45 @@ angular.module('Bookmarks', []).
       var filterString = "";
 
       if (search) {
-        while (i < search.length) {
+        // Trying to parse search string by fields
+        var pattern = '';
+        var field = null; 
+        var hasExpressions = false;
+        for (var i = (search.length - 1); i >= 0; i--) {
+          if (search[i]  === ':') {
+            field = '';
+            continue;
+          } 
 
-          if (search[i] === '@') {
-            var oldExpression = filterExpression;
-
-            if (i == search.indexOf('@url:')) {
-              filterExpression = "url";
-            } else if (i == search.indexOf('@title:')) {
-              filterExpression = "title";
-            } else if (i == search.indexOf('@tags:')) {
-              filterExpression = "tags";
-            } 
-
-            if (oldExpression != filterExpression) {
-              i += (filterExpression.length + 2);
-              expression[filterExpression] = filterString;
-              filterString = '';
+          if (field !== null) {
+            if (search[i] === ' '){
+              expression[field] = pattern;
+              hasExpressions = true;
+              field = null;
+              pattern = '';
+              continue;
+            } else {
+              field = search[i] + field;
               continue;
             }
+          } else {
+            pattern = search[i] + pattern;
           }
+        }
 
-          filterString += search[i];
-          i++;
+        if (field !== null) {
+          expression[field] = pattern;
+          hasExpressions = true;
+        } else {
+          if (hasExpressions) {
+            expression['title'] = pattern;
+          } else {
+            expression = pattern;
+          }
         }
       }
 
-      if (filterExpression) {
-        expression[filterExpression] = filterString;
-      }
-
-      if (!expression.title && !expression.tags && !expression.url) {
-        return orderBy(standardFilter(input, search), order, order !== 'title');
-      } else {
-        return orderBy(standardFilter(input, expression), order, order !== 'title');
-      }
+      return orderBy(standardFilter(input, expression), order, order !== 'title');
     } 
   });
 
@@ -76,7 +80,7 @@ function AppCtrl($scope, $filter) {
                 var bookmark = {
                     title: c.title,
                     url: c.url,
-                    tags: [],
+                    tag: [],
                     date: c.dateAdded,
                     visited: c.dateAdded,
                     visitedCount: 0,
@@ -84,12 +88,12 @@ function AppCtrl($scope, $filter) {
                 };
 
                 angular.forEach(tags, function(tag) {
-                  bookmark.tags.push({text: tag, custom: false});
+                  bookmark.tag.push({text: tag, custom: false});
                 });
 
                 if (customTags[bookmark.id]) {
                   angular.forEach(customTags[bookmark.id], function(tag){
-                    bookmark.tags.push({text: tag, custom: true});
+                    bookmark.tag.push({text: tag, custom: true});
                   });
                 }
 
@@ -124,7 +128,7 @@ function AppCtrl($scope, $filter) {
   });
  
   $scope.selectTag = function(tag) {
-    $scope.searchText = '@tags:' + tag;
+    $scope.searchText = 'tag:' + tag;
   };
 
   $scope.changeOrder = function(order) {
@@ -143,9 +147,9 @@ function AppCtrl($scope, $filter) {
 
   $scope.removeCustomTag = function(bookmark) {
     var tags = [];
-    for (var i = bookmark.tags.length - 1; i > 0; i--) {
-      if (bookmark.tags[i].custom) {
-        bookmark.tags.splice(i, 1);
+    for (var i = bookmark.tag.length - 1; i > 0; i--) {
+      if (bookmark.tag[i].custom) {
+        bookmark.tag.splice(i, 1);
       }
     }
     if (customTags[bookmark.id]) {
@@ -158,7 +162,7 @@ function AppCtrl($scope, $filter) {
   $scope.saveNewTag = function() {
     
     if ($scope.newTag && $scope.newTag.length > 0) {
-      $scope.bookmarkEdit.tags.push({ text: $scope.newTag, custom: true});
+      $scope.bookmarkEdit.tag.push({ text: $scope.newTag, custom: true});
       if (!customTags[$scope.bookmarkEdit.id]) {
         customTags[$scope.bookmarkEdit.id] = []
       }
