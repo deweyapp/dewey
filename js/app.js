@@ -55,6 +55,9 @@ angular.module('Bookmarks', []).
 
 function AppCtrl($scope, $filter) {
   
+  var defaultTotalDisplayed = 20;
+
+  $scope.searchText = '';
   $scope.bookmarks = [];
   $scope.orders = [{title:'Title', value: 'title'},
                     {title:'Date created', value: 'date'},
@@ -64,8 +67,18 @@ function AppCtrl($scope, $filter) {
   $scope.currentOrder = $scope.orders[0]; // visitedCount is by default
   $scope.bookmarkEdit = null;
   $scope.newTag = '';
+  $scope.totalDisplayed = defaultTotalDisplayed;
 
   var customTags = {};
+
+  var resetTotalDisplayed = function() {
+    $scope.totalDisplayed = defaultTotalDisplayed;
+  }
+
+  var getFilteredBookmarks = function() {
+    var bookmarksFilter = $filter('bookmarksFilter');
+    return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+  }
 
   var enumerateChildren = function(tree, tags) {
     if (tree) {
@@ -126,6 +139,8 @@ function AppCtrl($scope, $filter) {
       $scope.$apply();
     });
   });
+
+  $scope.$watch('searchText', resetTotalDisplayed);
  
   $scope.selectTag = function(tag) {
     $scope.searchText = 'tag:' + tag;
@@ -175,11 +190,19 @@ function AppCtrl($scope, $filter) {
   };
 
   $scope.navigateToFirst = function() {
-     var bookmarksFilter = $filter('bookmarksFilter');
-     var result = bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+     var result = getFilteredBookmarks();
      if (result.length > 0) {
        window.location.href = result[0].url;
      } 
+  };
+
+  $scope.showMore = function() {
+    $scope.totalDisplayed += defaultTotalDisplayed;
+  };
+
+  $scope.isShowMoreVisible = function() {
+    var result = getFilteredBookmarks();
+    return (result.length > $scope.totalDisplayed);
   };
 }
 

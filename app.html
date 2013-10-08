@@ -18,7 +18,7 @@
                 <form class="navbar-form navbar-left" role="search" ng-submit="navigateToFirst()">
                   <div class="form-group">
                     <input type="search" class="form-control" placeholder="Search" ng-model="searchText" autofocus="true">
-                    <span class="help-block">Use <strong>@tags:</strong> to search by tags, <strong>@url:</strong> to search by url and <strong>@title:</strong> to search by title.</span>
+                    <span class="help-block">Use <strong>tag:</strong> to search by tags, <strong>url:</strong> to search by url and <strong>title:</strong> to search by title.</span>
                   </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
@@ -33,9 +33,9 @@
             </div>
         </div>
         <div class="container">
-              <div class="row row-offcanvas row-offcanvas-right">
+              <div class="row">
                   <ul class="list-unstyled">
-                    <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value">
+                    <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value | limitTo:totalDisplayed">
                         <div class="panel panel-default">
                             <div class="panel-body">
                               <a href="{{bookmark.url}}">{{bookmark.title}}</a>
@@ -48,17 +48,22 @@
                                 </ol>
 
                                 <ul class="list-inline pull-right clearfix">
-                                    <li ng-repeat="tag in bookmark.tags">
+                                    <li ng-repeat="tag in bookmark.tag">
                                         <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
 
                                     </li>
-                                    <li><a href="#" ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="add custom tag"></span></a></li>
-                                    <li><a href="#" ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="clear custom tags"></span></a></li>
+                                    <li><a href="#" ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="Add tag"></span></a></li>
+                                    <li><a href="#" ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="Remove custom tags"></span></a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                   </ul>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <input type="button" class="btn btn-primary btn-lg btn-block" value="show more..." ng-click="showMore()" ng-show="isShowMoreVisible()">
+                </div>
               </div>
         </div>
 
@@ -79,7 +84,7 @@
 
                   <h5>Current tags</h5>
                     <ul>
-                        <li ng-repeat="tag in bookmarkEdit.tags">
+                        <li ng-repeat="tag in bookmarkEdit.tag">
                             <span>{{tag.text}}</span>
                         </li>
                     </ul>
