@@ -163,7 +163,6 @@ function AppCtrl($scope, $filter) {
 
   // Get first custom tags and after this start bookmarks traversal.
   chrome.storage.sync.get('customTags', function(data) {
-
     if (data && data.customTags) {
       customTags = data.customTags;
     }
@@ -175,12 +174,17 @@ function AppCtrl($scope, $filter) {
     });
   });
 
-  // When user change search string we scroll to top of the page and set total displayed items to default
-  $scope.$watch('searchText', function() {
+  // Set maximum total displayed items to default and scroll to top of the page
+  var resetView = function() {
     $scope.totalDisplayed = defaultTotalDisplayed;
     setTimeout(function() {
       window.scroll(0, 0)
     }, 10);
+  };
+
+  // When user change search string we scroll to top of the page and set total displayed items to default
+  $scope.$watch('searchText', function() {
+    resetView();
   });
  
   // On tag click we set search text
@@ -191,6 +195,7 @@ function AppCtrl($scope, $filter) {
   // Change sorting order
   $scope.changeOrder = function(order) {
     $scope.currentOrder = order;
+    resetView();
   };
 
   // Show modal dialog for adding tags
