@@ -38,7 +38,8 @@
                     <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value | limitTo:totalDisplayed">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                              <a href="{{bookmark.url}}">{{bookmark.title}}</a>
+                              <div><a href="{{bookmark.url}}">{{bookmark.title}}</a></div>
+                              <div><a href="{{bookmark.url}}"><small class="text-muted">{{bookmark.url}}</small></a></div>
                             </div>
                             <div class="panel-footer">
                                 <ol class="breadcrumb">
