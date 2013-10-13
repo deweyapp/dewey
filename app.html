@@ -39,23 +39,27 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                               <div><a href="{{bookmark.url}}">{{bookmark.title}}</a></div>
-                              <div><a href="{{bookmark.url}}"><small class="text-muted">{{bookmark.url}}</small></a></div>
+                              <div class="overflow-protection"><a href="{{bookmark.url}}" ><small class="text-muted">{{bookmark.url}}</small></a></div>
                             </div>
                             <div class="panel-footer">
-                                <ol class="breadcrumb">
-                                  <li><small><span class="text-muted">Created:</span> {{bookmark.date | date:'medium'}}</small></li>
-                                  <li><small><span class="text-muted">Visited:</span> {{bookmark.visited | date:'medium'}}</small></li>
-                                  <li><small><span class="text-muted">Visited count:</span> {{bookmark.visitedCount}}</small></li>
-                                </ol>
-
-                                <ul class="list-inline pull-right clearfix">
+                              <div class="row">
+                                <div class="col-md-7">
+                                  <ol class="breadcrumb">
+                                    <li><small><span class="text-muted">Created:</span> {{bookmark.date | date:'medium'}}</small></li>
+                                    <li><small><span class="text-muted">Visited:</span> {{bookmark.visited | date:'medium'}}</small></li>
+                                    <li><small><span class="text-muted">Visited count:</span> {{bookmark.visitedCount}}</small></li>
+                                  </ol>
+                                </div>
+                                <div class="col-md-5">
+                                  <ul class="list-inline pull-right clearfix">
                                     <li ng-repeat="tag in bookmark.tag">
-                                        <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
-
+                                      <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
                                     </li>
                                     <li><a href="#" ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="Add tag"></span></a></li>
                                     <li><a href="#" ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="Remove custom tags"></span></a></li>
-                                </ul>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </li>

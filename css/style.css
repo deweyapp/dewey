@@ -24,3 +24,9 @@ body {
 .link-custom {
   color: #309134 !important;
 }
+
+.overflow-protection {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
