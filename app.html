@@ -15,22 +15,26 @@
     <body ng-controller="AppCtrl">
       <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Chrome Bookmarks</a>
+          </div>
           <form class="navbar-form navbar-left" role="search" ng-submit="navigateToFirst()">
             <div class="form-group">
-              <input type="search" class="form-control" placeholder="Search" ng-model="searchText" autofocus="true">
-              <span class="help-block">Use <strong>tag:</strong> to search by tags, <strong>url:</strong> to search by url and <strong>title:</strong> to search by title.</span>
+              <input type="search" class="form-control search-bookmarks" placeholder="Search" ng-model="searchText" autofocus="true">
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <span class="navbar-text">Order:</span>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentOrder.title}} <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Order by {{currentOrder.title}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a href="#">{{order.title}}</a></li>
               </ul>
             </li>
           </ul>
-          </div>
+        </div>
+        <div class="container">
+          <span class="help-block">Search operators are <strong>tag:{tag}</strong>, <strong>url:{url}</strong> or <strong>title:{title}</strong>.</span>
+        </div>
       </div>
       <div class="container">
         <div class="row">

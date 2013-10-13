@@ -3,8 +3,14 @@ html {
 }
 
 body {
-  padding-top: 100px;
+  padding-top: 225px;
   padding-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 100px;
+  }
 }
 
 .badge-pointer { 
@@ -29,4 +35,13 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.search-bookmarks {
+}
+
+@media (min-width: 768px) {
+  .search-bookmarks {
+    width:250pt;
+  }
 }
