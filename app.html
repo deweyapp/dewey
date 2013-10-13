@@ -19,7 +19,7 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Chrome Bookmarks</a>
           </div>
-          <form class="navbar-form navbar-left" role="search" ng-submit="navigateToFirst()">
+          <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="search" class="form-control search-bookmarks" placeholder="Search" ng-model="searchText" autofocus="true">
             </div>
@@ -39,9 +39,9 @@
       </div>
       <div class="container">
         <div class="row">
-          <ul class="list-unstyled">
+          <ul class="list-unstyled" id="list-bookmarks">
             <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value | limitTo:totalDisplayed">
-              <div class="panel panel-default">
+              <div class="panel panel-default" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
                 <div class="panel-body">
                   <div><a href="{{bookmark.url}}">{{bookmark.title}}</a></div>
                   <div class="overflow-protection"><a href="{{bookmark.url}}" ><small class="text-muted">{{bookmark.url}}</small></a></div>

@@ -88,6 +88,8 @@ function AppCtrl($scope, $filter) {
   // Maximum number of items currently displayed
   $scope.totalDisplayed = defaultTotalDisplayed;
 
+  $scope.selectedIndex = 0;
+
   // Repository for custom tags
   var customTags = {};
 
@@ -99,6 +101,50 @@ function AppCtrl($scope, $filter) {
         $scope.totalDisplayed += defaultTotalDisplayed;
         $scope.$apply();
       }
+    }
+  });
+
+  var getAllPanels = function() {
+    return $('#list-bookmarks div.panel');
+  }
+
+  var isElementInViewport = function(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width();
+  }
+
+  // Key down events handlers
+  $(window).keydown(function(e) {
+    var updated = false;
+    if (e.which === 13) { // Enter press on page - go to the selected bookmark
+      var result = getFilteredBookmarks();
+      if (result.length > $scope.selectedIndex) {
+        window.location.href = result[$scope.selectedIndex].url;
+      } 
+    } else if (e.which === 38) { // Up arrow key
+      if ($scope.selectedIndex > 0) {
+        $scope.selectedIndex--;
+        updated = true;
+      }
+    } else if (e.which === 40) { // Down arrow key
+      if (getAllPanels().length > $scope.selectedIndex + 1) {
+        $scope.selectedIndex++;
+        updated = true;
+      }
+    }
+    if (updated) { // key up or key down pressed - select next element
+      $scope.$apply();
+      var panels = getAllPanels();
+      var selectedElement = panels.get($scope.selectedIndex);
+      if (selectedElement) {
+        var rect = selectedElement.getBoundingClientRect(); // If element is not visible - scroll to it
+        if (!(rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width())) {
+          $("body").animate({
+            scrollTop: ($(panels.get($scope.selectedIndex)).offset().top - $(panels.get(0)).offset().top)
+          }, 500);
+        }
+      }
+      return false;
     }
   });
 
@@ -177,8 +223,9 @@ function AppCtrl($scope, $filter) {
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
     $scope.totalDisplayed = defaultTotalDisplayed;
+    $scope.selectedIndex = 0; 
     setTimeout(function() {
-      window.scroll(0, 0)
+      window.scroll(0, 0);
     }, 10);
   };
 
@@ -240,11 +287,7 @@ function AppCtrl($scope, $filter) {
     $('#addTagModal').modal('hide');
   };
 
-  // Navigate to first showing bookmark (use it as an enter handler)
-  $scope.navigateToFirst = function() {
-     var result = getFilteredBookmarks();
-     if (result.length > 0) {
-       window.location.href = result[0].url;
-     } 
-  };
+  $scope.selectBookmark = function(index) {
+    $scope.selectedIndex = index;
+  }
 }
