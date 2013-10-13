@@ -1,14 +1,33 @@
-# ltagger (chrome application)
+# Chrome bookmarks
 
-ltagger is a chrome application, which allows you to:
+Chrome bookmarks is a Chrome browser application, which allows you to:
 
-  * do advanced search by tags/url or title
-  * add custom tags for bookmarks
+- Do advanced search on your bookmarks by tags, url or title.
+- Add custom tags for bookmarks, which helps you to manage all your bookmarks. By default application uses folders as tags for bookmarks.
 
-I started to work on this application at [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). 
+## Author
+**Denis Gladkikh**
+- [http://outcoldman.com](http://outcoldman.com)
+- [https://twitter.com/outcoldman](https://twitter.com/outcoldman)
+- [https://github.com/outcoldman](https://github.com/outcoldman)
 
-To build this application I used following Open Source libraries:
+## License:
+  Apache License, Version 2.0
 
-  * [bootstrap](http://getbootstrap.com/)
-  * [jQuery](https://jquery.org)
-  * [AngularJS](http://angularjs.org/)
+## Contributing
+- Issues / suggestions: https://github.com/outcoldman/chrome-bookmarks/issues
+
+## Changelog
+- 1.0 (October 13 2013) - Ready for use first version of application in Chrome Web Store.
+- 0.1 (September 27 2013) - First prototype on [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). 
+
+<a href="http://www.flickr.com/photos/pahphotos/10015447933/" title="The winner took home a chromebook. by Seattle.roamer, on Flickr"><img src="http://farm8.staticflickr.com/7320/10015447933_f59bee5f0b.jpg" width="331" height="500" alt="The winner took home a chromebook."></a>
+
+## Using resources
+To build this application I used following Open Source libraries and resources:
+
+- [bootstrap](http://getbootstrap.com/)
+- [jQuery](https://jquery.org)
+- [AngularJS](http://angularjs.org/)
+- [Font Awesome](http://fortawesome.github.io/Font-Awesome/) - GitHub icon.
+- [IcoMoon.io](http://icomoon.io/) - `bookmarks` icon is used as an application icon.
