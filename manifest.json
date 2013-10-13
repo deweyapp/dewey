@@ -1,11 +1,11 @@
 {
   // Required
   "manifest_version": 2,
-  "name": "GDG demo",
+  "name": "Chrome bookmarks",
   "version": "0.1",
 
   // Recommended
-  "description": "A plain text description",
+  "description": "Helps to navigate through bookmarks (advanced search, custom tags)",
 
   "permissions": [
     "bookmarks", "history", "storage"
