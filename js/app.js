@@ -70,7 +70,7 @@ angular.module('Bookmarks', []).
 function AppCtrl($scope, $filter) {
   
   // Constant: default value of how many items we want to display on main page.
-  var defaultTotalDisplayed = 40;
+  var defaultTotalDisplayed = 30;
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
