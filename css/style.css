@@ -1,3 +1,6 @@
+html { 
+  overflow-y: scroll; /* Always show vertical scroll, so user will not see glitches on showing / hiding scrollbar when he is searching */
+}
 
 body {
   padding-top: 100px;
