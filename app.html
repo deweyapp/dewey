@@ -48,14 +48,12 @@
                 </div>
                 <div class="panel-footer">
                   <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-5">
                       <ol class="breadcrumb">
                         <li><small><span class="text-muted">Created:</span> {{bookmark.date | date:'medium'}}</small></li>
-                        <li><small><span class="text-muted">Visited:</span> {{bookmark.visited | date:'medium'}}</small></li>
-                        <li><small><span class="text-muted">Visited count:</span> {{bookmark.visitedCount}}</small></li>
                       </ol>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                       <ul class="list-inline pull-right clearfix">
                         <li ng-repeat="tag in bookmark.tag">
                           <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>

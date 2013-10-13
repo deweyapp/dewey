@@ -2,13 +2,13 @@
   // Required
   "manifest_version": 2,
   "name": "Chrome bookmarks",
-  "version": "0.1",
+  "version": "1.0",
 
   // Recommended
   "description": "Helps to navigate through bookmarks (advanced search, custom tags)",
 
   "permissions": [
-    "bookmarks", "history", "storage"
+    "bookmarks", "storage"
   ],
 
   "app": {

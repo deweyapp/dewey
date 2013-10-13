@@ -60,7 +60,7 @@ angular.module('Bookmarks', []).
         }
       }
 
-      return orderBy(standardFilter(input, expression), order, order !== 'title');
+      return orderBy(standardFilter(input, expression), order, order === 'date');
     } 
   });
 
@@ -74,12 +74,12 @@ function AppCtrl($scope, $filter) {
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
-  $scope.orders = [{title:'Title', value: 'title'}, // Different sorting orders
+  $scope.orders = [ // Different sorting orders
+                    {title:'Title', value: 'title'}, 
                     {title:'Date created', value: 'date'},
-                    {title:'Last visited', value: 'visited'},
-                    {title:'Visited count', value: 'visitedCount'}
+                    {title:'Url', value: 'url'}
                   ];
-  $scope.currentOrder = $scope.orders[0]; // visitedCount is default sorting order
+  $scope.currentOrder = $scope.orders[0]; // title is default sorting order
 
   // Edit tag dialog models
   $scope.bookmarkEdit = null; // selected bookmark (for dialog)
@@ -175,8 +175,6 @@ function AppCtrl($scope, $filter) {
                     url: c.url,
                     tag: [],
                     date: c.dateAdded,
-                    visited: c.dateAdded,
-                    visitedCount: 0,
                     id: c.id
                 };
 
@@ -189,17 +187,6 @@ function AppCtrl($scope, $filter) {
                     bookmark.tag.push({text: tag, custom: true});
                   });
                 }
-
-                chrome.history.search({text: c.url}, function(history) {
-                  var visitedCount 
-                  angular.forEach(history, function(hItem) {
-                    if (hItem.lastVisitTime > bookmark.visited) {
-                      bookmark.visited = hItem.lastVisitTime;
-                    }
-
-                    bookmark.visitedCount += hItem.visitCount;
-                  })
-                });
 
                 $scope.bookmarks.push(bookmark);
             }
