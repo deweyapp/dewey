@@ -18,8 +18,8 @@
   },
 
   "icons": {
-    "128": "bookmarks.png",
-    "16": "favicon.png"
+    "128": "icon_128.png",
+    "16": "icon_16.png"
   },
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
