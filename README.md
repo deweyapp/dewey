@@ -1,6 +1,6 @@
 # Bookmarks
 
-Bookmarks is a Chrome browser application, which gives you an easy way to manage bookmarks and navigate through them. 
+Bookmarks is a [Chrome browser application](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm), which gives you an easy way to manage bookmarks and navigate through them. 
 
 After you start this application you can:
 
@@ -9,6 +9,10 @@ After you start this application you can:
 - You can use Arrow Up/Down keyboard keys to navigate through bookmarks list.
 - Application uses folder names as a standard tags, but it also gives you an option to add custom tags. 
 
+## Installation
+
+To install Bookmarks application just follow the link to [Chrome web store](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) using Chrome browser.
+
 ## Author
 **Denis Gladkikh**
 
@@ -16,7 +20,7 @@ After you start this application you can:
 - [https://twitter.com/outcoldman](https://twitter.com/outcoldman)
 - [https://github.com/outcoldman](https://github.com/outcoldman)
 
-## License:
+## License
   Apache License, Version 2.0
 
 ## Contributing
@@ -26,7 +30,6 @@ After you start this application you can:
 If you liked this extension and you are looking for a way to support future development (or just say thank you), you always can do it with PayPal donate button below
 
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
-
 
 ## Changelog
 - 1.0 (October 13 2013) - Ready for use first version of application in Chrome Web Store.
