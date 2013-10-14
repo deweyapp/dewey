@@ -1,9 +1,13 @@
-# Chrome bookmarks
+# Bookmarks
 
-Chrome bookmarks is a Chrome browser application, which allows you to:
+Bookmarks is a Chrome browser application, which gives you an easy way to manage bookmarks and navigate through them. 
 
-- Do advanced search on your bookmarks by tags, url or title.
-- Add custom tags for bookmarks, which helps you to manage all your bookmarks. By default application uses folders as tags for bookmarks.
+After you start this application you can:
+
+- Do search on your bookmarks. You can search by all fields (title, tag, url) or specify one or more operators, like 'tag:dev', which filters bookmarks by tag 'dev'.
+- One of the bookmarks is highlighted, this is selected bookmark. On Enter application navigates you to selected bookmark.
+- You can use Arrow Up/Down keyboard keys to navigate through bookmarks list.
+- Application uses folder names as a standard tags, but it also gives you an option to add custom tags. 
 
 ## Author
 **Denis Gladkikh**
