@@ -1,6 +1,6 @@
 # Bookmarks
 
-Bookmarks is a [Chrome browser application](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm), which gives you an easy way to manage bookmarks and navigate through them. 
+Bookmarks is a [Chrome Browser application](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm), which gives you an easy way to manage bookmarks and navigate through them. 
 
 After you start this application you can:
 
@@ -11,7 +11,7 @@ After you start this application you can:
 
 ## Installation
 
-To install Bookmarks application just follow the link to [Chrome web store](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) using Chrome browser.
+To install Bookmarks application just follow the link to [Chrome Web Store](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) using Chrome Browser.
 
 ## Author
 **Denis Gladkikh**
