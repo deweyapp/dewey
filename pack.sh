@@ -5,7 +5,7 @@ zip -r webstore/published/chrome-bookmarks\($(date +"%F")\).zip ./ \
   -i css/bootstrap.min.css \
   -i css/font-awesome.min.css \
   -i css/style.css \
-  -i font/fontawesome-webfont.woff \
+  -i fonts/fontawesome-webfont.woff \
   -i fonts/glyphicons-halflings-regular.woff \
   -i js/angular.js \
   -i js/jquery.js \

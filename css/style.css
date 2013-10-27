@@ -40,6 +40,10 @@ body {
 .search-bookmarks {
 }
 
+.margin-right-5px {
+  margin-right: 5px;
+}
+
 @media (min-width: 768px) {
   .search-bookmarks {
     width:250pt;
