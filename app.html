@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="Bookmarks">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <title>Bookmarks</title>
@@ -8,12 +8,10 @@
         <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="./css/font-awesome.min.css">
         <link rel="stylesheet" href="./css/style.css">
-        <script src="./js/jquery.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <script src="./js/angular.js"></script>
-        <script src="./js/app.js"></script>
+        <script src="./js/lib/require.js"></script>
+        <script src="./js/startup.js"></script>
     </head>
-    <body ng-controller="AppCtrl">
+    <body ng-controller="mainController">
       <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -25,7 +23,7 @@
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
+            <li class="dropdown" ng-cloak>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Order by {{currentOrder.title}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a href="#">{{order.title}}</a></li>
@@ -40,7 +38,7 @@
       <div class="container">
         <div class="row">
           <ul class="list-unstyled" id="list-bookmarks">
-            <li ng-repeat="bookmark in bookmarks | bookmarksFilter:searchText:currentOrder.value | limitTo:totalDisplayed">
+            <li ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
               <div class="panel panel-default" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
                 <div class="panel-body">
                   <div><a href="{{bookmark.url}}">{{bookmark.title}}</a></div>

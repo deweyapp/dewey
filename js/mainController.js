@@ -1,73 +1,10 @@
-angular.module('Bookmarks', []).
-  /* 
-  * Filter split search string on fields conditions and after that 
-  * uses them to build special expression for default AngularJS filter.
-  *
-  * For example:
-  *
-  * - When search string is "search string" - filter will try to find a match in any object field.
-  * - When search string is "tag:search string" - filter will try to find a match only in object `tag` property.
-  * - When search string is "search title tag:search tag" - filter will try to find a match for 'search tag' in object `tag` property
-  * an 'search title' in `title` field.
-  *
-  */
-  filter('bookmarksFilter', function($filter) {
-    var standardFilter = $filter('filter');
-    var orderBy = $filter('orderBy');
-    return function(input, search, order) {
-      var expression = {};
-
-      var i = 0;
-      var filterExpression = null;
-      var filterString = "";
-
-      if (search) {
-        // Trying to parse search string by fields
-        var pattern = '';
-        var field = null; 
-        var hasExpressions = false;
-        for (var i = (search.length - 1); i >= 0; i--) {
-          if (search[i]  === ':') {
-            field = '';
-            continue;
-          } 
-
-          if (field !== null) {
-            if (search[i] === ' '){
-              expression[field] = pattern;
-              hasExpressions = true;
-              field = null;
-              pattern = '';
-              continue;
-            } else {
-              field = search[i] + field;
-              continue;
-            }
-          } else {
-            pattern = search[i] + pattern;
-          }
-        }
-
-        if (field !== null) {
-          expression[field] = pattern;
-          hasExpressions = true;
-        } else {
-          if (hasExpressions) {
-            expression['title'] = pattern;
-          } else {
-            expression = pattern;
-          }
-        }
-      }
-
-      return orderBy(standardFilter(input, expression), order, order === 'date');
-    } 
-  });
+define(['jQuery', 'bookmarksApp', 'bootstrap'], function($, bookmarksApp) {
+'use strict';
 
 /*
 * Application controller.
 */
-function AppCtrl($scope, $filter) {
+var AppCtrl = function($scope, $filter) {
   
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 30;
@@ -155,7 +92,7 @@ function AppCtrl($scope, $filter) {
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
-    var bookmarksFilter = $filter('bookmarksFilter');
+    var bookmarksFilter = $filter('fieldsFilter');
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   }
 
@@ -278,3 +215,8 @@ function AppCtrl($scope, $filter) {
     $scope.selectedIndex = index;
   }
 }
+
+bookmarksApp.controller('mainController', ['$scope', '$filter', AppCtrl]);
+
+});
+
