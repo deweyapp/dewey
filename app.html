@@ -11,102 +11,26 @@
         <script src="./js/lib/require.js"></script>
         <script src="./js/startup.js"></script>
     </head>
-    <body ng-controller="mainController">
-      <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bookmarks</a>
-          </div>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="search" class="form-control search-bookmarks" placeholder="Search" ng-model="searchText" autofocus="true">
-            </div>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" ng-cloak>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Order by {{currentOrder.title}} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a href="#">{{order.title}}</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="container">
-          <span class="help-block">Search operators are <strong>tag:{tag}</strong>, <strong>url:{url}</strong> or <strong>title:{title}</strong>.</span>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <ul class="list-unstyled" id="list-bookmarks">
-            <li ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
-              <div class="panel panel-default" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
-                <div class="panel-body">
-                  <div><a href="{{bookmark.url}}">{{bookmark.title}}</a></div>
-                  <div class="overflow-protection"><a href="{{bookmark.url}}" ><small class="text-muted">{{bookmark.url}}</small></a></div>
-                </div>
-                <div class="panel-footer">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <ol class="breadcrumb">
-                        <li><small><span class="text-muted">Created:</span> {{bookmark.date | date:'medium'}}</small></li>
-                      </ol>
-                    </div>
-                    <div class="col-md-7">
-                      <ul class="list-inline pull-right clearfix">
-                        <li ng-repeat="tag in bookmark.tag">
-                          <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
-                        </li>
-                        <li><a href="#" ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="Add tag"></span></a></li>
-                        <li><a href="#" ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="Remove custom tags"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="row" id="loadMorePlaceholder" />
-      </div>
-
-      <div class="modal fade" id="addTagModal" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Add tag for bookmark <em>{{bookmarkEdit.title}}</em></h4>
-            </div>
-            <div class="modal-body">
-              <form ng-submit="saveNewTag()">
-                <div class="form-group" >
-                  <label for="newTag">Tag</label>
-                  <input type="text" class="form-control" id="newTag" autofocus="true" placeholder="Enter tag name" ng-model="newTag">
-                </div >
-              </form>
-
-              <h5>Current tags</h5>
-              <ul>
-                <li ng-repeat="tag in bookmarkEdit.tag">
-                  <span>{{tag.text}}</span>
-                </li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" ng-click="saveNewTag()">Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <body>
+      
+      <div ng-view></div>
 
       <div class="navbar navbar-fixed-bottom navbar-inverse" role="footer">
         <div class="container">
-          <small class="navbar-text">2013 © Denis Gladkikh (<a href="https://twitter.com/@outcoldman">@outcoldman</a>) <a href="http://outcoldman.com">http://outcoldman.com</a> </small>
-          <div class="pull-right">
-            <a href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" class="navbar-text margin-right-5px"><small><i class="fa fa-thumbs-up fa-lg"></i> Review</small></a>
-            <a href="https://github.com/outcoldman/chrome-bookmarks" class="navbar-text"><small><i class="fa fa-github fa-lg"></i>  Fork</small></a>
-          </div>
           
+          <small class="navbar-text">
+            2013 © Denis Gladkikh (<a href="https://twitter.com/@outcoldman">@outcoldman</a>) <a href="http://outcoldman.com">http://outcoldman.com</a> 
+          </small>
+          
+          <div class="pull-right">
+            <a href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" 
+               class="navbar-text margin-right-5px">
+              <small><i class="fa fa-thumbs-up fa-lg"></i> Review</small>
+            </a>
+            <a href="https://github.com/outcoldman/chrome-bookmarks" class="navbar-text">
+              <small><i class="fa fa-github fa-lg"></i>  Fork</small>
+            </a>
+          </div>
         </div>
       </div>
     </body>
