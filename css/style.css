@@ -29,6 +29,7 @@ body {
 
 .link-custom {
   color: #309134 !important;
+  cursor: pointer;
 }
 
 .overflow-protection {
@@ -55,3 +56,5 @@ body {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.nav, .pagination, .carousel a { cursor: pointer; }

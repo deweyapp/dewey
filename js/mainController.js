@@ -1,10 +1,19 @@
-define(['jQuery', 'bookmarksApp', 'bootstrap'], function($, bookmarksApp) {
+define(
+[
+  'jQuery', 
+  'bookmarksApp', 
+  'angular', 
+  'bootstrap', 
+  'ui-bootstrap',
+  'editBookmarkController'
+  ], 
+function($, bookmarksApp) {
 'use strict';
 
 /*
 * Application controller.
 */
-var AppCtrl = function($scope, $filter) {
+var AppCtrl = function($scope, $filter, $modal) {
   
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 30;
@@ -17,10 +26,6 @@ var AppCtrl = function($scope, $filter) {
                     {title:'Url', value: 'url'}
                   ];
   $scope.currentOrder = $scope.orders[0]; // title is default sorting order
-
-  // Edit tag dialog models
-  $scope.bookmarkEdit = null; // selected bookmark (for dialog)
-  $scope.newTag = ''; 
 
   // Maximum number of items currently displayed
   $scope.totalDisplayed = defaultTotalDisplayed;
@@ -83,11 +88,6 @@ var AppCtrl = function($scope, $filter) {
       }
       return false;
     }
-  });
-
-  // Place focus on input when show dialog
-  $("#addTagModal").on('shown', function() {
-    $(this).find("[autofocus]:first").focus();
   });
 
   // Get bookmarks we show on the page (in right order)
@@ -171,12 +171,34 @@ var AppCtrl = function($scope, $filter) {
 
   // Show modal dialog for adding tags
   $scope.addTag = function(bookmark) {
-    $scope.bookmarkEdit = bookmark;
-    $scope.newTag = '';
-    $('#addTagModal').modal({
+     var modalInstance = $modal.open({
+      scope: $scope.$new(true /* isolate */),
+      templateUrl: 'partials/editBookmark.tpl.html',
+      controller: 'editBookmarkController',
+      resolve: {
+        bookmark: function() {
+          return bookmark;
+        }
+      },
       keyboard: true,
-      show: true
+      backdrop: 'static'
     });
+
+    modalInstance.result.then(function (newTag) {
+      if (newTag && newTag.length > 0) {
+        bookmark.tag.push({ text: newTag, custom: true});
+        if (!customTags[bookmark.id]) {
+          customTags[bookmark.id] = []
+        }
+
+        customTags[bookmark.id].push(newTag);
+
+        chrome.storage.sync.set({'customTags': customTags});
+      }
+    }, function () {
+      
+    });
+    
     return false;
   };
 
@@ -195,28 +217,12 @@ var AppCtrl = function($scope, $filter) {
     chrome.storage.sync.set({'customTags': customTags});
   };
 
-  // Handler for saving custom tag for selected bookmark
-  $scope.saveNewTag = function() {
-    
-    if ($scope.newTag && $scope.newTag.length > 0) {
-      $scope.bookmarkEdit.tag.push({ text: $scope.newTag, custom: true});
-      if (!customTags[$scope.bookmarkEdit.id]) {
-        customTags[$scope.bookmarkEdit.id] = []
-      }
-
-      customTags[$scope.bookmarkEdit.id].push($scope.newTag);
-
-      chrome.storage.sync.set({'customTags': customTags});
-    }
-    $('#addTagModal').modal('hide');
-  };
-
   $scope.selectBookmark = function(index) {
     $scope.selectedIndex = index;
   }
 }
 
-bookmarksApp.controller('mainController', ['$scope', '$filter', AppCtrl]);
+bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', AppCtrl]);
 
 });
 

@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href>Bookmarks</a>
+      <a class="navbar-brand">Bookmarks</a>
     </div>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -10,9 +10,9 @@
     </form>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown" ng-cloak>
-        <a href="" class="dropdown-toggle" data-toggle="dropdown">Order by {{currentOrder.title}} <b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown">Order by {{currentOrder.title}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a href>{{order.title}}</a></li>
+          <li ng-repeat="order in orders" ng-click="changeOrder(order)"><a>{{order.title}}</a></li>
         </ul>
       </li>
     </ul>
@@ -42,8 +42,8 @@
                   <li ng-repeat="tag in bookmark.tag">
                     <span class="badge badge-pointer" ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</span>
                   </li>
-                  <li><a href ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="Add tag"></span></a></li>
-                  <li><a href ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="Remove custom tags"></span></a></li>
+                  <li><a ng-click="addTag(bookmark)"><span class="glyphicon glyphicon-tags link-custom" data-toggle="tooltip" title="Add tag"></span></a></li>
+                  <li><a ng-click="removeCustomTag(bookmark)"><span class="glyphicon glyphicon-trash link-custom" data-toggle="tooltip" title="Remove custom tags"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -55,32 +55,3 @@
   <div class="row" id="loadMorePlaceholder" />
 </div>
 
-<div class="modal fade" id="addTagModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Add tag for bookmark <em>{{bookmarkEdit.title}}</em></h4>
-      </div>
-      <div class="modal-body">
-        <form ng-submit="saveNewTag()">
-          <div class="form-group" >
-            <label for="newTag">Tag</label>
-            <input type="text" class="form-control" id="newTag" autofocus="true" placeholder="Enter tag name" ng-model="newTag">
-          </div >
-        </form>
-
-        <h5>Current tags</h5>
-        <ul>
-          <li ng-repeat="tag in bookmarkEdit.tag">
-            <span>{{tag.text}}</span>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" ng-click="saveNewTag()">Add</button>
-      </div>
-    </div>
-  </div>
-</div>

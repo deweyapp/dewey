@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title">Add tag for bookmark <em>{{bookmark.title}}</em></h4>
+</div>
+<div class="modal-body">
+  <form ng-submit="save()">
+    <div class="form-group" >
+      <label for="textBoxTag">Tag</label>
+      <input type="text" id="textBoxTag" class="form-control" autofocus="true" placeholder="Enter tag name" ng-model="editTag.tagName" ng-change="textChange()">
+    </div >
+  </form>
+
+  <h5>Current tags</h5>
+  <ul>
+    <li ng-repeat="tag in bookmark.tag">
+      <span>{{tag.text}}</span>
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="save()">Save</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

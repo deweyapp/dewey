@@ -8,6 +8,7 @@ require.config({
     jQuery: 'lib/jquery-2.0.3.min',
     angular: 'lib/angular.min',
     bootstrap: 'lib/bootstrap.min',
+    'ui-bootstrap': 'lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min'
   },
   shim: {
     'jQuery': {
@@ -20,6 +21,10 @@ require.config({
     'bootstrap': {
       deps: ['jQuery'],
       exports : 'bootstrap'
+    },
+    'ui-bootstrap': {
+      deps: ['jQuery','bootstrap', 'angular'],
+      exports : 'ui-bootstrap'
     }
   }
 });
