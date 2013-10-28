@@ -2,15 +2,12 @@ define(
 'controllers/editBookmark',
 [
   'jQuery', 
-  'bookmarksApp', 
-  'angular', 
-  'bootstrap', 
-  'ui-bootstrap'
+  'bookmarksApp'
 ], 
-function($, bookmarksApp, angular) {
+function($, bookmarksApp) {
 'use strict';
 
-var editBookmarkController = function ($scope, $modalInstance, bookmark) {
+var EditBookmarkController = function ($scope, $modalInstance, bookmark) {
   $scope.bookmark = bookmark;
   $scope.editTag = { tagName: ''}; 
 
@@ -29,7 +26,7 @@ bookmarksApp.controller(
     '$scope', 
     '$modalInstance', 
     'bookmark', 
-    editBookmarkController
+    EditBookmarkController
   ]);
 
 });

@@ -10,9 +10,11 @@ zip -r webstore/published/chrome-bookmarks\($(date +"%F")\).zip ./ \
   -i js/lib/jquery-2.0.3.min.js \
   -i js/lib/bootstrap.min.js \
   -i js/lib/require.js \
+  -i js/lib/underscore-min.js \
   -i js/lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min.js \
   -i js/filters/*.js \
   -i js/controllers/*.js \
+  -i js/services/*.js \
   -i js/*.js \
   -i partials/*
   -i app.html \

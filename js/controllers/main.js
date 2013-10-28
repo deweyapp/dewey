@@ -3,11 +3,9 @@ define(
 [
   'jQuery', 
   'bookmarksApp', 
-  'angular', 
-  'bootstrap', 
-  'ui-bootstrap',
+  'services/bookmarksStorage',
   'filters/fieldsFilter',
-  'controllers/editBookmark'
+  'controllers/editBookmark',
 ], 
 function($, bookmarksApp) {
 'use strict';
@@ -15,7 +13,7 @@ function($, bookmarksApp) {
 /*
 * Application controller.
 */
-var AppCtrl = function($scope, $filter, $modal) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 30;
@@ -98,53 +96,10 @@ var AppCtrl = function($scope, $filter, $modal) {
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   }
 
-  // Recursive bookmarks traversal (we use folders as tags)
-  var enumerateChildren = function(tree, tags) {
-    if (tree) {
-        angular.forEach(tree, function(c) {
-            if (typeof c.url === 'undefined') {
-                var t = angular.copy(tags);
-                if (c.title) {
-                    t.push(c.title);
-                }
-                enumerateChildren(c.children, t);
-            } else {
-                var bookmark = {
-                    title: c.title,
-                    url: c.url,
-                    tag: [],
-                    date: c.dateAdded,
-                    id: c.id
-                };
-
-                angular.forEach(tags, function(tag) {
-                  bookmark.tag.push({text: tag, custom: false});
-                });
-
-                if (customTags[bookmark.id]) {
-                  angular.forEach(customTags[bookmark.id], function(tag){
-                    bookmark.tag.push({text: tag, custom: true});
-                  });
-                }
-
-                $scope.bookmarks.push(bookmark);
-            }
-        });
-    }
-  }
-
-  // Get first custom tags and after this start bookmarks traversal.
-  chrome.storage.sync.get('customTags', function(data) {
-    if (data && data.customTags) {
-      customTags = data.customTags;
-    }
-
-    chrome.bookmarks.getTree(function(tree) {
-      var tags = [];
-      enumerateChildren(tree, tags);
-      $scope.$apply();
-    });
-  });
+  bookmarksStorage.getAll(function(bookmarks) {
+    $scope.bookmarks = bookmarks;
+    $scope.$apply();
+  }.bind(this));
 
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
@@ -224,7 +179,7 @@ var AppCtrl = function($scope, $filter, $modal) {
   }
 }
 
-bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', AppCtrl]);
+bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
 
 });
 
