@@ -1,4 +1,7 @@
-define(['bookmarksApp'], function(bookmarksApp) {
+define(
+'filters/fieldsFilter',
+['bookmarksApp'], 
+function(bookmarksApp) {
 'use strict';
 
 /* 

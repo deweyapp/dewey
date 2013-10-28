@@ -1,4 +1,9 @@
-define(['angular', 'ui-bootstrap'], function(angular) {
+define(
+[
+  'angular', 
+  'ui-bootstrap'
+], 
+function(angular) {
 'use strict';
 
 return angular.module('bookmarksApp', ['ui.bootstrap']).

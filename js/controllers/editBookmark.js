@@ -1,9 +1,13 @@
-define([
+define(
+'controllers/editBookmark',
+[
   'jQuery', 
   'bookmarksApp', 
   'angular', 
   'bootstrap', 
-  'ui-bootstrap'], function($, bookmarksApp, angular) {
+  'ui-bootstrap'
+], 
+function($, bookmarksApp, angular) {
 'use strict';
 
 var editBookmarkController = function ($scope, $modalInstance, bookmark) {

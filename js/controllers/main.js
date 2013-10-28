@@ -1,12 +1,14 @@
 define(
+'controllers/main',
 [
   'jQuery', 
   'bookmarksApp', 
   'angular', 
   'bootstrap', 
   'ui-bootstrap',
-  'editBookmarkController'
-  ], 
+  'filters/fieldsFilter',
+  'controllers/editBookmark'
+], 
 function($, bookmarksApp) {
 'use strict';
 
