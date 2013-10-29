@@ -70,7 +70,7 @@ var BookmarksStorage = function () {
   var customTags = {};
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
-    for (key in changes) {
+    for (var key in changes) {
       if (changes.hasOwnProperty(key) && key === 'customTags') {
         customTags = storageChange.newValue;
         fillCustomTags(bookmarks, customTags);
@@ -93,7 +93,27 @@ var BookmarksStorage = function () {
         callback(bookmarks);
       });
     });
-  }
+  };
+
+  this.update = function(bookmark, changes) {
+    if (changes.title !== bookmark.title) {
+      chrome.bookmarks.update(bookmark.id, { title: changes.title});
+      bookmark.title = changes.title;
+    }
+
+    delete customTags[bookmark.id];
+    bookmark.tag = _.filter(bookmark.tag, function(t) { return t.custom === false });
+    if (changes.customTags && changes.customTags.length > 0) {
+      customTags[bookmark.id] = changes.customTags;
+      addCustomTags(bookmark, changes.customTags);
+    }
+
+    chrome.storage.sync.set({'customTags': customTags});
+  };
+
+  this.remove = function(bookmark) {
+    chrome.bookmarks.remove(bookmark.id);
+  };
 };
 
 /*

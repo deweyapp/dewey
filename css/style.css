@@ -27,6 +27,30 @@ body {
   background-color: #309134 !important;
 }
 
+  .badge-custom a {
+    color: #000;
+    opacity: .2;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .badge-custom a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .badge-custom input[type=text] {
+    width: 100px;
+    padding: 2px;
+    height: auto;
+  }
+
+  .badge-custom span:focus {
+    background-color: #fff;
+    color: grey;
+  }
+
 .link-custom {
   color: #309134 !important;
   cursor: pointer;
@@ -43,6 +67,10 @@ body {
 
 .margin-right-5px {
   margin-right: 5px;
+}
+
+.list-unstyled span.badge {
+  margin: 5px 0;
 }
 
 @media (min-width: 768px) {

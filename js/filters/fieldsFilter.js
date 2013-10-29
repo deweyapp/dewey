@@ -1,8 +1,7 @@
 define(
 'filters/fieldsFilter',
 ['bookmarksApp'], 
-function(bookmarksApp) {
-'use strict';
+function(bookmarksApp) { 'use strict';
 
 /* 
 * Filter split search string on fields conditions and after that 

@@ -1,11 +1,9 @@
-(function(){
-
-'use strict';
+(function(){ 'use strict';
 
 require.config({ 
   baseUrl: '/js',
   paths: {
-    underscore: 'lib/underscore-min',
+    underscore: 'lib/underscore.min',
     jQuery: 'lib/jquery-2.0.3.min',
     angular: 'lib/angular.min',
     bootstrap: 'lib/bootstrap.min',
@@ -13,6 +11,8 @@ require.config({
     controllers: 'controllers',
     filters: 'filters',
     services: 'services',
+    'bootstrap-tagsinput': 'lib/bootstrap-tagsinput.min',
+    'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular'
   },
   shim: {
     'jQuery': {
@@ -32,6 +32,12 @@ require.config({
     'ui-bootstrap': {
       deps: ['jQuery','bootstrap', 'angular'],
       exports : 'ui-bootstrap'
+    },
+    'bootstrap-tagsinput': {
+      deps: ['bootstrap']
+    },
+    'bootstrap-tagsinput-angular': {
+      deps: ['bootstrap-tagsinput', 'angular']
     }
   }
 });
@@ -41,6 +47,8 @@ require([
   'angular', 
   'bootstrap', 
   'ui-bootstrap', 
+  'bootstrap-tagsinput',
+  'bootstrap-tagsinput-angular',
   'filters/fieldsFilter',
   'controllers/main'], function($, angular) {
     angular.bootstrap(document, ['bookmarksApp']);

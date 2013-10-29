@@ -7,8 +7,7 @@ define(
   'filters/fieldsFilter',
   'controllers/editBookmark',
 ], 
-function($, bookmarksApp) {
-'use strict';
+function($, bookmarksApp) { 'use strict';
 
 /*
 * Application controller.
@@ -32,9 +31,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectedIndex = 0;
 
-  // Repository for custom tags
-  var customTags = {};
-
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
   $(window).scroll(function () {
@@ -56,7 +52,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   }
 
   // Key down events handlers
-  $(window).keydown(function(e) {
+  $('#mainContent').keydown(function(e) {
     var updated = false;
     if (e.which === 13) { // Enter press on page - go to the selected bookmark
       var result = getFilteredBookmarks();
@@ -127,7 +123,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   };
 
   // Show modal dialog for adding tags
-  $scope.addTag = function(bookmark) {
+  $scope.editBookmark = function(bookmark) {
      var modalInstance = $modal.open({
       scope: $scope.$new(true /* isolate */),
       templateUrl: 'partials/editBookmark.tpl.html',
@@ -141,37 +137,14 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       backdrop: 'static'
     });
 
-    modalInstance.result.then(function (newTag) {
-      if (newTag && newTag.length > 0) {
-        bookmark.tag.push({ text: newTag, custom: true});
-        if (!customTags[bookmark.id]) {
-          customTags[bookmark.id] = []
-        }
-
-        customTags[bookmark.id].push(newTag);
-
-        chrome.storage.sync.set({'customTags': customTags});
+    modalInstance.result.then(function (updatedBookmark) {
+      if (!updatedBookmark) {
+        // Bookmark was deleted
+        $scope.bookmarks.splice(_.indexOf($scope.bookmarks, bookmark), 1);
       }
-    }, function () {
-      
     });
     
     return false;
-  };
-
-  // Remove all custom tags for bookmark
-  $scope.removeCustomTag = function(bookmark) {
-    var tags = [];
-    for (var i = bookmark.tag.length - 1; i > 0; i--) {
-      if (bookmark.tag[i].custom) {
-        bookmark.tag.splice(i, 1);
-      }
-    }
-    if (customTags[bookmark.id]) {
-      delete customTags[bookmark.id];
-    }
-
-    chrome.storage.sync.set({'customTags': customTags});
   };
 
   $scope.selectBookmark = function(index) {
