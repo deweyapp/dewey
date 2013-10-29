@@ -19,7 +19,7 @@ zip -r webstore/published/chrome-bookmarks\($(date +"%F")\).zip ./ \
   -i js/controllers/*.js \
   -i js/services/*.js \
   -i js/*.js \
-  -i partials/*
+  -i partials/* \
   -i app.html \
   -i icon_*.png \
   -i manifest.json \
