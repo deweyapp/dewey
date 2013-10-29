@@ -36,7 +36,7 @@ angular.module('bootstrap-tagsinput', [])
           itemValue: getItemProperty(scope, attrs.itemvalue),
           itemText : getItemProperty(scope, attrs.itemtext),
           tagClass : angular.isFunction(scope.$parent[attrs.tagclass]) ? scope.$parent[attrs.tagclass] : function(item) { return attrs.tagclass; },
-          confirmKeys: [188,76,13]
+          confirmKeys: [188,186,13]
         });
 
         if (inputClass) {

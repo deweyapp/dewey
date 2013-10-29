@@ -32,6 +32,7 @@ If you liked this extension and you are looking for a way to support future deve
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
 ## Changelog
+- 1.1.1 (October 29 2013) - Fix issue #1.
 - 1.1 (October 28 2013) - Updated bookmark edit dialog with options to edit title, custom tags and delete bookmark.
 - 1.0 (October 13 2013) - Ready for use first version of application in Chrome Web Store.
 - 0.1 (September 27 2013) - First prototype on [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). 
