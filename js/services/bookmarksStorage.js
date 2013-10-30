@@ -42,7 +42,7 @@ var enumerateChildren = function(tree, tags, customTags, bookmarks) {
               bookmark.tag.push({text: tag, custom: false});
             });
 
-            addCustomTags(bookmark, customTags[bookmark.id]);
+            addCustomTags(bookmark, customTags[bookmark.url]);
 
             bookmarks.push(bookmark);
         }
@@ -57,7 +57,7 @@ var fillCustomTags = function(bookmarks, customTags) {
   _.each(bookmarks, function(bookmark) {
     // Remove all custom tags from bookmark first
     bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false });
-    addCustomTags(bookmark, customTags[bookmark.id]);
+    addCustomTags(bookmark, customTags[bookmark.url]);
   });
 };
 
@@ -72,8 +72,10 @@ var BookmarksStorage = function () {
   chrome.storage.onChanged.addListener(function(changes, namespace) {
     for (var key in changes) {
       if (changes.hasOwnProperty(key) && key === 'customTags') {
-        customTags = storageChange.newValue;
-        fillCustomTags(bookmarks, customTags);
+        customTags = changes[key].newValue;
+        if (customTags) {
+          fillCustomTags(bookmarks, customTags);
+        }
       }
     };
   });
@@ -101,10 +103,10 @@ var BookmarksStorage = function () {
       bookmark.title = changes.title;
     }
 
-    delete customTags[bookmark.id];
+    delete customTags[bookmark.url];
     bookmark.tag = _.filter(bookmark.tag, function(t) { return t.custom === false });
     if (changes.customTags && changes.customTags.length > 0) {
-      customTags[bookmark.id] = changes.customTags;
+      customTags[bookmark.url] = changes.customTags;
       addCustomTags(bookmark, changes.customTags);
     }
 
@@ -112,6 +114,7 @@ var BookmarksStorage = function () {
   };
 
   this.remove = function(bookmark) {
+    delete customTags[bookmark.url];
     chrome.bookmarks.remove(bookmark.id);
   };
 };
