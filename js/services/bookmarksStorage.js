@@ -7,67 +7,141 @@ define(
 function(_, bookmarksApp) { "use strict";
 
 /*
-* Add all custom tags from array to bookmark tags.
-*/
-var addCustomTags = function(bookmark, cTag) {
-  if (cTag) {
-    _.each(cTag, function(tag){
-      bookmark.tag.push({text: tag, custom: true});
-    });
-  }
-}
-
-/*
-* Recursive bookmarks traversal (we use folders as tags)
-*/
-var enumerateChildren = function(tree, tags, customTags, bookmarks) {
-  if (tree) {
-    _.each(tree, function(c) {
-        if (!c.url) {
-            var t = tags.slice();
-            if (c.title) {
-                t.push(c.title);
-            }
-            enumerateChildren(c.children, t, customTags, bookmarks);
-        } else {
-            var bookmark = {
-                title: c.title,
-                url: c.url,
-                tag: [],
-                date: c.dateAdded,
-                id: c.id
-            };
-
-            _.each(tags, function(tag) {
-              bookmark.tag.push({text: tag, custom: false});
-            });
-
-            addCustomTags(bookmark, customTags[bookmark.url]);
-
-            bookmarks.push(bookmark);
-        }
-    });
-  }
-};
-
-/*
-* Add custom tags to bookmarks.
-*/
-var fillCustomTags = function(bookmarks, customTags) {
-  _.each(bookmarks, function(bookmark) {
-    // Remove all custom tags from bookmark first
-    bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false });
-    addCustomTags(bookmark, customTags[bookmark.url]);
-  });
-};
-
-/*
 * Bookmarks storage.
 */
 var BookmarksStorage = function () {
 
   var bookmarks = [];
-  var customTags = {};
+  var customTagsStorage = [];
+
+  /*
+  * Save chunk with custom tags by index (key will be t[Index]).
+  */
+  var saveCustomTagsChunk = function(index, chunk) {
+    var change = {};
+    var key = 't' + index;
+    change[key] = chunk;
+    chrome.storage.sync.set(change);
+  }
+
+  /*
+  * Find chunk which stores custom tags for bookmark and remove this information.
+  */
+  var removeCustomTags = function(bookmarkUrl) {
+    _.each(customTagsStorage, function(chunk, index) {
+      if (chunk.d[bookmarkUrl]) {
+        delete chunk.d[bookmarkUrl];
+        saveCustomTagsChunk(index, chunk);
+      };
+    })
+  };
+
+  /*
+  * Save custom tags to chunk.
+  */
+  var saveCustomTags = function(bookmarkUrl, customTags) {
+    // Try to find chunk and index of this chunk
+    // which has less than 20 items
+    var chunk, index;
+    for (var i = 0; i < customTagsStorage.length; i++) {
+      if (_.size(customTagsStorage[i].d) < 20) {
+        chunk = customTagsStorage[i];
+        index = i;
+        break;
+      }
+    }
+    // If don't have chunk with less than 20 items 
+    // Create new one.
+    if (!chunk) {
+      chunk = { d: {} };
+      var lChunk = _.last(customTagsStorage);
+      // If previous chunk exist and it does not know about new chunk
+      // Update it with setting next = true
+      if (lChunk && !lChunk.n) {
+        lChunk.n = true;
+        saveCustomTagsChunk(customTagsStorage.length - 1, lChunk);
+      }
+      index = customTagsStorage.length;
+      customTagsStorage.push(chunk);
+    }
+    // Save custom tags for bookmark 
+    chunk.d[bookmarkUrl] = customTags;
+    saveCustomTagsChunk(index, chunk);
+  };
+
+  /*
+  * Get all chunks with custom tags.
+  */
+  var enumerateAllCustomTagChunks = function(currentChunk, index, done) {
+    if (currentChunk && currentChunk.n) {
+      index++;
+      var key = 't' + index;
+      chrome.storage.sync.get(key, function(data) {
+        if (data[key]) {
+          customTagsStorage.push(data[key]);
+        }
+        enumerateAllCustomTagChunks(data[key], index, done);
+      });
+    } else {
+      done();
+    }
+  };
+
+  /*
+  * Add all custom tags from array to bookmark tags.
+  */
+  var fillBookmarkWithCustomTags = function(bookmark) {
+    var chunk = _.find(customTagsStorage, function(chunk) { return _.isArray(chunk.d[bookmark.url]); });
+    if (chunk) {
+      _.each(chunk.d[bookmark.url], function(tag){
+        bookmark.tag.push({text: tag, custom: true});
+      });
+    }
+  }
+
+  /*
+  * Recursive bookmarks traversal (we use folders as tags)
+  */
+  var enumerateChildren = function(tree, tags) {
+    if (tree) {
+      _.each(tree, function(c) {
+          if (!c.url) {
+              var t = tags.slice();
+              if (c.title) {
+                  t.push(c.title);
+              }
+              enumerateChildren(c.children, t);
+          } else {
+              var bookmark = {
+                  title: c.title,
+                  url: c.url,
+                  tag: [],
+                  date: c.dateAdded,
+                  id: c.id
+              };
+
+              _.each(tags, function(tag) {
+                bookmark.tag.push({text: tag, custom: false});
+              });
+
+              fillBookmarkWithCustomTags(bookmark);
+
+              bookmarks.push(bookmark);
+          }
+      });
+    }
+  };
+
+  /*
+  * Add custom tags to bookmarks.
+  */
+  var fillCustomTags = function(bookmarks, customTags) {
+    _.each(bookmarks, function(bookmark) {
+      // Remove all custom tags from bookmark first
+      bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false });
+      saveCustomTags(bookmark.url, customTags[bookmark.url]);
+    });
+  };
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
     for (var key in changes) {
@@ -84,37 +158,49 @@ var BookmarksStorage = function () {
   * Get all bookmarks with all custom tags.
   */
   this.getAll = function(callback) {
-    // Get first custom tags and after this start bookmarks traversal.
-    chrome.storage.sync.get('customTags', function(data) {
-      if (data && data.customTags) {
-        customTags = data.customTags;
-      }
-
+    // At first get custom tags and after this start bookmarks traversal.
+    enumerateAllCustomTagChunks({n: true}, -1, function() {
       chrome.bookmarks.getTree(function(tree) {
-        enumerateChildren(tree, [], customTags, bookmarks);
-        callback(bookmarks);
+        enumerateChildren(tree, []);
+        // Custom tags is legacy storage 
+        // TODO: remove after couple releases support of customTgs key.
+        chrome.storage.sync.get('customTags', function(data) {
+          if (data && data.customTags) {
+            for (var key in data.customTags) {
+              if (data.customTags.hasOwnProperty(key)) {
+                saveCustomTags(key, data.customTags[key]);
+              }
+            }
+            chrome.storage.sync.remove('customTags');
+          }
+          callback(bookmarks);
+        });
       });
     });
   };
 
+  /*
+  * Update bookmark.
+  */
   this.update = function(bookmark, changes) {
     if (changes.title !== bookmark.title) {
       chrome.bookmarks.update(bookmark.id, { title: changes.title});
       bookmark.title = changes.title;
     }
 
-    delete customTags[bookmark.url];
+    removeCustomTags(bookmark.url);
     bookmark.tag = _.filter(bookmark.tag, function(t) { return t.custom === false });
     if (changes.customTags && changes.customTags.length > 0) {
-      customTags[bookmark.url] = changes.customTags;
-      addCustomTags(bookmark, changes.customTags);
+      saveCustomTags(bookmark.url, changes.customTags);
+      fillBookmarkWithCustomTags(bookmark);
     }
-
-    chrome.storage.sync.set({'customTags': customTags});
   };
 
+  /*
+  * Remove bookmark.
+  */
   this.remove = function(bookmark) {
-    delete customTags[bookmark.url];
+    removeCustomTags(bookmark.url);
     chrome.bookmarks.remove(bookmark.id);
   };
 };
