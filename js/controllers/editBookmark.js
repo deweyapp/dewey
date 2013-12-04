@@ -25,7 +25,7 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
   };
 
   $scope.delete = function() {
-    if (confirm('Are you sure that you want to delete current bookmark?')) {
+    if (confirm('Are you sure that you want to delete this bookmark?')) {
       bookmarksStorage.remove(bookmark);
       $modalInstance.close(null);
     }

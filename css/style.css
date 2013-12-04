@@ -1,88 +1,272 @@
-html { 
-  overflow-y: scroll; /* Always show vertical scroll, so user will not see glitches on showing / hiding scrollbar when he is searching */
+
+@import url(reset.css);
+
+@import url(modal.css);
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
+
+/*-----------------------------
+  Fade-in
+-----------------------------*/
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}}
+
+@-webkit-keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}}
+
+/*-----------------------------
+  Page Stucture
+-----------------------------*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html  {
+  animation: fade-in 1s ease-in;
+  -webkit-animation: fade-in 1s ease-in;
+  background: #F1F1F1;
+  border-top: 1em solid white;
+  font-size: 100%;
 }
 
 body {
-  padding-top: 225px;
-  padding-bottom: 50px;
+  color: #555;
+  font-family: 'Source Sans Pro', sans-serif;;
+  padding-bottom: 20rem;
 }
 
-@media (min-width: 768px) {
-  body {
-    padding-top: 100px;
-  }
+main {
+  margin: 0 auto;
+  width: 72.5em;
 }
 
-.badge-pointer { 
-  cursor: pointer !important;
+/*-----------------------------
+  Grid
+-----------------------------*/
+
+#list-bookmarks {
+  font-size: 0;
 }
 
-.breadcrumb {
-  margin-bottom: 0px !important;
-  padding: 0px !important;
-  display: inline !important;
+#list-bookmarks li {
+  background: #F18260;
+  display: inline-block;
+  list-style: none;
+  margin: 1rem;
+  vertical-align: top;
+  width: 12.5rem;
 }
 
-.badge-custom {
-  background-color: #309134 !important;
+/*-----------------------------
+  Link Items
+-----------------------------*/
+
+.item {
+  position: relative;
+  transition: top 300ms cubic-bezier(.65, -0.65, .75, 2);
 }
 
-  .badge-custom a {
-    color: #000;
-    opacity: .2;
-    font-weight: bold;
-    line-height: 1;
-  }
+.item:hover, .item:focus {
+  outline: none;
+  top: -0.5rem;
+}
 
-  .badge-custom a:hover {
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 0.5;
-  }
+.thumbnail[title$=".pdf"] {
+  background-image: url(../images/pdf.svg) !important;
+}
 
-  .badge-custom input[type=text] {
-    width: 100px;
-    padding: 2px;
-    height: auto;
-  }
+.thumbnail[title*="chrome://"], .thumbnail[title*="chrome-extension://"]{
+  background-image: url(../images/chrome.svg) !important;
+}
 
-  .badge-custom span:focus {
-    background-color: #fff;
-    color: grey;
-  }
+.thumbnail {
+  -webkit-filter: brightness(.7);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 12.5rem 9.375rem;
+  display: block;
+  height: 9.375rem;
+}
 
-.link-custom {
-  color: #309134 !important;
+.details {
+  background: white;
+  cursor: default;
+  display: block;
+  font-size: 0.75rem;
+  padding: 1.25rem 1rem;
+}
+
+/*-----------------------------
+  Settings
+-----------------------------*/
+
+#settings {
+  font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;;
+  margin: 1rem 1rem -2rem 0;
+  text-align: right;
+}
+
+#settings p {
+  color: #555;
+  cursor: default;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+#settings a {
+  color: #CCC;
   cursor: pointer;
+  display: inline-block;
+  list-style: none;
+  padding-right: 1rem;
+  transition: color .25s ease;
 }
 
-.overflow-protection {
-  text-overflow: ellipsis;
+#settings a:hover {
+  color: #F18260;
+}
+
+#settings a:active {
+  color: red;
+}
+
+/*-----------------------------
+  Search
+-----------------------------*/
+
+nav {
+  -webkit-font-smoothing: antialiased;
+  padding: 6.25rem 0;
+  text-align: center;
+}
+
+nav form {
+  margin: 0 auto;
+  overflow: break-word;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.search-bookmarks::-webkit-input-placeholder:before {
+  content: url(../images/search.svg);
+  margin-right: 1rem;
+}
+
+.search-bookmarks[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search-bookmarks[type="search"], .search-bookmarks::-webkit-input-placeholder {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font: 200 2.25rem 'Source Sans Pro', sans-serif;;
+  text-align: center;
+  width: 100%;
+}
+
+.search-bookmarks[type="search"]:focus {
+  background-clip: border-box;
+  background: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+/*-----------------------------
+  Details
+-----------------------------*/
+
+h2.title {
+  color: inherit;
+  cursor: pointer;
+  font: 700 1rem/1rem 'Source Sans Pro', sans-serif;;
+  height: auto;
+  margin-bottom: .5rem;
   overflow: hidden;
+  padding-bottom: .5rem;
+  width: 100%;
+}
+
+h2.title:hover:after {
+ content: url(../images/edit.svg);
+ position: absolute;
+ top: 9.375rem;
+ right: 0;
+ padding: .6rem .625rem;
+ background: #F18260;
+}
+    
+p.url {
+  color: #9C9C9C;
+  color: #DDD;
+  height: auto;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.search-bookmarks {
+/*-----------------------------
+  Tags
+-----------------------------*/
+
+.tags a {
+  color: #BBB;
+  cursor: pointer !important;
+  display: inline-block;
+  font-size: 0.75rem;
+  padding-bottom: 0.4rem;
+  padding-right: 0.25rem;
+  text-decoration: underline;
+  transition: color .25s ease;
 }
 
-.margin-right-5px {
-  margin-right: 5px;
+.tags a:hover {
+  color: #F18260;
 }
 
-.list-unstyled span.badge {
-  margin: 5px 0;
+/*-----------------------------
+  Media Queries
+-----------------------------*/
+
+@media only screen and (min-width: 100rem) {
+
+main {
+  width: 87rem;}
 }
 
-@media (min-width: 768px) {
-  .search-bookmarks {
-    width:250pt;
-  }
+
+@media only screen and (max-width: 72.5rem) {
+  
+main {
+  width: 58rem;}
 }
 
-/* AngularJS */
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+@media only screen and (max-width: 58rem) {
+  
+main {
+  width: 43.5rem;}
 }
 
-.nav, .pagination, .carousel a { cursor: pointer; }
+@media only screen and (max-width: 43.5rem) {
+  
+main {
+  width: 29rem;}
+}
+
+@media only screen and (max-width: 29rem) {
+
+main {
+  width: 12.5rem;}
+
+#list-bookmarks li {
+  margin: 1.25rem 0 0 0;}
+}

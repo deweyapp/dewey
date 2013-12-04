@@ -33,7 +33,7 @@
     this.objectItems = options && options.itemValue;
 
     this.$container = $('<div class="bootstrap-tagsinput"></div>');
-    this.$input = $('<input size="1" type="text" />').appendTo(this.$container);
+    this.$input = $('<input size="1" type="text" placeholder="Add a tag" />').appendTo(this.$container);
 
     this.$element.after(this.$container);
 

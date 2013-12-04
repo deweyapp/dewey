@@ -1,38 +1,17 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Bookmarks</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="./css/bootstrap-tagsinput.css">
-        <link rel="stylesheet" href="./css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <script src="./js/lib/require.min.js"></script>
-        <script src="./js/startup.js"></script>
-    </head>
-    <body>
-      
-      <div ng-view></div>
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Bookmarks</title>
 
-      <div class="navbar navbar-fixed-bottom navbar-inverse" role="footer">
-        <div class="container">
-          
-          <small class="navbar-text">
-            2013 © Denis Gladkikh (<a href="https://twitter.com/@outcoldman">@outcoldman</a>) <a href="http://outcoldman.com">http://outcoldman.com</a> 
-          </small>
-          
-          <div class="pull-right">
-            <a href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" 
-               class="navbar-text margin-right-5px">
-              <small><i class="fa fa-thumbs-up fa-lg"></i> Review</small>
-            </a>
-            <a href="https://github.com/outcoldman/chrome-bookmarks" class="navbar-text">
-              <small><i class="fa fa-github fa-lg"></i>  Fork</small>
-            </a>
-          </div>
-        </div>
-      </div>
-    </body>
+    <link rel='stylesheet' href='css/style.css'>
+    <script src='js/lib/require.js'></script>
+    <script src='js/startup.js'></script>
+    
+  </head>
+    <body>
+    <div ng-view></div>
+    <div class="row" id="loadMorePlaceholder" />
+  </body>
 </html>

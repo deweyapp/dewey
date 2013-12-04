@@ -1,48 +1,48 @@
 <div class="modal-header">
   <button class="close" ng-click="cancel()">&times;</button>
   <h4 class="modal-title">Edit bookmark</h4>
-  <div class="overflow-protection">
-    <a href="{{bookmarkModel.url}}" target="_window"><small>{{bookmarkModel.url}}</small></a>
-  </div>
+  <a class="view-link" href="{{bookmarkModel.url}}" target="_blank"></a>
 </div>
+
 <div class="modal-body">
   <form ng-submit="save()">
     <div class="form-group">
-      <label for="textBoxTitle">Title</label>
       <input type="text" 
               id="textBoxTitle" 
               class="form-control" 
               autofocus="true" 
-              placeholder="Bookmark title" 
+              placeholder="Bookmark Title" 
               ng-model="bookmarkModel.title" >
+      <input type="text" 
+              id="textBoxURL" 
+              class="form-control" 
+              placeholder="Bookmark URL" 
+              ng-model="bookmarkModel.url" >
     </div >
     
-    <div class="form-group">
-      <label>Folders</label>
-      
-      <ul class="list-inline">
+    <div class="form-group tags">
+       <ul class="list-inline">
         <li ng-repeat="folder in bookmarkModel.folders">
           <span class="badge">{{folder}}</span>
+        </li>
+        <li class="custom-tags">
+          <input type="text" 
+                    id="textBoxCustomTags" 
+                    class="form-control" 
+                    placeholder="Add a tag" 
+                    ng-model="bookmarkModel.customTags"
+                    tagclass="badge badge-custom"
+                    bootstrap-tagsinput>
         </li>
       </ul>
     </div>
 
-    <div class="form-group">
-      <label>Custom tags</label>
-
-      <input type="text" 
-              id="textBoxCustomTags" 
-              class="form-control" 
-              placeholder="Input custom tags" 
-              ng-model="bookmarkModel.customTags"
-              tagclass="badge badge-custom"
-              bootstrap-tagsinput>
-      <p class="help-block">Use comma or semicolon to separate tags.</p>
-    </div>
+    <p class="help-block">Use a comma, colon or semicolon to separate tags. Chrome folders are treated as tags. You can edit them in the Bookmarks Manager.</p>
   </form>
+
 </div>
 <div class="modal-footer">
-  <button class="btn btn-danger pull-left" ng-click="delete()">Delete</button>
-  <button class="btn btn-primary" ng-click="save()">Save</button>
-  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  <button class="delete" ng-click="delete()" tabindex="2">Delete</button>
+  <button class="cancel" ng-click="cancel()" tabindex="3">Cancel</button>
+  <button class="save" ng-click="save()" tabindex="0">Save</button>
 </div>

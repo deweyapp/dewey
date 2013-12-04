@@ -1,0 +1,381 @@
+
+.close {
+  float: right;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #000000;
+  opacity: 0.2;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  outline: none;
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+.modal.fade .modal-dialog {
+  -webkit-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform 200ms ease-out;
+          transition: transform 200ms ease-out;
+}
+
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.modal-dialog {
+  z-index: 1050;
+  width: auto;
+  padding: .625rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  outline: none;
+  background-clip: padding-box;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: rgba(0,0,0,.8);
+  -webkit-animation: modal-fade-in .3s;
+}
+
+@-webkit-keyframes modal-fade-in {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.modal-header {
+  height: 4.5rem;
+  padding: 1.5rem;
+  background: #F5F5F5;
+}
+
+.modal-title {
+  font: 700 1rem/1.4 "Source Sans Pro";
+  float: left;
+  margin-right: .625rem;
+}
+
+.view-link {
+  content: url(../images/link.svg);
+  height: 1rem;
+  width: 1rem;
+  margin-top: .25rem;
+}
+
+.modal-body {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.modal-footer:after {
+  clear: both;
+}
+
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.modal-footer:after {
+  clear: both;
+}
+
+
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    right: auto;
+    left: 50%;
+    width: 37rem;
+    padding-top: 10%;
+    padding-bottom: 2rem;
+  }
+}
+
+/*-----------------------------
+  Bootstrap Form Control
+-----------------------------*/
+
+.form-control::-webkit-input-placeholder {
+  color: lightgray;
+}
+
+.form-control {
+  -webkit-appearance: none;
+  color: #555;
+  background: #F5F5F5;
+  border-radius: 3px;
+  border: 1px solid rgba(241,130,96,0);
+  font-size: .75rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  padding: 0 .625rem;
+  transition: border .3s ease-in-out, background .3s ease-in-out;
+  width: 100%;
+}
+
+.form-control:focus {
+  border: 1px solid rgba(241,130,96,1);
+  outline: none;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+/*-----------------------------
+  Bootstrap Tags Input
+-----------------------------*/
+.bootstrap-tagsinput {
+  padding: 0;
+  background: transparent;
+}
+
+.bootstrap-tagsinput input {
+  -webkit-appearance: none;
+  color: #555;
+  background: #F5F5F5;
+  border-radius: 3px;
+  border: 1px solid rgba(241,130,96,0);
+  font-size: .8rem;
+  height: 2.5rem;
+  margin-bottom: 1.5rem;
+  min-width: 6.25rem;
+  padding: 0 .625rem;
+  transition: border .3s ease-in-out;
+}
+
+#textBoxTitle {
+  font-weight: 700;
+}
+
+.custom-tags::-webkit-input-placeholder {
+  color: lightgray;
+}
+
+.bootstrap-tagsinput input:focus {
+  border: 1px solid rgba(241,130,96,1);
+  outline: none;
+}
+.bootstrap-tagsinput .tag {
+  color: white;
+}
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  margin-left: .5rem;
+  cursor: pointer;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+  content: "×";
+  padding: 0px 2px;
+}
+
+/*-----------------------------
+  Tag Badges
+-----------------------------*/
+
+.badge-custom {
+  background-color: #F18260 !important;
+  margin-right: .2rem;
+}
+
+  .badge-custom a {
+    color: #808080;
+    opacity: .2;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .badge-custom a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .badge-custom input[type=text] {
+    width: 6.25rem;
+    padding: 2px;
+    height: auto;
+  }
+
+  .badge-custom span:focus {
+    background-color: #fff;
+    color: grey;
+  }
+    
+.badge {
+  background-color: #808080;
+  border: none;
+  border-radius: 3px;
+  color: #FFF;
+  display: inline-block;
+  font-size: .85rem;
+  margin-right: .25rem;
+  min-width: 6.25rem;
+  padding: .8rem 1rem 1rem;
+  height: 2.5rem;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.badge:before {
+  content: url(../images/folder.svg);
+  margin-right: 10px;
+  display: block;
+  float: left;
+  margin-top: -3px;
+}
+
+.custom-tags .badge:before {
+  content: none;
+}
+
+.custom-tags span{
+  margin-right: .2rem;
+}
+
+.badge:empty {
+  display: none;
+}
+
+a.badge:hover,
+a.badge:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  display: inline;
+  font-size: 0;
+}
+
+.list-inline > li {
+  display: inline-block;
+}
+
+/*-----------------------------
+  Help Block
+-----------------------------*/
+
+.help-block {
+  font-size: .8rem;
+  color: #999;
+  line-height: 1.4;
+}
+    
+
+/*-----------------------------
+  Modal Buttons
+-----------------------------*/
+
+.delete, .save, .cancel {
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: none;
+}
+
+.delete {
+background: #FFF;
+border-radius: 3px;
+border: 2px solid #E01B1B;
+color: #E01B1B;
+float: left;
+opacity: .5;
+padding: .75rem;
+width: 6.25rem;
+transition: opacity 300ms ease-out, 
+            background 300ms ease-out;
+}
+
+.delete:hover {
+  background: #E01B1B;
+  color: white;
+  opacity: 1;
+}
+
+.save {
+background: #FFF;
+background: lightgray;
+border-radius: 3px;
+border: 2px solid lightgray;
+color: white;
+letter-spacing: 1px;
+padding: .75rem;
+text-transform: uppercase;
+width: 6.25rem;
+transition: background 300ms ease-out,
+            border 300ms ease-out;
+}
+
+.save:hover, .save:focus {
+  background: #F18260;
+  border: 2px solid #F18260;
+}
+
+.cancel {
+  background: none;
+  margin-right: 10px;
+  text-decoration: underline;
+}

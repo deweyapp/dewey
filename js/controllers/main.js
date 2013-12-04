@@ -20,9 +20,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
   $scope.orders = [ // Different sorting orders
+                    {title:'Date', value: 'date'}, 
                     {title:'Title', value: 'title'}, 
-                    {title:'Date created', value: 'date'},
-                    {title:'Url', value: 'url'}
+                    {title:'URL', value: 'url'} 
                   ];
   $scope.currentOrder = $scope.orders[0]; // title is default sorting order
 
@@ -113,7 +113,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
  
   // On tag click we set search text
   $scope.selectTag = function(tag) {
-    $scope.searchText = 'tag:' + tag;
+    $scope.searchText = "tag:" + tag;
   };
 
   // Change sorting order

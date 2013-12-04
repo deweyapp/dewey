@@ -121,7 +121,9 @@ var BookmarksStorage = function () {
               };
 
               _.each(tags, function(tag) {
-                bookmark.tag.push({text: tag, custom: false});
+                if (tag !== 'Other Bookmarks') {
+                  bookmark.tag.push({text: tag, custom: false});
+              }
               });
 
               fillBookmarkWithCustomTags(bookmark);
@@ -186,6 +188,11 @@ var BookmarksStorage = function () {
     if (changes.title !== bookmark.title) {
       chrome.bookmarks.update(bookmark.id, { title: changes.title});
       bookmark.title = changes.title;
+    }
+
+    if (changes.url !== bookmark.url) {
+      chrome.bookmarks.update(bookmark.id, { url: changes.url});
+      bookmark.url = changes.url;
     }
 
     removeCustomTags(bookmark.url);
