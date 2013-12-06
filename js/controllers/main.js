@@ -31,10 +31,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectedIndex = 0; 
 
-  $scope.itemClicked = function ($index) { // identifying selected order to add underline to current order
-    $scope.selectedIndex = $index;
-  };
-
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
   $(window).scroll(function () {

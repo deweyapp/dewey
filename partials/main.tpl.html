@@ -1,7 +1,7 @@
 <ul id="sort">
   <li ng-cloak>
     <p>Order by:</p>
-    <a ng-repeat="order in orders" ng-class="{ 'active': $index == selectedIndex }" ng-click="changeOrder(order); itemClicked($index)">{{order.title}}</a>
+    <a ng-repeat="order in orders" ng-class="{ 'active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
   </li>
 </ul>
 
