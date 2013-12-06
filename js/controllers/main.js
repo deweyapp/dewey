@@ -31,7 +31,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectedIndex = 0; 
 
-  $scope.itemClicked = function ($index) { // identifying selected order to add class
+  $scope.itemClicked = function ($index) { // identifying selected order to add underline to current order
     $scope.selectedIndex = $index;
   };
 
