@@ -24,7 +24,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
                     {title:'Title', value: 'title'}, 
                     {title:'URL', value: 'url'} 
                   ];
-  $scope.currentOrder = $scope.orders[0]; // title is default sorting order
+  $scope.currentOrder = $scope.orders[0]; // date is default sorting order
 
   // Maximum number of items currently displayed
   $scope.totalDisplayed = defaultTotalDisplayed;

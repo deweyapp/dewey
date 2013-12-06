@@ -64,15 +64,15 @@ main {
 }
 
 /*-----------------------------
-  Link Items
+  Link Panels
 -----------------------------*/
 
-.item {
+.panel {
   position: relative;
   transition: top 300ms cubic-bezier(.65, -0.65, .75, 2);
 }
 
-.item:hover, .item:focus {
+.panel:hover, .panel:focus {
   outline: none;
   top: -0.5rem;
 }
