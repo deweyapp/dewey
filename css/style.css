@@ -215,10 +215,10 @@ p.url {
 }
 
 /*-----------------------------
-  Tags
+  Tag Links
 -----------------------------*/
 
-.tags a {
+.tag-links a {
   color: #BBB;
   cursor: pointer !important;
   display: inline-block;
@@ -229,7 +229,7 @@ p.url {
   transition: color .25s ease;
 }
 
-.tags a:hover {
+.tag-links a:hover {
   color: #F18260;
 }
 
@@ -242,7 +242,6 @@ p.url {
 main {
   width: 87rem;}
 }
-
 
 @media only screen and (max-width: 72.5rem) {
   

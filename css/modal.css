@@ -1,4 +1,3 @@
-
 .close {
   float: right;
   font-size: 1.3rem;
@@ -132,7 +131,6 @@ button.close {
   clear: both;
 }
 
-
 @media screen and (min-width: 768px) {
   .modal-dialog {
     right: auto;
@@ -144,30 +142,11 @@ button.close {
 }
 
 /*-----------------------------
-  Bootstrap Form Control
+  Form Control
 -----------------------------*/
 
 .form-control::-webkit-input-placeholder {
   color: lightgray;
-}
-
-.form-control {
-  -webkit-appearance: none;
-  color: #555;
-  background: #F5F5F5;
-  border-radius: 3px;
-  border: 1px solid rgba(241,130,96,0);
-  font-size: .75rem;
-  height: 3rem;
-  margin-bottom: 1.25rem;
-  padding: 0 .625rem;
-  transition: border .3s ease-in-out, background .3s ease-in-out;
-  width: 100%;
-}
-
-.form-control:focus {
-  border: 1px solid rgba(241,130,96,1);
-  outline: none;
 }
 
 .form-control[disabled],
@@ -182,11 +161,40 @@ textarea.form-control {
 }
 
 /*-----------------------------
+  Inputs: Title, URL
+-----------------------------*/
+
+#textBoxTitle, #textBoxURL {
+  -webkit-appearance: none;
+  background: #F5F5F5;
+  border-radius: 3px;
+  border: 1px solid rgba(241,130,96,0);
+  color: #555;
+  font-size: .75rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  padding: 0 .625rem;
+  transition: border .3s ease-in-out, background .3s ease-in-out;
+  width: 100%;
+}
+
+#textBoxTitle {
+  font-weight: 700;
+}
+
+#textBoxTitle:focus, #textBoxURL:focus {
+  border: 1px solid rgba(241,130,96,1);
+  outline: none;
+}
+
+/*-----------------------------
   Bootstrap Tags Input
 -----------------------------*/
+
 .bootstrap-tagsinput {
-  padding: 0;
   background: transparent;
+  display: inline;
+  padding: 0;
 }
 
 .bootstrap-tagsinput input {
@@ -195,19 +203,14 @@ textarea.form-control {
   background: #F5F5F5;
   border-radius: 3px;
   border: 1px solid rgba(241,130,96,0);
-  font-size: .8rem;
+  font-size: .75rem;
   height: 2.5rem;
-  margin-bottom: 1.5rem;
   min-width: 6.25rem;
   padding: 0 .625rem;
   transition: border .3s ease-in-out;
 }
 
-#textBoxTitle {
-  font-weight: 700;
-}
-
-.custom-tags::-webkit-input-placeholder {
+.bootstrap-tagsinput input::-webkit-input-placeholder {
   color: lightgray;
 }
 
@@ -215,9 +218,7 @@ textarea.form-control {
   border: 1px solid rgba(241,130,96,1);
   outline: none;
 }
-.bootstrap-tagsinput .tag {
-  color: white;
-}
+
 .bootstrap-tagsinput .tag [data-role="remove"] {
   margin-left: .5rem;
   cursor: pointer;
@@ -228,79 +229,11 @@ textarea.form-control {
 }
 
 /*-----------------------------
-  Tag Badges
+  Folders as Tags
 -----------------------------*/
 
-.badge-custom {
-  background-color: #F18260 !important;
-  margin-right: .2rem;
-}
-
-  .badge-custom a {
-    color: #808080;
-    opacity: .2;
-    font-weight: bold;
-    line-height: 1;
-  }
-
-  .badge-custom a:hover {
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 0.5;
-  }
-
-  .badge-custom input[type=text] {
-    width: 6.25rem;
-    padding: 2px;
-    height: auto;
-  }
-
-  .badge-custom span:focus {
-    background-color: #fff;
-    color: grey;
-  }
-    
-.badge {
-  background-color: #808080;
-  border: none;
-  border-radius: 3px;
-  color: #FFF;
-  display: inline-block;
-  font-size: .85rem;
-  margin-right: .25rem;
-  min-width: 6.25rem;
-  padding: .8rem 1rem 1rem;
-  height: 2.5rem;
-  text-align: center;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-
-.badge:before {
-  content: url(../images/folder.svg);
-  margin-right: 10px;
-  display: block;
-  float: left;
-  margin-top: -3px;
-}
-
-.custom-tags .badge:before {
-  content: none;
-}
-
-.custom-tags span{
-  margin-right: .2rem;
-}
-
-.badge:empty {
-  display: none;
-}
-
-a.badge:hover,
-a.badge:focus {
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
+.tags {
+  margin-bottom: 1.5rem;
 }
 
 .list-inline {
@@ -311,7 +244,63 @@ a.badge:focus {
 }
 
 .list-inline > li {
+  display: inline;
+}
+
+.tag {
+  background-color: #808080;
+  border: none;
+  border-radius: 3px;
+  color: #FFF;
   display: inline-block;
+  font-size: .85rem;
+  margin: 0 .25rem .25rem 0;
+  min-width: 6.25rem;
+  padding: .8rem 1rem 1rem;
+  height: 2.5rem;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.tag:before {
+  content: url(../images/folder.svg);
+  margin-right: 10px;
+  display: block;
+  float: left;
+  margin-top: -3px;
+}
+
+.tag:empty {
+  display: none;
+}
+
+/*-----------------------------
+  Custom Tags
+-----------------------------*/
+
+.custom-tags {
+  display: inline;
+}
+
+.custom-tag {
+  background-color: #F18260 !important;
+}
+
+.custom-tag:before {
+  content: none;
+}
+
+.custom-tag a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.custom-tag input[type=text] {
+  width: 6.25rem;
+  padding: 2px;
+  height: auto;
 }
 
 /*-----------------------------
@@ -323,10 +312,9 @@ a.badge:focus {
   color: #999;
   line-height: 1.4;
 }
-    
 
 /*-----------------------------
-  Modal Buttons
+  Buttons
 -----------------------------*/
 
 .delete, .save, .cancel {

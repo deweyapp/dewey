@@ -23,7 +23,7 @@
     <div class="form-group tags">
        <ul class="list-inline">
         <li ng-repeat="folder in bookmarkModel.folders">
-          <span class="badge">{{folder}}</span>
+          <span class="tag">{{folder}}</span>
         </li>
         <li class="custom-tags">
           <input type="text" 
@@ -31,7 +31,7 @@
                     class="form-control" 
                     placeholder="Add a tag" 
                     ng-model="bookmarkModel.customTags"
-                    tagclass="badge badge-custom"
+                    tagclass="tag custom-tag"
                     bootstrap-tagsinput>
         </li>
       </ul>
