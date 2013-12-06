@@ -37,7 +37,7 @@ html  {
 
 body {
   color: #555;
-  font-family: 'Source Sans Pro', sans-serif;;
+  font-family: 'Source Sans Pro', sans-serif;
   padding-bottom: 20rem;
 }
 
@@ -103,23 +103,23 @@ main {
 }
 
 /*-----------------------------
-  Settings
+  Sort
 -----------------------------*/
 
-#settings {
-  font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;;
+#sort {
+  font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   margin: 1rem 1rem -2rem 0;
   text-align: right;
 }
 
-#settings p {
+#sort p {
   color: #555;
   cursor: default;
   display: inline-block;
   margin-right: 1rem;
 }
 
-#settings a {
+#sort a {
   color: #CCC;
   cursor: pointer;
   display: inline-block;
@@ -128,12 +128,12 @@ main {
   transition: color .25s ease;
 }
 
-#settings a:hover {
+#sort a:hover {
   color: #F18260;
 }
 
-#settings a:active {
-  color: red;
+.active {
+  text-decoration: underline;
 }
 
 /*-----------------------------
@@ -148,10 +148,8 @@ nav {
 
 nav form {
   margin: 0 auto;
-  overflow: break-word;
   text-align: center;
   width: 100%;
-  word-wrap: break-word;
 }
 
 .search-bookmarks::-webkit-input-placeholder:before {
@@ -168,7 +166,7 @@ nav form {
   background: none;
   border: none;
   color: inherit;
-  font: 200 2.25rem 'Source Sans Pro', sans-serif;;
+  font: 200 2.25rem 'Source Sans Pro', sans-serif;
   text-align: center;
   width: 100%;
 }
@@ -184,10 +182,16 @@ nav form {
   Details
 -----------------------------*/
 
+.favicon {
+    height:16px;
+    margin-bottom: .5rem;
+    width:16px;
+}
+
 h2.title {
   color: inherit;
   cursor: pointer;
-  font: 700 1rem/1rem 'Source Sans Pro', sans-serif;;
+  font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   margin-bottom: .5rem;
   overflow: hidden;

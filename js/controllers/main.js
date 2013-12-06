@@ -29,7 +29,11 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   // Maximum number of items currently displayed
   $scope.totalDisplayed = defaultTotalDisplayed;
 
-  $scope.selectedIndex = 0;
+  $scope.selectedIndex = 0; 
+
+  $scope.itemClicked = function ($index) { // identifying selected order to add class
+    $scope.selectedIndex = $index;
+  };
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
