@@ -97,7 +97,7 @@ button.close {
   content: url(../images/link.svg);
   height: 1rem;
   width: 1rem;
-  margin-top: .25rem;
+  margin-top: 3px;
 }
 
 .modal-body {
