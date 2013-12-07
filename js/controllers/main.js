@@ -113,7 +113,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
  
   // On tag click we set search text
   $scope.selectTag = function(tag) {
-    $scope.searchText = "tag:" + tag;
+    $scope.searchText = 'tag:' + tag;
   };
 
   // Change sorting order
