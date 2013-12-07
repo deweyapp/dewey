@@ -59,12 +59,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       if (result.length > $scope.selectedIndex) {
         window.location.href = result[$scope.selectedIndex].url;
       } 
-    } else if (e.which === 38) { // Up arrow key
+    } else if (e.which === 37) { // Up arrow key
       if ($scope.selectedIndex > 0) {
         $scope.selectedIndex--;
         updated = true;
       }
-    } else if (e.which === 40) { // Down arrow key
+    } else if (e.which === 39) { // Down arrow key
       if (getAllPanels().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
