@@ -70,7 +70,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
         updated = true;
       }
     }
-    if (updated) { // key right or key left pressed - select next element
+    if (updated) { // right arrow key or left arrow key pressed - select next element
       $scope.$apply();
       var panels = getAllPanels();
       var selectedElement = panels.get($scope.selectedIndex);
