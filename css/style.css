@@ -44,7 +44,7 @@ body {
   Grid
 -----------------------------*/
 
-main {
+.grid {
   margin: 0 auto;
   width: 72.5em;
 }
@@ -249,31 +249,31 @@ h2.title {
 
 @media only screen and (min-width: 100rem) {
 
-main {
+.grid {
   width: 87rem;
 }}
 
 @media only screen and (max-width: 72.5rem) {
   
-main {
+.grid {
   width: 58rem;
 }}
 
 @media only screen and (max-width: 58rem) {
   
-main {
+.grid {
   width: 43.5rem;
 }}
 
 @media only screen and (max-width: 43.5rem) {
   
-main {
+.grid {
   width: 29rem;
 }}
 
 @media only screen and (max-width: 29rem) {
 
-main {
+.grid {
   width: 12.5rem;
 }
 

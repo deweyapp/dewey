@@ -1,3 +1,5 @@
+<main id="mainContent">
+
 <ul id="sort">
   <li ng-cloak>
     <p>Order by:</p>
@@ -8,38 +10,39 @@
 <nav>
   <form class="search" role="search">
     <div class="form-group search-group">
-      <input autofocus="true" type="search" class="search-bookmarks" placeholder="Search Bookmarks" ng-model="searchText">
+      <input autofocus="true" type="search" class="form-control search-bookmarks" placeholder="Search Bookmarks" ng-model="searchText">
     </div>
   </form>
 </nav>
 
-<main id="mainContent">
 
+<div class="grid">
   <ul id="list-bookmarks">
-  <li ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
-  
-    <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
-      
-      <a href="{{bookmark.url}}" title="{{bookmark.title}}">
-      <span title="{{bookmark.url}}" class="thumbnail" style="background-image: url('http://img.bitpixels.com/getthumbnail?code=28809&size=200&url={{bookmark.url}}');"></span><!-- thumbnail --></a>
-      
-      <div class="details" ng-click="editBookmark(bookmark)">
+    <li ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
+    
+      <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
         
-        <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" />
+        <a href="{{bookmark.url}}" title="{{bookmark.title}}">
+        <span title="{{bookmark.url}}" class="thumbnail" style="background-image: url('http://img.bitpixels.com/getthumbnail?code=28809&size=200&url={{bookmark.url}}');"></span><!-- thumbnail --></a>
+        
+        <div class="details" ng-click="editBookmark(bookmark)">
+          
+          <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" />
 
-        <h2 class="title">{{bookmark.title}}</h2>
+          <h2 class="title">{{bookmark.title}}</h2>
 
-        </div><!-- details -->
+          </div><!-- details -->
 
-        <div class="tag-links">
-          <span ng-repeat="tag in bookmark.tag">
-            <a ng-click="selectTag(tag.text)">{{tag.text}}</a>
-          </span>
-        </div><!-- tags -->
-  
-      </div><!-- panel -->
+          <div class="tag-links">
+            <span ng-repeat="tag in bookmark.tag">
+              <a ng-click="selectTag(tag.text)">{{tag.text}}</a>
+            </span>
+          </div><!-- tags -->
+    
+        </div><!-- panel -->
 
-  </li><!-- bookmarks in bookmarks -->
-</ul><!-- list-bookmarks -->
+    </li><!-- bookmarks in bookmarks -->
+  </ul><!-- list-bookmarks -->
+</div><!-- grid -->
 
 </main>
