@@ -1,14 +1,14 @@
 <ul id="sort">
   <li ng-cloak>
     <p>Order by:</p>
-    <a ng-repeat="order in orders" ng-class="{ 'active': order == currentOrder }" ng-click="changeOrder(order)" tabindex="2">{{order.title}}</a>
+    <a ng-repeat="order in orders" ng-class="{ 'active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
   </li>
 </ul>
 
 <nav>
   <form class="search" role="search">
     <div class="form-group search-group">
-      <input autofocus type="search" class="search-bookmarks" placeholder="Search Bookmarks" ng-model="searchText" tabindex="1">
+      <input autofocus="true" type="search" class="search-bookmarks" placeholder="Search Bookmarks" ng-model="searchText">
     </div>
   </form>
 </nav>

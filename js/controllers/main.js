@@ -59,18 +59,18 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       if (result.length > $scope.selectedIndex) {
         window.location.href = result[$scope.selectedIndex].url;
       } 
-    } else if (e.which === 37) { // Up arrow key
+    } else if (e.which === 37) { // left arrow key
       if ($scope.selectedIndex > 0) {
         $scope.selectedIndex--;
         updated = true;
       }
-    } else if (e.which === 39) { // Down arrow key
+    } else if (e.which === 39) { // right arrow key
       if (getAllPanels().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
       }
     }
-    if (updated) { // key up or key down pressed - select next element
+    if (updated) { // key right or key left pressed - select next element
       $scope.$apply();
       var panels = getAllPanels();
       var selectedElement = panels.get($scope.selectedIndex);
