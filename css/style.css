@@ -101,40 +101,42 @@ main {
 -----------------------------*/
 
 nav {
-  -webkit-font-smoothing: antialiased;
   padding: 6.25rem 0;
   text-align: center;
 }
 
-nav form {
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
+.search-group {
+  margin-left: 10px;
 }
 
-.search-bookmarks::-webkit-input-placeholder:before {
+.search-group:before {
   content: url(../images/search.svg);
-  margin-right: 1rem;
+  margin-right: .75rem;
+  margin-bottom: .25rem;
 }
 
 .search-bookmarks[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
+  margin: 10px;
 }
 
-.search-bookmarks[type="search"], .search-bookmarks::-webkit-input-placeholder {
+.search-bookmarks[type="search"] {
   -webkit-appearance: none;
   background: none;
   border: none;
   color: inherit;
   font: 200 2.25rem 'Source Sans Pro', sans-serif;
+  padding-left: 10px;
   text-align: left;
-  width: 350px;
+  width: 320px;
+}
+
+.search-bookmarks::-webkit-input-placeholder {
+  color: gainsboro;
+  font: 200 2.25rem 'Source Sans Pro', sans-serif;
 }
 
 .search-bookmarks[type="search"]:focus {
-  background-clip: border-box;
-  background: none;
-  border-radius: 3px;
+  background: white;
   outline: none;
 }
 
