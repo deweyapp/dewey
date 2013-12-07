@@ -180,9 +180,7 @@ nav form {
 .details {
   background: white;
   cursor: pointer;
-  display: block;
-  font-size: 0.75rem;
-  padding: 1.25rem 1rem;
+  padding: 1rem;
 }
 
 .details:hover:after {
@@ -204,29 +202,23 @@ h2.title {
   color: inherit;
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
-  margin-bottom: .5rem;
   overflow: hidden;
   padding-bottom: .5rem;
   width: 100%;
 }
     
-p.url {
-  color: #9C9C9C;
-  color: #DDD;
-  height: auto;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 /*-----------------------------
   Link Tags
 -----------------------------*/
 
+.tag-links {
+  background: white;
+  padding: 0 1rem 1.25rem 1rem;
+}
+
 .tag-links a {
   color: #BBB;
-  cursor: pointer !important;
+  cursor: pointer;
   display: inline-block;
   font-size: 0.75rem;
   padding-bottom: 0.4rem;
@@ -239,7 +231,7 @@ p.url {
   color: #F18260;
 }
 
-.tag-links:hover:after {
+.tag-links a:hover:after {
  content: url(../images/search-small.svg);
  position: absolute;
  z-index: 1;
