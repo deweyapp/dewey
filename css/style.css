@@ -88,8 +88,9 @@ main {
   transition: color .25s ease;
 }
 
-#sort a:hover {
+#sort a:hover, #sort a:focus {
   color: #F18260;
+  outline: none;
 }
 
 .active {
