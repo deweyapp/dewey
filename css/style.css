@@ -188,14 +188,12 @@ nav form {
  position: absolute;
  top: 9.375rem;
  right: 0;
- padding: .6rem .625rem;
- background: #F18260;
 }
 
 .favicon {
-    height:16px;
-    margin-bottom: .5rem;
-    width:16px;
+  height:16px;
+  margin-bottom: .5rem;
+  width:16px;
 }
 
 h2.title {
@@ -237,8 +235,6 @@ h2.title {
  z-index: 1;
  top: 9.375rem;
  right: 0;
- padding: .6rem .625rem;
- background: #F18260;
 }
 
 /*-----------------------------
