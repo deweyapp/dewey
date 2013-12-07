@@ -69,13 +69,20 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
         $scope.selectedIndex++;
         updated = true;
       }
+
+    } else if (e.which === 9 && e.shiftKey) { // shift+tab key
+      if ($scope.selectedIndex > 0) {
+        $scope.selectedIndex--;
+        updated = true;
+      }
+        
     } else if (e.which === 9) { // tab key
       if (getAllPanels().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
       }
     }
-    if (updated) { // right arrow key or left arrow key pressed - select next element
+    if (updated) { // right arrow, left arrow, tab, and shift+tab key pressed - select next element
       $scope.$apply();
       var panels = getAllPanels();
       var selectedElement = panels.get($scope.selectedIndex);
