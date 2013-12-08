@@ -63,42 +63,6 @@ body {
 }
 
 /*-----------------------------
-  Sort
------------------------------*/
-
-#sort {
-  font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
-  text-align: right;
-  margin: 0 1rem 1rem 0;
-}
-
-#sort p, #sort a {
-  color: #555;
-  display: inline-block;
-  list-style: none;
-  margin-right: 1rem;
-}
-
-#sort a {
-  color: #CCC;
-  cursor: pointer;
-  transition: color .25s ease;
-}
-
-#sort a:last-child {
-  margin-right: 0;
-}
-
-#sort a:hover, #sort a:focus {
-  color: #F18260;
-  outline: none;
-}
-
-.active {
-  text-decoration: underline;
-}
-
-/*-----------------------------
   Info Dropdown
 -----------------------------*/
 
@@ -117,7 +81,7 @@ body {
   position: absolute;
   right: 1rem;
   text-align: left;
-  top: 1.95rem;
+  top: 2rem;
   white-space: nowrap;
 }
 
@@ -135,7 +99,7 @@ body {
   right: 0;
   z-index: 1000;
   display: none;
-  min-width: 125px;
+  min-width: 150px;
   padding: .5rem 0;
   list-style: none;
   background-color: #ffffff;
@@ -152,11 +116,21 @@ body {
   white-space: nowrap;
 }
 
-.dropdown-menu > li > p {
-  color: #CCC;
-  font: 400 .8rem/1.2 "Source Sans Pro", sans-serif;
-  padding: 1.25rem 1.25rem .75rem 1.25rem;
+
+.search-operators {
+  padding: 1rem 1rem .5rem 1rem;
   border-top: 1px solid #DDD;
+  display: block;
+
+}
+
+.search-operators > li:first-child {
+  color: #555;
+}
+
+.search-operators > li {
+  color: #CCC;
+  font: 400 .8rem/1.5 "Source Sans Pro", sans-serif;
 }
 
 .dropdown-menu > li > a:hover,
@@ -257,6 +231,42 @@ nav {
   margin-top: 3rem;
   color: #CCC;
   font-weight: 200;
+}
+
+/*-----------------------------
+  Sort
+-----------------------------*/
+
+#sort {
+  font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
+  text-align: right;
+  margin: 0 1rem 1rem 0;
+}
+
+#sort p, #sort a {
+  color: #555;
+  display: inline-block;
+  list-style: none;
+  margin-right: 1rem;
+}
+
+#sort a {
+  color: #CCC;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+
+#sort a:last-child {
+  margin-right: 0;
+}
+
+#sort a:hover, #sort a:focus {
+  color: #F18260;
+  outline: none;
+}
+
+.active {
+  text-decoration: underline;
 }
 
 /*-----------------------------
