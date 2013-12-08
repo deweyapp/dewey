@@ -68,24 +68,25 @@ body {
 
 #sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
-  margin: 1.1rem 2.5rem -2rem 0;
   text-align: right;
+  margin: 0 1rem 1rem 0;
 }
 
-#sort p {
+#sort p, #sort a {
   color: #555;
-  cursor: default;
   display: inline-block;
+  list-style: none;
   margin-right: 1rem;
 }
 
 #sort a {
   color: #CCC;
   cursor: pointer;
-  display: inline-block;
-  list-style: none;
-  padding-right: 1rem;
   transition: color .25s ease;
+}
+
+#sort a:last-child {
+  margin-right: 0;
 }
 
 #sort a:hover, #sort a:focus {
