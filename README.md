@@ -41,7 +41,7 @@ If you liked this extension and you are looking for a way to support future deve
 <a href="http://www.flickr.com/photos/pahphotos/10015447933/" title="The winner took home a chromebook. by Seattle.roamer, on Flickr"><img src="http://farm8.staticflickr.com/7320/10015447933_f59bee5f0b.jpg" width="331" height="500" alt="The winner took home a chromebook."></a>
 
 ##Icons
-All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication), *except* for the 'bookmarks' icon used in the logo, which is part of [IcoMoon](http://icomoon.io).
+All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication), *except* for the 'bookmarks' icon used in the logo, which is part of [IcoMoon](http://icomoon.io), and the [Github Octocat](https://github.com/logos), which is the exclusive property of GitHub, Inc and has been federally registered with the United States Copyright Office. All rights reserved.
 
 ## Using resources
 To build this application I used following Open Source libraries and resources:
