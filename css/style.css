@@ -126,9 +126,10 @@ h2 {
 
 .dropdown-menu {
   background-color: #ffffff;
+  box-shadow: 0 0 20px -2px rgba(0,0,0,.2);
   display: none;
   list-style: none;
-  min-width: 9rem;
+  min-width: 10rem;
   padding: .75rem 0;
   position: absolute;
   right: 0;
@@ -290,8 +291,11 @@ nav {
 }
 
 #tags .dropdown-menu {
-  left: 50px;
-  min-width: 11rem;
+  left: 2rem;
+  top: -1rem;
+  min-width: 10rem;
+  max-height: 24rem;
+  overflow: scroll;
 }
 
 /*-----------------------------
