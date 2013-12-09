@@ -27,8 +27,7 @@
 }
 
 html  {
-  animation: fade-in 1s ease-in;
-  -webkit-animation: fade-in 1s ease-in;
+  -webkit-animation: fade-in 800ms ease-in;
   background: #F1F1F1;
   border-top: 1em solid white;
   font-size: 100%;
@@ -74,7 +73,7 @@ h2 {
   Info Dropdown
 -----------------------------*/
 
-/*!
+/*
 * Partially taken from Bootstrap v2.3.2
 *
 * Copyright 2013 Twitter, Inc
@@ -94,55 +93,11 @@ h2 {
 }
 
 .info-icon {
+  background: url(../images/info.svg) no-repeat center center;
+  cursor: pointer;
   display: block;
   height: 20px;
   width: 20px;
-  background: url(../images/info.svg) no-repeat center center;
-  cursor: pointer;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-  display: none;
-  min-width: 150px;
-  padding: .5rem 0;
-  list-style: none;
-  background-color: #ffffff;
-}
-
-.dropdown-menu > li > a {
-  clear: both;
-  color: #555;
-  display: block;
-  font: 400 1rem/1.2 "Source Sans Pro", sans-serif;
-  margin-bottom: .5rem;
-  padding: .25rem 1rem;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.search-operators {
-  padding: 1rem 1rem .5rem 1rem;
-  border-top: 1px solid #DDD;
-  display: block;
-}
-
-.search-operators > li:first-child {
-  color: #555;
-}
-
-.search-operators > li {
-  color: #CCC;
-  font: 400 .8rem/1.5 "Source Sans Pro", sans-serif;
-}
-
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  color: #F18260;
-  background-color: #F5F5F5 ;
 }
 
 .open {
@@ -151,23 +106,61 @@ h2 {
 
 .open > .dropdown-menu {
   display: block;
+  -webkit-animation: fade-in 100ms ease-in-out;
 }
 
 .dropdown-backdrop {
-  position: fixed;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
   top: 0;
   z-index: 990;
 }
 
-.options:before, .review:before, .github:before, .donate:before {
-  height: 16px;
-  width: 16px;
+.dropdown-menu {
+  background-color: #ffffff;
+  display: none;
+  list-style: none;
+  min-width: 9rem;
+  padding: .75rem 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu > li > a {
+  -webkit-filter: saturate(0);
+  clear: both;
+  color: #F18260;
+  display: block;
+  font: 400 1rem/1.2 "Source Sans Pro", sans-serif;
+  padding: .25rem 1rem;
+  text-decoration: none;
+  transition: -webkit-filter 100ms ease-in-out;
+  white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover {
+  -webkit-filter: saturate(1);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #F5F5F5;
+  color: #F18260;
+}
+
+.options:before, 
+.review:before, 
+.github:before, 
+.donate:before {
   display: inline-block;
+  height: 1rem;
+  margin: 0 .625rem 3px 0;
   vertical-align: middle;
-  margin: 0 5px 3px 0;
+  width: 1rem;
 }
 
 .options:before {
@@ -176,18 +169,43 @@ h2 {
 
 .review:before {
   content: url(../images/review.svg);
-  margin: 0 5px 5px 0;
+  margin-bottom: 5px;
 }
 
 .github:before {
   content: url(../images/github.svg);
-  margin: 0 5px 4px 0;
+  margin-bottom: 4px;
 }
 
 .donate:before {
   content: url(../images/donate.svg);
 }
 
+
+.divider {
+  border-top: 1px solid #DDD;
+  display: block;
+  margin-top: .75rem;
+  padding: 1rem 1rem .5rem 1rem;
+}
+
+.divider > li:first-child {
+  color: #555;
+}
+
+.divider > li {
+  color: #CCC;
+  font: 400 .8rem/1.5 "Source Sans Pro", sans-serif;
+}
+
+.divider > li > a {
+  color: #CCC;
+  transition: color .25s ease;
+}
+
+.divider > li > a:hover {
+  color: #F18260;
+}
 /*-----------------------------
   Search
 -----------------------------*/
@@ -203,8 +221,8 @@ nav {
 
 .search-group:before {
   content: url(../images/search.svg);
-  margin-right: -2.5rem;
   margin-left: 0;
+  margin-right: -2.5rem;
 }
 
 .search-group input[type="search"] {
@@ -215,6 +233,7 @@ nav {
   font: 200 2.25rem 'Source Sans Pro', sans-serif;
   padding: .625rem .625rem .625rem 3rem;
   text-align: left;
+  transition: background 300ms ease-in-out;
   width: 355px;
 }
 
@@ -234,9 +253,9 @@ nav {
 }
 
 .search-tips {
-  margin-top: 3rem;
   color: #CCC;
   font-weight: 200;
+  margin-top: 3rem;
 }
 
 /*-----------------------------
@@ -300,7 +319,8 @@ nav {
   background-image: url(../images/pdf.svg) !important;
 }
 
-.thumbnail[title*="chrome://"], .thumbnail[title*="chrome-extension://"]{
+.thumbnail[title*="chrome://"], 
+.thumbnail[title*="chrome-extension://"]{
   background-image: url(../images/chrome.svg) !important;
 }
 
@@ -324,10 +344,10 @@ nav {
 }
 
 .details:hover:after {
- content: url(../images/edit.svg);
- position: absolute;
- top: 9.375rem;
- right: 0;
+  content: url(../images/edit.svg);
+  position: absolute;
+  top: 9.375rem;
+  right: 0;
 }
 
 .favicon {
@@ -370,11 +390,11 @@ h2.title {
 }
 
 .tag-links a:hover:after {
- content: url(../images/search-small.svg);
- position: absolute;
- z-index: 1;
- top: 9.375rem;
- right: 0;
+  content: url(../images/search-small.svg);
+  position: absolute;
+  z-index: 1;
+  top: 9.375rem;
+  right: 0;
 }
 
 /*-----------------------------
