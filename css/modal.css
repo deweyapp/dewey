@@ -93,8 +93,8 @@ button.close {
   margin-right: .625rem;
 }
 
-.view-link {
-  content: url(../images/link.svg);
+.launch {
+  content: url(../images/launch.svg);
   height: 1rem;
   width: 1rem;
   margin-top: 3px;
