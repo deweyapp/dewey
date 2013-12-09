@@ -40,6 +40,14 @@ body {
   padding-bottom: 20rem;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
 /*-----------------------------
   Grid
 -----------------------------*/
@@ -116,12 +124,10 @@ body {
   white-space: nowrap;
 }
 
-
 .search-operators {
   padding: 1rem 1rem .5rem 1rem;
   border-top: 1px solid #DDD;
   display: block;
-
 }
 
 .search-operators > li:first-child {
@@ -156,7 +162,7 @@ body {
   z-index: 990;
 }
 
-.settings:before, .review:before, .github:before, .donate:before {
+.options:before, .review:before, .github:before, .donate:before {
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -164,8 +170,8 @@ body {
   margin: 0 5px 3px 0;
 }
 
-.settings:before {
-  content: url(../images/settings.svg);
+.options:before {
+  content: url(../images/options.svg);
 }
 
 .review:before {
