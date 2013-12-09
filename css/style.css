@@ -264,6 +264,37 @@ nav {
 }
 
 /*-----------------------------
+  Tags Dropdown
+-----------------------------*/
+
+#tags {
+  float: left;
+  position: relative;
+  text-align: left;
+  margin-left: 1rem
+}
+
+.tag-icon {
+  background: url(../images/tag.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  -webkit-filter: saturate(0);
+  transition: -webkit-filter 100ms ease-in-out;
+}
+
+.tag-icon:hover {
+  -webkit-filter: saturate(1);
+}
+
+#tags .dropdown-menu {
+  left: 50px;
+  min-width: 11rem;
+}
+
+/*-----------------------------
   Sort
 -----------------------------*/
 
