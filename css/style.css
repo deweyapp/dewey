@@ -160,7 +160,7 @@ h2 {
 
 .options:before, 
 .review:before, 
-.github:before, 
+.fork:before, 
 .donate:before {
   display: inline-block;
   height: 1rem;
@@ -178,15 +178,14 @@ h2 {
   margin-bottom: 5px;
 }
 
-.github:before {
-  content: url(../images/github.svg);
-  margin-bottom: 4px;
+.fork:before {
+  content: url(../images/fork.svg);
+  margin-bottom: 8px;
 }
 
 .donate:before {
   content: url(../images/donate.svg);
 }
-
 
 .divider {
   border-top: 1px solid #DDD;
