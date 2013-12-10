@@ -196,22 +196,21 @@ var BookmarksStorage = function () {
       bookmark.url = changes.url;
     }
 
-    removeCustomTags(bookmark.url);  // Delete all old custom tags
+    removeCustomTags(bookmark.url)  // Delete all old custom tags
     
     var update = {};  // Prepare update document
     
     if (changes.url !== bookmark.url) {  // If url is different add it to update
-     update.url = changes.url;
+      update.url = changes.url;
     }
     
     if (changes.title !== bookmark.title) {  // If title different add it to update
-     update.title = change.title;
+      update.title = change.title;
     }
     
     if (_.keys(update).length > 0) {  // If we have something to change (title or url) let's do it
-    chrome.bookmarks.update(bookmark.id, update);
-    
-    _.extend(bookmark, update);  // Copy all updates to bookmark after updating chrome bookmarks
+      chrome.bookmarks.update(bookmark.id, update);
+      _.extend(bookmark, update);  // Copy all updates to bookmark after updating chrome bookmarks
     }
 
     removeCustomTags(bookmark.url);
