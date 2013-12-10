@@ -182,11 +182,16 @@ var BookmarksStorage = function () {
   };
 
   /*
-  * Update bookmark.
+  * Update bookmark. I think I screwed this up. I'm sorry.
   */
   this.update = function(bookmark, changes) {
+    
+    if (changes.title !== bookmark.title) {
+      chrome.bookmarks.update(bookmark.id, { title: changes.title});
+      bookmark.title = changes.title;
+    }
 
-    removeCustomTags(bookmark.url)  // Delete all old custom tags
+    removeCustomTags(bookmark.url);  // Delete all old custom tags
     
     var update = {};  // Prepare update document
     
