@@ -3,7 +3,7 @@
   "name": "Bookmarks",
   "version": "1.1.2",
 
-  "description": "Application gives you an easy way to manage bookmarks and navigate through them",
+  "description": "Bookmarks makes finding and tagging your Chrome bookmarks quick and easy",
 
   "permissions": [
     "bookmarks", "storage"
