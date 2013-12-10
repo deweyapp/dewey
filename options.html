@@ -1,16 +1,103 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
+    <head>
+        <title>Bookmarks Options Placeholder</title>
+        <meta charset="utf-8"/>
+        <meta name="description" content="A small CSS Kit for designing the options/settings page for Chrome Extensions. It resembles the exact look as the native settings page of Chrome Browser." />
+        <meta name="keywords" content="chrome-extensions,css-kit-for-chrome-extensions,css-kit,theme-for-chrome-extensions,chrome-developers" />
+        <meta name="author" content="Ram Swaroop" />
+        <link rel="stylesheet" href="options/css/options.css"/>
+        <link rel="stylesheet" href="options/css/chrome_shared.css"/>
+    </head>
+    <body>
+        <div class="main-container">
 
-    <title>Bookmarks Options</title>
+            <h1>Bookmarks Options Placeholder</h1>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+            <hr/>
+            
+            <!-- Widgets for Chrome Extension starts -->
+            <h3>Sub Heading</h3>
 
-  <body>
-    <h1>Boomarks Options</h1>
-  </body>
+            <h3>TextBox</h3>
+            <input type="text" placeholder="Type here..."/>
+
+            <h3>CheckBox</h3>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"/><span></span>This is a checkbox 
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checked/><span></span>This is a checked checkbox 
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" disabled/><span></span>This is a disabled checkbox 
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checked disabled/><span></span>This is a disabled but checked checkbox 
+                </label>
+            </div>
+
+            <h3>Radio Buttons</h3>
+            <div class="radio">
+                <div>
+                    <input id="startup-newtab" type="radio" name="startup" value="5" >
+                    <label for="startup-newtab">Radio Button</label>
+                </div>
+            </div>
+            <div class="radio">
+                <div>
+                    <input id="startup-newtab1" type="radio" name="startup" value="5" disabled>
+                    <label for="startup-newtab1">Disabled Radio Button</label>
+                </div>
+            </div>
+
+            <h3>Dropdowns</h3>
+            <select>
+                <option selected>This is a dropdown</option>
+                <option>Another option</option>
+                <option>Another option</option>
+            </select>
+            <select disabled>
+                <option selected>Disabled dropdown</option>
+                <option>Another option</option>
+                <option>Another option</option>
+            </select>
+            <select class="large">
+                <option selected>Large dropdown</option>
+                <option>Another option</option>
+                <option>Another option</option>
+            </select>
+            <h3>Buttons</h3>
+            <button style="font-size:11px">Small Button</button>
+            <button>Normal Button</button>        
+            <button disabled>Disabled Button</button>
+            <button style="font-size:18px">Large Button</button>
+            <button style="font-size:24px">X-Large</button>
+            <button style="font-size:30px">XX-Large</button>
+
+            <br/>
+            <br/>
+            <a href="http://www.compzets.com">This is a link ....</a>
+            <!-- Widgets for Chrome Extension ends -->
+            
+            <p>
+                About: This is small CSS Kit for designing the options/settings page for Chrome Extensions. It resembles the exact look as the native settings page of Chrome Browser. For a live example, you can have a look at the options page of <a href="http://plugins.compzets.com/simplefill">SimpleFill</a> plugin.
+            </p>
+            <p>
+                NOTE: This Kit is meant for Chrome Browsers only.
+            </p>
+            <p>
+                With &#9829; by Ram Swaroop
+            </p>
+            <br/>
+            <br/>
+        </div>
+    </body>
 </html>

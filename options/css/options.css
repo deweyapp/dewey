@@ -1,0 +1,25 @@
+html  {
+  -webkit-animation: fade-in 800ms ease-in;
+  background: #F1F1F1;
+  border-top: 1em solid white;
+  font-size: 100%;
+}
+
+body {
+  color: #555;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 5rem;
+}
+
+.main-container {
+  margin: 0 auto;
+  max-width: 72.5em;
+}
+
+h1 {
+  font-size: 2rem !important;
+}
+
+h2 {
+  font-size: 1.5rem;
+}

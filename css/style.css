@@ -39,14 +39,6 @@ body {
   padding-bottom: 20rem;
 }
 
-h1 {
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
 /*-----------------------------
   Grid
 -----------------------------*/
@@ -159,7 +151,8 @@ h2 {
   color: #F18260;
 }
 
-.options:before, 
+.options:before,
+.website:before, 
 .review:before, 
 .fork:before, 
 .donate:before {
@@ -172,6 +165,10 @@ h2 {
 
 .options:before {
   content: url(../images/options.svg);
+}
+
+.website:before {
+  content: url(../images/link.svg);
 }
 
 .review:before {
@@ -275,27 +272,31 @@ nav {
   margin-left: 1rem
 }
 
-.tag-icon {
-  background: url(../images/tag.svg) no-repeat center center;
+.tags-icon {
+  background: url(../images/tags.svg) no-repeat center center;
   background-size: contain;
   cursor: pointer;
   display: block;
-  height: 1rem;
-  width: 1rem;
+  height: 20px;
+  width: 20px;
   -webkit-filter: saturate(0);
   transition: -webkit-filter 100ms ease-in-out;
 }
 
-.tag-icon:hover {
+.tags-icon:hover {
   -webkit-filter: saturate(1);
 }
 
 #tags .dropdown-menu {
   left: 2rem;
   top: -1rem;
-  min-width: 10rem;
+  min-width: 11rem;
   max-height: 24rem;
   overflow: scroll;
+}
+
+#tags .dropdown-menu > li > a {
+  font: 400 .85rem/1.2 "Source Sans Pro", sans-serif;
 }
 
 /*-----------------------------
@@ -309,7 +310,7 @@ nav {
 }
 
 #sort p, #sort a {
-  color: #555;
+  color: #979797;
   display: inline-block;
   list-style: none;
   margin-right: 1rem;
