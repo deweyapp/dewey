@@ -191,6 +191,11 @@ var BookmarksStorage = function () {
       bookmark.title = changes.title;
     }
 
+    if (changes.url !== bookmark.url) {
+      chrome.bookmarks.update(bookmark.id, { url: changes.url});
+      bookmark.url = changes.url;
+    }
+
     removeCustomTags(bookmark.url);  // Delete all old custom tags
     
     var update = {};  // Prepare update document
