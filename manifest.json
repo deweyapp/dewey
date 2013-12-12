@@ -15,7 +15,7 @@
     }
   },
 
-  "options_page": "options.html",
+  "options_page": "options/index.html",
 
   "icons": {
     "128": "icon_128.png",
