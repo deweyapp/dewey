@@ -306,7 +306,7 @@ nav {
 #sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   text-align: right;
-  margin: 0 1rem 1rem 0;
+  margin-bottom: 1rem;
 }
 
 #sort p, #sort a {
@@ -320,10 +320,6 @@ nav {
   color: #CCC;
   cursor: pointer;
   transition: color .25s ease;
-}
-
-#sort a:last-child {
-  margin-right: 0;
 }
 
 #sort a:hover, #sort a:focus {
@@ -444,68 +440,84 @@ h2.title {
 
 @media only screen and (min-width: 100rem) {
 
-.grid {
-  width: 87rem;
-}}
+  .grid {
+    width: 87rem;
+  }
+}
 
 @media only screen and (max-width: 72.5rem) {
   
-.grid {
-  width: 58rem;
-}}
+  .grid {
+    width: 58rem;
+  }
+}
 
 @media only screen and (max-width: 58rem) {
   
-.grid {
-  width: 43.5rem;
-}}
+  .grid {
+    width: 43.5rem;
+  }
+}
 
 @media only screen and (max-width: 43.5rem) {
   
-.grid {
-  width: 29rem;
-}}
+  .grid {
+    width: 29rem;
+  }
+}
 
 @media only screen and (max-width: 29rem) {
 
-.grid {
-  width: 12.5rem;
-}
+  .grid {
+    width: 12.5rem;
+  }
 
-#list-bookmarks li {
-  margin: 1.25rem 0 0 0;
-}
+  #list-bookmarks li {
+    margin: 1.25rem 0 0 0;
+  }
 
-nav {
-  padding-bottom: 4rem;
-}
+  nav {
+    padding-bottom: 4rem;
+  }
 
-.search-group {
-  margin: 0;
-}
+  .search-group {
+    margin: 0;
+  }
 
-.search-group:before {
-  content: '';
-  margin-right: 0;
-  margin-left: 0;
-}
+  .search-group:before {
+    content: '';
+    margin-right: 0;
+    margin-left: 0;
+  }
 
-.search-group input[type="search"] {
-  -webkit-appearance: none;
-  background: none;
-  border: none;
-  color: inherit;
-  font: 200 1.25rem 'Source Sans Pro', sans-serif;
-  padding: .625rem;
-  text-align: left;
-  width: 12.5rem;
-}
-.search-group input::-webkit-input-placeholder {
-  color: gainsboro;
-  font: 200 1.25rem 'Source Sans Pro', sans-serif;
-}
+  .search-group input[type="search"] {
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    color: inherit;
+    font: 200 1.25rem 'Source Sans Pro', sans-serif;
+    padding: .625rem;
+    text-align: left;
+    width: 12.5rem;
+  }
+  .search-group input::-webkit-input-placeholder {
+    color: gainsboro;
+    font: 200 1.25rem 'Source Sans Pro', sans-serif;
+  }
 
-.search-group input[type="search"]::-webkit-search-cancel-button {
-  margin-right: 0;
+  .search-group input[type="search"]::-webkit-search-cancel-button {
+    margin-right: 0;
+  }
 
-}}
+  #tags {
+    margin-left: 0;
+  }
+
+  #sort p, #sort a {
+    margin-right: .5rem;
+  }
+
+  #sort a:last-child {
+    margin-right: 0;
+  }
+}
