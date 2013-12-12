@@ -325,16 +325,16 @@ textarea.form-control {
 }
 
 .delete {
-background: #FFF;
-border-radius: 3px;
-border: 2px solid #E01B1B;
-color: #E01B1B;
-float: left;
-opacity: .5;
-padding: .75rem;
-width: 6.25rem;
-transition: opacity 300ms ease-out, 
-            background 300ms ease-out;
+  background: #FFF;
+  border-radius: 3px;
+  border: 2px solid #E01B1B;
+  color: #E01B1B;
+  float: left;
+  opacity: .5;
+  padding: .75rem;
+  width: 6.25rem;
+  transition: opacity 300ms ease-out, 
+              background 300ms ease-out;
 }
 
 .delete:hover {
@@ -344,17 +344,17 @@ transition: opacity 300ms ease-out,
 }
 
 .save {
-background: #FFF;
-background: lightgray;
-border-radius: 3px;
-border: 2px solid lightgray;
-color: white;
-letter-spacing: 1px;
-padding: .75rem;
-text-transform: uppercase;
-width: 6.25rem;
-transition: background 300ms ease-out,
-            border 300ms ease-out;
+  background: #FFF;
+  background: lightgray;
+  border-radius: 3px;
+  border: 2px solid lightgray;
+  color: white;
+  letter-spacing: 1px;
+  padding: .75rem;
+  text-transform: uppercase;
+  width: 6.25rem;
+  transition: background 300ms ease-out,
+              border 300ms ease-out;
 }
 
 .save:hover, .save:focus {

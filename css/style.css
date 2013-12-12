@@ -500,6 +500,7 @@ h2.title {
     text-align: left;
     width: 12.5rem;
   }
+  
   .search-group input::-webkit-input-placeholder {
     color: gainsboro;
     font: 200 1.25rem 'Source Sans Pro', sans-serif;
