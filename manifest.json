@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Bookmarks",
+  "name": "Dewey for Chrome",
   "version": "1.1.2",
 
-  "description": "Bookmarks makes finding and tagging your Chrome bookmarks quick and easy",
+  "description": "Dewey makes finding and tagging your Chrome bookmarks quick and easy",
 
   "permissions": [
     "bookmarks", "storage"
@@ -14,8 +14,6 @@
       "local_path": "app.html"
     }
   },
-
-  "options_page": "options/index.html",
 
   "icons": {
     "128": "icon_128.png",

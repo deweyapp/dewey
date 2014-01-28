@@ -337,6 +337,7 @@ nav {
 
 .panel {
   position: relative;
+  top: 0;
   transition: top 300ms cubic-bezier(.65, -0.65, .75, 2);
 }
 
@@ -417,7 +418,7 @@ h2.title {
   display: inline-block;
   font-size: 0.75rem;
   padding-bottom: 0.4rem;
-  padding-right: 0.25rem;
+  padding-right: 0.35rem;
   text-decoration: underline;
   transition: color .25s ease;
 }
