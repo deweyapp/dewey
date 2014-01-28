@@ -155,7 +155,8 @@ body {
 .website:before, 
 .review:before, 
 .fork:before, 
-.donate:before {
+.donate:before,
+.email:before {
   display: inline-block;
   height: 1rem;
   margin: 0 .625rem 3px 0;
@@ -183,6 +184,10 @@ body {
 
 .donate:before {
   content: url(../images/donate.svg);
+}
+
+.email:before {
+  content: url(../images/email.svg);
 }
 
 .divider {
