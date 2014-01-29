@@ -27,7 +27,6 @@
 }
 
 html  {
-  -webkit-animation: fade-in 800ms ease-in;
   background: #F1F1F1;
   border-top: 1em solid white;
   font-size: 100%;
@@ -59,6 +58,7 @@ body {
   margin: 1rem;
   vertical-align: top;
   width: 12.5rem;
+  -webkit-animation: fade-in 300ms ease-in;
 }
 
 /*-----------------------------
@@ -214,6 +214,7 @@ body {
 .divider > li > a:hover {
   color: #F18260;
 }
+
 /*-----------------------------
   Search
 -----------------------------*/
@@ -242,7 +243,7 @@ nav {
   padding: .625rem .625rem .625rem 3rem;
   text-align: left;
   transition: background 300ms ease-in-out;
-  width: 355px;
+  width: 22.5rem;
 }
 
 .search-group input::-webkit-input-placeholder {
@@ -444,51 +445,34 @@ h2.title {
   Media Queries
 -----------------------------*/
 
-@media only screen and (min-width: 100rem) {
+@media only screen and (min-width: 135rem) {
+  html { font-size: 125%; }
+}
 
-  .grid {
-    width: 87rem;
-  }
+@media only screen and (min-width: 100rem) {
+  .grid { width: 87rem; }
 }
 
 @media only screen and (max-width: 72.5rem) {
-  
-  .grid {
-    width: 58rem;
-  }
+  .grid { width: 58rem; }
 }
 
 @media only screen and (max-width: 58rem) {
-  
-  .grid {
-    width: 43.5rem;
-  }
+  .grid { width: 43.5rem; }
 }
 
 @media only screen and (max-width: 43.5rem) {
-  
-  .grid {
-    width: 29rem;
-  }
+  .grid { width: 29rem; }
 }
 
 @media only screen and (max-width: 29rem) {
+ .grid { width: 12.5rem; }
 
-  .grid {
-    width: 12.5rem;
-  }
+  #list-bookmarks li { margin: 1.25rem 0 0 0; }
 
-  #list-bookmarks li {
-    margin: 1.25rem 0 0 0;
-  }
+  nav { padding-bottom: 4rem; }
 
-  nav {
-    padding-bottom: 4rem;
-  }
-
-  .search-group {
-    margin: 0;
-  }
+  .search-group { margin: 0; }
 
   .search-group:before {
     content: '';
@@ -516,15 +500,9 @@ h2.title {
     margin-right: 0;
   }
 
-  #tags {
-    margin-left: 0;
-  }
+  #tags { margin-left: 0; }
 
-  #sort p, #sort a {
-    margin-right: .5rem;
-  }
+  #sort p, #sort a { margin-right: .5rem; }
 
-  #sort a:last-child {
-    margin-right: 0;
-  }
+  #sort a:last-child { margin-right: 0; }
 }
