@@ -102,15 +102,15 @@ var BookmarksStorage = function () {
   /*
   * Recursive bookmarks traversal (we use folders as tags)
   */
-  var enumerateChildren = function(tree, tags) {
+  var enumerateChildren = function(tree, tags, level) {
     if (tree) {
       _.each(tree, function(c) {
           if (!c.url) {
               var t = tags.slice();
-              if (c.title) {
+              if (c.title && level > 1) {
                   t.push(c.title);
               }
-              enumerateChildren(c.children, t);
+              enumerateChildren(c.children, t, level + 1);
           } else {
               var bookmark = {
                   title: c.title,
@@ -121,9 +121,7 @@ var BookmarksStorage = function () {
               };
 
               _.each(tags, function(tag) {
-                if (tag !== 'Other Bookmarks') {
-                  bookmark.tag.push({text: tag, custom: false});
-              }
+                bookmark.tag.push({text: tag, custom: false});
               });
 
               fillBookmarkWithCustomTags(bookmark);
@@ -163,7 +161,7 @@ var BookmarksStorage = function () {
     // At first get custom tags and after this start bookmarks traversal.
     enumerateAllCustomTagChunks({n: true}, -1, function() {
       chrome.bookmarks.getTree(function(tree) {
-        enumerateChildren(tree, []);
+        enumerateChildren(tree, [], /* level: */ 0);
         // Custom tags is legacy storage 
         // TODO: remove after couple releases support of customTgs key.
         chrome.storage.sync.get('customTags', function(data) {
