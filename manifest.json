@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Dewey for Chrome",
+  "name": "Dewey for Google Chrome™",
   "version": "1.1.2",
 
-  "description": "Dewey makes finding and tagging your Chrome bookmarks quick and easy",
+  "description": "Dewey adds custom tags, screenshots, and smarter search to your Chrome bookmarks.",
 
   "permissions": [
     "bookmarks", "storage"
