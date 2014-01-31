@@ -221,6 +221,10 @@ body {
   color: #F18260;
 }
 
+.checkbox input[type=checkbox] {
+  margin-right: 5px;
+}
+
 /*-----------------------------
   Search
 -----------------------------*/

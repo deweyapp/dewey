@@ -32,6 +32,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectedIndex = 0; 
 
+  $scope.hideTopLevelFolders = false;
+
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
   $(window).scroll(function () {
@@ -105,10 +107,14 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   };
 
-  bookmarksStorage.getAll(function(bookmarks) {
-    $scope.bookmarks = bookmarks;
-    $scope.$apply();
-  }.bind(this));
+  var loadBookmarks = function() {
+    bookmarksStorage.getAll(function(bookmarks, hideTopLevelFolders) {
+      $scope.hideTopLevelFolders = hideTopLevelFolders;
+      $scope.bookmarks = bookmarks;
+      $scope.$apply();
+    }.bind(this));
+  }.bind(this);
+  loadBookmarks();
 
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
@@ -162,6 +168,10 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectBookmark = function(index) {
     $scope.selectedIndex = index;
+  };
+
+  $scope.setHideTopLevelFolders = function() {
+    bookmarksStorage.setHideTopLevelFolders(!$scope.hideTopLevelFolders, loadBookmarks);
   };
 };
 

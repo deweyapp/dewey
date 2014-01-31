@@ -102,15 +102,15 @@ var BookmarksStorage = function () {
   /*
   * Recursive bookmarks traversal (we use folders as tags)
   */
-  var enumerateChildren = function(tree, tags, level) {
+  var enumerateChildren = function(tree, tags, level, hideTopLevelFolders) {
     if (tree) {
       _.each(tree, function(c) {
           if (!c.url) {
               var t = tags.slice();
-              if (c.title && level > 1) {
+              if (c.title && ((!hideTopLevelFolders) || level > 1)) {
                   t.push(c.title);
               }
-              enumerateChildren(c.children, t, level + 1);
+              enumerateChildren(c.children, t, level + 1, hideTopLevelFolders);
           } else {
               var bookmark = {
                   title: c.title,
@@ -158,22 +158,25 @@ var BookmarksStorage = function () {
   * Get all bookmarks with all custom tags.
   */
   this.getAll = function(callback) {
-    // At first get custom tags and after this start bookmarks traversal.
-    enumerateAllCustomTagChunks({n: true}, -1, function() {
-      chrome.bookmarks.getTree(function(tree) {
-        enumerateChildren(tree, [], /* level: */ 0);
-        // Custom tags is legacy storage 
-        // TODO: remove after couple releases support of customTgs key.
-        chrome.storage.sync.get('customTags', function(data) {
-          if (data && data.customTags) {
-            for (var key in data.customTags) {
-              if (data.customTags.hasOwnProperty(key)) {
-                saveCustomTags(key, data.customTags[key]);
+    bookmarks = [];
+    this.getHideTopLevelFolders(function(hideTopLevelFolders) {
+      // At first get custom tags and after this start bookmarks traversal.
+      enumerateAllCustomTagChunks({n: true}, -1, function() {
+        chrome.bookmarks.getTree(function(tree) {
+          enumerateChildren(tree, [], /* level: */ 0, hideTopLevelFolders);
+          // Custom tags is legacy storage 
+          // TODO: remove after couple releases support of customTgs key.
+          chrome.storage.sync.get('customTags', function(data) {
+            if (data && data.customTags) {
+              for (var key in data.customTags) {
+                if (data.customTags.hasOwnProperty(key)) {
+                  saveCustomTags(key, data.customTags[key]);
+                }
               }
+              chrome.storage.sync.remove('customTags');
             }
-            chrome.storage.sync.remove('customTags');
-          }
-          callback(bookmarks);
+            callback(bookmarks, hideTopLevelFolders);
+          });
         });
       });
     });
@@ -225,6 +228,22 @@ var BookmarksStorage = function () {
   this.remove = function(bookmark) {
     removeCustomTags(bookmark.url);
     chrome.bookmarks.remove(bookmark.id);
+  };
+
+  /*
+   * Set settings for top level folders
+   */
+  this.setHideTopLevelFolders = function(value, cb) {
+    chrome.storage.sync.set({ 'hide-top-level-folders': value }, cb);
+  };
+
+  /*
+   * Get settings for top level folders
+   */
+  this.getHideTopLevelFolders = function(cb) {
+    chrome.storage.sync.get('hide-top-level-folders', function(flag) {
+      cb(flag['hide-top-level-folders'] || false); // Default value is false.
+    });
   };
 };
 
