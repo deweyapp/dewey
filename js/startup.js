@@ -3,16 +3,17 @@
 require.config({ 
   baseUrl: '/js',
   paths: {
-    underscore: 'lib/underscore.min',
-    jQuery: 'lib/jquery-2.0.3.min',
-    angular: 'lib/angular.min',
-    bootstrap: 'lib/bootstrap.min',
-    'ui-bootstrap': 'lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min',
+    underscore: '../bower_components/underscore/underscore-min',
+    jQuery: '../bower_components/jquery/jquery.min',
+    angular: '../bower_components/angular/angular.min',
+    'ui.router': '../bower_components/angular-ui-router/release/angular-ui-router.min',
+    bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min',
     controllers: 'controllers',
     filters: 'filters',
     services: 'services',
     'bootstrap-tagsinput': 'lib/bootstrap-tagsinput.min',
-    'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular'
+    'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
+    'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
   },
   shim: {
     'jQuery': {
@@ -25,13 +26,15 @@ require.config({
       deps: ['jQuery'],
       exports : 'angular'
     },
+    'ui.router': {
+      deps: ['angular']
+    },
     'bootstrap': {
       deps: ['jQuery'],
       exports : 'bootstrap'
     },
-    'ui-bootstrap': {
-      deps: ['jQuery','bootstrap', 'angular'],
-      exports : 'ui-bootstrap'
+    'ui.bootstrap': {
+      deps: ['jQuery','bootstrap', 'angular']
     },
     'bootstrap-tagsinput': {
       deps: ['bootstrap']
@@ -43,10 +46,11 @@ require.config({
 });
 
 require([
-  'jQuery', 
-  'angular', 
-  'bootstrap', 
-  'ui-bootstrap', 
+  'jQuery',
+  'angular',
+  'ui.router',
+  'bootstrap',
+  'ui.bootstrap',
   'bootstrap-tagsinput',
   'bootstrap-tagsinput-angular',
   'filters/fieldsFilter',

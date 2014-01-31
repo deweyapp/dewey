@@ -6,6 +6,7 @@ define(
   'services/bookmarksStorage',
   'filters/fieldsFilter',
   'controllers/editBookmark',
+  'ui.bootstrap'
 ], 
 function($, bookmarksApp) { 'use strict';
 

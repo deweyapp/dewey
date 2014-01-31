@@ -7,12 +7,13 @@ zip -r webstore/published/chrome-bookmarks\($(date +"%F")\).zip ./ \
   -i css/font-awesome.min.css \
   -i css/style.css \
   -i fonts/*.woff \
-  -i js/lib/angular.min.js \
-  -i js/lib/jquery-2.0.3.min.js \
-  -i js/lib/bootstrap.min.js \
-  -i js/lib/require.min.js \
-  -i js/lib/underscore.min.js \
-  -i js/lib/ui-bootstrap-custom-tpls-0.6.0-SNAPSHOT.min.js \
+  -i bower_components/angular/angular.min.js \
+  -i bower_components/angular-ui-router/release/angular-ui-router.min.js \
+  -i bower_components/jquery/jquery.min.js \
+  -i bower_components/bootstrap/dist/js/bootstrap.min.js \
+  -i bower_components/requirejs/require.js \
+  -i bower_components/underscore/underscore-min.js \
+  -i bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0.js \
   -i js/lib/bootstrap-tagsinput.min.js \
   -i js/lib/bootstrap-tagsinput-angular.js \
   -i js/filters/*.js \

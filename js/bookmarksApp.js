@@ -1,14 +1,20 @@
 define(
 [
   'angular', 
-  'ui-bootstrap'
+  'ui.bootstrap'
 ], 
 function(angular) { 'use strict';
 
-return angular.module('bookmarksApp', ['ui.bootstrap', 'bootstrap-tagsinput']).
-config(['$routeProvider', function($routeProvider) {
-   $routeProvider.when('/main', {templateUrl: 'partials/main.tpl.html', controller: 'mainController'});
-   $routeProvider.otherwise({redirectTo: '/main'});
-}]);
-
+return angular.module('bookmarksApp', ['ui.router', 'ui.bootstrap', 'bootstrap-tagsinput']).
+config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/main');
+  $stateProvider.state(
+    'main', 
+    { 
+      url: '/main',
+      templateUrl: 'partials/main.tpl.html',
+      controller: 'mainController'
+    }
+  );
+});
 });
