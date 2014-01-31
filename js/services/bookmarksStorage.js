@@ -22,7 +22,7 @@ var BookmarksStorage = function () {
     var key = 't' + index;
     change[key] = chunk;
     chrome.storage.sync.set(change);
-  }
+  };
 
   /*
   * Find chunk which stores custom tags for bookmark and remove this information.
@@ -32,8 +32,8 @@ var BookmarksStorage = function () {
       if (chunk.d[bookmarkUrl]) {
         delete chunk.d[bookmarkUrl];
         saveCustomTagsChunk(index, chunk);
-      };
-    })
+      }
+    });
   };
 
   /*
@@ -97,7 +97,7 @@ var BookmarksStorage = function () {
         bookmark.tag.push({text: tag, custom: true});
       });
     }
-  }
+  };
 
   /*
   * Recursive bookmarks traversal (we use folders as tags)
@@ -140,7 +140,7 @@ var BookmarksStorage = function () {
   var fillCustomTags = function(bookmarks, customTags) {
     _.each(bookmarks, function(bookmark) {
       // Remove all custom tags from bookmark first
-      bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false });
+      bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false; });
       saveCustomTags(bookmark.url, customTags[bookmark.url]);
     });
   };
@@ -153,7 +153,7 @@ var BookmarksStorage = function () {
           fillCustomTags(bookmarks, customTags);
         }
       }
-    };
+    }
   });
 
   /*
@@ -196,7 +196,7 @@ var BookmarksStorage = function () {
       bookmark.url = changes.url;
     }
 
-    removeCustomTags(bookmark.url)  // Delete all old custom tags
+    removeCustomTags(bookmark.url);  // Delete all old custom tags
     
     var update = {};  // Prepare update document
     
@@ -214,7 +214,7 @@ var BookmarksStorage = function () {
     }
 
     removeCustomTags(bookmark.url);
-    bookmark.tag = _.filter(bookmark.tag, function(t) { return t.custom === false });
+    bookmark.tag = _.filter(bookmark.tag, function(t) { return t.custom === false; });
     if (changes.customTags && changes.customTags.length > 0) {
       saveCustomTags(bookmark.url, changes.customTags);
       fillBookmarkWithCustomTags(bookmark);

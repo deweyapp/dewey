@@ -21,9 +21,8 @@ bookmarksApp.filter('fieldsFilter', function($filter) {
   return function(input, search, order) {
     var expression = {};
 
-    var i = 0;
     var filterExpression = null;
-    var filterString = "";
+    var filterString = '';
 
     if (search) {
       // Trying to parse search string by fields
@@ -57,7 +56,7 @@ bookmarksApp.filter('fieldsFilter', function($filter) {
         hasExpressions = true;
       } else {
         if (hasExpressions) {
-          expression['title'] = pattern;
+          expression.title = pattern;
         } else {
           expression = pattern;
         }
@@ -65,7 +64,7 @@ bookmarksApp.filter('fieldsFilter', function($filter) {
     }
 
     return orderBy(standardFilter(input, expression), order, order === 'date');
-  } 
+  };
 });
 
 });

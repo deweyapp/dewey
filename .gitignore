@@ -9,3 +9,5 @@ lib-cov
 
 pids
 logs
+
+node_modules/

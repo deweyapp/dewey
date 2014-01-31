@@ -44,12 +44,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   var getAllPanels = function() {
     return $('#list-bookmarks div.panel');
-  }
+  };
 
   var isElementInViewport = function(el) {
     var rect = el.getBoundingClientRect();
     return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width();
-  }
+  };
 
   // Key down events handlers
   $('#mainContent').keydown(function(e) {
@@ -102,7 +102,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   var getFilteredBookmarks = function() {
     var bookmarksFilter = $filter('fieldsFilter');
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
-  }
+  };
 
   bookmarksStorage.getAll(function(bookmarks) {
     $scope.bookmarks = bookmarks;
@@ -161,8 +161,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.selectBookmark = function(index) {
     $scope.selectedIndex = index;
-  }
-}
+  };
+};
 
 bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
 
