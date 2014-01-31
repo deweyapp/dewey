@@ -2,7 +2,7 @@ define(
 'controllers/main',
 [
   'jQuery', 
-  'bookmarksApp', 
+  'bookmarksApp',
   'services/bookmarksStorage',
   'filters/fieldsFilter',
   'controllers/editBookmark',
@@ -58,6 +58,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   $('#mainContent').keydown(function(e) {
     var updated = false;
     if (e.which === 13) { // Enter press on page - go to the selected bookmark
+      _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
       var result = getFilteredBookmarks();
       if (result.length > $scope.selectedIndex) {
         window.location.href = result[$scope.selectedIndex].url;
@@ -132,17 +133,20 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
  
   // On tag click we set search text
   $scope.selectTag = function(tag) {
+    _gaq.push(['_trackEvent', 'Navigation', 'selectTag']);
     $scope.searchText = 'tag:' + tag;
   };
 
   // Change sorting order
   $scope.changeOrder = function(order) {
+    _gaq.push(['_trackEvent', 'Navigation', 'changeOrder',  'Change order to ' + order]);
     $scope.currentOrder = order;
     resetView();
   };
 
   // Show modal dialog for adding tags
   $scope.editBookmark = function(bookmark) {
+    _gaq.push(['_trackEvent', 'Navigation', 'editBookmark']);
      var modalInstance = $modal.open({
       scope: $scope.$new(true /* isolate */),
       templateUrl: 'partials/editBookmark.tpl.html',
@@ -171,6 +175,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   };
 
   $scope.setHideTopLevelFolders = function() {
+    _gaq.push(['_trackEvent', 'ChangeSettings', 'Change to ' + !$scope.hideTopLevelFolders]);
     bookmarksStorage.setHideTopLevelFolders(!$scope.hideTopLevelFolders, loadBookmarks);
   };
 };

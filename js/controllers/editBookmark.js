@@ -16,16 +16,20 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
   };
 
   $scope.save = function() {
+    _gaq.push(['_trackEvent', 'BookmarkEdit', 'editBookmark-save']);
     bookmarksStorage.update(bookmark, $scope.bookmarkModel);
     $modalInstance.close(bookmark);
   };
 
   $scope.cancel = function() {
+    _gaq.push(['_trackEvent', 'BookmarkEdit', 'editBookmark-cancel']);
     $modalInstance.dismiss('cancel');
   };
 
   $scope.delete = function() {
+    _gaq.push(['_trackEvent', 'editBookmark-delete']);
     if (confirm('Are you sure that you want to delete this bookmark?')) {
+      _gaq.push(['_trackEvent', 'BookmarkEdit', 'editBookmark-delete-deleted']);
       bookmarksStorage.remove(bookmark);
       $modalInstance.close(null);
     }
