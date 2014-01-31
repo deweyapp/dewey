@@ -104,10 +104,6 @@ body {
   -webkit-filter: saturate(1);
 }
 
-.open {
-  z-index: 1000;
-}
-
 .open > .dropdown-menu {
   display: block;
   -webkit-animation: fade-in 100ms ease-in-out;
