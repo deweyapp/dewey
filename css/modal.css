@@ -40,14 +40,11 @@ button.close {
 
 .modal.fade .modal-dialog {
   -webkit-transform: translateY(-25%);
-          transform: translateY(-25%);
-  -webkit-transition: -webkit-transform 200ms ease-out;
-          transition: transform 200ms ease-out;
+  transition: -webkit-transform 200ms ease-out;
 }
 
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+  -webkit-transform: translateY(0);
 }
 
 .modal-dialog {
@@ -72,7 +69,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(37, 46, 51, .95);
   -webkit-animation: modal-fade-in .3s;
 }
 
