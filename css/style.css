@@ -58,7 +58,13 @@ body {
   margin: 1rem;
   vertical-align: top;
   width: 12.5rem;
+  transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
   -webkit-animation: fade-in 300ms ease-in;
+  -webkit-backface-visibility: hidden;
+}
+
+#list-bookmarks li:hover {
+  -webkit-transform: translateY(-.3rem);
 }
 
 /*-----------------------------
@@ -341,14 +347,13 @@ nav {
   Link Panels
 -----------------------------*/
 
-.panel {
-  position: relative;
-  top: 0;
-  transition: top 300ms cubic-bezier(.65, -0.65, .75, 2);
+.panel, .panel-primary {
+  transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
+  -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, .panel-primary {
-  top: -0.5rem;
+  -webkit-transform: translateY(-.5rem);
 }
 
 .panel:focus {
