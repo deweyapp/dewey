@@ -15,6 +15,7 @@ zip -r webstore/published/chrome-bookmarks\($(date +"%F")\).zip ./ \
   -i bower_components/requirejs/require.js \
   -i bower_components/underscore/underscore-min.js \
   -i bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0.js \
+  -i bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js \
   -i js/lib/bootstrap-tagsinput.min.js \
   -i js/lib/bootstrap-tagsinput-angular.js \
   -i js/filters/*.js \

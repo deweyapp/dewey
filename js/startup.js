@@ -22,7 +22,7 @@ require.config({
     controllers: 'controllers',
     filters: 'filters',
     services: 'services',
-    'bootstrap-tagsinput': 'lib/bootstrap-tagsinput.min',
+    'bootstrap-tagsinput': '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
     'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0'
   },
