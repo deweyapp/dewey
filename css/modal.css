@@ -39,8 +39,8 @@ button.close {
 }
 
 .modal.fade .modal-dialog {
-  -webkit-transform: translateY(-25%);
-  transition: -webkit-transform 200ms ease-out;
+  -webkit-transform: translateY(-100%);
+  transition: -webkit-transform 175ms ease-out;
 }
 
 .modal.in .modal-dialog {
@@ -133,7 +133,7 @@ button.close {
     right: auto;
     left: 50%;
     width: 37rem;
-    padding-top: 10%;
+    padding-top: 20vh;
     padding-bottom: 2rem;
   }
 }
