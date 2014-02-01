@@ -189,7 +189,7 @@ body {
 }
 
 .email:before {
-  content: url(../images/email.svg);
+  content: url(../images/contact.svg);
 }
 
 .divider {
