@@ -66,7 +66,7 @@ If you liked this extension and you are looking for a way to support future deve
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication).
 
-![icons](http://drrop.it/files/52ecb4fbae3f6.png)
+![icons](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/icons.png)
 
 ###[Download them here.](link.com)
 
