@@ -40,7 +40,7 @@ button.close {
 
 .modal.fade .modal-dialog {
   -webkit-transform: translateY(-100%);
-  transition: -webkit-transform 175ms ease-out;
+  transition: -webkit-transform 250ms ease-out;
 }
 
 .modal.in .modal-dialog {
