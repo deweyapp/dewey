@@ -59,9 +59,7 @@ If you liked this extension and you are looking for a way to support future deve
 - 1.1.1 (October 29 2013) - Fix issue #1.
 - 1.1 (October 28 2013) - Updated bookmark edit dialog with options to edit title, custom tags and delete bookmark.
 - 1.0 (October 13 2013) - Ready for use first version of application in Chrome Web Store.
-- 0.1 (September 27 2013) - First prototype on [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). 
-
-<a href="http://www.flickr.com/photos/pahphotos/10015447933/" title="The winner took home a chromebook. by Seattle.roamer, on Flickr"><img src="http://farm8.staticflickr.com/7320/10015447933_f59bee5f0b.jpg" width="331" height="500" alt="The winner took home a chromebook."></a>
+- 0.1 (September 27 2013) - First prototype on [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). ([second place](http://www.flickr.com/photos/pahphotos/10015447933/))
 
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication).
