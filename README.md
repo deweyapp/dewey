@@ -1,24 +1,49 @@
-# Bookmarks
+[![screenshot](http://drrop.it/files/52ecb39edc7b8.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
-Bookmarks is a [Chrome Browser application](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm), which gives you an easy way to manage bookmarks and navigate through them. 
+# Dewey. Better Chrome Bookmarks.
 
-After you start this application you can:
+***
 
-- Do search on your bookmarks. You can search by all fields (title, tag, url) or specify one or more operators, like 'tag:dev', which filters bookmarks by tag 'dev'.
-- One of the bookmarks is highlighted, this is selected bookmark. On Enter application navigates you to selected bookmark.
-- You can use Arrow Up/Down keyboard keys to navigate through bookmarks list.
-- Application uses folder names as a standard tags, but it also gives you an option to add custom tags. 
+###Dewey is [Chrome App](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) that adds custom tags, screenshots, and smarter, faster search to your Chrome bookmarks.
+
+With Dewey you can:
+
+- Search your bookmarks quickly by keyword
+- Search by Title, Tag, or URL by using one or more of the search operators. 
+- e.g. `tag:blogs` would only return bookmarks tagged `blogs`.
+- Sort your bookmarks and your search results by Date, Title, or URL
+- Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
+- When one of you bookmarks is highlighted, hit enter to visit the link.
+- Click the Title of the bookmark to open the edit panel.
+- Dewey treats Chrome bookmark folders as tags (On Mac: opt+cmd+B will bring up your Bookmarks Manager to view your folders).
+- You can also add custom tags only visibile to Dewey.
+- If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
+
+
+![screenshot](http://drrop.it/files/52ecb39edc982.jpg)
+![screenshot](http://drrop.it/files/52ecb39edcab5.jpg)
+![screenshot](http://drrop.it/files/52ecb39edcbc1.jpg)
+![screenshot](http://drrop.it/files/52ecb39edccbf.jpg)
+![screenshot](http://drrop.it/files/52ecb39edcecf.jpg)
 
 ## Installation
 
-To install Bookmarks application just follow the link to [Chrome Web Store](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) using Chrome Browser.
+[![install](http://drrop.it/files/52ecb39eda9f6.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
-## Author
-**Denis Gladkikh**
+[Install Dewey](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) from the Chrome Web Store using your Chrome Browser.
+
+## Authors
+###Denis Gladkikh - Development
 
 - [http://outcoldman.com](http://outcoldman.com)
 - [https://twitter.com/outcoldman](https://twitter.com/outcoldman)
 - [https://github.com/outcoldman](https://github.com/outcoldman)
+
+###Jamie Wilson - Design
+
+- [Portfolio - jamiewilson.io](http://jamiewilson.io)
+- [Twitter - @jmwlsn](https://twitter.com/jmwsln)
+- [github.com/jamiewilson](https://github.com/jamiewilson)
 
 ## License
   Apache License, Version 2.0
@@ -41,10 +66,14 @@ If you liked this extension and you are looking for a way to support future deve
 <a href="http://www.flickr.com/photos/pahphotos/10015447933/" title="The winner took home a chromebook. by Seattle.roamer, on Flickr"><img src="http://farm8.staticflickr.com/7320/10015447933_f59bee5f0b.jpg" width="331" height="500" alt="The winner took home a chromebook."></a>
 
 ##Icons
-All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication), *except* for the 'bookmarks' icon used in the logo, which is part of [IcoMoon](http://icomoon.io).
+All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication).
 
-## Using resources
-To build this application I used following Open Source libraries and resources:
+![icons](http://drrop.it/files/52ecb4fbae3f6.png)
+
+###[Download them here.](link.com)
+
+## Dewey was built with…
+To build this application we used following Open Source libraries and resources:
 
 - [bootstrap](http://getbootstrap.com/)
 - [jQuery](https://jquery.org)
