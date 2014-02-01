@@ -430,12 +430,12 @@ h2.title {
   font-size: 0.75rem;
   padding-bottom: 0.4rem;
   padding-right: 0.35rem;
-  text-decoration: underline;
   transition: color .25s ease;
 }
 
 .tag-links a:hover {
   color: #F18260;
+  text-decoration: underline;
 }
 
 .tag-links a:hover:after {
@@ -444,6 +444,10 @@ h2.title {
   z-index: 1;
   top: 9.375rem;
   right: 0;
+}
+
+.tag-links .badge-custom {
+  color: #777;
 }
 
 /*-----------------------------
