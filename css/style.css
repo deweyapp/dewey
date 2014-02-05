@@ -451,11 +451,6 @@ h2.title {
   color: #777;
 }
 
-.tag-links .badge-custom:before {
-  display: inline;
-  content: "#";
-}
-
 /*-----------------------------
   Media Queries
 -----------------------------*/
