@@ -13,7 +13,7 @@ With Dewey you can:
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
 - When one of you bookmarks is highlighted, hit enter to visit the link.
 - Click the Title of the bookmark to open the edit panel.
-- Dewey treats folders in Chrome's Bookmark Manager as tags. To edit those you'll need to go to you Bookmark Manager.
+- Dewey treats folders in Chrome's Bookmark Manager as tags. To edit those you'll need to go to your Bookmark Manager.
 - You can also add custom tags only visibile to Dewey.
 - If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
 
