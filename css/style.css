@@ -81,7 +81,7 @@ body {
 * Designed and built with all the love in the world @twitter by @mdo and @fat.
 */
 
-#info {
+#settings {
   display: inline-block;
   position: absolute;
   right: 1rem;
@@ -90,8 +90,8 @@ body {
   white-space: nowrap;
 }
 
-.info-icon {
-  background: url(../images/info.svg) no-repeat center center;
+.settings-icon {
+  background: url(../images/settings.svg) no-repeat center center;
   cursor: pointer;
   display: block;
   height: 20px;
@@ -100,7 +100,7 @@ body {
   transition: -webkit-filter 100ms ease-in-out;
 }
 
-.info-icon:hover {
+.settings-icon:hover {
   -webkit-filter: saturate(1);
 }
 
