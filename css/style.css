@@ -340,7 +340,7 @@ nav {
 }
 
 .active {
-  text-decoration: underline;
+  border-bottom: 1px solid;
 }
 
 /*-----------------------------
@@ -433,7 +433,8 @@ h2.title {
   transition: color .25s ease;
 }
 
-.tag-links a:hover {
+.tag-links a:hover,
+.tag-links .badge-custom:hover:before {
   color: #F18260;
   text-decoration: underline;
 }
@@ -448,6 +449,11 @@ h2.title {
 
 .tag-links .badge-custom {
   color: #777;
+}
+
+.tag-links .badge-custom:before {
+  display: inline;
+  content: "#";
 }
 
 /*-----------------------------

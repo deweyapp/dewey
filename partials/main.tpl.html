@@ -67,7 +67,7 @@
 
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
-                <a ng-click="selectTag(tag.text)">{{tag.text}}</a>
+                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
               </span>
             </div><!-- tags -->
       
