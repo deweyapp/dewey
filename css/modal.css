@@ -221,7 +221,7 @@ textarea.form-control {
   cursor: pointer;
 }
 .bootstrap-tagsinput .tag [data-role="remove"]:after {
-  content: "×";
+  content: "╳";
   padding: 0px 2px;
 }
 
