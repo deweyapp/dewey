@@ -217,6 +217,10 @@ body {
   color: #F18260;
 }
 
+.checkbox {
+  margin-top: 5px;
+}
+
 .checkbox input[type=checkbox] {
   margin-right: 5px;
 }
