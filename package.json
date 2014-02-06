@@ -2,7 +2,7 @@
   "name": "chrome-bookmarks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/outcoldman/chrome-bookmarks.git"
+    "url": "https://github.com/deweyapp/deweyapp"
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.3",

@@ -1,4 +1,4 @@
-[![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 # Dewey. Better Chrome Bookmarks.
 
@@ -19,19 +19,19 @@ With Dewey you can:
 - If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
 
 
-![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-1.jpg)
+![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-1.jpg)
 
 Dewey organizes your bookmarks into a grid that continues to load as you scroll down. The layout is also fully responsive, so it still works well even if you need to use a narrow browser window.
 
-![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-2.jpg)
+![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-2.jpg)
 
 You can use the arrow or tab keys to navigate through your bookmarks. Hit enter to launch the selected link.
 
-![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-3.jpg)
+![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-3.jpg)
 
 Clicking on the Title of a bookmark will bring up this edit window where you can edit the title, url and add custom tags. You can also delete a bookmark from Chrome.
 
-![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-4.jpg)
+![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-4.jpg)
 
 There are several ways to search your bookmarks with Dewey:
 
@@ -40,7 +40,7 @@ There are several ways to search your bookmarks with Dewey:
 3. Add `title:` before a word to limit results to titles that contain that word.
 4. Add `url:` before a word to limit results to URLs that contain that word.
 
-![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-5.jpg)
+![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-5.jpg)
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
@@ -51,9 +51,9 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 ## Get Help or Contribute
 
-####Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/outcoldman/chrome-bookmarks/issues) in the Github Issues section of this project.
+####Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) in the Github Issues section of this project.
 
-Or [fork the repo and create your own features](https://github.com/outcoldman/chrome-bookmarks/fork). Send us a pull request and we'll be thrilled to review and integrate. But only if it's awesome.
+Or [fork the repo and create your own features](https://github.com/deweyapp/deweyapp/fork). Send us a pull request and we'll be thrilled to review and integrate. But only if it's awesome.
 
 ## Donate
 We made Dewey in our spare time because it's fun to build things. We aren't doing it for money.
@@ -78,7 +78,7 @@ But, if you like Dewey and want to support future development—or just say than
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
 
-![icons](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/icons.png)
+![icons](https://raw.github.com/deweyapp/deweyapp/dev/webstore/icons.png)
 
 Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
 ###[Download](link.com) - one Adobe Illustrator file with all icons
