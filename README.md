@@ -1,4 +1,4 @@
-[![screenshot](http://drrop.it/files/52ecb39edc7b8.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 # Dewey. Better Chrome Bookmarks.
 
@@ -19,19 +19,19 @@ With Dewey you can:
 - If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
 
 
-![screenshot](http://drrop.it/files/52ecb39edc982.jpg)
+![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-1.jpg)
 
 Dewey organizes your bookmarks into a grid that continues to load as you scroll down. The layout is also fully responsive, so it still works well even if you need to use a narrow browser window.
 
-![screenshot](http://drrop.it/files/52ecb39edcab5.jpg)
+![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-2.jpg)
 
 You can use the arrow or tab keys to navigate through your bookmarks. Hit enter to launch the selected link.
 
-![screenshot](http://drrop.it/files/52ecb39edcbc1.jpg)
+![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-3.jpg)
 
 Clicking on the Title of a bookmark will bring up this edit window where you can edit the title, url and add custom tags. You can also delete a bookmark from Chrome.
 
-![screenshot](http://drrop.it/files/52ecb39edccbf.jpg)
+![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-4.jpg)
 
 There are several ways to search your bookmarks with Dewey:
 
@@ -40,7 +40,7 @@ There are several ways to search your bookmarks with Dewey:
 3. Add `title:` before a word to limit results to titles that contain that word.
 4. Add `url:` before a word to limit results to URLs that contain that word.
 
-![screenshot](http://drrop.it/files/52ecb39edcecf.jpg)
+![screenshot](https://raw.github.com/outcoldman/chrome-bookmarks/dev/webstore/screenshot-5.jpg)
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
