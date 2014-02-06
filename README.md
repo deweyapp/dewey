@@ -1,4 +1,4 @@
-[![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![screenshot](webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 # Dewey. Better Chrome Bookmarks.
 
@@ -23,15 +23,15 @@ With Dewey you can:
 
 Dewey organizes your bookmarks into a grid that continues to load as you scroll down. The layout is also fully responsive, so it still works well even if you need to use a narrow browser window.
 
-![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-2.jpg)
+![screenshot](webstore/screenshot-2.jpg)
 
 You can use the arrow or tab keys to navigate through your bookmarks. Hit enter to launch the selected link.
 
-![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-3.jpg)
+![screenshot](webstore/screenshot-3.jpg)
 
 Clicking on the Title of a bookmark will bring up this edit window where you can edit the title, url and add custom tags. You can also delete a bookmark from Chrome.
 
-![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-4.jpg)
+![screenshot](webstore/screenshot-4.jpg)
 
 There are several ways to search your bookmarks with Dewey:
 
@@ -40,7 +40,7 @@ There are several ways to search your bookmarks with Dewey:
 3. Add `title:` before a word to limit results to titles that contain that word.
 4. Add `url:` before a word to limit results to URLs that contain that word.
 
-![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-5.jpg)
+![screenshot](webstore/screenshot-5.jpg)
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
