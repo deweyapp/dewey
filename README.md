@@ -2,7 +2,7 @@
 
 # Dewey. Better Chrome Bookmarks.
 
-###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) that adds custom tags, screenshots, and smarter search to your Chrome bookmarks. Created by [@outcoldman](https://github.com/outcoldman) and [@jamiewilson](https://github.com/jamiewilson).
+####Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) that adds custom tags, screenshots, and smarter search to your Chrome bookmarks. Created by [@outcoldman](https://github.com/outcoldman) and [@jamiewilson](https://github.com/jamiewilson).
   
   
   
