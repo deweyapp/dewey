@@ -51,7 +51,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 ## Get Help or Contribute
 
-###Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/outcoldman/chrome-bookmarks/issues) in the Github Issues section of this project.
+####Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/outcoldman/chrome-bookmarks/issues) in the Github Issues section of this project.
 
 Or [fork the repo and create your own features](https://github.com/outcoldman/chrome-bookmarks/fork). Send us a pull request and we'll be thrilled to review and integrate. But only if it's awesome.
 
