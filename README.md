@@ -78,7 +78,7 @@ But, if you like Dewey and want to support future development—or just say than
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
 
-![icons](https://raw.github.com/deweyapp/deweyapp/dev/webstore/icons.png)
+![icons](webstore/icons.png)
 
 Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
 ###[Download](link.com) - one Adobe Illustrator file with all icons
