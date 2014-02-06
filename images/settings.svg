@@ -3,14 +3,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-<circle fill="#F18260" cx="10" cy="10" r="8"/>
-<circle fill="#FFFFFF" cx="10" cy="10" r="4"/>
-<polygon fill="#F18260" points="9,0 7,4 13,4 11,0 "/>
-<polygon fill="#F18260" points="16.4,2.2 12.1,3.6 16.4,7.9 17.8,3.6 "/>
-<polygon fill="#F18260" points="20,9 16,7 16,13 20,11 "/>
-<polygon fill="#F18260" points="17.8,16.4 16.4,12.1 12.1,16.4 16.4,17.8 "/>
-<polygon fill="#F18260" points="11,20 13,16 7,16 9,20 "/>
-<polygon fill="#F18260" points="3.6,17.8 7.9,16.4 3.6,12.1 2.2,16.4 "/>
-<polygon fill="#F18260" points="0,11 4,13 4,7 0,9 "/>
-<polygon fill="#F18260" points="2.2,3.6 3.6,7.9 7.9,3.6 3.6,2.2 "/>
+<path fill="#F18260" d="M20,11V9l-2.3-1.2c-0.2-0.6-0.4-1.2-0.7-1.8l0.8-2.4l-1.4-1.4L13.9,3c-0.6-0.3-1.1-0.6-1.8-0.7L11,0H9
+	L7.8,2.3C7.2,2.5,6.6,2.7,6.1,3L3.6,2.2L2.2,3.6L3,6.1C2.7,6.6,2.5,7.2,2.3,7.8L0,9v2l2.3,1.2c0.2,0.6,0.4,1.2,0.7,1.8l-0.8,2.4
+	l1.4,1.4L6.1,17c0.6,0.3,1.1,0.6,1.8,0.7L9,20h2l1.2-2.3c0.6-0.2,1.2-0.4,1.8-0.7l2.4,0.8l1.4-1.4L17,13.9c0.3-0.6,0.6-1.1,0.7-1.8
+	L20,11z M10,14c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4S12.2,14,10,14z"/>
 </svg>
