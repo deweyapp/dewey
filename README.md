@@ -19,7 +19,7 @@ With Dewey you can:
 - If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
 
 
-![screenshot](https://raw.github.com/deweyapp/deweyapp/dev/webstore/screenshot-1.jpg)
+![screenshot](webstore/screenshot-1.jpg)
 
 Dewey organizes your bookmarks into a grid that continues to load as you scroll down. The layout is also fully responsive, so it still works well even if you need to use a narrow browser window.
 
