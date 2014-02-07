@@ -469,9 +469,12 @@ nav {
 }
 
 .favicon {
-  height:16px;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: top left;
+  height: 16px;
   margin-bottom: .5rem;
-  width:16px;
+  width: 16px;
 }
 
 .favicon[style*="lppajbkmaemajobcicdedaaahcbokdng"] {
