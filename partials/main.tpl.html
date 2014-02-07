@@ -29,6 +29,9 @@
         <li><a href="http://twitter.com/outcoldman" target="_blank">@outcoldman</a></li>
         <li><a href="http://twitter.com/jmwlsn" target="_blank">@jmwlsn</a></li>
       </ul>
+      <ul class="divider">
+        <li><a class="important" href="http://snapito.com/" target="_blank">Screenshots by Snapito</a></li>
+      </ul>
     </ul>
   </div>
 
@@ -55,7 +58,7 @@
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
           
           <a href="{{bookmark.url}}" title="{{bookmark.title}}">
-          <span title="{{bookmark.url}}" class="thumbnail" style="background-image: url('http://img.bitpixels.com/getthumbnail?code=28809&size=200&url={{bookmark.url}}');"></span><!-- thumbnail --></a>
+          <span title="{{bookmark.url}}" class="thumbnail" style="background-image: url('http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url={{bookmark.url}}');"></span><!-- thumbnail --></a>
           
           <div class="details" ng-click="editBookmark(bookmark)">
             

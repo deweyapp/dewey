@@ -225,6 +225,10 @@ body {
   margin-right: 5px;
 }
 
+.important {
+  color: #F18260 !important;
+}
+
 /*-----------------------------
   Search
 -----------------------------*/

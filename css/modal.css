@@ -181,10 +181,10 @@ textarea.form-control {
   border-radius: 3px;
   border: 1px solid rgba(241,130,96,0);
   color: #555;
-  font-size: .75rem;
+  font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
-  padding: 0 .625rem;
+  padding: 0 1rem;
   transition: border .3s ease-in-out, background .3s ease-in-out;
   width: 100%;
 }

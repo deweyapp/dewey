@@ -10,6 +10,7 @@ With Dewey you can:
 
 - Search your bookmarks quickly by keyword
 - Search by Title, Tag, or URL by using one or more of the search operators. e.g. `tag:blogs` would only return bookmarks tagged `blogs`.
+- See screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
 - Sort your bookmarks and your search results by Date, Title, or URL
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
 - When one of you bookmarks is highlighted, hit enter to visit the link.
@@ -49,6 +50,14 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 [![install](http://drrop.it/files/52ecb39eda9f6.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
+##Icons
+All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
+
+![icons](webstore/icons.png)
+
+Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
+###[Download](link.com) - one Adobe Illustrator file with all icons
+
 ## Get Help or Contribute
 
 ####Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) in the Github Issues section of this project.
@@ -75,15 +84,10 @@ But, if you like Dewey and want to support future development—or just say than
 - [Twitter - @jmwlsn](https://twitter.com/jmwsln)
 - [github.com/jamiewilson](https://github.com/jamiewilson)
 
-##Icons
-All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
+##Special thanks to [Snapito](http://snapito.com)
+We'd like to thank **[Snapito](http://snapito.com)** for their generosity in helping us generate screenshots. If you are looking for a screenshot/thumbnail service to generate screenshots from URLs, definitely give [Snapito](http://snapito.com) a try. Their API is super easy and they are super friendly. 
 
-![icons](webstore/icons.png)
-
-Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
-###[Download](link.com) - one Adobe Illustrator file with all icons
-
-## Dewey was built with…
+## Built with…
 To build this application we used following Open Source libraries and resources:
 
 - [Bootstrap](http://getbootstrap.com/) - Small section used for dropdown & modal
@@ -95,7 +99,7 @@ To build this application we used following Open Source libraries and resources:
 - [bootstrap-tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/) - With small modification of `bootstrap-tagsinput-angular`
 
 ## License
-  Apache License, Version 2.0
+Apache License, Version 2.0
 
 ***
   
