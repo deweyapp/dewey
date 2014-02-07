@@ -436,8 +436,14 @@ nav {
   background-image: url(../images/chrome.svg) !important;
 }
 
+.thumbnail[title*="lppajbkmaemajobcicdedaaahcbokdng"] {
+  background-image: url(../images/dewey.png) !important;
+  -webkit-filter: brightness(1) !important;
+}
+
+
 .thumbnail {
-  -webkit-filter: brightness(.7);
+  -webkit-filter: brightness(.75);
   background-color: white;
   background-repeat: no-repeat;
   background-size: 12.5rem 9.375rem;
@@ -466,6 +472,10 @@ nav {
   height:16px;
   margin-bottom: .5rem;
   width:16px;
+}
+
+.favicon[style*="lppajbkmaemajobcicdedaaahcbokdng"] {
+  background-image: url(http://deweyapp.io/images/favicon.png) !important;
 }
 
 h2.title {
