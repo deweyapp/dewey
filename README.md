@@ -90,13 +90,14 @@ We'd like to thank **[Snapito](http://snapito.com)** for their generosity in hel
 ## Built with…
 To build this application we used following Open Source libraries and resources:
 
-- [Bootstrap](http://getbootstrap.com/) - Small section used for dropdown & modal
+- [Bootstrap](http://getbootstrap.com/) – Small section used for dropdown & modal
 - [jQuery](https://jquery.org)
 - [AngularJS](http://angularjs.org/)
 - [UnderscoreJS](http://underscorejs.org/)
 - [RequireJS](http://requirejs.org/)
-- [UI Bootstrap](http://angular-ui.github.io/bootstrap/) - Custom build with patch for Modal dialog (from branch _bootstrap3_bis2_modalPatch_)
-- [bootstrap-tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/) - With small modification of `bootstrap-tagsinput-angular`
+- [UI Bootstrap](http://angular-ui.github.io/bootstrap/) – Custom build with patch for Modal dialog (from branch _bootstrap3_bis2_modalPatch_)
+- [bootstrap-tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/) – With small modification of `bootstrap-tagsinput-angular`  
+- [getFavicon](http://g.etfv.co/)
 
 ## License
 Apache License, Version 2.0
