@@ -398,8 +398,6 @@ nav {
   width: 12.5rem;
   transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
   -webkit-animation: fadeInUp 300ms ease forwards;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform-origin: 0 100%;
 }
 
 #list-bookmarks li:hover {
@@ -418,8 +416,7 @@ nav {
 @-webkit-keyframes fadeInUp {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(1.25rem);
-    
+    -webkit-transform: translateY(1.25rem); 
   }
 
   100% {
@@ -428,18 +425,13 @@ nav {
   }
 }
 
-.fadeInUp {
-  -webkit-animation-name: fadeInUp;
-}
-
-
 /*-----------------------------
   Link Panels
 -----------------------------*/
 
-.panel, .panel-primary {
+.panel,
+.panel-primary {
   transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
-  -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, .panel-primary {
@@ -454,31 +446,52 @@ nav {
   Link Thumbnail
 -----------------------------*/
 
-.thumbnail-loading, .thumbnail {
+.thumbnail-loading,
+.thumbnail {
   -webkit-filter: brightness(.75);
-  background-repeat: no-repeat !important;
+  background-repeat: no-repeat;
   background-position: center center;
   display: block;
   height: 9.375rem;
 }
 
 .thumbnail-loading {
-  background-color: white;
   background-size: 24px 24px !important;
+}
+
+.panel-small .thumbnail-loading {
+  background-size: 18px 18px !important;
 }
 
 .thumbnail {
   background-size: 12.5rem 9.375rem !important;
 }
 
-.panel-small .thumbnail-loading, .panel-small .thumbnail {
-  height: 96px;
+.panel-small .thumbnail-loading, 
+.panel-small .thumbnail {
+  height: 1.75rem;
 }
 
+/*-----------------------------
+  Special Styles for Links to PDFs
+-----------------------------*/
+
 .thumbnail[title$=".pdf"] {
-  background: url(../images/pdf.svg) !important;
+  background: white url(../images/pdf.svg) !important;
   background-position: center center !important;
 }
+
+.panel-small .thumbnail[title$=".pdf"] {
+  background: white !important;
+}
+
+.favicon[src$=".pdf?defaulticon=lightpng"] {
+  content: url(../images/link.svg);
+}
+
+/*-----------------------------
+  Special Styles for Links to local Chrome urls
+-----------------------------*/
 
 .thumbnail[title*="chrome://"], 
 .thumbnail[title*="chrome-extension://"]{
@@ -486,10 +499,32 @@ nav {
   background-position: center center !important;
 }
 
+.panel-small .thumbnail[title*="chrome://"], 
+.panel-small .thumbnail[title*="chrome-extension://"]{
+  background: white !important;
+}
+
+.favicon[src*="chrome://"],
+.favicon[src*="chrome-extension://"] {
+  content: url(http://www.google.com/images/icons/product/chrome-32.png);
+}
+
+/*-----------------------------
+  Special Styles for Links to Dewey
+-----------------------------*/
+
 .thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
   background: url(../images/dewey.png) !important;
   -webkit-filter: brightness(1) !important;
   background-size: 12.5rem 9.375rem !important;
+}
+
+.panel-small .thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
+  background: #252E33 !important;
+}
+
+.favicon[src*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
+  content: url(http://deweyapp.io/images/favicon.png);
 }
 
 /*-----------------------------
@@ -510,22 +545,13 @@ nav {
 }
 
 .panel-small .details:hover:after {
-  top: 96px;
+  top: 1.75rem;
 }
 
 .favicon {
   height: 16px;
   margin-bottom: .5rem;
   width: 16px;
-}
-
-.favicon img {
-  height: 16px;
-  width: 16px;
-}
-
-.favicon[style*="lppajbkmaemajobcicdedaaahcbokdng"] {
-  background-image: url(http://deweyapp.io/images/favicon.png) !important;
 }
 
 h2.title {
@@ -556,8 +582,7 @@ h2.title {
   transition: color .25s ease;
 }
 
-.tag-links a:hover,
-.tag-links .badge-custom:hover:before {
+.tag-links a:hover {
   color: #F18260;
   text-decoration: underline;
 }
@@ -565,13 +590,12 @@ h2.title {
 .tag-links a:hover:after {
   content: url(../images/search-small.svg);
   position: absolute;
-  z-index: 1;
   top: 9.375rem;
   right: 0;
 }
 
 .panel-small .tag-links a:hover:after {
-  top: 96px;
+  top: 1.75rem;
 }
 
 .tag-links .badge-custom {

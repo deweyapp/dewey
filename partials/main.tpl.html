@@ -64,13 +64,11 @@
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
           
           <a href="{{bookmark.url}}" title="{{bookmark.title}}">
-          <span title="{{bookmark.url}}" class="thumbnail-loading" style="background: url(images/loader.gif), white;"></span><!-- thumbnail --></a>
+          <span title="{{bookmark.url}}" class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></span><!-- thumbnail --></a>
 
           <div class="details" ng-click="editBookmark(bookmark)">
             
-            <div class="favicon">
-              <img src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" my-update-background crossOrigin="anonymous" />
-            </div>
+            <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" my-update-background crossOrigin="anonymous" />
 
             <h2 class="title">{{bookmark.title}}</h2>
 
