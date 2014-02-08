@@ -583,14 +583,14 @@ button.close {
   overflow-y: scroll;
 }
 
-.modal.fade .modal-dialog {
+/*.modal.fade .modal-dialog {
   -webkit-transform: translateY(-100%);
   transition: -webkit-transform 250ms ease-out;
 }
 
 .modal.in .modal-dialog {
   -webkit-transform: translateY(0);
-}
+}*/
 
 .modal-dialog {
   z-index: 1050;
