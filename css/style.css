@@ -450,7 +450,7 @@ nav {
 -----------------------------*/
 
 .thumbnail {
-  -webkit-filter: brightness(.8);
+  -webkit-filter: brightness(.75);
   background-color: white;
   background-repeat: no-repeat !important;
   background-size: 12.5rem 9.375rem, 24px 24px !important;
@@ -500,6 +500,7 @@ nav {
   height: 16px;
   margin-bottom: .5rem;
   width: 16px;
+  display: none;
 }
 
 .favicon[style*="lppajbkmaemajobcicdedaaahcbokdng"] {
