@@ -94,35 +94,6 @@ body {
 }
 
 /*-----------------------------
-  Grid
------------------------------*/
-
-.grid {
-  margin: 0 auto;
-  width: 72.5em;
-}
-
-#list-bookmarks {
-  font-size: 0;
-}
-
-#list-bookmarks li {
-  background: #F18260;
-  display: inline-block;
-  list-style: none;
-  margin: 1rem;
-  vertical-align: top;
-  width: 12.5rem;
-  transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
-  -webkit-animation: fade-in 300ms ease-in;
-  -webkit-backface-visibility: hidden;
-}
-
-#list-bookmarks li:hover {
-  -webkit-transform: translateY(-.3rem);
-}
-
-/*-----------------------------
   Settings Dropdown
 -----------------------------*/
 
@@ -404,6 +375,58 @@ nav {
 .active {
   border-bottom: 1px solid;
 }
+
+/*-----------------------------
+  Grid
+-----------------------------*/
+
+.grid {
+  margin: 0 auto;
+  width: 72.5em;
+}
+
+#list-bookmarks {
+  font-size: 0;
+}
+
+#list-bookmarks li {
+  background: #F18260;
+  display: inline-block;
+  list-style: none;
+  margin: 1rem;
+  vertical-align: top;
+  width: 12.5rem;
+  transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
+  -webkit-animation: fadeInUp 300ms ease forwards;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 0 100%;
+}
+
+#list-bookmarks li:hover {
+  -webkit-transform: translateY(-.3rem);
+}
+
+/*-----------------------------
+  Grid Panel Animation
+-----------------------------*/
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(1.25rem);
+    
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+}
+
 
 /*-----------------------------
   Link Panels
