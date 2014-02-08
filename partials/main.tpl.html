@@ -3,11 +3,12 @@
   <div id="settings">
     <a class="settings-icon" data-toggle="dropdown"></a>
     <ul class="dropdown-menu" role="menu">
-      <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
+      <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
       <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
-      <li><a class="fork" href="https://github.com/deweyapp/deweyapp" target="_blank">GitHub</a></li>
       <li><a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">Donate</a></li>
       <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
+      <li><a class="website" href="http://deweyapp.io" target="_blank">deweyapp.io</a></li>
+
       <ul class="divider">
         <li>Settings:</li>
         <li>
@@ -58,7 +59,7 @@
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
           
           <a href="{{bookmark.url}}" title="{{bookmark.title}}">
-          <span title="{{bookmark.url}}" class="thumbnail" style="background-image: url('http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url={{bookmark.url}}');"></span><!-- thumbnail --></a>
+          <span title="{{bookmark.url}}" class="thumbnail" style="background: url('http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url={{bookmark.url}}&delay=1') no-repeat, url(images/loading.gif) no-repeat, white;"></span><!-- thumbnail --></a>
           
           <div class="details" ng-click="editBookmark(bookmark)">
             
