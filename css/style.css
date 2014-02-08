@@ -406,6 +406,11 @@ nav {
   -webkit-transform: translateY(-.3rem);
 }
 
+#list-bookmarks li:nth-child(3n+3),
+#list-bookmarks li:nth-child(5n+1) {
+  -webkit-animation-duration: 500ms;
+}
+
 /*-----------------------------
   Grid Panel Animation
 -----------------------------*/
