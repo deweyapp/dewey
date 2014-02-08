@@ -450,7 +450,7 @@ nav {
 -----------------------------*/
 
 .thumbnail {
-  -webkit-filter: brightness(.75);
+  -webkit-filter: brightness(.8);
   background-color: white;
   background-repeat: no-repeat !important;
   background-size: 12.5rem 9.375rem, 24px 24px !important;
