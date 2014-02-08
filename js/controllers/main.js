@@ -33,6 +33,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   $scope.selectedIndex = 0; 
 
   $scope.hideTopLevelFolders = false;
+  $scope.showThumbnails = true;
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
@@ -109,8 +110,10 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   };
 
   var loadBookmarks = function() {
-    bookmarksStorage.getAll(function(bookmarks, hideTopLevelFolders) {
-      $scope.hideTopLevelFolders = hideTopLevelFolders;
+    bookmarksStorage.getAll(function(bookmarks, setttings) {
+      bookmarksApp.appSettings = setttings;
+      $scope.hideTopLevelFolders = setttings.hideTopLevelFolders;
+      $scope.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
       $scope.$apply();
     }.bind(this));
@@ -175,8 +178,13 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   };
 
   $scope.setHideTopLevelFolders = function() {
-    _gaq.push(['_trackEvent', 'ChangeSettings', 'Change to ' + !$scope.hideTopLevelFolders]);
+    _gaq.push(['_trackEvent', 'ChangeSettings', 'HideTopLevelFolders changed to ' + !$scope.hideTopLevelFolders]);
     bookmarksStorage.setHideTopLevelFolders(!$scope.hideTopLevelFolders, loadBookmarks);
+  };
+
+  $scope.setShowThumbnails = function() {
+    _gaq.push(['_trackEvent', 'ChangeSettings', 'ShowThumbnails changed to ' + !$scope.showThumbnails]);
+    bookmarksStorage.setShowThumbnails(!$scope.showThumbnails, loadBookmarks);
   };
 };
 

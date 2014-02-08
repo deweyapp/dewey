@@ -22,9 +22,11 @@ require.config({
     controllers: 'controllers',
     filters: 'filters',
     services: 'services',
+    directives: 'directives',
     'bootstrap-tagsinput': '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
-    'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0'
+    'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
+    'color-thief': '../bower_components/color-thief/js/color-thief'
   },
   shim: {
     'jQuery': {
@@ -52,6 +54,9 @@ require.config({
     },
     'bootstrap-tagsinput-angular': {
       deps: ['bootstrap-tagsinput', 'angular']
+    },
+    'color-thief': {
+      exports: 'ColorThief'
     }
   }
 });
@@ -65,6 +70,7 @@ require([
   'bootstrap-tagsinput',
   'bootstrap-tagsinput-angular',
   'filters/fieldsFilter',
+  'directives/updateBackground',
   'controllers/main'], function($, angular) {
     angular.bootstrap(document, ['bookmarksApp']);
   });

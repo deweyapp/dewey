@@ -454,14 +454,25 @@ nav {
   Link Thumbnail
 -----------------------------*/
 
-.thumbnail {
+.thumbnail-loading, .thumbnail {
   -webkit-filter: brightness(.75);
-  background-color: white;
   background-repeat: no-repeat !important;
-  background-size: 12.5rem 9.375rem, 24px 24px !important;
   background-position: center center;
   display: block;
   height: 9.375rem;
+}
+
+.thumbnail-loading {
+  background-color: white;
+  background-size: 24px 24px !important;
+}
+
+.thumbnail {
+  background-size: 12.5rem 9.375rem !important;
+}
+
+.panel-small .thumbnail-loading, .panel-small .thumbnail {
+  height: 96px;
 }
 
 .thumbnail[title$=".pdf"] {
@@ -498,12 +509,18 @@ nav {
   right: 0;
 }
 
+.panel-small .details:hover:after {
+  top: 96px;
+}
+
 .favicon {
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  background-position: top left;
   height: 16px;
   margin-bottom: .5rem;
+  width: 16px;
+}
+
+.favicon img {
+  height: 16px;
   width: 16px;
 }
 
@@ -551,6 +568,10 @@ h2.title {
   z-index: 1;
   top: 9.375rem;
   right: 0;
+}
+
+.panel-small .tag-links a:hover:after {
+  top: 96px;
 }
 
 .tag-links .badge-custom {
@@ -936,6 +957,14 @@ textarea.form-control {
   background: none;
   margin-right: 10px;
   text-decoration: underline;
+}
+
+/*-----------------------------
+  Color Thief
+-----------------------------*/
+
+body canvas {
+  display: none;
 }
 
 /*-----------------------------
