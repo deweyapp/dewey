@@ -59,7 +59,7 @@
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex)}" ng-click="selectBookmark($index)">
           
           <a href="{{bookmark.url}}" title="{{bookmark.title}}">
-          <span title="{{bookmark.url}}" class="thumbnail" style="background: url('http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url={{bookmark.url}}&delay=1') no-repeat, url(images/loading.gif) no-repeat, white;"></span><!-- thumbnail --></a>
+          <span title="{{bookmark.url}}" class="thumbnail" style="background: url('http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url={{bookmark.url}}&delay=1'), url(images/loading.gif), white;"></span><!-- thumbnail --></a>
           
           <div class="details" ng-click="editBookmark(bookmark)">
             
