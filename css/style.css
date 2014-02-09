@@ -478,7 +478,7 @@ nav {
   z-index: 9999;
 }
 
-.panel .bookmark-link:hover:after {
+.bookmark-link:hover:after {
   content: url(../images/launch-boxed.svg);
   position: absolute;
   height: 2rem;
