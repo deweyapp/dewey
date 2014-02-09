@@ -477,7 +477,7 @@ nav {
 }
 
 .panel .bookmark-link:hover:after {
-  content: url(../images/launch-boxed-01.svg);
+  content: url(../images/launch-boxed.svg);
   position: absolute;
   height: 2rem;
   width: 2rem;
