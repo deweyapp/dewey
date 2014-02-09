@@ -456,6 +456,7 @@ nav {
 .details h2:after,
 .tag-links a:after {
   transition: opacity 300ms ease-out;
+  pointer-events: none;
 }
 
 /*-----------------------------
