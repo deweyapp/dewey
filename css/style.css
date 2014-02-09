@@ -398,6 +398,7 @@ nav {
   width: 12.5rem;
   transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
   -webkit-animation: fadeInUp 300ms ease forwards;
+  -webkit-backface-visibility: hidden;
 }
 
 #list-bookmarks li:hover {
@@ -436,6 +437,7 @@ nav {
 .panel,
 .panel-primary {
   transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
+  -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, 
