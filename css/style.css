@@ -83,7 +83,6 @@ table {
 
 html  {
   background: #F1F1F1;
-  border-top: 1em solid white;
   font-size: 100%;
 }
 
@@ -109,10 +108,10 @@ body {
 
 #settings {
   display: inline-block;
-  position: absolute;
+  position: fixed;
   right: 1rem;
   text-align: left;
-  top: 2rem;
+  top: 1rem;
   white-space: nowrap;
 }
 
@@ -255,11 +254,11 @@ body {
 }
 
 /*-----------------------------
-  Search
+  Nav / Search
 -----------------------------*/
 
 nav {
-  padding: 6.25rem 0;
+  padding: 6.5rem 0 5.25rem 0;
   text-align: center;
 }
 
@@ -309,7 +308,7 @@ nav {
 /*-----------------------------
   Tags Dropdown
 -----------------------------*/
-
+/*
 #tags {
   float: left;
   position: relative;
@@ -342,7 +341,7 @@ nav {
 
 #tags .dropdown-menu > li > a {
   font: 400 .85rem/1.2 "Source Sans Pro", sans-serif;
-}
+}*/
 
 /*-----------------------------
   Sort
@@ -470,6 +469,7 @@ nav {
 .panel-small .thumbnail-loading, 
 .panel-small .thumbnail {
   height: 1.75rem;
+  -webkit-filter: brightness(.85);
 }
 
 /*-----------------------------
@@ -482,7 +482,7 @@ nav {
 }
 
 .panel-small .thumbnail[title$=".pdf"] {
-  background: white !important;
+  background: #F18260 !important;
 }
 
 .favicon[src$=".pdf?defaulticon=lightpng"] {
@@ -501,12 +501,12 @@ nav {
 
 .panel-small .thumbnail[title*="chrome://"], 
 .panel-small .thumbnail[title*="chrome-extension://"]{
-  background: white !important;
+  background: #F18260 !important;
 }
 
 .favicon[src*="chrome://"],
 .favicon[src*="chrome-extension://"] {
-  content: url(http://www.google.com/images/icons/product/chrome-32.png);
+  content: url(../images/chrome-32.png);
 }
 
 /*-----------------------------
