@@ -307,7 +307,7 @@ nav {
 }
 
 /*-----------------------------
-  Tags Dropdown
+  Tags Dropdown - Here for future implementation
 -----------------------------*/
 /*
 #tags {
@@ -437,7 +437,6 @@ nav {
 .panel,
 .panel-primary {
   transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
-  -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, 
@@ -450,14 +449,24 @@ nav {
 }
 
 /*-----------------------------
+  Pseudo Element Fade Ins
+-----------------------------*/
+
+.bookmark-link:after,
+.details h2:after,
+.tag-links a:after {
+  transition: opacity 300ms ease-out;
+}
+
+/*-----------------------------
   Link Thumbnail
 -----------------------------*/
 
 .thumbnail-loading,
 .thumbnail {
   -webkit-filter: brightness(.75);
-  background-repeat: no-repeat;
   background-position: center center;
+  background-repeat: no-repeat;
   display: block;
   height: 9.375rem;
 }
@@ -471,20 +480,25 @@ nav {
 }
 
 .bookmark-link {
-  width: 12.5rem;
+  display: block;
   height: 9.375rem;
   position: absolute;
-  display: block;
+  width: 12.5rem;
   z-index: 9999;
 }
 
-.bookmark-link:hover:after {
+.bookmark-link:after {
   content: url(../images/launch-boxed.svg);
-  position: absolute;
+  opacity: 0;
   height: 2rem;
   width: 2rem;
+  position: absolute;
   top: 0;
   right: 0;
+}
+
+.bookmark-link:hover:after {
+  opacity: 1;
 }
 
 /*-----------------------------
@@ -494,6 +508,7 @@ nav {
 .panel-small .thumbnail-loading {
   background-size: 18px 18px !important;
 }
+
 .panel-small .thumbnail-loading, 
 .panel-small .thumbnail {
   height: 1.75rem;
@@ -504,7 +519,7 @@ nav {
   height: 1.75rem;
 }
 
-.panel-small .bookmark-link:hover:after {
+.panel-small .bookmark-link:after {
   content: url(../images/launch-boxed-white.svg);
   height: 1.75rem;
   width: 1.75rem;
@@ -584,14 +599,19 @@ nav {
   width: 100%;
 }
 
-.details h2:hover:after {
+.details h2:after {
   content: url(../images/edit.svg);
+  opacity: 0;
   position: absolute;
-  top: 9.375rem;
   right: 0;
+  top: 9.375rem;
 }
 
-.panel-small .details h2:hover:after {
+.details h2:hover:after {
+  opacity: 1;
+}
+
+.panel-small .details h2:after {
   top: 1.75rem;
 }
 
@@ -625,14 +645,19 @@ nav {
   text-decoration: underline;
 }
 
-.tag-links a:hover:after {
+.tag-links a:after {
   content: url(../images/search-small.svg);
+  opacity: 0;
   position: absolute;
   top: 9.375rem;
   right: 0;
 }
 
-.panel-small .tag-links a:hover:after {
+.tag-links a:hover:after {
+  opacity: 1;
+}
+
+.panel-small .tag-links a:after {
   top: 1.75rem;
 }
 
@@ -655,10 +680,10 @@ Designed and built with all the love in the world @twitter by @mdo and @fat.
 */
 
 .close {
+  color: #000000;
   float: right;
   font-size: 1.3rem;
   line-height: 1;
-  color: #000000;
   opacity: 0.2;
 }
 
@@ -671,11 +696,11 @@ Designed and built with all the love in the world @twitter by @mdo and @fat.
 }
 
 button.close {
-  padding: 0;
-  cursor: pointer;
+  -webkit-appearance: none;
   background: transparent;
   border: 0;
-  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .modal-open {
@@ -683,15 +708,15 @@ button.close {
 }
 
 .modal {
-  position: fixed;
-  top: 0;
-  right: 0;
   bottom: 0;
-  left: 0;
-  z-index: 1040;
   display: none;
-  overflow: auto;
+  left: 0;
   overflow-y: scroll;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1040;
 }
 
 /*.modal.fade .modal-dialog {
@@ -704,29 +729,29 @@ button.close {
 }*/
 
 .modal-dialog {
-  z-index: 1050;
-  width: auto;
-  padding: .625rem;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
+  padding: .625rem;
+  width: auto;
+  z-index: 1050;
 }
 
 .modal-content {
-  position: relative;
+  background-clip: padding-box;
   background-color: #ffffff;
   outline: none;
-  background-clip: padding-box;
+  position: relative;
 }
 
 .modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
+  -webkit-animation: modal-fade-in .3s;
+  background-color: rgba(37, 46, 51, .95);
   bottom: 0;
   left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
   z-index: 1030;
-  background-color: rgba(37, 46, 51, .95);
-  -webkit-animation: modal-fade-in .3s;
 }
 
 @-webkit-keyframes modal-fade-in {
@@ -852,10 +877,10 @@ textarea.form-control {
 
 .bootstrap-tagsinput input {
   -webkit-appearance: none;
-  color: #555;
   background: #F5F5F5;
   border-radius: 3px;
   border: 1px solid rgba(241,130,96,0);
+  color: #555;
   font-size: .75rem;
   height: 2.5rem;
   min-width: 6.25rem;
@@ -902,15 +927,15 @@ textarea.form-control {
 
 .tag {
   background-color: #6F797E;
-  border: none;
   border-radius: 3px;
+  border: none;
   color: #FFF;
   display: inline-block;
   font-size: .85rem;
+  height: 2.5rem;
   margin: 0 .25rem .25rem 0;
   min-width: 6.25rem;
   padding: .8rem 1rem 1rem;
-  height: 2.5rem;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
@@ -918,9 +943,9 @@ textarea.form-control {
 
 .tag:before {
   content: url(../images/folder.svg);
-  margin-right: 10px;
   display: block;
   float: left;
+  margin-right: 10px;
   margin-top: -3px;
 }
 
