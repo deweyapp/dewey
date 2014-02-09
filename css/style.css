@@ -113,6 +113,7 @@ body {
   text-align: left;
   top: 1rem;
   white-space: nowrap;
+  z-index: 980;
 }
 
 .settings-icon {
@@ -403,9 +404,8 @@ nav {
   -webkit-transform: translateY(-.3rem);
 }
 
-#list-bookmarks li:nth-child(3n+3),
-#list-bookmarks li:nth-child(5n+1) {
-  -webkit-animation-duration: 500ms;
+#list-bookmarks li.panel-primary {
+  -webkit-transform: translateY(-.3rem);
 }
 
 /*-----------------------------
@@ -424,6 +424,11 @@ nav {
   }
 }
 
+#list-bookmarks li:nth-child(3n+3),
+#list-bookmarks li:nth-child(5n+1) {
+  -webkit-animation-duration: 500ms;
+}
+
 /*-----------------------------
   Link Panels
 -----------------------------*/
@@ -433,7 +438,8 @@ nav {
   transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
 }
 
-.panel:hover, .panel-primary {
+.panel:hover, 
+.panel-primary {
   -webkit-transform: translateY(-.5rem);
 }
 
@@ -458,18 +464,48 @@ nav {
   background-size: 24px 24px !important;
 }
 
-.panel-small .thumbnail-loading {
-  background-size: 18px 18px !important;
-}
-
 .thumbnail {
   background-size: 12.5rem 9.375rem !important;
 }
 
+.bookmark-link {
+  width: 12.5rem;
+  height: 9.375rem;
+  position: absolute;
+  display: block;
+  z-index: 9999;
+}
+
+.panel .bookmark-link:hover:after {
+  content: url(../images/launch-boxed-01.svg);
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  top: 0;
+  right: 0;
+}
+
+/*-----------------------------
+  Styles for Hide Thumbnails Option
+-----------------------------*/
+
+.panel-small .thumbnail-loading {
+  background-size: 18px 18px !important;
+}
 .panel-small .thumbnail-loading, 
 .panel-small .thumbnail {
   height: 1.75rem;
   -webkit-filter: brightness(.85);
+}
+
+.panel-small .bookmark-link {
+  height: 1.75rem;
+}
+
+.panel-small .bookmark-link:hover:after {
+  content: url(../images/launch-boxed-white.svg);
+  height: 1.75rem;
+  width: 1.75rem;
 }
 
 /*-----------------------------
@@ -533,18 +569,27 @@ nav {
 
 .details {
   background: white;
-  cursor: pointer;
   padding: 1rem;
 }
 
-.details:hover:after {
+.details h2 {
+  color: inherit;
+  cursor: pointer;
+  font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
+  height: auto;
+  overflow: hidden;
+  padding-bottom: .5rem;
+  width: 100%;
+}
+
+.details h2:hover:after {
   content: url(../images/edit.svg);
   position: absolute;
   top: 9.375rem;
   right: 0;
 }
 
-.panel-small .details:hover:after {
+.panel-small .details h2:hover:after {
   top: 1.75rem;
 }
 
@@ -554,15 +599,6 @@ nav {
   width: 16px;
 }
 
-h2.title {
-  color: inherit;
-  font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
-  height: auto;
-  overflow: hidden;
-  padding-bottom: .5rem;
-  width: 100%;
-}
-    
 /*-----------------------------
   Link Tags
 -----------------------------*/
