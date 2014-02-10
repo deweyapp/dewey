@@ -2,7 +2,7 @@
 
   <div id="settings">
     <a class="settings-icon" data-toggle="dropdown"></a>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown dropdown-menu" role="menu">
       <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
       <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
       <li><a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">Donate</a></li>
@@ -12,16 +12,18 @@
       <ul class="divider">
         <li>Settings:</li>
         <li>
-          <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
-            <label>
-              <input type="checkbox" ng-checked="hideTopLevelFolders" />Hide top-level folders
-            </label>
-          </div>
-          <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
-            <label>
-              <input type="checkbox" ng-checked="showThumbnails" />Show thumbnails
-            </label>
-          </div>
+          <form>
+            <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
+              <label>
+                <input type="checkbox" ng-checked="hideTopLevelFolders" />Hide top-level folders
+              </label>
+            </div>
+            <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
+              <label>
+                <input type="checkbox" ng-checked="showThumbnails" />Show thumbnails
+              </label>
+            </div>
+          </form>
         </li>
       </ul>
       <ul class="divider">
