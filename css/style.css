@@ -564,7 +564,7 @@ nav {
 }
 
 /*-----------------------------
-  Special Styles for Links to Dewey
+  Special Styles for Links to Dewey - Need to be updated when we get final app ID
 -----------------------------*/
 
 .thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
@@ -720,14 +720,16 @@ button.close {
   z-index: 1040;
 }
 
-/*.modal.fade .modal-dialog {
-  -webkit-transform: translateY(-100%);
-  transition: -webkit-transform 250ms ease-out;
+.modal.fade .modal-dialog {
+  opacity: 0;
+  -webkit-transform: translateY(-100px);
+  transition: -webkit-transform 250ms ease-out, opacity 100ms ease;
 }
 
 .modal.in .modal-dialog {
   -webkit-transform: translateY(0);
-}*/
+  opacity: 1;
+}
 
 .modal-dialog {
   margin-left: auto;
@@ -745,7 +747,7 @@ button.close {
 }
 
 .modal-backdrop {
-  -webkit-animation: modal-fade-in .3s;
+  -webkit-animation: modal-fade-in 250ms;
   background-color: rgba(37, 46, 51, .95);
   bottom: 0;
   left: 0;
@@ -810,12 +812,12 @@ button.close {
   clear: both;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .modal-dialog {
     right: auto;
     left: 50%;
     width: 37rem;
-    padding-top: 20vh;
+    padding-top: 15vh;
     padding-bottom: 2rem;
   }
 }
