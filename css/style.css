@@ -437,6 +437,7 @@ nav {
 .panel,
 .panel-primary {
   transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
+  -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, 
