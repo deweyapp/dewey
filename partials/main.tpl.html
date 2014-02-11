@@ -67,19 +67,18 @@
           <a class="bookmark-link" href="{{bookmark.url}}" title="{{bookmark.title}}"></a>
           <div title="{{bookmark.url}}" class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></div>
 
-          <div class="details">
+          <div class="details" ng-click="editBookmark(bookmark)">
             <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" my-update-background crossOrigin="anonymous" />
-            <h2 ng-click="editBookmark(bookmark)">{{bookmark.title}}</h2>
+            <h2><a href="{{bookmark.url}}">{{bookmark.title}}</a></h2>
+
+            <div class="tag-links">
+              <span ng-repeat="tag in bookmark.tag">
+                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
+              </span>
+            </div><!-- tags -->
+
           </div><!-- details -->
-
-          <div class="tag-links">
-            <span ng-repeat="tag in bookmark.tag">
-              <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
-            </span>
-          </div><!-- tags -->
-      
         </div><!-- panel -->
-
       </li><!-- bookmarks in bookmarks -->
     </ul><!-- list-bookmarks -->
   </div><!-- grid -->

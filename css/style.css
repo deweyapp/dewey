@@ -454,17 +454,6 @@ nav {
 }
 
 /*-----------------------------
-  Pseudo Element Fade Ins
------------------------------*/
-
-.bookmark-link:after,
-.details h2:after,
-.tag-links a:after {
-  transition: opacity 300ms ease-out;
-  pointer-events: none;
-}
-
-/*-----------------------------
   Link Thumbnail
 -----------------------------*/
 
@@ -489,15 +478,19 @@ nav {
   height: 9.375rem;
   position: absolute;
   width: 12.5rem;
-  z-index: 9999;
+  z-index: 500;
 }
 
 .bookmark-link:after {
-  content: url(../images/launch-boxed.svg);
-  opacity: 0;
+  content: url(../images/link-boxed.svg);
+  position: absolute;
   height: 2rem;
   width: 2rem;
-  float: right;
+  right: 0;
+  bottom:-2rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
 }
 
 .bookmark-link:hover:after {
@@ -520,12 +513,6 @@ nav {
 
 .panel-small .bookmark-link {
   height: 1.75rem;
-}
-
-.panel-small .bookmark-link:after {
-  content: url(../images/launch-boxed-white.svg);
-  height: 1.75rem;
-  width: 1.75rem;
 }
 
 /*-----------------------------
@@ -590,32 +577,49 @@ nav {
 .details {
   background: white;
   padding: 1rem;
+  position: relative;
+  cursor: pointer;
 }
 
-.details h2 {
+.details h2 a {
   color: inherit;
   cursor: pointer;
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   overflow: hidden;
   padding-bottom: .5rem;
+  text-decoration: none;
   width: 100%;
 }
 
-.details h2:after {
+.details h2 a:after {
+  content: url(../images/link-boxed.svg);
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 300;
+  transition: opacity 300ms ease-out;
+  pointer-events: none;
+}
+
+.details h2 a:hover:after {
+  opacity: 1;
+}
+
+.details:after {
   content: url(../images/edit.svg);
   opacity: 0;
   position: absolute;
   right: 0;
-  top: 9.375rem;
+  top: 0;
+  z-index: 100;
+  transition: opacity 300ms ease-out;
+  pointer-events: none;
 }
 
-.details h2:hover:after {
+.details:hover:after {
   opacity: 1;
-}
-
-.panel-small .details h2:after {
-  top: 1.75rem;
 }
 
 .favicon {
@@ -629,8 +633,7 @@ nav {
 -----------------------------*/
 
 .tag-links {
-  background: white;
-  padding: 0 1rem 1.25rem 1rem;
+  margin-top: 1rem;
 }
 
 .tag-links a {
@@ -649,19 +652,18 @@ nav {
 }
 
 .tag-links a:after {
-  content: url(../images/search-small.svg);
+  content: url(../images/search-boxed.svg);
   opacity: 0;
   position: absolute;
-  top: 9.375rem;
+  top: 0;
   right: 0;
+  z-index: 200;
+  transition: opacity 300ms ease-out;
+  pointer-events: none;
 }
 
 .tag-links a:hover:after {
   opacity: 1;
-}
-
-.panel-small .tag-links a:after {
-  top: 1.75rem;
 }
 
 .tag-links .badge-custom {
