@@ -533,7 +533,7 @@ nav {
   -webkit-filter: brightness(.85);
 }
 
-.panel-small:hover:after {
+.panel-small:after {
   top: 1.75rem;
 }
 
