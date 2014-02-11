@@ -54,24 +54,22 @@ Feel free to use these icons for whatever you want. But if you'd like to help us
 
 ## Get Help or Contribute
 
-**Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) on our issues page.**  
+**Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) on our issues page.** Or [fork Dewey](https://github.com/deweyapp/deweyapp/fork) and create your own features. Send us pull requests!
 
-Or [fork the repo and create your own features](https://github.com/deweyapp/deweyapp/fork).
-
-It would be great if we could occasionally ask you some questions about Dewey. If you’d like to help, please subscribe to our mailing list.
+It would helpful if we could occasionally email you questions about Dewey. If you’d like to help, please subscribe to our mailing list.
 
 [![subscribe](images/subscribe.png)]()
 
 ## Donate
-We made Dewey in our spare time because it's fun to build things. We aren't doing it for money.
+We made Dewey in our spare time because it's fun to build things. We hope you find it useful.
 
-But, if you like Dewey and want to support future development—or just say thank you, please consider making a donation of $5, $10 or $20 (or whatever you can afford) to help us continue to improve it.
+If you like Dewey and want to support future development—or just say thank you, **please consider making a donation of $5, $10 or $20** (or whatever you can afford) to help us continue to improve it.
 
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
-`I think you can make custom PayPal buttons, right? If so, we could use this:`
+[![donate](images/donate.png)]()  
 
-[![donate](images/donate.png)]()
+I think you can make custom PayPal buttons, right? If so, we could use this:
 
 ## Creators
 ###Denis Gladkikh - Development
