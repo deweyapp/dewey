@@ -364,7 +364,7 @@ nav {
 #sort a {
   color: #CCC;
   cursor: pointer;
-  transition: color .25s ease;
+  transition: color 250ms ease;
 }
 
 #sort a:hover, #sort a:focus {
@@ -395,18 +395,20 @@ nav {
   list-style: none;
   margin: 1rem;
   vertical-align: top;
+  position: relative;
+  top: 0;
   width: 12.5rem;
-  transition: -webkit-transform 300ms cubic-bezier(.65, -1, .25, 2.5);
+  transition: top 300ms cubic-bezier(.65, -1, .25, 2.5);
   -webkit-animation: fadeInUp 300ms ease forwards;
   -webkit-backface-visibility: hidden;
 }
 
 #list-bookmarks li:hover {
-  -webkit-transform: translateY(-.3rem);
+  top: -.3rem;
 }
 
 #list-bookmarks li.panel-primary {
-  -webkit-transform: translateY(-.3rem);
+  top: -.3rem;
 }
 
 /*-----------------------------
@@ -436,13 +438,15 @@ nav {
 
 .panel,
 .panel-primary {
-  transition: -webkit-transform 200ms cubic-bezier(.65, 0, .75, 1);
+  position: relative;
+  top: 0;
+  transition: top 200ms cubic-bezier(.65, 0, .75, 1);
   -webkit-backface-visibility: hidden;
 }
 
 .panel:hover, 
 .panel-primary {
-  -webkit-transform: translateY(-.5rem);
+  top: -.5rem;
 }
 
 .panel:focus {
@@ -469,7 +473,6 @@ nav {
   -webkit-filter: brightness(.75);
   background-position: center center;
   background-repeat: no-repeat;
-  display: block;
   height: 9.375rem;
 }
 
@@ -494,9 +497,7 @@ nav {
   opacity: 0;
   height: 2rem;
   width: 2rem;
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
 }
 
 .bookmark-link:hover:after {
