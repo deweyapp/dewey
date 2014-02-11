@@ -579,20 +579,20 @@ nav {
 }
 
 /*-----------------------------
-  Special Styles for Links to Dewey - Need to be updated when we get final app ID
+  Special Styles for Links to Dewey - Need to be updated when we get final app ID - @ line 1071, also
 -----------------------------*/
 
-.thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
+.thumbnail[title*="lppajbkmaemajobcicdedaaahcbokdng"] {
   background: url(../images/dewey-small.png) !important;
   -webkit-filter: brightness(1) !important;
   background-size: 12.5rem 9.375rem !important;
 }
 
-.panel-small .thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
+.panel-small .thumbnail[title*="lppajbkmaemajobcicdedaaahcbokdng"] {
   background: #252E33 !important;
 }
 
-.favicon[src*="ajkkkhffamfoccamdjcikfmcklpmmomk"] {
+.favicon[src*="lppajbkmaemajobcicdedaaahcbokdng"] {
   content: url(http://deweyapp.io/images/favicon.png);
 }
 
@@ -1068,7 +1068,7 @@ body canvas {
 
 @media only screen and (min-width: 135rem) {
   html { font-size: 125%; }
-  .thumbnail[title*="ajkkkhffamfoccamdjcikfmcklpmmomk"] { background: url(../images/dewey-big.png) !important; }
+  .thumbnail[title*="lppajbkmaemajobcicdedaaahcbokdng"] { background: url(../images/dewey-big.png) !important; }
 }
 
 @media only screen and (min-width: 100rem) {
