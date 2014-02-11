@@ -728,7 +728,7 @@ button.close {
 .modal.fade .modal-dialog {
   opacity: 0;
   -webkit-transform: translateY(-100px);
-  transition: -webkit-transform 250ms ease-out, opacity 100ms ease;
+  transition: -webkit-transform 250ms ease-out, opacity 150ms ease;
 }
 
 .modal.in .modal-dialog {
