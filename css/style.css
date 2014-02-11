@@ -184,7 +184,8 @@ body {
 .review:before, 
 .feedback:before, 
 .donate:before,
-.email:before {
+.email:before,
+.docs:before {
   display: inline-block;
   height: 1rem;
   margin: 0 .625rem 3px 0;
@@ -215,6 +216,11 @@ body {
 
 .email:before {
   content: url(../images/contact.svg);
+}
+
+.docs:before {
+  content: url(../images/docs.svg);
+  margin-top: -1px;
 }
 
 .divider {
