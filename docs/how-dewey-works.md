@@ -1,5 +1,7 @@
 #How Dewey Works
 
+⟵ [Back to README](../readme.md)
+
 **Tagging:**
 
 - Dewey treats folders in your Chrome Bookmark Manager as tags. To edit those you'll need to go to your Bookmark Manager. (Mac – Opt+Cmd+B) (Windows – Ctrl+Shift+B)
