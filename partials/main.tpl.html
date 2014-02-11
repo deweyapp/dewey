@@ -64,10 +64,10 @@
       <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
        
-          <div class="edit-icon" ng-click="editBookmark(bookmark)"></div>
-          <a class="bookmark-link" href="{{bookmark.url}}"></a>
+          <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>
+          <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
 
-          <div title="{{bookmark.url}}" class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></div>
+          <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></div>
 
           <div class="details">
             
@@ -76,7 +76,7 @@
           
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
-                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
+                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)" title="Search Tag">{{tag.text}}</a>
               </span>
             </div><!-- tags -->
 
