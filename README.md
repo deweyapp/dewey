@@ -51,7 +51,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 It would helpful if we could occasionally email you questions about Dewey. If you’d like to help, please subscribe to our mailing list.
 
-[![subscribe](images/subscribe.png)]()
+[![subscribe](images/subscribe.png)](http://eepurl.com/OeXtX)
 
 ## Donate
 We made Dewey in our spare time because it's fun to build things. We hope you find it useful.
