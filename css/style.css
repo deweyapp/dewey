@@ -453,6 +453,52 @@ nav {
   outline: none;
 }
 
+.bookmark-link {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  z-index: 500;
+}
+
+.panel:after {
+  content: url(../images/edit-gray.svg);
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  top: 9.375rem;
+  right: 0;
+  opacity: 0;
+}
+
+.panel:hover:after {
+  opacity: 1;
+}
+
+.edit-icon {
+  content: url(../images/edit.svg);
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  top: 9.375rem;
+  right: 0;
+  opacity: 0;
+  z-index: 550;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  opacity: 1;
+}
+
+.panel:after,
+.edit-icon {
+  transition: opacity 300ms ease;
+}
+
 /*-----------------------------
   Link Thumbnail
 -----------------------------*/
@@ -473,30 +519,6 @@ nav {
   background-size: 12.5rem 9.375rem !important;
 }
 
-.bookmark-link {
-  display: block;
-  height: 9.375rem;
-  position: absolute;
-  width: 12.5rem;
-  z-index: 500;
-}
-
-.bookmark-link:after {
-  content: url(../images/link-boxed.svg);
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  right: 0;
-  bottom:-2rem;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 300ms ease-out;
-}
-
-.bookmark-link:hover:after {
-  opacity: 1;
-}
-
 /*-----------------------------
   Styles for Hide Thumbnails Option
 -----------------------------*/
@@ -511,8 +533,12 @@ nav {
   -webkit-filter: brightness(.85);
 }
 
-.panel-small .bookmark-link {
-  height: 1.75rem;
+.panel-small:hover:after {
+  top: 1.75rem;
+}
+
+.panel-small .edit-icon {
+  top: 1.75rem;
 }
 
 /*-----------------------------
@@ -579,47 +605,16 @@ nav {
   padding: 1rem;
   position: relative;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.details h2 a {
-  color: inherit;
-  cursor: pointer;
+.details h2 {
+  color: #555;
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   overflow: hidden;
   padding-bottom: .5rem;
-  text-decoration: none;
   width: 100%;
-}
-
-.details h2 a:after {
-  content: url(../images/link-boxed.svg);
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 300;
-  transition: opacity 300ms ease-out;
-  pointer-events: none;
-}
-
-.details h2 a:hover:after {
-  opacity: 1;
-}
-
-.details:after {
-  content: url(../images/edit.svg);
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 100;
-  transition: opacity 300ms ease-out;
-  pointer-events: none;
-}
-
-.details:hover:after {
-  opacity: 1;
 }
 
 .favicon {
@@ -634,6 +629,8 @@ nav {
 
 .tag-links {
   margin-top: 1rem;
+  z-index: 560;
+  position: relative;
 }
 
 .tag-links a {
@@ -651,20 +648,24 @@ nav {
   text-decoration: underline;
 }
 
+/* Can't get this working because
 .tag-links a:after {
   content: url(../images/search-boxed.svg);
-  opacity: 0;
   position: absolute;
+  height: 2rem;
+  width: 2rem;
   top: 0;
   right: 0;
-  z-index: 200;
+  z-index: 570;
   transition: opacity 300ms ease-out;
+  opacity: 0;
   pointer-events: none;
 }
 
 .tag-links a:hover:after {
   opacity: 1;
 }
+*/
 
 .tag-links .badge-custom {
   color: #777;

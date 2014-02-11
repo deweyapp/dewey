@@ -3,12 +3,12 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<rect fill="#FFFFFF" width="32" height="32"/>
+<rect opacity="0.1" fill="#F18260" width="32" height="32"/>
 <g>
 	<polygon fill="#F18260" points="8,24 13,22 10,19 	"/>
 	
-		<rect x="13.9" y="11" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 16.0844 38.5229)" fill="#F18260" width="4.2" height="9.9"/>
+		<rect x="13.9" y="11" transform="matrix(0.7071 0.7071 -0.7071 0.7071 15.9656 -6.6823)" fill="#F18260" width="4.2" height="9.9"/>
 	
-		<rect x="20.1" y="8.4" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -1.1279 18.2785)" fill="#F18260" width="2.8" height="4.2"/>
+		<rect x="20.1" y="8.4" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 44.1265 2.723)" fill="#F18260" width="2.8" height="4.2"/>
 </g>
 </svg>

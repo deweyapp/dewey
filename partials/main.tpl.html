@@ -63,14 +63,17 @@
     <ul id="list-bookmarks">
       <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
-          
+       
+          <div class="edit-icon" ng-click="editBookmark(bookmark)"></div>
           <a class="bookmark-link" href="{{bookmark.url}}" title="{{bookmark.title}}"></a>
+          
           <div title="{{bookmark.url}}" class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></div>
 
-          <div class="details" ng-click="editBookmark(bookmark)">
+          <div class="details">
+            
             <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" my-update-background crossOrigin="anonymous" />
-            <h2><a href="{{bookmark.url}}">{{bookmark.title}}</a></h2>
-
+            <h2>{{bookmark.title}}</h2>
+          
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
                 <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
