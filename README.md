@@ -44,13 +44,6 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 [![install](images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
-##Icons
-All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
-
-![icons](webstore/icons.png)
-
-Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
-###[Download](link.com) - one Adobe Illustrator file with all icons
 
 ## Get Help or Contribute
 
@@ -84,8 +77,13 @@ I think you can make custom PayPal buttons, right? If so, we could use this:
 - [Twitter - @jmwlsn](https://twitter.com/jmwsln)
 - [github.com/jamiewilson](https://github.com/jamiewilson)
 
-##Special thanks to [Snapito](http://snapito.com)
-We'd like to thank **[Snapito](http://snapito.com)** for their generosity in helping us generate screenshots. If you are looking for a screenshot/thumbnail service to generate screenshots from URLs, definitely give [Snapito](http://snapito.com) a try. Their API is super easy and they are super friendly. 
+##Icons
+All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
+
+![icons](webstore/icons.png)
+
+Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
+###[Download](link.com) - one Adobe Illustrator file with all icons
 
 ## Built with…
 To build this application we used following Open Source libraries and resources:
@@ -98,6 +96,10 @@ To build this application we used following Open Source libraries and resources:
 - [UI Bootstrap](http://angular-ui.github.io/bootstrap/) – Custom build with patch for Modal dialog (from branch _bootstrap3_bis2_modalPatch_)
 - [bootstrap-tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/bootstrap3/) – With small modification of `bootstrap-tagsinput-angular`  
 - [getFavicon](http://g.etfv.co/)
+
+##Special thanks to [Snapito](http://snapito.com)
+We'd like to thank **[Snapito](http://snapito.com)** for their generosity in helping us generate screenshots. If you are looking for a screenshot/thumbnail service to generate screenshots from URLs, definitely give [Snapito](http://snapito.com) a try. Their API is super easy and they are super friendly. 
+
 
 ## License
 Apache License, Version 2.0
