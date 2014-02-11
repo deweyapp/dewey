@@ -65,8 +65,8 @@
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
        
           <div class="edit-icon" ng-click="editBookmark(bookmark)"></div>
-          <a class="bookmark-link" href="{{bookmark.url}}" title="{{bookmark.title}}"></a>
-          
+          <a class="bookmark-link" href="{{bookmark.url}}"></a>
+
           <div title="{{bookmark.url}}" class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;"></div>
 
           <div class="details">
