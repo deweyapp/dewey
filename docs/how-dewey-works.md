@@ -1,6 +1,6 @@
 #How Dewey Works
 
-⟵ [Back to README](../readme.md)
+⟵ [Back to README](../README.md)
 
 **Tagging:**
 
