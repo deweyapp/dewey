@@ -11,7 +11,7 @@ function(_, bookmarksApp) { "use strict";
 */
 var BookmarksStorage = function () {
 
-  var bookmarks = [];
+  var bookmarks = {};
   var customTagsStorage = [];
 
   /*
@@ -126,7 +126,7 @@ var BookmarksStorage = function () {
 
               fillBookmarkWithCustomTags(bookmark);
 
-              bookmarks.push(bookmark);
+              bookmarks[bookmark.id] = bookmark;
           }
       });
     }
@@ -135,10 +135,10 @@ var BookmarksStorage = function () {
   /*
   * Add custom tags to bookmarks.
   */
-  var fillCustomTags = function(bookmarks, customTags) {
+  var fillCustomTags = function(customTags) {
     _.each(bookmarks, function(bookmark) {
       // Remove all custom tags from bookmark first
-      bookmarks.tag = _.filter(bookmarks.tag, function (t) { return t.custom === false; });
+      bookmark.tag = _.filter(bookmark.tag, function (t) { return t.custom === false; });
       saveCustomTags(bookmark.url, customTags[bookmark.url]);
     });
   };
@@ -148,7 +148,7 @@ var BookmarksStorage = function () {
       if (changes.hasOwnProperty(key) && key === 'customTags') {
         customTags = changes[key].newValue;
         if (customTags) {
-          fillCustomTags(bookmarks, customTags);
+          fillCustomTags(customTags);
         }
       }
     }
@@ -158,7 +158,7 @@ var BookmarksStorage = function () {
   * Get all bookmarks with all custom tags.
   */
   this.getAll = function(callback) {
-    bookmarks = [];
+    bookmarks = {};
     this.loadSettings(function(settings) {
       // At first get custom tags and after this start bookmarks traversal.
       enumerateAllCustomTagChunks({n: true}, -1, function() {
@@ -175,7 +175,7 @@ var BookmarksStorage = function () {
               }
               chrome.storage.sync.remove('customTags');
             }
-            callback(bookmarks, settings);
+            callback(_.values(bookmarks), settings);
           });
         });
       });
