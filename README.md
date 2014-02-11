@@ -2,23 +2,15 @@
 
 # Dewey. Better Chrome Bookmarks.
 
-####Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) that adds custom tags, screenshots, and smarter search to your Chrome bookmarks. Created by [@outcoldman](https://github.com/outcoldman) and [@jamiewilson](https://github.com/jamiewilson).
+###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) for tagging, searching and sorting your Chrome bookmarks.  
   
   
-  
-With Dewey you can:
+**With Dewey you can:**
 
-- Search your bookmarks quickly by keyword
-- Search by Title, Tag, or URL by using one or more of the search operators. e.g. `tag:blogs` would only return bookmarks tagged `blogs`.
-- See screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
-- Sort your bookmarks and your search results by Date, Title, or URL
-- Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
-- When one of you bookmarks is highlighted, hit enter to visit the link.
-- Click the Title of the bookmark to open the edit panel.
-- Dewey treats folders in Chrome's Bookmark Manager as tags. To edit those you'll need to go to your Bookmark Manager.
-- You can also add custom tags only visibile to Dewey.
-- If you'd like Dewey to ignore Chrome's top-level folders (Bookmarks Bar, Other Bookmarks and Mobile Bookmarks) click the Info icon in the top right corner and check the "Hide top-level folders" box
-
+- Add custom tags
+- Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
+- Search and sort in a much smarter and faster way.
+- [Learn More](docs/how-dewey-works.md)
 
 ![screenshot](webstore/screenshot-1.jpg)
 
@@ -45,10 +37,12 @@ There are several ways to search your bookmarks with Dewey:
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
+[Learn more about how Dewey works.](docs/how-dewey-works.md)
+
 
 ## Install on the Chrome Web Store
 
-[![install](http://drrop.it/files/52ecb39eda9f6.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![install](images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
@@ -60,9 +54,13 @@ Feel free to use these icons for whatever you want. But if you'd like to help us
 
 ## Get Help or Contribute
 
-####Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) in the Github Issues section of this project.
+**Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) on our issues page.**  
 
-Or [fork the repo and create your own features](https://github.com/deweyapp/deweyapp/fork). Send us a pull request and we'll be thrilled to review and integrate. But only if it's awesome.
+Or [fork the repo and create your own features](https://github.com/deweyapp/deweyapp/fork).
+
+It would be great if we could occasionally ask you some questions about Dewey. If you’d like to help, please subscribe to our mailing list.
+
+[![subscribe](images/subscribe.png)]()
 
 ## Donate
 We made Dewey in our spare time because it's fun to build things. We aren't doing it for money.
@@ -70,6 +68,10 @@ We made Dewey in our spare time because it's fun to build things. We aren't doin
 But, if you like Dewey and want to support future development—or just say thank you, please consider making a donation of $5, $10 or $20 (or whatever you can afford) to help us continue to improve it.
 
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
+
+`I think you can make custom PayPal buttons, right? If so, we could use this:`
+
+[![donate](images/donate.png)]()
 
 ## Creators
 ###Denis Gladkikh - Development
