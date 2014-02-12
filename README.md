@@ -60,10 +60,6 @@ If you like Dewey and want to support future development—or just say thank you
 
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
-[![donate](images/donate.png)]()  
-
-I think you can make custom PayPal buttons, right? If so, we could use this:
-
 ## Creators
 ###Denis Gladkikh - Development
 
