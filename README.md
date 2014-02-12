@@ -2,7 +2,7 @@
 
 # Dewey. Better Chrome Bookmarks.
 
-###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) for tagging, searching and sorting your Chrome bookmarks.  
+###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) for tagging, searching and sorting your Chrome bookmarks.  
   
   
 **With Dewey you can:**
@@ -42,7 +42,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 ## Install on the Chrome Web Store
 
-[![install](images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![install](images/install.png)](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 
 ## Get Help or Contribute
