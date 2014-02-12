@@ -42,7 +42,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 ## Install on the Chrome Web Store
 
-[![install](images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![install](docs/images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 
 ## Get Help or Contribute
@@ -51,14 +51,14 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 It would be helpful if we could occasionally email you questions about Dewey. If you're interested, please subscribe to our mailing list.
 
-[![subscribe](images/subscribe.png)](http://eepurl.com/OeXtX)
+[![subscribe](docs/images/subscribe.png)](http://eepurl.com/OeXtX)
 
 ## Donate
 We made Dewey in our spare time because it's fun to build things. We hope you find it useful.
 
 If you like Dewey and want to support future development—or just say thank you, **please consider making a donation of $5, $10 or $20** (or whatever you can afford) to help us continue to improve it.
 
-[![PayPal](images/donate.png "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
+[![PayPal](docs/images/donate.png "PayPal Donation")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=outcoldman%40gmail%2ecom&lc=US&item_name=Donation%20for%20supporting%20bookmarks%20application&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
 ## Creators
 ###Denis Gladkikh - Development
@@ -76,7 +76,7 @@ If you like Dewey and want to support future development—or just say thank you
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
 
-[![icons](images/icons.png)](http://lyrv.lt/Fhno6AJugp)
+[![icons](docs/images/icons.png)](http://lyrv.lt/Fhno6AJugp)
 
 Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
 ###[Download](http://lyrv.lt/Fhno6AJugp) - one Adobe Illustrator file with all icons
