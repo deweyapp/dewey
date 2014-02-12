@@ -758,7 +758,6 @@ button.close {
 }
 
 .modal-backdrop {
-  -webkit-animation: modal-fade-in 250ms;
   background-color: rgba(37, 46, 51, .95);
   bottom: 0;
   left: 0;
@@ -768,9 +767,22 @@ button.close {
   z-index: 1030;
 }
 
+.modal-backdrop.fade {
+  -webkit-animation: modal-fade-out 250ms;
+}
+
+.modal-backdrop.in {
+  -webkit-animation: modal-fade-in 250ms;
+}
+
 @-webkit-keyframes modal-fade-in {
   from {opacity: 0}
   to {opacity: 1}
+}
+
+@-webkit-keyframes modal-fade-out {
+  from {opacity: 1}
+  to {opacity: 0}
 }
 
 .modal-header {
