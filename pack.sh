@@ -15,6 +15,12 @@ zip -r webstore/published/dewey\($(date +"%F")\).zip ./ \
   -i images/docs.svg \
   -i images/launch.svg \
   -i images/folder.svg \
+  -i images/options.svg \
+  -i images/pdf.svg \
+  -i images/chrome.svg \
+  -i images/chrome-32.png \
+  -i images/dewey-small.png \
+  -i images/dewey-big.png \
   -i bower_components/angular/angular.min.js \
   -i bower_components/angular-ui-router/release/angular-ui-router.min.js \
   -i bower_components/jquery/jquery.min.js \

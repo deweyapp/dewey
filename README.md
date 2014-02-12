@@ -103,6 +103,8 @@ Apache License, Version 2.0
 ***
   
 ### Changelog
+- 2.0.1 (February 12 2014) - Update CSS styles to Dewey thumbnails.
+- 2.0 (February 11 2014) - Redesign, rebranding. First Dewey version.
 - 1.1.2 (October 30 2013) - Use bookmarks url as identity instead of id (each chrome installation has it is own identities). Chrome storage has limitation on item size, changed the way I store custom tags in storage, split it by chunks.
 - 1.1.1 (October 29 2013) - Fix issue #1.
 - 1.1 (October 28 2013) - Updated bookmark edit dialog with options to edit title, custom tags and delete bookmark.
