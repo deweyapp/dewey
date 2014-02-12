@@ -1,8 +1,8 @@
-[![screenshot](webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![screenshot](webstore/promo-1400x560.jpg)](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 # Dewey. Better Chrome Bookmarks.
 
-###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) for tagging, searching and sorting your Chrome bookmarks.  
+###Dewey is a [Chrome app](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) for tagging, searching and sorting your Chrome bookmarks.  
   
   
 **With Dewey you can:**
@@ -42,7 +42,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 ## Install on the Chrome Web Store
 
-[![install](docs/images/install.png)](https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
+[![install](docs/images/install.png)](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
 
 
 ## Get Help or Contribute
@@ -103,11 +103,12 @@ Apache License, Version 2.0
 ***
   
 ### Changelog
+- 2.0.1 (February 12 2014) - Update CSS styles to Dewey thumbnails.
+- 2.0 (February 11 2014) - Redesign, rebranding. First Dewey version.
 - 1.1.2 (October 30 2013) - Use bookmarks url as identity instead of id (each chrome installation has it is own identities). Chrome storage has limitation on item size, changed the way I store custom tags in storage, split it by chunks.
 - 1.1.1 (October 29 2013) - Fix issue #1.
 - 1.1 (October 28 2013) - Updated bookmark edit dialog with options to edit title, custom tags and delete bookmark.
 - 1.0 (October 13 2013) - Ready for use first version of application in Chrome Web Store.
 - 0.1 (September 27 2013) - First prototype on [Seattle Google Developer Groups Dev Fest 2013](http://www.meetup.com/seattle-gdg/events/125948972/). ([second place](http://www.flickr.com/photos/pahphotos/10015447933/))
-
 
 
