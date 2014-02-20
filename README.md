@@ -49,6 +49,10 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 **Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) on our issues page.** Or [fork Dewey](https://github.com/deweyapp/deweyapp/fork) and create your own features. Send us pull requests!
 
+Also, chat with us on Gitter!  
+
+[![Gitter chat](https://badges.gitter.im/deweyapp.png)](https://gitter.im/deweyapp)
+
 It would be helpful if we could occasionally email you questions about Dewey. If you're interested, please subscribe to our mailing list.
 
 [![subscribe](docs/images/subscribe.png)](http://eepurl.com/OeXtX)
