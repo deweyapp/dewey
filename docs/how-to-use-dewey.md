@@ -2,7 +2,7 @@
 - [Installing](#installing)
 - [Launching](#launching)
 - [Navigating](#navigating)
-- [Searching / Sorting](#search)
+- [Searching & Sorting](#search)
 - [Editing](#editing)
 - [Tagging](#tagging)
 - [Options](#options)
@@ -57,7 +57,7 @@ Clicking this will take you too Chrome's App page which shows you all your apps,
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
 - When one of you bookmarks is highlighted, hit enter to visit the link.
 
-# [Searching / Sorting](id:search)
+# [Searching & Sorting](id:search)
 There are several ways to search your bookmarks with Dewey:
 
 - A standard search returns anything with that word in the Tag, Title or URL.
