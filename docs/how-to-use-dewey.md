@@ -53,10 +53,12 @@ Clicking this will take you too Chrome's App page which shows you all your apps,
 
 
 #Navigating
+Dewey organizes your bookmarks into a grid that continues to load as you scroll down. The layout is also fully responsive, so it still works well even if you need to use a narrow browser window.
 
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
-- When one of you bookmarks is highlighted, hit enter to visit the link.
+- When one of you bookmarks is highlighted with the bottom orange bar, hit enter to visit the link.
 
+![image](images/grid.jpg)
 
 #Searching and Sorting
 There are several ways to search your bookmarks with Dewey:
@@ -67,6 +69,9 @@ There are several ways to search your bookmarks with Dewey:
 - Add `url:` before a word to limit results to URLs that contain that word.
 - Sort your bookmarks and your search results by Date, Title, or URL
 - Clicking a tag on a bookmark will run search of that tag
+
+![image](images/search.jpg)
+
 
 
 #Editing

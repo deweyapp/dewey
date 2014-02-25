@@ -9,8 +9,8 @@
 
 - Add custom tags
 - Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
-- Search and sort in a much smarter and faster way.
-- [More Features](docs/how-to-use-dewey.md)
+- Search and sort in a much smarter and faster way
+- [More on how to use Dewey](docs/how-to-use-dewey.md) →
 
 ![screenshot](webstore/screenshot-1.jpg)
 
@@ -37,7 +37,7 @@ There are several ways to search your bookmarks with Dewey:
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
-[Learn more about how to use Dewey.](docs/how-to-use-dewey.md)
+####[More on how to use Dewey](docs/how-to-use-dewey.md) →
 
 
 ## Install on the Chrome Web Store
