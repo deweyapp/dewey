@@ -2,7 +2,7 @@
 - [Installing](#installing)
 - [Launching](#launching)
 - [Navigating](#navigating)
-- [Searching & Sorting](#search)
+- [Searching and Sorting](#search)
 - [Editing](#editing)
 - [Tagging](#tagging)
 - [Options](#options)
@@ -28,7 +28,7 @@ We highly recommend [Dewey Launcher](https://chrome.google.com/webstore/detail/d
 ![image](images/dewey-launcher.png)
 
 ##2.  Put Dewey in your Bookmarks Bar
-Make sure your [Bookmarks Bar](https://support.google.com/chrome/answer/95745?hl=en0) is visible. With Dewey open, drag the little document icon in the Search Bar onto the Bookmarks Bar. This is my preferred method. 
+Make sure your [Bookmarks Bar](https://support.google.com/chrome/answer/95745?hl=en0) is visible. With Dewey open, drag the little document icon in the Search Bar onto the Bookmarks Bar. This is my preferred method.
 
 ![image](images/omnibox-icon.png)
 
@@ -41,7 +41,7 @@ You can simply enter `chrome://apps` in the search box and hit enter.
 
 Right click your bookmarks bar (if it's not visible, press Cmd+Shift+B):
 
-![image](images/show-apps-shortcut.png)  
+![image](images/show-apps-shortcut.png)
 
 Selecting Show Apps Shortcut will put this in your bookmarks bar:
 
@@ -57,7 +57,8 @@ Clicking this will take you too Chrome's App page which shows you all your apps,
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
 - When one of you bookmarks is highlighted, hit enter to visit the link.
 
-# [Searching & Sorting](id:search)
+
+# [Searching and Sorting](id:search)
 There are several ways to search your bookmarks with Dewey:
 
 - A standard search returns anything with that word in the Tag, Title or URL.
@@ -82,7 +83,7 @@ There are several ways to search your bookmarks with Dewey:
 
 
 # [Options](id:options)
-There are two options for Dewey. 
+There are two options for Dewey.
 
 ![image](images/options.png)
 
