@@ -34,6 +34,10 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
       $modalInstance.close(null);
     }
   };
+
+  setTimeout(function() {
+    $('.modal-body input[autofocus]').focus();
+  }, 350);
 };
 
 bookmarksApp.controller(
