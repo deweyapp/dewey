@@ -2,7 +2,7 @@
 - [Installing](#installing)
 - [Launching](#launching)
 - [Navigating](#navigating)
-- [Searching / Sorting](#search-sort)
+- [Searching / Sorting](#search)
 - [Editing](#editing)
 - [Tagging](#tagging)
 - [Options](#options)
@@ -10,7 +10,7 @@
 
 
 
-#[Installing](id:installing)
+# [Installing](id:installing)
 ## via Chrome Web Store
 
 [![install](images/install.png)](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm)
@@ -18,7 +18,7 @@
 You can also add Dewey to Chrome directly from our website, [deweyapp.io](http:/deweyapp.io).
 
 
-#[Launching](id:launching)
+# [Launching](id:launching)
 
 There are several ways to open Dewey.
 
@@ -52,12 +52,12 @@ Clicking this will take you too Chrome's App page which shows you all your apps,
 ![image](images/apps-page.png)
 
 
-#[Navigating](id:navigating)
+# [Navigating](id:navigating)
 
 - Use the Left/Right/Tab keyboard keys to navigate through the grid of bookmarks.
 - When one of you bookmarks is highlighted, hit enter to visit the link.
 
-#[Searching / Sorting](id:search-sort)
+# [Searching / Sorting](id:search)
 There are several ways to search your bookmarks with Dewey:
 
 - A standard search returns anything with that word in the Tag, Title or URL.
@@ -68,7 +68,7 @@ There are several ways to search your bookmarks with Dewey:
 - Clicking a tag on a bookmark will run search of that tag
 
 
-#[Editing](id:editing)
+# [Editing](id:editing)
 - Clicking the Title of a bookmark opens the edit window.
 - Within the edit window you can edit the Title, URL and custom tags
 - You can also delete a bookmark from Chrome.
@@ -76,12 +76,12 @@ There are several ways to search your bookmarks with Dewey:
 ![image](images/editing.jpg)
 
 
-#[Tagging](id:tagging)
+# [Tagging](id:tagging)
 
 - Dewey treats folders in your Chrome Bookmark Manager as tags. To edit those you'll need to go to your Bookmark Manager. (Mac – Opt+Cmd+B) (Windows – Ctrl+Shift+B)
 
 
-#[Options](id:options)
+# [Options](id:options)
 There are two options for Dewey. 
 
 ![image](images/options.png)
