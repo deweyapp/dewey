@@ -28,7 +28,7 @@ We highly recommend [Dewey Launcher](https://chrome.google.com/webstore/detail/d
 ![image](images/dewey-launcher.png)
 
 ##2.  Put Dewey in your Bookmarks Bar
-Make sure your [Bookmarks Bar](https://support.google.com/chrome/answer/95745?hl=en0) is visible. With Dewey open, drag the little document icon in the Search Bar onto the Bookmarks Bar. This is my preferred method.
+Make sure your [Bookmarks Bar](https://support.google.com/chrome/answer/95745?hl=en0) is visible. With Dewey open in tab, drag the little document icon in the Search Bar onto the Bookmarks Bar.
 
 ![image](images/omnibox-icon.png)
 
