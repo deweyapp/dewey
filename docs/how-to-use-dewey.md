@@ -27,6 +27,21 @@ We highly recommend [Dewey Launcher](https://chrome.google.com/webstore/detail/d
 
 ![image](images/dewey-launcher.png)
 
+##Dewey Launcher with Keyboard Shortcut
+With Dewey Launcher installed, you can now create a keyboard shortcut to launch Dewey.
+
+**Step 1.** Go to your extensions page via Windows > Extensions, or click on the 3-bar icon in the top right to Tools > Extensions.  
+**Step 2.** On the extensions page, scroll to the bottom and click the "keyboard shortcuts" link:
+
+
+![image](images/keyboard-shortcut.png)  
+
+**Step 3.** Located the Dewey Launcher extension and enter your preferred keyboard shortcut:  
+
+![image](images/keyboard-shortcut-set.png)
+
+
+
 ##2.  Put Dewey in your Bookmarks Bar
 Make sure your [Bookmarks Bar](https://support.google.com/chrome/answer/95745?hl=en0) is visible. With Dewey open in tab, drag the little document icon in the Search Bar onto the Bookmarks Bar.
 
