@@ -293,7 +293,7 @@ nav {
 
 .search-group input::-webkit-input-placeholder {
   color: gainsboro;
-  font: 200 2.25rem 'Source Sans Pro', sans-serif;
+  font: 200 2.25rem "Source Sans Pro", sans-serif;
 }
 
 .search-group input[type="search"]:focus {
