@@ -5,11 +5,11 @@
     "url": "https://github.com/deweyapp/deweyapp"
   },
   "devDependencies": {
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.8.0"
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-contrib-jshint": "^0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt"
   }
 }
