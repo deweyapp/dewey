@@ -51,7 +51,7 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 
 Also, chat with us on Gitter!  
 
-[![Gitter chat](https://badges.gitter.im/deweyapp.png)](https://gitter.im/deweyapp)
+[![Gitter chat](https://badges.gitter.im/deweyapp/deweyapp.png)](https://gitter.im/deweyapp/deweyapp)
 
 It would be helpful if we could occasionally email you questions about Dewey. If you're interested, please subscribe to our mailing list.
 
