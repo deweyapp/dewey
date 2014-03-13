@@ -5,7 +5,7 @@
 -----------------------------*/
 
 /*
-http://meyerweb.com/eric/tools/css/reset/ 
+http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
 */
@@ -17,9 +17,9 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption,
-tbody, tfoot, thead, tr, th, td, article, aside, 
+tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, 
+footer, header, hgroup, menu, nav, output,
 ruby, section, summary,time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -31,7 +31,7 @@ ruby, section, summary,time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, main, menu, nav, section {
   display: block;
 }
@@ -82,12 +82,12 @@ table {
 }
 
 html  {
-  background: #F1F1F1;
+  background: hsl(0, 0%, 95%);
   font-size: 100%;
 }
 
 body {
-  color: #555;
+  color: hsl(0, 0%, 33%);
   font-family: 'Source Sans Pro', sans-serif;
   padding-bottom: 20rem;
 }
@@ -145,8 +145,8 @@ body {
 }
 
 .dropdown-menu {
-  background-color: #ffffff;
-  box-shadow: 0 0 20px -2px rgba(0,0,0,.2);
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 20px -2px hsla(0, 0%, 0%, 0.2);
   display: none;
   list-style: none;
   min-width: 10rem;
@@ -160,7 +160,7 @@ body {
 .dropdown-menu > li > a {
   -webkit-filter: saturate(0);
   clear: both;
-  color: #F18260;
+  color: hsl(14, 84%, 66%);
   display: block;
   font: 400 1rem/1.2 "Source Sans Pro", sans-serif;
   padding: .25rem 1rem;
@@ -175,14 +175,14 @@ body {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  background-color: #F5F5F5;
-  color: #F18260;
+  background-color: hsl(0, 0%, 96%);
+  color: hsl(14, 84%, 66%);
 }
 
 .options:before,
-.website:before, 
-.review:before, 
-.feedback:before, 
+.website:before,
+.review:before,
+.feedback:before,
 .donate:before,
 .email:before,
 .docs:before {
@@ -224,28 +224,28 @@ body {
 }
 
 .divider {
-  border-top: 1px solid #DDD;
+  border-top: 1px solid hsl(0, 0%, 87%);
   display: block;
   margin-top: .75rem;
   padding: 1rem 1rem .5rem 1rem;
 }
 
 .divider > li:first-child {
-  color: #555;
+  color: hsl(0, 0%, 33%);
 }
 
 .divider > li {
-  color: #CCC;
+  color: hsl(0, 0%, 80%);
   font: 400 .8rem/1.5 "Source Sans Pro", sans-serif;
 }
 
 .divider > li > a {
-  color: #CCC;
+  color: hsl(0, 0%, 80%);
   transition: color .25s ease;
 }
 
 .divider > li > a:hover {
-  color: #F18260;
+  color: hsl(14, 84%, 66%);
 }
 
 .checkbox {
@@ -257,7 +257,7 @@ body {
 }
 
 .important {
-  color: #F18260 !important;
+  color: hsl(14, 84%, 66%) !important;
 }
 
 /*-----------------------------
@@ -293,11 +293,11 @@ nav {
 
 .search-group input::-webkit-input-placeholder {
   color: gainsboro;
-  font: 200 2.25rem 'Source Sans Pro', sans-serif;
+  font: 200 2.25rem "Source Sans Pro", sans-serif;
 }
 
 .search-group input[type="search"]:focus {
-  background: rgba(255,255,255,.7);
+  background: hsla(0, 0%, 100%, 0.7);
   outline: none;
 }
 
@@ -307,7 +307,7 @@ nav {
 }
 
 .search-tips {
-  color: #CCC;
+  color: hsl(0, 0%, 80%);
   font-weight: 200;
   margin-top: 3rem;
 }
@@ -363,20 +363,20 @@ nav {
 }
 
 #sort p, #sort a {
-  color: #979797;
+  color: hsl(0, 0%, 59%);
   display: inline-block;
   list-style: none;
   margin-right: 1rem;
 }
 
 #sort a {
-  color: #CCC;
+  color: hsl(0, 0%, 80%);
   cursor: pointer;
   transition: color 250ms ease;
 }
 
 #sort a:hover, #sort a:focus {
-  color: #F18260;
+  color: hsl(14, 84%, 66%);
   outline: none;
 }
 
@@ -398,7 +398,7 @@ nav {
 }
 
 #list-bookmarks li {
-  background: #F18260;
+  background: hsl(14, 84%, 66%);
   display: inline-block;
   list-style: none;
   margin: 1rem;
@@ -426,7 +426,7 @@ nav {
 @-webkit-keyframes fadeInUp {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(1.25rem); 
+    -webkit-transform: translateY(1.25rem);
   }
 
   100% {
@@ -452,7 +452,7 @@ nav {
   -webkit-backface-visibility: hidden;
 }
 
-.panel:hover, 
+.panel:hover,
 .panel-primary {
   top: -.5rem;
 }
@@ -535,7 +535,7 @@ nav {
   background-size: 18px 18px !important;
 }
 
-.panel-small .thumbnail-loading, 
+.panel-small .thumbnail-loading,
 .panel-small .thumbnail {
   height: 1.75rem;
   -webkit-filter: brightness(.85);
@@ -559,7 +559,7 @@ nav {
 }
 
 .panel-small .thumbnail[title$=".pdf"] {
-  background: #F18260 !important;
+  background: hsl(14, 84%, 66%) !important;
 }
 
 .favicon[src$=".pdf?defaulticon=lightpng"] {
@@ -570,15 +570,15 @@ nav {
   Special Styles for Links to local Chrome urls
 -----------------------------*/
 
-.thumbnail[title*="chrome://"], 
+.thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"]{
   background: url(../images/chrome.svg) !important;
   background-position: center center !important;
 }
 
-.panel-small .thumbnail[title*="chrome://"], 
+.panel-small .thumbnail[title*="chrome://"],
 .panel-small .thumbnail[title*="chrome-extension://"]{
-  background: #F18260 !important;
+  background: hsl(14, 84%, 66%) !important;
 }
 
 .favicon[src*="chrome://"],
@@ -597,7 +597,7 @@ nav {
 }
 
 .panel-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
-  background: #252E33 !important;
+  background: hsl(201, 16%, 17%) !important;
 }
 
 .favicon[src*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
@@ -617,7 +617,7 @@ nav {
 }
 
 .details h2 {
-  color: #555;
+  color: hsl(0, 0%, 33%);
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   overflow: hidden;
@@ -642,7 +642,7 @@ nav {
 }
 
 .tag-links a {
-  color: #BBB;
+  color: hsl(0, 0%, 73%);
   cursor: pointer;
   display: inline-block;
   font-size: 0.75rem;
@@ -652,31 +652,12 @@ nav {
 }
 
 .tag-links a:hover {
-  color: #F18260;
+  color: hsl(14, 84%, 66%);
   text-decoration: underline;
 }
 
-/* Can't get this working because
-.tag-links a:after {
-  content: url(../images/search-boxed.svg);
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  top: 0;
-  right: 0;
-  z-index: 570;
-  transition: opacity 300ms ease-out;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.tag-links a:hover:after {
-  opacity: 1;
-}
-*/
-
 .tag-links .badge-custom {
-  color: #777;
+  color: hsl(0, 0%, 47%);
 }
 
 /*-----------------------------
@@ -694,7 +675,7 @@ Designed and built with all the love in the world @twitter by @mdo and @fat.
 */
 
 .close {
-  color: #000000;
+  color: hsl(0, 0%, 0%);
   float: right;
   font-size: 1.3rem;
   line-height: 1;
@@ -754,13 +735,13 @@ button.close {
 
 .modal-content {
   background-clip: padding-box;
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 100%);
   outline: none;
   position: relative;
 }
 
 .modal-backdrop {
-  background-color: rgba(37, 46, 51, .95);
+  background-color: hsla(201, 16%, 17%, 0.95);
   bottom: 0;
   left: 0;
   position: fixed;
@@ -790,7 +771,7 @@ button.close {
 .modal-header {
   height: 4.5rem;
   padding: 1.5rem;
-  background: #F5F5F5;
+  background: hsl(0, 0%, 96%);
 }
 
 .modal-title {
@@ -814,7 +795,7 @@ button.close {
 .modal-footer {
   padding: 1.5rem;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid hsl(0, 0%, 90%);
 }
 
 .modal-footer:before,
@@ -859,7 +840,7 @@ button.close {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: hsl(0, 0%, 93%);
 }
 
 textarea.form-control {
@@ -872,10 +853,10 @@ textarea.form-control {
 
 #textBoxTitle, #textBoxURL {
   -webkit-appearance: none;
-  background: #F5F5F5;
+  background: hsl(0, 0%, 96%);
   border-radius: 3px;
-  border: 1px solid rgba(241,130,96,0);
-  color: #555;
+  border: 1px solid hsla(14, 84%, 66%, 0);
+  color: hsl(0, 0%, 33%);
   font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
@@ -889,7 +870,7 @@ textarea.form-control {
 }
 
 #textBoxTitle:focus, #textBoxURL:focus {
-  border: 1px solid rgba(241,130,96,1);
+  border: 1px solid hsla(14, 84%, 66%, 1);
   outline: none;
 }
 
@@ -905,10 +886,10 @@ textarea.form-control {
 
 .bootstrap-tagsinput input {
   -webkit-appearance: none;
-  background: #F5F5F5;
+  background: hsl(0, 0%, 96%);
   border-radius: 3px;
-  border: 1px solid rgba(241,130,96,0);
-  color: #555;
+  border: 1px solid hsla(14, 84%, 66%, 0);
+  color: hsl(0, 0%, 33%);
   font-size: .75rem;
   height: 2.5rem;
   min-width: 6.25rem;
@@ -921,7 +902,7 @@ textarea.form-control {
 }
 
 .bootstrap-tagsinput input:focus {
-  border: 1px solid rgba(241,130,96,1);
+  border: 1px solid hsla(14, 84%, 66%, 1);
   outline: none;
 }
 
@@ -954,10 +935,10 @@ textarea.form-control {
 }
 
 .tag {
-  background-color: #6F797E;
+  background-color: hsl(200, 6%, 46%);
   border-radius: 3px;
   border: none;
-  color: #FFF;
+  color: hsl(0, 0%, 100%);
   display: inline-block;
   font-size: .85rem;
   height: 2.5rem;
@@ -990,7 +971,7 @@ textarea.form-control {
 }
 
 .custom-tag {
-  background-color: #F18260 !important;
+  background-color: hsl(14, 84%, 66%) !important;
 }
 
 .custom-tag:before {
@@ -1015,7 +996,7 @@ textarea.form-control {
 
 .help-block {
   font-size: .8rem;
-  color: #999;
+  color: hsl(0, 0%, 60%);
   line-height: 1.4;
 }
 
@@ -1031,26 +1012,26 @@ textarea.form-control {
 }
 
 .delete {
-  background: #FFF;
+  background: hsl(0, 0%, 100%);
   border-radius: 3px;
-  border: 2px solid #E01B1B;
-  color: #E01B1B;
+  border: 2px solid hsl(0, 78%, 49%);
+  color: hsl(0, 78%, 49%);
   float: left;
   opacity: .5;
   padding: .75rem;
   width: 6.25rem;
-  transition: opacity 300ms ease-out, 
+  transition: opacity 300ms ease-out,
               background 300ms ease-out;
 }
 
 .delete:hover {
-  background: #E01B1B;
+  background: hsl(0, 78%, 49%);
   color: white;
   opacity: 1;
 }
 
 .save {
-  background: #FFF;
+  background: hsl(0, 0%, 100%);
   background: lightgray;
   border-radius: 3px;
   border: 2px solid lightgray;
@@ -1064,8 +1045,8 @@ textarea.form-control {
 }
 
 .save:hover, .save:focus {
-  background: #F18260;
-  border: 2px solid #F18260;
+  background: hsl(14, 84%, 66%);
+  border: 2px solid hsl(14, 84%, 66%);
 }
 
 .cancel {
@@ -1132,7 +1113,7 @@ body canvas {
     text-align: left;
     width: 12.5rem;
   }
-  
+
   .search-group input::-webkit-input-placeholder {
     color: gainsboro;
     font: 200 1.25rem 'Source Sans Pro', sans-serif;

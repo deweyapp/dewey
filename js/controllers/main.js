@@ -1,15 +1,15 @@
 define(
 'controllers/main',
 [
-  'jQuery',
   'underscore',
+  'jQuery', 
   'bookmarksApp',
   'services/bookmarksStorage',
   'filters/fieldsFilter',
   'controllers/editBookmark',
   'ui.bootstrap'
 ], 
-function($, _, bookmarksApp) { 'use strict';
+function(_, $, bookmarksApp) { 'use strict';
 
 /*
 * Application controller.
@@ -62,10 +62,17 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     var updated = false;
     if (e.which === 13) { // Enter press on page - go to the selected bookmark
       _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
-      var result = getFilteredBookmarks();
-      if (result.length > $scope.selectedIndex) {
-        window.location.href = result[$scope.selectedIndex].url;
-      } 
+
+      // If first pattern is not our filter let's assume that user wants to search on this domain
+      var match = /^(\w+)(\.\w+)?:(.+)/i.exec($scope.searchText);
+      if (match && !_(['tag', 'url', 'title']).contains(match[1])) {
+        window.location = 'https://' + match[1] + (match[2] || '.com') + '/?q=' + encodeURIComponent(match[3].trim());
+      } else {
+        var result = getFilteredBookmarks();
+        if (result.length > $scope.selectedIndex) {
+          window.location.href = result[$scope.selectedIndex].url;
+        } 
+      }
     } else if (e.which === 37) { // left arrow key
       if ($scope.selectedIndex > 0) {
         $scope.selectedIndex--;
