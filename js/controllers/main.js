@@ -202,17 +202,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     _gaq.push(['_trackEvent', 'ChangeSettings', 'ShowThumbnails changed to ' + !$scope.showThumbnails]);
     bookmarksStorage.setShowThumbnails(!$scope.showThumbnails, loadBookmarks);
   };
-
-  // $scope.filterByTag = function(tag){
-  //   $scope.selectTag(tag.text);
-  //   if(_.isUndefined(tag)){
-  //     console.log('undefined');
-  //   }
-  //   else{
-  //     console.log(tag);
-  //     $scope.selectTag(tag.text);
-  //   }
-  // }
 };
 
 bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
