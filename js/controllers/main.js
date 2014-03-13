@@ -126,9 +126,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       $scope.bookmarks = bookmarks;
 
       $scope.tags = _.chain(bookmarks)
-                  .map(function (item) {  return item.tag })
+                  .map(function (item) { return item.tag; })
                   .flatten()
-                  .uniq()
+                  .uniq(function(item) { return item.text; })
                   .value();
 
       $scope.$apply();
@@ -203,14 +203,16 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     bookmarksStorage.setShowThumbnails(!$scope.showThumbnails, loadBookmarks);
   };
 
-  $scope.filterByTag = function(tag){
-    if(_.isUndefined(tag)){
-      console.log('undefined');
-    }
-    else{
-      console.log(tag);
-    }
-  }
+  // $scope.filterByTag = function(tag){
+  //   $scope.selectTag(tag.text);
+  //   if(_.isUndefined(tag)){
+  //     console.log('undefined');
+  //   }
+  //   else{
+  //     console.log(tag);
+  //     $scope.selectTag(tag.text);
+  //   }
+  // }
 };
 
 bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
