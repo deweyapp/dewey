@@ -124,6 +124,13 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       $scope.hideTopLevelFolders = setttings.hideTopLevelFolders;
       $scope.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
+
+      $scope.tags = _.chain(bookmarks)
+                  .map(function (item) {  return item.tag })
+                  .flatten()
+                  .uniq()
+                  .value();
+
       $scope.$apply();
     }.bind(this));
   }.bind(this);
