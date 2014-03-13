@@ -82,16 +82,17 @@ There are several ways to search your bookmarks with Dewey:
 - Add `tag:` before a word to limit results that have that specific tag applied.
 - Add `title:` before a word to limit results to titles that contain that word.
 - Add `url:` before a word to limit results to URLs that contain that word.
-- Sort your bookmarks and your search results by Date, Title, or URL
-- Clicking a tag on a bookmark will run search of that tag
+- Sort your bookmarks and your search results by Date, Title, or URL.
+- Clicking a tag on a bookmark will run search of that tag.
 
 ![image](images/search.jpg)
 
 
 
 #Editing
-- Clicking the Title of a bookmark opens the edit window.
-- Within the edit window you can edit the Title, URL and custom tags
+- Hovering over a bookmark reveals an Edit icon.
+- Clicking the Edit icon opens the edit window.
+- Within the edit window you can edit the Title, URL and custom tags.
 - You can also delete a bookmark from Chrome.
 
 ![image](images/editing.jpg)
