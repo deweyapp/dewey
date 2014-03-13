@@ -2,8 +2,8 @@
   <div id="tags">
     <a class="tags-icon" data-toggle="dropdown"></a>
     <ui class="dropdown-menu">
-      <li ng-repeat="tag in tags">
-        <a target="_blank" ng-click="selectTag(tag.text)">{{tag.text}}</a>
+      <li ng-repeat="tag in tags | orderBy: 'tagText'">
+        <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
       </li>
     </ui>
   </div>
