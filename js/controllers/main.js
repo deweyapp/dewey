@@ -21,7 +21,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
-  $scope.tags = []; // All custom tags
+  $scope.tags = []; // All tags
   $scope.orders = [ // Different sorting orders
                     {title:'Date', value: 'date'}, 
                     {title:'Title', value: 'title'}, 
@@ -130,7 +130,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
                       .flatten()
                       .groupBy(function(t){ return t.text; })
                       .map(function(tagsArray, text) {   
-                          return {tagText: text,  numberOfTags: tagsArray.length, custom: tagsArray[0].custom };
+                          return {tagText: text,  numberOfTags: tagsArray.length };
                       })
                       .value();
 
