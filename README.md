@@ -9,8 +9,8 @@
 
 - Add custom tags
 - Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
-- Search and sort in a much smarter and faster way.
-- [More Features](docs/how-dewey-works.md)
+- Search and sort in a much smarter and faster way
+- [More on how to use Dewey](docs/how-to-use-dewey.md) →
 
 ![screenshot](webstore/screenshot-1.jpg)
 
@@ -37,7 +37,7 @@ There are several ways to search your bookmarks with Dewey:
 
 There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. Dewey will treat these folders as tags, but since Chrome's default is to put all bookmarks saved from your browser into "Other Bookmarks", we thought you might like Dewey to ignore those altogether.
 
-[Learn more about how Dewey works.](docs/how-dewey-works.md)
+####[More on how to use Dewey](docs/how-to-use-dewey.md) →
 
 
 ## Install on the Chrome Web Store
@@ -48,6 +48,10 @@ There is also an option for Dewey to ignore Chrome Bookmarks top-level folders. 
 ## Get Help or Contribute
 
 **Please [submit issues, bugs, improvements, feature requests, etc.](https://github.com/deweyapp/deweyapp/issues) on our issues page.** Or [fork Dewey](https://github.com/deweyapp/deweyapp/fork) and create your own features. Send us pull requests!
+
+Also, chat with us on Gitter!  
+
+[![Gitter chat](https://badges.gitter.im/deweyapp.png)](https://gitter.im/deweyapp)
 
 It would be helpful if we could occasionally email you questions about Dewey. If you're interested, please subscribe to our mailing list.
 
@@ -76,7 +80,7 @@ If you like Dewey and want to support future development—or just say thank you
 ##Icons
 All icons used in this application are released to the public with No Copyright (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication). 
 
-[![icons](docs/images/icons.png)](http://lyrv.lt/Fhno6AJugp)
+[![icons](docs/images/icons.png)](http://lyrv.lt/2mF0KiGLQs)
 
 Feel free to use these icons for whatever you want. But if you'd like to help us out, any attribution and/or reference to Dewey would be greatly appreciated.
 ###[Download](http://lyrv.lt/Fhno6AJugp) - one Adobe Illustrator file with all icons
