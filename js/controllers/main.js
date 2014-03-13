@@ -153,7 +153,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     var deletedTags = _.difference(originalTags, updatedTags);
     
     _.each(newTags, function(item){
-        var existingTag = _.find($scope.tags, function(t){return t.tagText == item});
+        var existingTag = _.find($scope.tags, function(t){return t.tagText == item; });
         if(_.isUndefined(existingTag)){
             $scope.tags.push({tagText: item, numberOfTags: 1, custom: true});  
         }
@@ -163,7 +163,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     });
 
     _.each(deletedTags, function(item){
-        var existingTag = _.find($scope.tags, function(t){return t.tagText == item});
+        var existingTag = _.find($scope.tags, function(t){return t.tagText == item; });
         if(!_.isUndefined(existingTag)){
           if(existingTag.numberOfTags > 1) {
               existingTag.numberOfTags--;
@@ -215,9 +215,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     modalInstance.result.then(function (updatedBookmark) {
       var updatedTags = [];
       if(!_.isNull(updatedBookmark)){
-        updatedTags = _.map(updatedBookmark.tag, function(item) { return item.text});
+        updatedTags = _.map(updatedBookmark.tag, function(item) { return item.text; });
       }
-      var originalTags = _.map(originalBookmark.tag, function(item) { return item.text});
+      var originalTags = _.map(originalBookmark.tag, function(item) { return item.text; });
       updateTagsInfo(updatedTags, originalTags);
 
       if (!updatedBookmark) {

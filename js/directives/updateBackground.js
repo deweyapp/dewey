@@ -19,7 +19,7 @@ bookmarksApp.directive('myUpdateBackground', function() {
 
         try {
           color = thief.getColor(element.get(0));
-        } catch(e) {};
+        } catch(e) {}
         
 
         var backgrounds = [];
@@ -41,7 +41,7 @@ bookmarksApp.directive('myUpdateBackground', function() {
           .css('background', backgrounds.join(', '));
       });
     });
-  }
+  };
 });
 
 });
