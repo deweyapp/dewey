@@ -1,12 +1,4 @@
 <main id="mainContent">
-  <div id="tags">
-    <a class="tags-icon" data-toggle="dropdown"></a>
-    <ui class="dropdown-menu">
-      <li ng-repeat="tag in tags | orderBy: 'tagText'">
-        <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
-      </li>
-    </ui>
-  </div>
 
   <div id="settings">
     <a class="settings-icon" data-toggle="dropdown"></a>
@@ -17,7 +9,7 @@
       <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
       <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
       <li><a class="website" href="http://deweyapp.io" target="_blank">deweyapp.io</a></li>
-     
+
      <ul class="divider">
         <li>Settings:</li>
         <li>
@@ -61,6 +53,16 @@
   </nav>
 
   <div class="grid">
+
+  <div id="tags">
+    <a class="tags-icon" data-toggle="dropdown"></a>
+    <ui class="dropdown-menu">
+      <li ng-repeat="tag in tags | orderBy: 'tagText'">
+        <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
+      </li>
+    </ui>
+  </div>
+
     <ul id="sort">
       <li ng-cloak>
         <p>Sort:</p>
@@ -71,17 +73,17 @@
     <ul id="list-bookmarks">
       <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | fieldsFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
-       
+
           <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>
           <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
 
           <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}"></div>
 
           <div class="details">
-            
+
             <img class="favicon" src="http://g.etfv.co/{{bookmark.url}}?defaulticon=lightpng" alt="{{bookmark.url}}" my-update-background crossOrigin="anonymous" />
             <h2>{{bookmark.title}}</h2>
-          
+
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
                 <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)" title="Search Tag">{{tag.text}}</a>

@@ -321,7 +321,6 @@ nav {
   position: relative;
   text-align: left;
   margin-left: 1rem;
-  top: 1rem;
 }
 
 .tags-icon {
@@ -340,8 +339,8 @@ nav {
 }
 
 #tags .dropdown-menu {
-  left: 0rem;
-  top: 0rem;
+  left: 2rem;
+  top: -1rem;
   min-width: 11rem;
   max-height: 24rem;
   overflow: scroll;
