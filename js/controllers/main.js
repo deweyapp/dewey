@@ -1,14 +1,15 @@
 define(
 'controllers/main',
 [
-  'jQuery', 
+  'jQuery',
+  'underscore',
   'bookmarksApp',
   'services/bookmarksStorage',
   'filters/fieldsFilter',
   'controllers/editBookmark',
   'ui.bootstrap'
 ], 
-function($, bookmarksApp) { 'use strict';
+function($, _, bookmarksApp) { 'use strict';
 
 /*
 * Application controller.
@@ -20,6 +21,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
+  $scope.tags = ['tag 1', 'tag 2', 'tag 3']; // All custom tags
   $scope.orders = [ // Different sorting orders
                     {title:'Date', value: 'date'}, 
                     {title:'Title', value: 'title'}, 
@@ -186,6 +188,15 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     _gaq.push(['_trackEvent', 'ChangeSettings', 'ShowThumbnails changed to ' + !$scope.showThumbnails]);
     bookmarksStorage.setShowThumbnails(!$scope.showThumbnails, loadBookmarks);
   };
+
+  $scope.filterByTag = function(tag){
+    if(_.isUndefined(tag)){
+      console.log('undefined');
+    }
+    else{
+      console.log(tag);
+    }
+  }
 };
 
 bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);

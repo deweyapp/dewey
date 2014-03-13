@@ -1,4 +1,13 @@
 <main id="mainContent">
+  <div id="tags">
+    <a class="tags-icon" data-toggle="dropdown"></a>
+    <ui class="dropdown-menu">
+      <li><a target="_blank" ng-click="filterByTag()">All tags</a></li>
+      <li ng-repeat="tag in tags">
+        <a target="_blank" ng-click="filterByTag(tag)">{{tag}}</a>
+      </li>
+    </ui>
+  </div>
 
   <div id="settings">
     <a class="settings-icon" data-toggle="dropdown"></a>
@@ -53,7 +62,6 @@
   </nav>
 
   <div class="grid">
-
     <ul id="sort">
       <li ng-cloak>
         <p>Sort:</p>
