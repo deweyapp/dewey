@@ -21,6 +21,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
+  $scope.tags = []; // All tags
   $scope.orders = [ // Different sorting orders
                     {title:'Date', value: 'date'}, 
                     {title:'Title', value: 'title'}, 
@@ -123,6 +124,16 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
       $scope.hideTopLevelFolders = setttings.hideTopLevelFolders;
       $scope.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
+
+      $scope.tags = _.chain(bookmarks)
+                      .map(function (item) { return item.tag; })
+                      .flatten()
+                      .groupBy(function(t){ return t.text; })
+                      .map(function(tagsArray, text) {   
+                          return {tagText: text,  numberOfTags: tagsArray.length };
+                      })
+                      .value();
+
       $scope.$apply();
     }.bind(this));
   }.bind(this);
@@ -135,6 +146,33 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     setTimeout(function() {
       window.scroll(0, 0);
     }, 10);
+  };
+
+  var updateTagsInfo = function(updatedTags, originalTags){
+    var newTags = _.difference(updatedTags, originalTags);
+    var deletedTags = _.difference(originalTags, updatedTags);
+    
+    _.each(newTags, function(item){
+        var existingTag = _.find($scope.tags, function(t){return t.tagText == item; });
+        if(_.isUndefined(existingTag)){
+            $scope.tags.push({tagText: item, numberOfTags: 1, custom: true});  
+        }
+        else{
+            existingTag.numberOfTags++;
+        }
+    });
+
+    _.each(deletedTags, function(item){
+        var existingTag = _.find($scope.tags, function(t){return t.tagText == item; });
+        if(!_.isUndefined(existingTag)){
+          if(existingTag.numberOfTags > 1) {
+              existingTag.numberOfTags--;
+          }
+          else{
+              $scope.tags.splice(_.indexOf($scope.tags, existingTag), 1);
+          }
+        }
+    });
   };
 
   // When user change search string we scroll to top of the page and set total displayed items to default
@@ -158,7 +196,10 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   // Show modal dialog for adding tags
   $scope.editBookmark = function(bookmark) {
     _gaq.push(['_trackEvent', 'Navigation', 'editBookmark']);
-     var modalInstance = $modal.open({
+
+    var originalBookmark = _.clone(bookmark);
+
+    var modalInstance = $modal.open({
       scope: $scope.$new(true /* isolate */),
       templateUrl: 'partials/editBookmark.tpl.html',
       controller: 'editBookmarkController',
@@ -172,6 +213,13 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     });
 
     modalInstance.result.then(function (updatedBookmark) {
+      var updatedTags = [];
+      if(!_.isNull(updatedBookmark)){
+        updatedTags = _.map(updatedBookmark.tag, function(item) { return item.text; });
+      }
+      var originalTags = _.map(originalBookmark.tag, function(item) { return item.text; });
+      updateTagsInfo(updatedTags, originalTags);
+
       if (!updatedBookmark) {
         // Bookmark was deleted
         $scope.bookmarks.splice(_.indexOf($scope.bookmarks, bookmark), 1);

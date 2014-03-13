@@ -1,4 +1,12 @@
 <main id="mainContent">
+  <div id="tags">
+    <a class="tags-icon" data-toggle="dropdown"></a>
+    <ui class="dropdown-menu">
+      <li ng-repeat="tag in tags | orderBy: 'tagText'">
+        <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
+      </li>
+    </ui>
+  </div>
 
   <div id="settings">
     <a class="settings-icon" data-toggle="dropdown"></a>
@@ -53,7 +61,6 @@
   </nav>
 
   <div class="grid">
-
     <ul id="sort">
       <li ng-cloak>
         <p>Sort:</p>

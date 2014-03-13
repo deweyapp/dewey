@@ -315,12 +315,13 @@ nav {
 /*-----------------------------
   Tags Dropdown - Here for future implementation
 -----------------------------*/
-/*
+
 #tags {
   float: left;
   position: relative;
   text-align: left;
-  margin-left: 1rem
+  margin-left: 1rem;
+  top: 1rem;
 }
 
 .tags-icon {
@@ -339,8 +340,8 @@ nav {
 }
 
 #tags .dropdown-menu {
-  left: 2rem;
-  top: -1rem;
+  left: 0rem;
+  top: 0rem;
   min-width: 11rem;
   max-height: 24rem;
   overflow: scroll;
@@ -348,7 +349,8 @@ nav {
 
 #tags .dropdown-menu > li > a {
   font: 400 .85rem/1.2 "Source Sans Pro", sans-serif;
-}*/
+  cursor: pointer;
+}
 
 /*-----------------------------
   Sort
