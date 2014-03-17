@@ -14,12 +14,12 @@ s.parentNode.insertBefore(ga, s);
 require.config({ 
   baseUrl: '/js',
   paths: {
-    'underscore': '../bower_components/underscore/underscore',
-    'jQuery': '../bower_components/jquery/jquery',
-    'angular': '../bower_components/angular/angular',
-    'angular-route': '../bower_components/angular-route/angular-route',
-    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap',
-    'bootstrap-tagsinput': '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput',
+    underscore: '../bower_components/underscore/underscore-min',
+    jQuery: '../bower_components/jquery/jquery.min',
+    angular: '../bower_components/angular/angular.min',
+    'ui.router': '../bower_components/angular-ui-router/release/angular-ui-router.min',
+    bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min',
+    'bootstrap-tagsinput': '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
     'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
     'color-thief': '../bower_components/color-thief/js/color-thief'
@@ -35,7 +35,7 @@ require.config({
       deps: ['jQuery'],
       exports : 'angular'
     },
-    'angular-route': {
+    'ui.router': {
       deps: ['angular']
     },
     'bootstrap': {
@@ -58,11 +58,18 @@ require.config({
 });
 
 require([
+  'jQuery',
   'angular',
-  './dewey'
-], 
-function(angular) {
-  angular.bootstrap(document, ['dewey']);
-});
+  'ui.router',
+  'bootstrap',
+  'ui.bootstrap',
+  'bootstrap-tagsinput',
+  'bootstrap-tagsinput-angular',
+  'filters/fieldsFilter',
+  'filters/booleanSearchFilter',
+  'directives/updateBackground',
+  'controllers/main'], function($, angular) {
+    angular.bootstrap(document, ['bookmarksApp']);
+  });
 
 })();
