@@ -66,6 +66,7 @@ require([
   'bootstrap-tagsinput',
   'bootstrap-tagsinput-angular',
   'filters/fieldsFilter',
+  'filters/booleanSearchFilter',
   'directives/updateBackground',
   'controllers/main'], function($, angular) {
     angular.bootstrap(document, ['bookmarksApp']);

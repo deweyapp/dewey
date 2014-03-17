@@ -47,7 +47,7 @@ bookmarksApp.filter('fieldsFilter', function($filter) {
             continue;
           }
         } else {
-          pattern = search[i] + pattern;
+            pattern = search[i] + pattern;
         }
       }
 

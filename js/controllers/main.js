@@ -37,6 +37,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   $scope.hideTopLevelFolders = false;
   $scope.showThumbnails = true;
 
+var characters = '\\s';
+var ss = String("  input    yep   ")
+                    .replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
+var ss2 = String("  input    yep   ").replace(/\ \ +/g, ' ')
+
+
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
   $(window).scroll(function () {
@@ -114,7 +120,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
-    var bookmarksFilter = $filter('fieldsFilter');
+    //var bookmarksFilter = $filter('fieldsFilter');
+    var bookmarksFilter = $filter('booleanSearchFilter');
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   };
 
