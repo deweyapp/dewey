@@ -7,7 +7,7 @@
 - Add custom tags
 - Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
 - Search and sort in a much smarter and faster way
-- [More on how to use Dewey](deweyapp/dewey-website/README.md) →
+- [More on how to use Dewey](https://github.com/deweyapp/dewey-website/blob/master/README.md) →
 
 ## Install
 
