@@ -126,22 +126,17 @@ body {
 }
 
 .search-group {
-  margin-left: 1rem;
   -webkit-animation: slide-right 500ms ease-in-out;
-}
-
-.search-group:before {
-  content: url(../images/search.svg);
-  vertical-align: middle;
-  margin-right: .5rem;
 }
 
 .search-group input[type="search"] {
   -webkit-appearance: none;
-  background: none;
+  background: url(../images/search.svg) no-repeat;
+  background-position: 1rem 1rem;
   border: none;
   font: 200 1.35rem 'Source Sans Pro', sans-serif;
   height: 3.125rem;
+  padding-left: 3rem;
   text-align: left;
   width: 25%;
 }
