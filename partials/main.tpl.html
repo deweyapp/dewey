@@ -71,7 +71,7 @@
     </ul>
 
     <ul id="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | booleanSearchFilter:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
+      <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | filter:searchText:searchTextFn | limitTo:totalDisplayed" ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
           <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>

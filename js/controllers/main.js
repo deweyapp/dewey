@@ -37,11 +37,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   $scope.hideTopLevelFolders = false;
   $scope.showThumbnails = true;
 
-var characters = '\\s';
-var ss = String("  input    yep   ")
-                    .replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
-var ss2 = String("  input    yep   ").replace(/\ \ +/g, ' ')
-
+  
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
@@ -118,11 +114,83 @@ var ss2 = String("  input    yep   ").replace(/\ \ +/g, ' ')
     }
   });
 
+  $scope.searchTextFn = function (actual, search) {
+    search = 'lx'
+    if(!search) return true;
+
+    var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
+    if(_.isUndefined(item)) return false;
+
+    var hasExpression = true;
+    var expression = 'tag'
+    if(!hasExpression){
+
+      var s = item.title.indexOf(search) != -1;
+      return s;
+    }
+    else{
+
+      switch(expression){
+        case 'tag':
+          var tag = _.find(item.tag, function(it){ return it.indexOf(search) != -1; })
+          break;
+        case 'url':
+          break;
+        case 'title':
+          break;
+      }
+    }
+  };
+
+  var clean = function(input, characters){
+      if (!angular.isString(input)) {
+                return input;
+            }
+
+            if (!characters) {
+                characters = '\\s';
+            }
+
+            return String(input).replace(new RegExp('\^' + characters + '+|' + characters + '+$', 'g'), '');
+        };
+
+        // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
+        var trim = function(input, characters){
+      if (!angular.isString(input)) {
+                return input;
+            }
+
+            if (!characters) {
+                characters = '\\s';
+            }
+
+            return String(input)
+                .replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
+        };
+
+        var isBlank = function(str){
+        if (str == null) str = '';
+        return (/^\s*$/).test(str);
+      };
+
+        var words = function(str, delimiter) {
+        if (isBlank(str)) return [];
+        return trim(str, delimiter).split(delimiter || /\s+/);
+      };
+
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
-    //var bookmarksFilter = $filter('fieldsFilter');
-    var bookmarksFilter = $filter('booleanSearchFilter');
-    return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+    // var bookmarksFilter = $filter('fieldsFilter');
+    // return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+    // var search = '';
+    // var searchWords = [];
+
+    // if (search) {
+    //   var cleanSearch = clean(search);
+    //   searchWords = words(cleanSearch);
+    // }
+
+     //return [];
   };
 
   var loadBookmarks = function() {
