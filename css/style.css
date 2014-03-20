@@ -138,7 +138,7 @@ body {
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
-  width: 25%;
+  width: 30rem;
 }
 
 .search-group input[type="search"]:focus {
@@ -149,8 +149,14 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 3.125rem;
   width: 3.125rem;
-  background: hsla(201, 16%, 17%, 0.05) url(../images/delete.svg) center center no-repeat;
+  background: hsla(201, 16%, 17%, 0.05) url(../images/delete.svg) center no-repeat;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 33.5rem) {
+  .search-group input[type="search"] {
+    width: 80%;
+  }
 }
 
 /*-----------------------------
@@ -171,13 +177,15 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .settings-icon {
-  background: url(../images/settings.svg) no-repeat center center;
+  background: url(../images/settings.svg) no-repeat center;
+  background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
   height: 3.125rem;
   width: 3.125rem;
   -webkit-filter: saturate(0);
   transition: -webkit-filter 100ms ease-in-out;
+  -webkit-backface-visibility: hidden;
 }
 
 .settings-icon:hover {
@@ -332,7 +340,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .tags-icon {
-  background: url(../images/tags.svg) no-repeat center center;
+  background: url(../images/tags.svg) no-repeat center;
   background-size: contain;
   cursor: pointer;
   display: block;
@@ -529,7 +537,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .thumbnail-loading,
 .thumbnail {
   -webkit-filter: brightness(.75);
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   height: 9.375rem;
 }
@@ -570,7 +578,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .thumbnail[title$=".pdf"] {
   background: white url(../images/pdf.svg) !important;
-  background-position: center center !important;
+  background-position: center !important;
 }
 
 .panel-small .thumbnail[title$=".pdf"] {
@@ -588,7 +596,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"]{
   background: url(../images/chrome.svg) !important;
-  background-position: center center !important;
+  background-position: center !important;
 }
 
 .panel-small .thumbnail[title*="chrome://"],
@@ -1091,39 +1099,9 @@ body canvas {
 }
 
 @media only screen and (max-width: 29rem) {
- .grid { width: 12.5rem; }
+  .grid { width: 12.5rem; }
 
   #list-bookmarks li { margin: 1.25rem 0 0 0; }
-
-  nav { padding-bottom: 4rem; }
-
-  .search-group { margin: 0; }
-
-  .search-group:before {
-    content: '';
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .search-group input[type="search"] {
-    -webkit-appearance: none;
-    background: none;
-    border: none;
-    color: inherit;
-    font: 200 1.25rem 'Source Sans Pro', sans-serif;
-    padding: .625rem;
-    text-align: left;
-    width: 12.5rem;
-  }
-
-  .search-group input::-webkit-input-placeholder {
-    color: gainsboro;
-    font: 200 1.25rem 'Source Sans Pro', sans-serif;
-  }
-
-  .search-group input[type="search"]::-webkit-search-cancel-button {
-    margin-right: 0;
-  }
 
   #tags { margin-left: 0; }
 
