@@ -1,11 +1,17 @@
 define(
 'filters/booleanSearchFilter',
-['bookmarksApp'], 
-function(bookmarksApp) { 'use strict';
+[
+	'underscore',
+	'bookmarksApp'
+], 
+function(_, bookmarksApp) { 'use strict';
 
 bookmarksApp.filter('booleanSearchFilter', function($filter) {
 		var standardFilter = $filter('filter');
 		var orderBy = $filter('orderBy');
+
+		this.andExpression = 'and';
+		var orExpression = 'or';
 
 		// Compress some whitespaces to one. Defaults to whitespace characters.
 		var clean = function(input, characters){
@@ -44,15 +50,35 @@ bookmarksApp.filter('booleanSearchFilter', function($filter) {
 	    	return trim(str, delimiter).split(delimiter || /\s+/);
 	    };
 
+	    var comperator = function(obj){
+				return true;
+			};
+
 		return function(input, search, order) {
-			var expression = {};
+			var searchWords = [];
 
 			if (search) {
 				var cleanSearch = clean(search);
-				var searchWords = words(cleanSearch, ':');
+				searchWords = words(cleanSearch);
 			}
 
-			return orderBy(standardFilter(input, expression), order, order === 'date');
+			
+
+			return orderBy(standardFilter(input, function(obj, searchWords){
+				return true;
+			}), order, order === 'date');
 		};
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
