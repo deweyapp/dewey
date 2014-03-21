@@ -132,29 +132,35 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     }
   });
 
-  $scope.searchTextFn = function (actual, search) {
-    search = 'lx'
+  $scope.searchTextFn = function (actual, search1) {
+    var search = ' tag: prog  ';
     if(!search) return true;
 
     var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
     if(_.isUndefined(item)) return false;
 
-    var hasExpression = true;
-    var expression = 'tag'
-    if(!hasExpression){
+    var cleanSearch = clean(search);
+    var searchWords = words(cleanSearch);
+
+    //var expression = 'tag';
+    var expression =  _.find(searchWords, function(it){ return it.indexOf(':') != -1; });
+    if(!expression){
 
       var s = item.title.indexOf(search) != -1;
       return s;
     }
     else{
 
-      switch(expression){
+      switch(expression.replace(':', '')){
         case 'tag':
-          var tag = _.find(item.tag, function(it){ return it.indexOf(search) != -1; })
+          var tag = _.find(item.tag, function(it){ return it.text.indexOf(search) != -1; });
+          return tag != null;
           break;
         case 'url':
+          return item.url.text.indexOf(search) != -1;
           break;
         case 'title':
+          return item.title.text.indexOf(search) != -1;
           break;
       }
     }
@@ -173,7 +179,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
         };
 
         // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
-        var trim = function(input, characters){
+  var trim = function(input, characters){
       if (!angular.isString(input)) {
                 return input;
             }
