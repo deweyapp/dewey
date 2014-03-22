@@ -39,7 +39,7 @@ var BooleanSearchEngine = function () {
 		var search = searchText;
 		if(!search) return true;
 
-
+		return true;
 	};
 };
 
