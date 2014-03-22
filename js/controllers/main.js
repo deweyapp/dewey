@@ -5,6 +5,7 @@ define(
   'jQuery', 
   'bookmarksApp',
   'services/bookmarksStorage',
+  'services/booleanSearchEngine',
   'filters/fieldsFilter',
   'controllers/editBookmark',
   'ui.bootstrap'
@@ -14,7 +15,7 @@ function(_, $, bookmarksApp) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, booleanSearchEngine) {
   
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -114,75 +115,34 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     }
   });
 
-  $scope.searchTextFn = function (actual, search1) {
-    var search = ' tag: prog  ';
+  $scope.searchTextFn = function (actual, search) {
     if(!search) return true;
 
     var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
     if(_.isUndefined(item)) return false;
 
-    var cleanSearch = clean(search);
-    var searchWords = words(cleanSearch);
+    return booleanSearchEngine.filterBookmark(item, search);
 
-    //var expression = 'tag';
-    var expression =  _.find(searchWords, function(it){ return it.indexOf(':') != -1; });
-    if(!expression){
+    // var hasExpression = true;
+    // var expression = 'tag'
+    // if(!hasExpression){
 
-      var s = item.title.indexOf(search) != -1;
-      return s;
-    }
-    else{
+    //   var s = item.title.indexOf(search) != -1;
+    //   return s;
+    // }
+    // else{
 
-      switch(expression.replace(':', '')){
-        case 'tag':
-          var tag = _.find(item.tag, function(it){ return it.text.indexOf(search) != -1; });
-          return tag != null;
-          break;
-        case 'url':
-          return item.url.text.indexOf(search) != -1;
-          break;
-        case 'title':
-          return item.title.text.indexOf(search) != -1;
-          break;
-      }
-    }
+    //   switch(expression){
+    //     case 'tag':
+    //       var tag = _.find(item.tag, function(it){ return it.indexOf(search) != -1; })
+    //       break;
+    //     case 'url':
+    //       break;
+    //     case 'title':
+    //       break;
+    //   }
+    // }
   };
-
-  var clean = function(input, characters){
-      if (!angular.isString(input)) {
-                return input;
-            }
-
-            if (!characters) {
-                characters = '\\s';
-            }
-
-            return String(input).replace(new RegExp('\^' + characters + '+|' + characters + '+$', 'g'), '');
-        };
-
-        // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
-  var trim = function(input, characters){
-      if (!angular.isString(input)) {
-                return input;
-            }
-
-            if (!characters) {
-                characters = '\\s';
-            }
-
-            return String(input)
-                .replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
-        };
-
-        var isBlank = function(str){
-        if (str == null) str = '';
-        return (/^\s*$/).test(str);
-      };
-
-        var words = function(str, delimiter) {
-        if (isBlank(str)) return [];
-        return trim(str, delimiter).split(delimiter || /\s+/);
-      };
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
