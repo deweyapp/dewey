@@ -146,17 +146,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, boolean
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
+    return $scope.filteredItems;
     // var bookmarksFilter = $filter('fieldsFilter');
     // return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
-    // var search = '';
-    // var searchWords = [];
-
-    // if (search) {
-    //   var cleanSearch = clean(search);
-    //   searchWords = words(cleanSearch);
-    // }
-
-     //return [];
   };
 
   var loadBookmarks = function() {
