@@ -2,7 +2,13 @@ define(
 'controllers/main',
 [
   'underscore',
+  'jQuery', 
   'bookmarksApp',
+  'services/bookmarksStorage',
+  'services/booleanSearchEngine',
+  'filters/fieldsFilter',
+  'controllers/editBookmark',
+  'ui.bootstrap'
 ], 
 function(_, $, bookmarksApp) { 'use strict';
 
@@ -45,21 +51,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     }
   });
 
-  $(window).resize(function(){
-    countItemsPerRow();
-  });
-
   var getAllPanels = function() {
     return $('#list-bookmarks div.panel');
-  };
-
-  var countItemsPerRow = function() {
-    var bookmarksList = angular.element('#list-bookmarks'),
-    boxSize = bookmarksList.find('li:first-child').width(),
-    bookmarksListW = bookmarksList.width(),
-    perRow = Math.floor( bookmarksListW / boxSize);
-
-    $scope.itemsPerRow = perRow;
   };
 
   var isElementInViewport = function(el) {
@@ -81,7 +74,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
         var result = getFilteredBookmarks();
         if (result.length > $scope.selectedIndex) {
           window.location.href = result[$scope.selectedIndex].url;
-        }
+        } 
       }
     } else if (e.which === 37) { // left arrow key
       if ($scope.selectedIndex > 0) {
@@ -99,31 +92,21 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
         $scope.selectedIndex--;
         updated = true;
       }
-
+        
     } else if (e.which === 9) { // tab key
       if (getAllPanels().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
       }
-    } else if (e.which === 40) { // down key
-      if (getAllPanels().length > $scope.selectedIndex + $scope.itemsPerRow) {
-        $scope.selectedIndex += $scope.itemsPerRow;
-        updated = true;
-      }
-    } else if (e.which === 38) { // up key
-      if ($scope.selectedIndex - $scope.itemsPerRow >= 0) {
-        $scope.selectedIndex -= $scope.itemsPerRow;
-        updated = true;
-      }
     }
-    if (updated) { // right arrow, left arrow, down arrow, up arrow, tab, and shift+tab key pressed - select next element
+    if (updated) { // right arrow, left arrow, tab, and shift+tab key pressed - select next element
       $scope.$apply();
       var panels = getAllPanels();
       var selectedElement = panels.get($scope.selectedIndex);
       if (selectedElement) {
         var rect = selectedElement.getBoundingClientRect(); // If element is not visible - scroll to it
         if (!(rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width())) {
-          $("body").stop().animate({
+          $("body").animate({
             scrollTop: ($(panels.get($scope.selectedIndex)).offset().top - $(panels.get(0)).offset().top)
           }, 500);
         }
@@ -132,75 +115,34 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
     }
   });
 
-  $scope.searchTextFn = function (actual, search1) {
-    var search = ' tag: prog  ';
+  $scope.searchTextFn = function (actual, search) {
     if(!search) return true;
 
     var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
     if(_.isUndefined(item)) return false;
 
-    var cleanSearch = clean(search);
-    var searchWords = words(cleanSearch);
+    return booleanSearchEngine.filterBookmark(item, search);
 
-    //var expression = 'tag';
-    var expression =  _.find(searchWords, function(it){ return it.indexOf(':') != -1; });
-    if(!expression){
+    // var hasExpression = true;
+    // var expression = 'tag'
+    // if(!hasExpression){
 
-      var s = item.title.indexOf(search) != -1;
-      return s;
-    }
-    else{
+    //   var s = item.title.indexOf(search) != -1;
+    //   return s;
+    // }
+    // else{
 
-      switch(expression.replace(':', '')){
-        case 'tag':
-          var tag = _.find(item.tag, function(it){ return it.text.indexOf(search) != -1; });
-          return tag != null;
-          break;
-        case 'url':
-          return item.url.text.indexOf(search) != -1;
-          break;
-        case 'title':
-          return item.title.text.indexOf(search) != -1;
-          break;
-      }
-    }
+    //   switch(expression){
+    //     case 'tag':
+    //       var tag = _.find(item.tag, function(it){ return it.indexOf(search) != -1; })
+    //       break;
+    //     case 'url':
+    //       break;
+    //     case 'title':
+    //       break;
+    //   }
+    // }
   };
-
-  var clean = function(input, characters){
-      if (!angular.isString(input)) {
-                return input;
-            }
-
-            if (!characters) {
-                characters = '\\s';
-            }
-
-            return String(input).replace(new RegExp('\^' + characters + '+|' + characters + '+$', 'g'), '');
-        };
-
-        // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
-  var trim = function(input, characters){
-      if (!angular.isString(input)) {
-                return input;
-            }
-
-            if (!characters) {
-                characters = '\\s';
-            }
-
-            return String(input)
-                .replace(new RegExp('^' + characters + '+|' + characters + '+$', 'g'), '');
-        };
-
-        var isBlank = function(str){
-        if (str == null) str = '';
-        return (/^\s*$/).test(str);
-      };
-
-        var words = function(str, delimiter) {
-        if (isBlank(str)) return [];
-        return trim(str, delimiter).split(delimiter || /\s+/);
-      };
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
@@ -219,6 +161,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   var loadBookmarks = function() {
     bookmarksStorage.getAll(function(bookmarks, setttings) {
+      bookmarksApp.appSettings = setttings;
       $scope.hideTopLevelFolders = setttings.hideTopLevelFolders;
       $scope.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
