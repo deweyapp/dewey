@@ -14,6 +14,15 @@ var BooleanSearchEngine = function () {
 	var andExpression = 'and';
 	var bookmarks = {};
 
+	// Compress some whitespaces to one. Defaults to whitespace characters.
+	var clean = function(input, characters){
+		if (!angular.isString(input)) return input;
+
+        if (!characters) characters = '\\s';
+        
+        return String(input).replace(new RegExp('\^' + characters + '+|' + characters + '+$', 'g'), '');
+    };
+
 	// Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
     	if (!angular.isString(input)) return input;
@@ -36,9 +45,12 @@ var BooleanSearchEngine = function () {
     };
 
 	this.filterBookmark = function(bookmark, searchText){
-		var search = searchText;
-		//var search = 'Team'
+		// var search = searchText;
+		var search = '   Team   asdf  and  qwerty    ';
 		if(!search) return true;
+
+		//var cleanSearch = clean(search);
+		var searchWords = words(search);
 
 		var s = bookmark.title.indexOf(search) != -1;
 		return s;
