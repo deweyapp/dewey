@@ -12,6 +12,8 @@ function(_, bookmarksApp) { "use strict";
 var BooleanSearchEngine = function () {
 
 	var andExpression = 'and';
+    var patterns = ['tag', 'url', 'title'];
+    var tagPattern = 'tag';
 	var bookmarks = {};
 
 	// Compress some whitespaces to one. Defaults to whitespace characters.
@@ -44,13 +46,29 @@ var BooleanSearchEngine = function () {
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
+    var evaluateExpression = function(bookmark, searchText){
+        // check on pattern
+        var hasExpression = searchText.indexOf('tag:') != -1;
+        // check if flitered
+        if(!hasExpression){
+            var filteredValue = _.find(_.values(bookmark), function(propertyValue){
+                return propertyValue.toString().indexOf(searchText) != -1;
+            });
+            return filteredValue != null;
+        }
+
+    };
+
 	this.filterBookmark = function(bookmark, searchText){
 		// var search = searchText;
-		var search = '   Team   asdf  and  qwerty    ';
+		var search = '181.100';
 		if(!search) return true;
 
+        return evaluateExpression(bookmark, search);
+
 		//var cleanSearch = clean(search);
-		var searchWords = words(search);
+		var searchWords = words(search, andExpression);
+
 
 		var s = bookmark.title.indexOf(search) != -1;
 		return s;
