@@ -58,7 +58,7 @@ var BooleanSearchEngine = function () {
             return !_.isUndefined(filteredValue);
         }
         else{
-            var patternText = searchText.substring(expressionIndex + pattern.length);
+            var patternText = trim(searchText.substring(expressionIndex + pattern.length));
             var tag = _.find(bookmark.tag, function(item){
                 return item.text.indexOf(patternText) != -1;
             });
@@ -69,7 +69,7 @@ var BooleanSearchEngine = function () {
 
 	this.filterBookmark = function(bookmark, searchText){
 		// var search = searchText;
-		var search = 'tag:prog';
+		var search = 'tag:  prog  ';
 		if(!search) return true;
 
         return evaluateExpression(bookmark, search);
