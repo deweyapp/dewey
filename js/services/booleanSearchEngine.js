@@ -12,7 +12,8 @@ function(_, bookmarksApp) { "use strict";
 var BooleanSearchEngine = function () {
 
 	var andExpression = 'and';
-    var patterns = ['tag:', 'url:', 'title:'];
+    var patterns = ['tag', 'url', 'title'];
+    var tagPattern = 'tag';
 	var bookmarks = {};
 
 	// Compress some whitespaces to one. Defaults to whitespace characters.
@@ -46,17 +47,18 @@ var BooleanSearchEngine = function () {
     };
 
     var evaluateExpression = function(bookmark, searchText){
-
-        var pattern  = _.find(patterns, function(item){ return searchText.indexOf(item) == 0; });
-
-        if(!pattern){
+        // check on pattern
+        var pattern = 'tag:';
+        var expressionIndex = searchText.indexOf(pattern);
+        // check if flitered
+        if(expressionIndex == -1){
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
-                return propertyValue.toString().indexOf(trim(searchText)) != -1;
+                return propertyValue.toString().indexOf(searchText) != -1;
             });
             return !_.isUndefined(filteredValue);
         }
         else{
-            var patternText = trim(searchText.substring(pattern.length));
+            var patternText = trim(searchText.substring(expressionIndex + pattern.length));
             var tag = _.find(bookmark.tag, function(item){
                 return item.text.indexOf(patternText) != -1;
             });
@@ -67,16 +69,17 @@ var BooleanSearchEngine = function () {
 
 	this.filterBookmark = function(bookmark, searchText){
 		// var search = searchText;
-		var search = 'tag:  prog  and Algo';
+		var search = 'tag:  prog  ';
 		if(!search) return true;
 
-        search.indexOf()
-		var searchWords = words(search, andExpression);
-        var failureWord = _.find(searchWords, function(word){
-            return !evaluateExpression(bookmark, word);
-        });
+        return evaluateExpression(bookmark, search);
 
-        return _.isUndefined(failureWord);
+		//var cleanSearch = clean(search);
+		var searchWords = words(search, andExpression);
+
+
+		var s = bookmark.title.indexOf(search) != -1;
+		return s;
 	};
 };
 
@@ -84,7 +87,7 @@ var BooleanSearchEngine = function () {
 * Boolean search engine factory method.
 */
 var BooleanSearchEngineFactory = function() {
-    return new BooleanSearchEngine();
+  return new BooleanSearchEngine();
 };
 
 bookmarksApp.factory('booleanSearchEngine', BooleanSearchEngineFactory);
