@@ -48,20 +48,28 @@ var BooleanSearchEngine = function () {
 
     var evaluateExpression = function(bookmark, searchText){
         // check on pattern
-        var hasExpression = searchText.indexOf('tag:') != -1;
+        var pattern = 'tag:';
+        var expressionIndex = searchText.indexOf(pattern);
         // check if flitered
-        if(!hasExpression){
+        if(expressionIndex == -1){
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
                 return propertyValue.toString().indexOf(searchText) != -1;
             });
-            return filteredValue != null;
+            return !_.isUndefined(filteredValue);
         }
+        else{
+            var patternText = searchText.substring(expressionIndex + pattern.length);
+            var tag = _.find(bookmark.tag, function(item){
+                return item.text.indexOf(patternText) != -1;
+            });
 
+            return !_.isUndefined(tag);
+        }
     };
 
 	this.filterBookmark = function(bookmark, searchText){
 		// var search = searchText;
-		var search = '181.100';
+		var search = 'tag:prog';
 		if(!search) return true;
 
         return evaluateExpression(bookmark, search);
