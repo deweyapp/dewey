@@ -277,7 +277,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, boolean
   };
 };
 
-bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
+bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', 'booleanSearchEngine', MainController]);
 
 });
 
