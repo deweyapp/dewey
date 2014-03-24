@@ -35,11 +35,13 @@ var BooleanSearchEngine = function () {
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
-	this.filterBookmark = function(bookmarkTitle, searchText){
+	this.filterBookmark = function(bookmark, searchText){
 		var search = searchText;
+		//var search = 'Team'
 		if(!search) return true;
 
-		return true;
+		var s = bookmark.title.indexOf(search) != -1;
+		return s;
 	};
 };
 
