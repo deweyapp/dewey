@@ -51,7 +51,7 @@ var BooleanSearchEngine = function () {
 
         if(!pattern){
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
-                return propertyValue.toString().indexOf(searchText) != -1;
+                return propertyValue.toString().indexOf(trim(searchText)) != -1;
             });
             return !_.isUndefined(filteredValue);
         }
@@ -67,17 +67,15 @@ var BooleanSearchEngine = function () {
 
 	this.filterBookmark = function(bookmark, searchText){
 		// var search = searchText;
-		var search = 'tag:  prog  and lx';
+		var search = 'tag:  prog  and Algo';
 		if(!search) return true;
 
-        // return evaluateExpression(bookmark, search);
-
-		//var cleanSearch = clean(search);
 		var searchWords = words(search, andExpression);
+        var failureWord = _.find(searchWords, function(word){
+            return !evaluateExpression(bookmark, word);
+        });
 
-
-		var s = bookmark.title.indexOf(search) != -1;
-		return s;
+        return _.isUndefined(failureWord);
 	};
 };
 
