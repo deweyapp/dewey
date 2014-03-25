@@ -70,6 +70,7 @@ var BooleanSearchEngine = function () {
 		var search = 'tag:  prog  and Algo';
 		if(!search) return true;
 
+        search.indexOf()
 		var searchWords = words(search, andExpression);
         var failureWord = _.find(searchWords, function(word){
             return !evaluateExpression(bookmark, word);
@@ -83,7 +84,7 @@ var BooleanSearchEngine = function () {
 * Boolean search engine factory method.
 */
 var BooleanSearchEngineFactory = function() {
-  return new BooleanSearchEngine();
+    return new BooleanSearchEngine();
 };
 
 bookmarksApp.factory('booleanSearchEngine', BooleanSearchEngineFactory);
