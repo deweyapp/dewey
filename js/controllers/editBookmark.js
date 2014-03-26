@@ -1,11 +1,8 @@
 define(
-'controllers/editBookmark',
 [
-  'jQuery', 
-  'bookmarksApp',
-  'services/bookmarksStorage',
+  'jQuery'
 ], 
-function($, bookmarksApp) { 'use strict';
+function($) { 'use strict';
 
 var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmarksStorage) {
   $scope.bookmarkModel = {
@@ -40,14 +37,12 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
   }, 350);
 };
 
-bookmarksApp.controller(
-  'editBookmarkController', 
-  [
-    '$scope', 
-    '$modalInstance', 
-    'bookmark', 
-    'bookmarksStorage',
-    EditBookmarkController
-  ]);
+return [
+  '$scope', 
+  '$modalInstance', 
+  'bookmark', 
+  'bookmarksStorage',
+  EditBookmarkController
+];
 
 });
