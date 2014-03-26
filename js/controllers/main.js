@@ -15,7 +15,7 @@ function(_, $, bookmarksApp) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, booleanSearchEngine) {
   
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
