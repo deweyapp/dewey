@@ -1,20 +1,16 @@
 define(
-'directives/updateBackground',
 [
   'jQuery', 
-  'bookmarksApp',
   'color-thief'
 ], 
-function($, bookmarksApp, ColorThief) { 'use strict';
+function($, ColorThief) { 'use strict';
 
-var thief = new ColorThief();
+var myUpdateBackgroundFactory = function(appSettings) {
+  var thief = new ColorThief();
 
-bookmarksApp.directive('myUpdateBackground', function() {
   return function(scope, element, attrs) { 
     scope.$watch(attrs.dLoad, function(value) {
       element.on('load', function() {
-        var showThumbnails = bookmarksApp.appSettings.showThumbnails;
-
         var color = null;
 
         try {
@@ -24,7 +20,7 @@ bookmarksApp.directive('myUpdateBackground', function() {
 
         var backgrounds = [];
 
-        if (showThumbnails) {
+        if (appSettings.showThumbnails) {
           backgrounds.push(
             'url(\'http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url=' + 
               encodeURIComponent(scope.bookmark.url) + 
@@ -42,6 +38,11 @@ bookmarksApp.directive('myUpdateBackground', function() {
       });
     });
   };
-});
+};
+
+return [
+  'appSettings',
+  myUpdateBackgroundFactory
+];
 
 });

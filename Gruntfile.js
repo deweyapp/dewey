@@ -11,6 +11,13 @@ module.exports = function(grunt) {
         'js/**/*.js',
         '!js/lib/*'
       ],
+      tests: {
+        // suppress chai asserts
+        options: {
+          expr: true
+        },
+        src: [ 'test/**/*.js' ]
+      },
       other: {
         options: {
           node: true
@@ -21,18 +28,34 @@ module.exports = function(grunt) {
       }
     },
 
+    // Tests
+    karma: {
+      unit: {
+        configFile: './test/unit.conf.js'
+      },
+      chrome: {
+        configFile: './test/unit.conf.js',
+        browsers: ['Chrome'],
+        singleRun: false,
+        autoWatch: true,
+        reporters: ['progress', 'mocha']
+      }
+    },
+
     // Development
     watch: {
       dev: {
-        files: ['js/**/*.js'],
-        tasks: ['jshint']
+        files: ['js/**/*.js', 'test/**/*.js'],
+        tasks: ['jshint', 'karma:unit']
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('test', ['jshint', 'karma:unit']);
+  grunt.registerTask('chrome', ['karma:chrome']);
 };

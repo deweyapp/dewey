@@ -7,9 +7,9 @@
     "requirejs": "~2.1.10",
     "underscore": "~1.5.2",
     "bootstrap": "~3.1.0",
-    "angular-ui-router": "0.2.7",
     "ui-bootstrap": "~0.10.0",
     "bootstrap-tagsinput": "~0.3.9",
-    "color-thief": "*"
+    "color-thief": "*",
+    "angular-route": "~1.2.15"
   }
 }

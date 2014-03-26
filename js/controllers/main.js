@@ -1,20 +1,14 @@
 define(
-'controllers/main',
 [
   'underscore',
-  'jQuery',
-  'bookmarksApp',
-  'services/bookmarksStorage',
-  'filters/fieldsFilter',
-  'controllers/editBookmark',
-  'ui.bootstrap'
+  'jQuery'
 ],
-function(_, $, bookmarksApp) { 'use strict';
+function(_, $) { 'use strict';
 
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings) {
 
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -137,15 +131,14 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
-    var bookmarksFilter = $filter('fieldsFilter');
+    var bookmarksFilter = $filter('complex');
     return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   };
 
   var loadBookmarks = function() {
     bookmarksStorage.getAll(function(bookmarks, setttings) {
-      bookmarksApp.appSettings = setttings;
-      $scope.hideTopLevelFolders = setttings.hideTopLevelFolders;
-      $scope.showThumbnails = setttings.showThumbnails;
+      $scope.hideTopLevelFolders = appSettings.hideTopLevelFolders = setttings.hideTopLevelFolders;
+      $scope.showThumbnails = appSettings.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
 
       $scope.tags = _.chain(bookmarks)
@@ -268,7 +261,14 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage) {
   };
 };
 
-bookmarksApp.controller('mainController', ['$scope', '$filter', '$modal', 'bookmarksStorage', MainController]);
+return [
+  '$scope',
+  '$filter',
+  '$modal',
+  'bookmarksStorage',
+  'appSettings', 
+  MainController
+];
 
 });
 

@@ -1,10 +1,8 @@
 define(
-'services/bookmarksStorage',
 [
-  'underscore',
-  'bookmarksApp'
+  'underscore'
 ],
-function(_, bookmarksApp) { "use strict";
+function(_) { "use strict";
 
 /*
 * Bookmarks storage.
@@ -272,6 +270,8 @@ var BookmarksStorageFactory = function() {
   return new BookmarksStorage();
 };
 
-bookmarksApp.factory('bookmarksStorage', BookmarksStorageFactory);
+return [
+  BookmarksStorageFactory
+];
 
 });
