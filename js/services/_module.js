@@ -12,6 +12,9 @@ var module = angular.module('dewey.services', []);
 // Register bookmarksStorage service
 module.factory('bookmarksStorage', bookmarksStorage);
 
+// Register booleanSearchEngine service
+//module.factory('booleanSearchEngine', booleanSearchEngine);
+
 // Register settings service
 module.value('appSettings', settings);
 
