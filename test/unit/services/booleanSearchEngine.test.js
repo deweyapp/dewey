@@ -7,11 +7,18 @@ define(
 function(angular, mocks) {
 
 describe('booleanSearchEngine.test.js', function() { 'use strict';
-  beforeEach(mocks.module('dewey.services'));
+	
+	var service;
+	beforeEach(mocks.module('dewey.services'));
 
-  it('Should be a function', function(){
-	expect(true).to.equal(true);
-  });
+	beforeEach(inject(function (booleanSearchEngine) {
+		service = booleanSearchEngine;
+	}));
+
+	it('Should have a filterBookmark function', function(){
+		expect(service).to.not.be.undefined;
+		expect(service.filterBookmark).to.be.a('function');
+	});
 });
 
 });
