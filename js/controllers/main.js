@@ -8,7 +8,7 @@ function(_, $) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine) {
 
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -128,6 +128,15 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       return false;
     }
   });
+
+  $scope.searchTextFn = function(actual, search){
+    if(!search) return true;
+
+    var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
+    if(_.isUndefined(item)) return false;
+
+    return booleanSearchEngine.filterBookmark(item, search);
+  };
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {

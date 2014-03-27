@@ -64,6 +64,7 @@ var BooleanSearchEngine = function () {
     };
 
 	this.filterBookmark = function(bookmark, searchText){
+        return true;
 		// var search = searchText;
 		var search = 'tag:  prog  and Algo';
 		if(!search) return true;
