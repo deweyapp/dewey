@@ -66,15 +66,15 @@ var BooleanSearchEngine = function () {
 	this.filterBookmark = function(bookmark, searchText){
         return true;
 		// var search = searchText;
-		var search = 'tag:  prog  and Algo';
-		if(!search) return true;
+		// var search = 'tag:  prog  and Algo';
+		// if(!search) return true;
 
-		var searchWords = words(search, andExpression);
-        var failureWord = _.find(searchWords, function(word){
-            return !evaluateExpression(bookmark, word);
-        });
+		// var searchWords = words(search, andExpression);
+  //       var failureWord = _.find(searchWords, function(word){
+  //           return !evaluateExpression(bookmark, word);
+  //       });
 
-        return _.isUndefined(failureWord);
+  //       return _.isUndefined(failureWord);
 	};
 };
 
