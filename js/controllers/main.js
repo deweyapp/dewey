@@ -131,8 +131,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   // Get bookmarks we show on the page (in right order)
   var getFilteredBookmarks = function() {
-    var bookmarksFilter = $filter('complex');
-    return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
+    return $scope.filteredItems;
+    // var bookmarksFilter = $filter('complex');
+    // return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
   };
 
   var loadBookmarks = function() {
