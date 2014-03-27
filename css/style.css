@@ -5,7 +5,7 @@
 -----------------------------*/
 
 /*
-http://meyerweb.com/eric/tools/css/reset/ 
+http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
 */
@@ -17,9 +17,9 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption,
-tbody, tfoot, thead, tr, th, td, article, aside, 
+tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, 
+footer, header, hgroup, menu, nav, output,
 ruby, section, summary,time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -31,7 +31,7 @@ ruby, section, summary,time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, main, menu, nav, section {
   display: block;
 }
@@ -180,9 +180,9 @@ body {
 }
 
 .options:before,
-.website:before, 
-.review:before, 
-.feedback:before, 
+.website:before,
+.review:before,
+.feedback:before,
 .donate:before,
 .email:before,
 .docs:before {
@@ -424,7 +424,7 @@ nav {
 @-webkit-keyframes fadeInUp {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(1.25rem); 
+    -webkit-transform: translateY(1.25rem);
   }
 
   100% {
@@ -450,7 +450,7 @@ nav {
   -webkit-backface-visibility: hidden;
 }
 
-.panel:hover, 
+.panel:hover,
 .panel-primary {
   top: -.5rem;
 }
@@ -522,7 +522,7 @@ nav {
 }
 
 .thumbnail {
-  background-size: 12.5rem 9.375rem !important;
+  background-size: cover !important; /* Changed from 12.5rem 9.375rem to cover until Snapito api reads size again*/
 }
 
 /*-----------------------------
@@ -533,7 +533,7 @@ nav {
   background-size: 18px 18px !important;
 }
 
-.panel-small .thumbnail-loading, 
+.panel-small .thumbnail-loading,
 .panel-small .thumbnail {
   height: 1.75rem;
   -webkit-filter: brightness(.85);
@@ -568,13 +568,13 @@ nav {
   Special Styles for Links to local Chrome urls
 -----------------------------*/
 
-.thumbnail[title*="chrome://"], 
+.thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"]{
   background: url(../images/chrome.svg) !important;
   background-position: center center !important;
 }
 
-.panel-small .thumbnail[title*="chrome://"], 
+.panel-small .thumbnail[title*="chrome://"],
 .panel-small .thumbnail[title*="chrome-extension://"]{
   background: #F18260 !important;
 }
@@ -1037,7 +1037,7 @@ textarea.form-control {
   opacity: .5;
   padding: .75rem;
   width: 6.25rem;
-  transition: opacity 300ms ease-out, 
+  transition: opacity 300ms ease-out,
               background 300ms ease-out;
 }
 
@@ -1130,7 +1130,7 @@ body canvas {
     text-align: left;
     width: 12.5rem;
   }
-  
+
   .search-group input::-webkit-input-placeholder {
     color: gainsboro;
     font: 200 1.25rem 'Source Sans Pro', sans-serif;
