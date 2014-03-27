@@ -49,7 +49,7 @@ var complexFactory = function($filter) {
             continue;
           }
         } else {
-            pattern = search[i] + pattern;
+          pattern = search[i] + pattern;
         }
       }
 
