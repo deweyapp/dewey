@@ -547,7 +547,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .thumbnail {
-  background-size: cover !important; /* Changed from 12.5rem 9.375rem to cover until Snapito api reads size again*/
+  background-size: 12.5rem 9.375rem !important;
 }
 
 /*-----------------------------
