@@ -110,7 +110,7 @@ body {
 -----------------------------*/
 
 #nav-wrap {
-  background: hsla(0, 0%, 100%, 0.9);
+  background: white;
   height: 3.125rem;
   position: fixed;
   top: 0;
@@ -149,8 +149,10 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 3.125rem;
   width: 3.125rem;
-  background: hsla(201, 16%, 17%, 0.05) url(../images/delete.svg) center no-repeat;
+  background: white url(../images/delete.svg) center no-repeat;
   cursor: pointer;
+  position: absolute;
+  left: 0;
 }
 
 @media only screen and (max-width: 33.5rem) {
