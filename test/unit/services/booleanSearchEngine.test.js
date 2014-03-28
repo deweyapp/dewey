@@ -116,14 +116,14 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			expect(isFiltered).to.be.true;
 		});
 
-		xit('When title pattern contains whitespace - result should be true', function(){
+		it('When title pattern contains whitespace - result should be true', function(){
 
 			searchText = 'title: itl';
 			var isFiltered = engine.filterBookmark(bookmark, searchText);
 			expect(isFiltered).to.be.true;
 		});
 
-		xit('When url pattern contains whitespace - result should be true', function(){
+		it('When url pattern contains whitespace - result should be true', function(){
 
 			searchText = 'url: 127';
 			var isFiltered = engine.filterBookmark(bookmark, searchText);

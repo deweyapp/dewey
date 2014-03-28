@@ -46,11 +46,19 @@ var BooleanSearchEngine = function () {
         }
         else{
             var patternText = trim(searchText.substring(pattern.length));
-            var tag = _.find(bookmark.tag, function(item){
-                return item.text.indexOf(patternText) != -1;
-            });
+            if(pattern === 'tag:'){
+                var tag = _.find(bookmark.tag, function(item){
+                    return item.text.indexOf(patternText) != -1;
+                });
 
-            return !_.isUndefined(tag);
+                return !_.isUndefined(tag);
+            }
+            else if(pattern === 'title:'){
+                return bookmark.title.indexOf(trim(patternText)) != -1;
+            }
+            else if(pattern === 'url:'){
+                return bookmark.url.indexOf(trim(patternText)) != -1;
+            }
         }
     };
 
