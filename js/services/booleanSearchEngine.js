@@ -62,6 +62,27 @@ var BooleanSearchEngine = function () {
         }
     };
 
+    this.generateExpressionTree = function(searchText){
+        
+        var expressionTree = [];
+        var search = searchText;
+        if(isBlank(search)) return expressionTree;
+
+        var searchWords = words(search);
+        if(_.isEmpty(searchWords))
+            return expressionTree;
+
+        _.each(searchWords, function(it){
+            if(!_contains(patterns, it)) {
+                expressionTree.push(it);
+            }
+            else{
+                
+            }
+        });
+        return expressionTree;
+    };
+
 	this.filterBookmark = function(bookmark, searchText){
         
 		var search = searchText;

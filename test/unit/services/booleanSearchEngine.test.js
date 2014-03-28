@@ -15,17 +15,48 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		engine = booleanSearchEngine;
 	}));
 
-	it('Should have a filterBookmark function', function(){
+	xit('Should have a filterBookmark function', function(){
 		expect(engine).to.not.be.undefined;
 		expect(engine.filterBookmark).to.be.a('function');
 	});
 
-	it('When search empty - result should be true', function(){
+	xit('When search empty - result should be true', function(){
 		var isFiltered = engine.filterBookmark(null, '');
 		expect(isFiltered).to.be.true;
 	});
 
-	describe('When search "string" - will try to find a match in any object field.', function(){	
+	it('Check generate expression', function(){
+
+		expect(engine.generateExpressionTree).to.be.a('function');
+
+		var result = engine.generateExpressionTree(null);
+		expect(result).to.be.an('array');
+		expect(result.length).to.equal(0);
+
+		var txt = '';
+		result = engine.generateExpressionTree(txt);
+		expect(result).to.be.an('array');
+		expect(result.length).to.equal(0);
+
+		txt = '   ';
+		result = engine.generateExpressionTree(txt);
+		expect(result).to.be.an('array');
+		expect(result.length).to.equal(0);
+
+		txt = '   asdf   ';
+		result = engine.generateExpressionTree(txt);
+		expect(result).to.be.an('array');
+		expect(result.length).to.equal(1);
+
+		txt = ' asdf tag: qwerty  ';
+		result = engine.generateExpressionTree(txt);
+		expect(result).to.be.an('array');
+		expect(result.length).to.equal(2);
+		expect(result[0]).to.equal('asdf');
+		expect(result[1]).to.equal('tag:qwerty');
+	});
+
+	xdescribe('When search "string" - will try to find a match in any object field.', function(){	
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -65,7 +96,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search "tag:string" - will try to find a match only in object tag property.', function(){
+	xdescribe('When search "tag:string" - will try to find a match only in object tag property.', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -118,7 +149,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
+	xdescribe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
