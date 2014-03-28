@@ -143,7 +143,7 @@ body {
   background: url(../images/search.svg) no-repeat;
   background-position: 1rem 1rem;
   border: none;
-  font: 200 1.35rem 'Source Sans Pro', sans-serif;
+  font: 400 1.35rem 'Source Sans Pro', sans-serif;
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
@@ -176,14 +176,14 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .typeahead-dropdown {
   background-color: hsl(201, 16%, 17%);
-  color: white;
+  color: hsl(201, 16%, 85%);
   z-index: 10000;
 }
 
 .typeahead-dropdown > li {
+  cursor: pointer;
   line-height: 1.5rem;
   padding: .5rem 1rem;
-  cursor: pointer;
 }
 
 .typeahead-dropdown > li a:focus {
