@@ -259,6 +259,16 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     _gaq.push(['_trackEvent', 'ChangeSettings', 'ShowThumbnails changed to ' + !$scope.showThumbnails]);
     bookmarksStorage.setShowThumbnails(!$scope.showThumbnails, loadBookmarks);
   };
+
+  $scope.getTypeheadSuggestions = function($viewValue) {
+    return _.chain(this.tags)
+    .filter(function(t) {
+      return t.tagText.toUpperCase().indexOf($viewValue.toUpperCase()) === 0;
+    })
+    .map(function(t) {
+      return t.tagText;
+    }).value();
+  };
 };
 
 return [
