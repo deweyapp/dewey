@@ -119,7 +119,6 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999999;
   -webkit-animation: fade-in-down 300ms ease-in-out;
   box-shadow: 0 0 25px 10px hsla(0, 0%, 0%, .05);
 }
