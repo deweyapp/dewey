@@ -70,7 +70,7 @@
     <ul id="sort">
       <li ng-cloak>
         <p>Sort:</p>
-        <a ng-repeat="order in orders" ng-class="{ 'active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
+        <a ng-repeat="order in orders" ng-class="{ 'sort-active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
       </li>
     </ul>
 

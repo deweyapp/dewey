@@ -59,6 +59,11 @@ table {
   border-spacing: 0;
 }
 
+::selection {
+  background: hsl(14, 84%, 66%);
+  color: white;
+}
+
 /*-----------------------------
   Animations
 -----------------------------*/
@@ -109,11 +114,6 @@ body {
   padding-bottom: 20rem;
 }
 
-strong {
-  font-weight: 700;
-  color: hsl(14, 84%, 66%);
-}
-
 /*-----------------------------
   Search and Settings
 -----------------------------*/
@@ -147,7 +147,7 @@ strong {
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
-  width: 30rem;
+  width: 100%;
 }
 
 .search-group input[type="search"]:focus {
@@ -156,7 +156,7 @@ strong {
 
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
-  height: 3.125rem;
+  height: 3.12rem;
   width: 3.125rem;
   background: white url(../images/delete.svg) center no-repeat;
   cursor: pointer;
@@ -168,6 +168,39 @@ input[type="search"]::-webkit-search-cancel-button {
   .search-group input[type="search"] {
     width: 80%;
   }
+}
+
+/*-----------------------------
+  Typeahead Styling
+-----------------------------*/
+
+.typeahead-dropdown {
+  background-color: hsl(201, 16%, 17%);
+  color: white;
+  z-index: 10000;
+}
+
+.typeahead-dropdown > li {
+  line-height: 1.5rem;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.typeahead-dropdown > li a:focus {
+  outline: none;
+}
+
+.typeahead-dropdown > li:last-child {
+  padding-bottom: .75rem;
+}
+
+strong { /* highlights matching letters in results */
+  color: hsl(14, 84%, 66%);
+}
+
+.active {
+  color: hsl(14, 84%, 66%);
+  background: hsla(0, 0%, 100%, 0.05);
 }
 
 /*-----------------------------
@@ -414,7 +447,7 @@ input[type="search"]::-webkit-search-cancel-button {
   outline: none;
 }
 
-.active {
+.sort-active {
   border-bottom: 1px solid;
 }
 
