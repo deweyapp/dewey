@@ -7,7 +7,7 @@
 - Add custom tags
 - Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
 - Search and sort in a much smarter and faster way
-- [More on how to use Dewey](/dewey-website/README.md) →
+- [More on how to use Dewey](https://github.com/deweyapp/dewey-website/blob/master/README.md) →
 
 ## Install
 
@@ -19,6 +19,7 @@ Apache License, Version 2.0
 ***
   
 ### Changelog
+- 2.0.3 (March 27 2014) - Fix issue with thumbnail backgrounds (#68).
 - 2.0.2 (February 12 2014) - Update CSS styles to Dewey thumbnails.
 - 2.0 (February 11 2014) - Redesign, rebranding. First Dewey version.
 - 1.1.2 (October 30 2013) - Use bookmarks url as identity instead of id (each chrome installation has it is own identities). Chrome storage has limitation on item size, changed the way I store custom tags in storage, split it by chunks.
