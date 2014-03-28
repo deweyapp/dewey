@@ -92,8 +92,29 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 	});
 
 	xdescribe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
-		it('', function(){
-			expect(engine).to.not.be.undefined;
+		var bookmark, searchText;
+		
+		beforeEach(function(){
+			
+			searchText = 'itl tag:tag4';
+			bookmark = {
+				title: 'title',
+				url: 'http://127:0:0:1',
+				tag:[{text: 'tag1'}, {text: 'tag2'}, {text: 'tag2'}]
+			};
+		});
+
+		it('When title contains - result should be true', function(){
+			
+			var isFiltered = engine.filterBookmark(bookmark, searchText);
+			expect(isFiltered).to.be.true;
+		});
+
+		it('When tag contains - result should be true', function(){
+
+			searchText = 'nottitle tag:tag2';
+			var isFiltered = engine.filterBookmark(bookmark, searchText);
+			expect(isFiltered).to.be.true;
 		});
 	});
 
