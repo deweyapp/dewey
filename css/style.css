@@ -60,16 +60,28 @@ table {
 }
 
 /*-----------------------------
-  Fade-in
+  Animations
 -----------------------------*/
-
-@keyframes fade-in {
-  from {opacity: 0;}
-  to {opacity: 1;}}
 
 @-webkit-keyframes fade-in {
   from {opacity: 0;}
   to {opacity: 1;}}
+
+@-webkit-keyframes fade-in-up {
+  from { opacity: 0; -webkit-transform: translateY(1.25rem); }
+  to { opacity: 1;-webkit-transform: translateY(0); }}
+
+@-webkit-keyframes fade-in-down {
+  from { opacity: 0; -webkit-transform: translateY(-2rem); }
+  to { opacity: 1;-webkit-transform: translateY(0); }}
+
+@-webkit-keyframes slide-down {
+  from {-webkit-transform: translateY(-5rem);}
+  to {-webkit-transform: translateyY(0);}}
+
+@-webkit-keyframes slide-right {
+  from {-webkit-transform: translateX(-5rem);}
+  to {-webkit-transform: translateX(0);}}
 
 /*-----------------------------
   Global
@@ -82,23 +94,23 @@ table {
 }
 
 html  {
-  background: hsl(0, 0%, 95%);
+  background: hsla(201, 16%, 17%, 0.1);
   font-size: 100%;
+  margin-top: 3.125rem;
 }
 
 body {
-  color: hsl(0, 0%, 33%);
+  color: hsla(201, 16%, 17%, 0.33);
   font-family: 'Source Sans Pro', sans-serif;
   padding-bottom: 20rem;
 }
 
 /*-----------------------------
-  Settings Dropdown
+  Search and Settings
 -----------------------------*/
 
-<<<<<<< HEAD
 #nav-wrap {
-  background: hsla(0, 0%, 100%, 0.9);
+  background: white;
   height: 3.125rem;
   position: fixed;
   top: 0;
@@ -126,7 +138,7 @@ body {
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
-  width: 25%;
+  width: 30rem;
 }
 
 .search-group input[type="search"]:focus {
@@ -137,43 +149,45 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 3.125rem;
   width: 3.125rem;
-  background: hsla(201, 16%, 17%, 0.05) url(../images/delete.svg) center center no-repeat;
+  background: white url(../images/delete.svg) center no-repeat;
   cursor: pointer;
+  position: absolute;
+  left: 0;
+}
+
+@media only screen and (max-width: 33.5rem) {
+  .search-group input[type="search"] {
+    width: 80%;
+  }
 }
 
 /*-----------------------------
   Settings Dropdown Menu
 -----------------------------*/
-=======
-/*
-* Partially taken from Bootstrap v2.3.2
-*
-* Copyright 2013 Twitter, Inc
-* Licensed under the Apache License v2.0
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Designed and built with all the love in the world @twitter by @mdo and @fat.
-*/
->>>>>>> parent of 20e7c39... design updates to search, settings and tags dropdown
 
 #settings {
+  background: hsla(201, 16%, 17%, 0.05);
   display: inline-block;
   position: fixed;
-  right: 1rem;
+  height: 3.125rem;
+  width: 3.125rem;
+  right: 0;
   text-align: left;
-  top: 1rem;
+  top: 0;
   white-space: nowrap;
-  z-index: 980;
+  z-index: 9999999;
 }
 
 .settings-icon {
-  background: url(../images/settings.svg) no-repeat center center;
+  background: url(../images/settings.svg) no-repeat center;
+  background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 3.125rem;
+  width: 3.125rem;
   -webkit-filter: saturate(0);
   transition: -webkit-filter 100ms ease-in-out;
+  -webkit-backface-visibility: hidden;
 }
 
 .settings-icon:hover {
@@ -199,7 +213,7 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0 0 20px -2px hsla(0, 0%, 0%, 0.2);
   display: none;
   list-style: none;
-  min-width: 10rem;
+  min-width: 12rem;
   padding: .75rem 0;
   position: absolute;
   right: 0;
@@ -210,7 +224,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .dropdown-menu > li > a {
   -webkit-filter: saturate(0);
   clear: both;
-  color: hsl(14, 84%, 66%);
+  color: hsla(201, 16%, 17%, .75);
   display: block;
   font: 400 1rem/1.2 "Source Sans Pro", sans-serif;
   padding: .25rem 1rem;
@@ -225,7 +239,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  background-color: hsl(0, 0%, 96%);
+  background-color: hsla(201, 16%, 17%, 0.05);
   color: hsl(14, 84%, 66%);
 }
 
@@ -306,64 +320,18 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-right: 5px;
 }
 
-.important {
-  color: hsl(14, 84%, 66%) !important;
-}
-
-/*-----------------------------
-  Nav / Search
------------------------------*/
-
-nav {
-  padding: 6.5rem 0 5.25rem 0;
-  text-align: center;
-}
-
-.search-group {
-  margin-left: 1rem;
-}
-
-.search-group:before {
-  content: url(../images/search.svg);
-  margin-left: 0;
-  margin-right: -2.5rem;
-}
-
-.search-group input[type="search"] {
-  -webkit-appearance: none;
-  background: none;
-  border: none;
-  color: inherit;
-  font: 200 2.25rem 'Source Sans Pro', sans-serif;
-  padding: .625rem .625rem .625rem 3rem;
-  text-align: left;
-  transition: background 300ms ease-in-out;
-  width: 22.5rem;
-}
-
-.search-group input::-webkit-input-placeholder {
-  color: gainsboro;
-  font: 200 2.25rem "Source Sans Pro", sans-serif;
-}
-
-.search-group input[type="search"]:focus {
-  background: hsla(0, 0%, 100%, 0.7);
-  outline: none;
-}
-
-.search-group input[type="search"]::-webkit-search-cancel-button {
-  margin-right: -2.5rem;
-  opacity: .5;
-}
-
 .search-tips {
   color: hsl(0, 0%, 80%);
   font-weight: 200;
   margin-top: 3rem;
 }
 
+.important {
+  color: hsl(14, 84%, 66%) !important;
+}
+
 /*-----------------------------
-  Tags Dropdown - Here for future implementation
+  Tags Dropdown
 -----------------------------*/
 
 #tags {
@@ -374,12 +342,12 @@ nav {
 }
 
 .tags-icon {
-  background: url(../images/tags.svg) no-repeat center center;
+  background: url(../images/tags.svg) no-repeat center;
   background-size: contain;
   cursor: pointer;
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 1.25rem;
+  width: 1.25rem;
   -webkit-filter: saturate(0);
   transition: -webkit-filter 100ms ease-in-out;
 }
@@ -389,17 +357,35 @@ nav {
 }
 
 #tags .dropdown-menu {
+  color: hsl(0, 0%, 100%);
+  background: hsl(201, 16%, 17%);
   left: 2rem;
   top: -1rem;
   min-width: 11rem;
-  max-height: 24rem;
+  max-height: 25rem;
   overflow: scroll;
 }
 
 #tags .dropdown-menu > li > a {
   font: 400 .85rem/1.2 "Source Sans Pro", sans-serif;
   cursor: pointer;
+  color: white;
+  transition: none;
 }
+
+#tags .dropdown-menu > li > a:hover,
+#tags .dropdown-menu > li > a:focus {
+  background: hsla(0, 0%, 100%, 0.05);
+  color: hsl(14, 84%, 66%);
+}
+
+/*-----------------------------
+  Tags Dropdown Scrollbar
+-----------------------------*/
+
+#tags .dropdown-menu::-webkit-scrollbar { width: .4rem; height: 0; }
+#tags .dropdown-menu::-webkit-scrollbar-track-piece { background-color: white; }
+#tags .dropdown-menu::-webkit-scrollbar-thumb:vertical { height: 1.5rem; background-color: #F18260; }
 
 /*-----------------------------
   Sort
@@ -408,7 +394,6 @@ nav {
 #sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   text-align: right;
-  margin-bottom: 1rem;
 }
 
 #sort p, #sort a {
@@ -438,11 +423,12 @@ nav {
 -----------------------------*/
 
 .grid {
-  margin: 0 auto;
+  margin: 3.25rem auto 0;
   width: 72.5em;
 }
 
 #list-bookmarks {
+  margin-top: 2.25rem;
   font-size: 0;
 }
 
@@ -456,33 +442,18 @@ nav {
   top: 0;
   width: 12.5rem;
   transition: top 300ms cubic-bezier(.65, -1, .25, 2.5);
-  -webkit-animation: fadeInUp 300ms ease forwards;
+  -webkit-animation: fade-in-up 300ms ease forwards;
   -webkit-backface-visibility: hidden;
 }
 
-#list-bookmarks li:hover {
-  top: -.3rem;
-}
-
+#list-bookmarks li:hover,
 #list-bookmarks li.panel-primary {
-  top: -.3rem;
+  top: -.2rem;
 }
 
 /*-----------------------------
   Grid Panel Animation
 -----------------------------*/
-
-@-webkit-keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(1.25rem);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-}
 
 #list-bookmarks li:nth-child(3n+3),
 #list-bookmarks li:nth-child(5n+1) {
@@ -503,11 +474,16 @@ nav {
 
 .panel:hover,
 .panel-primary {
-  top: -.5rem;
+  top: -.45rem;
 }
 
 .panel:focus {
   outline: none;
+}
+
+.panel:active {
+  transition: -webkit-transform 60ms cubic-bezier(.65, 0, .75, 1.25);
+  -webkit-transform: scale(1.03);
 }
 
 .bookmark-link {
@@ -563,7 +539,7 @@ nav {
 .thumbnail-loading,
 .thumbnail {
   -webkit-filter: brightness(.75);
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   height: 9.375rem;
 }
@@ -604,7 +580,7 @@ nav {
 
 .thumbnail[title$=".pdf"] {
   background: white url(../images/pdf.svg) !important;
-  background-position: center center !important;
+  background-position: center !important;
 }
 
 .panel-small .thumbnail[title$=".pdf"] {
@@ -622,7 +598,7 @@ nav {
 .thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"]{
   background: url(../images/chrome.svg) !important;
-  background-position: center center !important;
+  background-position: center !important;
 }
 
 .panel-small .thumbnail[title*="chrome://"],
@@ -710,18 +686,8 @@ nav {
 }
 
 /*-----------------------------
-  Modal Window
+  Edit Modal Window
 -----------------------------*/
-
-/*
-Partially taken from Bootstrap v2.3.2
-Copyright 2013 Twitter, Inc
-
-Licensed under the Apache License v2.0
-http://www.apache.org/licenses/LICENSE-2.0
-
-Designed and built with all the love in the world @twitter by @mdo and @fat.
-*/
 
 .close {
   color: hsl(0, 0%, 0%);
@@ -881,9 +847,6 @@ button.close {
   Form Control
 -----------------------------*/
 
-.form-control::-webkit-input-placeholder {
-  color: lightgray;
-}
 
 .form-control[disabled],
 .form-control[readonly],
@@ -1138,39 +1101,9 @@ body canvas {
 }
 
 @media only screen and (max-width: 29rem) {
- .grid { width: 12.5rem; }
+  .grid { width: 12.5rem; }
 
   #list-bookmarks li { margin: 1.25rem 0 0 0; }
-
-  nav { padding-bottom: 4rem; }
-
-  .search-group { margin: 0; }
-
-  .search-group:before {
-    content: '';
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .search-group input[type="search"] {
-    -webkit-appearance: none;
-    background: none;
-    border: none;
-    color: inherit;
-    font: 200 1.25rem 'Source Sans Pro', sans-serif;
-    padding: .625rem;
-    text-align: left;
-    width: 12.5rem;
-  }
-
-  .search-group input::-webkit-input-placeholder {
-    color: gainsboro;
-    font: 200 1.25rem 'Source Sans Pro', sans-serif;
-  }
-
-  .search-group input[type="search"]::-webkit-search-cancel-button {
-    margin-right: 0;
-  }
 
   #tags { margin-left: 0; }
 
