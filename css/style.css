@@ -105,6 +105,11 @@ body {
   padding-bottom: 20rem;
 }
 
+strong {
+  font-weight: 700;
+  color: hsl(14, 84%, 66%);
+}
+
 /*-----------------------------
   Search and Settings
 -----------------------------*/
