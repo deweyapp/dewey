@@ -13,15 +13,6 @@ var BooleanSearchEngine = function () {
     var patterns = ['tag:', 'url:', 'title:'];
 	var bookmarks = {};
 
-	// Compress some whitespaces to one. Defaults to whitespace characters.
-	var clean = function(input, characters){
-		if (!angular.isString(input)) return input;
-
-        if (!characters) characters = '\\s';
-        
-        return String(input).replace(new RegExp('\\^' + characters + '+|' + characters + '+$', 'g'), '');
-    };
-
 	// Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
         if (!angular.isString(input)) return input;
@@ -64,17 +55,17 @@ var BooleanSearchEngine = function () {
     };
 
 	this.filterBookmark = function(bookmark, searchText){
-        return true;
-		// var search = searchText;
-		// var search = 'tag:  prog  and Algo';
-		// if(!search) return true;
+        
+		var search = searchText;
+		//var search = 'tag:  prog  and Algo';
+		if(!search) return true;
 
-		// var searchWords = words(search, andExpression);
-  //       var failureWord = _.find(searchWords, function(word){
-  //           return !evaluateExpression(bookmark, word);
-  //       });
+		var searchWords = words(search, andExpression);
+        var failureWord = _.find(searchWords, function(word){
+            return !evaluateExpression(bookmark, word);
+        });
 
-  //       return _.isUndefined(failureWord);
+        return _.isUndefined(failureWord);
 	};
 };
 
