@@ -114,7 +114,7 @@ body {
 -----------------------------*/
 
 #nav-wrap {
-  background: hsla(0, 0%, 100%, 0.9);
+  background: white;
   height: 3.125rem;
   position: fixed;
   top: 0;
