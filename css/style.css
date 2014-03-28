@@ -76,12 +76,16 @@ table {
   to { opacity: 1;-webkit-transform: translateY(0); }}
 
 @-webkit-keyframes slide-down {
-  from {-webkit-transform: translateY(-5rem);}
-  to {-webkit-transform: translateyY(0);}}
+  from { -webkit-transform: translateY(-5rem); }
+  to { -webkit-transform: translateY(0); }}
 
 @-webkit-keyframes slide-right {
-  from {-webkit-transform: translateX(-5rem);}
-  to {-webkit-transform: translateX(0);}}
+  from { -webkit-transform: translateX(-5rem); }
+  to { -webkit-transform: translateX(0); }}
+
+@-webkit-keyframes slide-left {
+  from { -webkit-transform: translateX(5rem); }
+  to { -webkit-transform: translateX(0); }}
 
 /*-----------------------------
   Global
@@ -110,7 +114,7 @@ body {
 -----------------------------*/
 
 #nav-wrap {
-  background: white;
+  background: hsla(0, 0%, 100%, 0.9);
   height: 3.125rem;
   position: fixed;
   top: 0;
@@ -126,7 +130,7 @@ body {
 }
 
 .search-group {
-  -webkit-animation: slide-right 500ms ease-in-out;
+  -webkit-animation: slide-right 500ms cubic-bezier(.65, -1, .25, 1.75);
 }
 
 .search-group input[type="search"] {
@@ -165,22 +169,12 @@ input[type="search"]::-webkit-search-cancel-button {
   Settings Dropdown Menu
 -----------------------------*/
 
-#settings {
-  background: hsla(201, 16%, 17%, 0.05);
-  display: inline-block;
-  position: fixed;
-  height: 3.125rem;
-  width: 3.125rem;
-  right: 0;
-  text-align: left;
-  top: 0;
-  white-space: nowrap;
-  z-index: 9999999;
-}
-
-.settings-icon {
-  background: url(../images/settings.svg) no-repeat center;
+.settings-toggle {
+  background: hsla(201, 16%, 17%, 0.05) url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
+  position: absolute;
+  right: 0;
+  top: 0;
   cursor: pointer;
   display: block;
   height: 3.125rem;
@@ -188,9 +182,10 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-filter: saturate(0);
   transition: -webkit-filter 100ms ease-in-out;
   -webkit-backface-visibility: hidden;
+  -webkit-animation: slide-left 500ms ease-in-out;
 }
 
-.settings-icon:hover {
+.settings-toggle:hover {
   -webkit-filter: saturate(1);
 }
 
@@ -549,7 +544,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .thumbnail {
-  background-size: 12.5rem 9.375rem !important;
+  background-size: cover !important;
 }
 
 /*-----------------------------
