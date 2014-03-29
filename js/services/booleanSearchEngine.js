@@ -72,14 +72,21 @@ var BooleanSearchEngine = function () {
         if(_.isEmpty(searchWords))
             return expressionTree;
 
+        var pattern = '';
         _.each(searchWords, function(it){
-            if(!_contains(patterns, it)) {
-                expressionTree.push(it);
+            if(_.contains(patterns, it)) {
+                if(!isBlank(pattern))
+                    expressionTree.push(pattern);
+                pattern = it;
             }
             else{
-                
+                pattern = pattern + it;
             }
         });
+
+        if(!isBlank(pattern))
+            expressionTree.push(pattern);
+
         return expressionTree;
     };
 
