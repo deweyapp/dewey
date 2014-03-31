@@ -277,6 +277,7 @@ return [
   '$modal',
   'bookmarksStorage',
   'appSettings', 
+  'booleanSearchEngine',
   MainController
 ];
 

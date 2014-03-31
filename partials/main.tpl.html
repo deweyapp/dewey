@@ -1,71 +1,58 @@
 <main id="mainContent">
 
-  <header id="nav-wrap">
+  <div id="settings">
+    <a class="settings-icon" data-toggle="dropdown"></a>
+    <ul class="dropdown dropdown-menu" role="menu">
+      <li><a class="docs" href="https://github.com/deweyapp/deweyapp/" target="_blank">Docs</a></li>
+      <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
+      <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
+      <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
+      <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
+      <li><a class="website" href="http://deweyapp.io" target="_blank">deweyapp.io</a></li>
 
-    <nav id="search">
-      <form class="search" role="search">
-        <div class="form-group search-group">
-          <input autofocus="true" type="search" class="form-control" ng-model="searchText">
-        </div>
-      </form>
-    </nav>
-
-    <div id="settings">
-      <a class="settings-icon" data-toggle="dropdown"></a>
-      <ul class="dropdown dropdown-menu" role="menu">
-        <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">Docs</a></li>
-        <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
-        <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
-        <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
-        <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
-        <li><a class="website" href="http://deweyapp.io" target="_blank">deweyapp.io</a></li>
-
-       <ul class="divider">
-          <li>Settings:</li>
-          <li>
-            <form>
-              <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
-                <label>
-                  <input type="checkbox" ng-checked="hideTopLevelFolders" />Hide top-level folders
-                </label>
-              </div>
-              <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
-                <label>
-                  <input type="checkbox" ng-checked="showThumbnails" />Show thumbnails
-                </label>
-              </div>
-            </form>
-          </li>
-        </ul>
-        <ul class="divider">
-          <li>Search Options:</li>
-          <li>tag:{tag}</li>
-          <li>url:{url}</li>
-          <li>title:{title}</li>
-        </ul>
-        <ul class="divider">
-          <li>Created by:</li>
-          <li><a href="http://twitter.com/outcoldman" target="_blank">@outcoldman</a></li>
-          <li><a href="http://twitter.com/jmwlsn" target="_blank">@jmwlsn</a></li>
-        </ul>
-        <ul class="divider">
-          <li><a class="important" href="http://snapito.com/" target="_blank">Screenshots by Snapito</a></li>
-        </ul>
+     <ul class="divider">
+        <li>Settings:</li>
+        <li>
+          <form>
+            <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
+              <label>
+                <input type="checkbox" ng-checked="hideTopLevelFolders" />Hide top-level folders
+              </label>
+            </div>
+            <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
+              <label>
+                <input type="checkbox" ng-checked="showThumbnails" />Show thumbnails
+              </label>
+            </div>
+          </form>
+        </li>
       </ul>
-    </div>
+      <ul class="divider">
+        <li>Search Options:</li>
+        <li>tag:{tag}</li>
+        <li>url:{url}</li>
+        <li>title:{title}</li>
+      </ul>
+      <ul class="divider">
+        <li>Created by:</li>
+        <li><a href="http://twitter.com/outcoldman" target="_blank">@outcoldman</a></li>
+        <li><a href="http://twitter.com/jmwlsn" target="_blank">@jmwlsn</a></li>
+      </ul>
+      <ul class="divider">
+        <li><a class="important" href="http://snapito.com/" target="_blank">Screenshots by Snapito</a></li>
+      </ul>
+    </ul>
+  </div>
 
-  </header>
+  <nav>
+    <form class="search" role="search">
+      <div class="form-group search-group">
+        <input autofocus="true" type="search" class="form-control" placeholder="Search Bookmarks" ng-model="searchText">
+      </div>
+    </form>
+  </nav>
 
   <div class="grid">
-
-    <div id="tags">
-      <a class="tags-icon" data-toggle="dropdown"></a>
-      <ui class="dropdown-menu">
-        <li ng-repeat="tag in tags | orderBy: 'tagText'">
-          <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
-        </li>
-      </ui>
-    </div>
 
     <ul id="sort">
       <li ng-cloak>
@@ -75,7 +62,7 @@
     </ul>
 
     <ul id="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in (filteredItems = bookmarks | filter:searchText:searchTextFn | limitTo:totalDisplayed)" ng-cloak>
+            <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in (filteredItems = bookmarks | filter:searchText:searchTextFn | orderBy:currentOrder.value | limitTo:totalDisplayed)" ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
           <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>
