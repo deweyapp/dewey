@@ -34,6 +34,7 @@ var BooleanSearchEngine = function () {
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
+    // Check that tag collection contains search.
     var containsTag = function(tags, patternText){
         
         var tag = _.find(tags, function(item){
@@ -43,16 +44,19 @@ var BooleanSearchEngine = function () {
         return !_.isUndefined(tag);
     };
 
+    // Check that title contains search.
     var containsTitle = function(title, patternText){
 
         return title.indexOf(trim(patternText)) != -1;
     };
 
+    // Check that url contains search.
     var containsUrl = function(url, patternText){
 
         return url.indexOf(trim(patternText)) != -1;
     };
 
+    // Check that bookmark could be reached by following expression.
     var evaluateExpression = function(bookmark, searchText){
 
         var pattern  = _.find(patterns, function(item){ return searchText.indexOf(item) === 0; });
@@ -87,6 +91,8 @@ var BooleanSearchEngine = function () {
         }
     };
 
+    // TODO AGRYGOR: Should be calculated one per search text.
+    // Generate expression tree by search text.
     this.generateExpressionTree = function(searchText){
         
         var pattern = '';
@@ -122,10 +128,10 @@ var BooleanSearchEngine = function () {
         return expressionTree;
     };
 
+    // Check that bookmark could be reached by following search text.
 	this.filterBookmark = function(bookmark, searchText){
         
 		var search = searchText;
-		//var search = 'tag:  prog  and Algo';
 		if(!search) return true;
 
         var searchWords = this.generateExpressionTree(search);
