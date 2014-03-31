@@ -34,6 +34,25 @@ var BooleanSearchEngine = function () {
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
+    var containsTag = function(tags, patternText){
+        
+        var tag = _.find(tags, function(item){
+            return item.text.indexOf(patternText) != -1;
+        });
+
+        return !_.isUndefined(tag);
+    };
+
+    var containsTitle = function(title, patternText){
+
+        return title.indexOf(trim(patternText)) != -1;
+    };
+
+    var containsUrl = function(url, patternText){
+
+        return url.indexOf(trim(patternText)) != -1;
+    };
+
     var evaluateExpression = function(bookmark, searchText){
 
         var pattern  = _.find(patterns, function(item){ return searchText.indexOf(item) === 0; });
@@ -45,42 +64,55 @@ var BooleanSearchEngine = function () {
             return !_.isUndefined(filteredValue);
         }
         else{
-            var patternText = trim(searchText.substring(pattern.length));
-            if(pattern === 'tag:'){
-                var tag = _.find(bookmark.tag, function(item){
-                    return item.text.indexOf(patternText) != -1;
-                });
+            var evaluateFunc;
 
-                return !_.isUndefined(tag);
+            var patternText = trim(searchText.substring(pattern.length));
+            var searchWords = words(patternText, ' ' + andExpression + ' ');
+
+            if(pattern === 'tag:'){
+                evaluateFunc =function(word){ return !containsTag(bookmark.tag, word); };
             }
             else if(pattern === 'title:'){
-                return bookmark.title.indexOf(trim(patternText)) != -1;
+                evaluateFunc = function(word){ return !containsTitle(bookmark.title, word); };
             }
             else if(pattern === 'url:'){
-                return bookmark.url.indexOf(trim(patternText)) != -1;
+                evaluateFunc = function(word){ return !containsUrl(bookmark.url, word); };
             }
+
+            var failureWord = _.find(searchWords, function(word){
+                return evaluateFunc(word);
+            });
+
+            return _.isUndefined(failureWord);
         }
     };
 
     this.generateExpressionTree = function(searchText){
         
+        var pattern = '';
         var expressionTree = [];
-        var search = searchText;
-        if(isBlank(search)) return expressionTree;
+        if(isBlank(searchText)) return expressionTree;
 
+        var search = searchText.replace('tag: ', 'tag:').replace('url: ', 'url:').replace('title: ', 'title:');
+        
         var searchWords = words(search);
+
         if(_.isEmpty(searchWords))
             return expressionTree;
-
-        var pattern = '';
-        _.each(searchWords, function(it){
-            if(_.contains(patterns, it)) {
+      
+        _.each(searchWords, function(word){
+            
+            var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
+            if(!_.isUndefined(findPattern)) {
+                
                 if(!isBlank(pattern))
                     expressionTree.push(pattern);
-                pattern = it;
+                
+                pattern = word;
             }
             else{
-                pattern = pattern + it;
+                if(word.toLowerCase() === andExpression){ pattern = pattern + ' ' + word.toLowerCase() + ' '; }
+                else{ pattern = pattern + word; }
             }
         });
 
@@ -96,7 +128,7 @@ var BooleanSearchEngine = function () {
 		//var search = 'tag:  prog  and Algo';
 		if(!search) return true;
 
-		var searchWords = words(search, andExpression);
+        var searchWords = this.generateExpressionTree(search);
         var failureWord = _.find(searchWords, function(word){
             return !evaluateExpression(bookmark, word);
         });
