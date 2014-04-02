@@ -15,7 +15,7 @@ var BooleanSearchEngine = function () {
 
     // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
-        if (!angular.isString(input)) return input;
+        if (!_.isString(input)) return input;
         
         if (!characters) characters = '\\s';
         
