@@ -9,11 +9,11 @@ function(_) { "use strict";
 */
 var BooleanSearchEngine = function () {
 
-	var andExpression = 'and';
+    var andExpression = 'and';
     var patterns = ['tag:', 'url:', 'title:'];
-	var bookmarks = {};
+    var bookmarks = {};
 
-	// Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
+    // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
         if (!angular.isString(input)) return input;
         
@@ -129,10 +129,10 @@ var BooleanSearchEngine = function () {
     };
 
     // Check that bookmark could be reached by following search text.
-	this.filterBookmark = function(bookmark, searchText){
+    this.filterBookmark = function(bookmark, searchText){
         
-		var search = searchText;
-		if(!search) return true;
+        var search = searchText;
+        if(!search) return true;
 
         var searchWords = this.generateExpressionTree(search);
         var failureWord = _.find(searchWords, function(word){
@@ -140,7 +140,7 @@ var BooleanSearchEngine = function () {
         });
 
         return _.isUndefined(failureWord);
-	};
+    };
 };
 
 /*
