@@ -259,6 +259,20 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			var isFiltered = engine.filterBookmark(bookmark, searchText);
 			expect(isFiltered).to.be.false;
 		});
+
+		it('When pattern contains only first item without whitespace - result should be true', function(){
+
+			searchText = 'title: le AND';
+			var isFiltered = engine.filterBookmark(bookmark, searchText);
+			expect(isFiltered).to.be.true;
+		});
+
+		it('When pattern contains only first item with whitespace - result should be true', function(){
+
+			searchText = 'title: le AND ';
+			var isFiltered = engine.filterBookmark(bookmark, searchText);
+			expect(isFiltered).to.be.true;
+		});
 	});
 
 	xdescribe('When search url pattern contains AND expression - will try to find both of the search', function(){

@@ -34,6 +34,10 @@ var BooleanSearchEngine = function () {
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
+    var endsWith = function endsWith(str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    };
+
     // Check that tag collection contains search.
     var containsTag = function(tags, patternText){
         
@@ -69,12 +73,18 @@ var BooleanSearchEngine = function () {
         }
         else{
             var evaluateFunc;
-
+            var searchWords = [];
+            
             var patternText = trim(searchText.substring(pattern.length));
-            var searchWords = words(patternText, ' ' + andExpression + ' ');
+            
+            if(endsWith(patternText, ' ' + andExpression)){
+                searchWords = words(patternText, ' ' + andExpression);
+            } else{
+                searchWords = words(patternText, ' ' + andExpression + ' ');
+            }
 
             if(pattern === 'tag:'){
-                evaluateFunc =function(word){ return !containsTag(bookmark.tag, word); };
+                evaluateFunc = function(word){ return !containsTag(bookmark.tag, word); };
             }
             else if(pattern === 'title:'){
                 evaluateFunc = function(word){ return !containsTitle(bookmark.title, word); };
