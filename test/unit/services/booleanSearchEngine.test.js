@@ -15,22 +15,22 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		engine = booleanSearchEngine;
 	}));
 
-	it('Should have a filterBookmark function', function(){
+	xit('Should have a filterBookmark function', function(){
 		expect(engine).to.not.be.undefined;
 		expect(engine.filterBookmark).to.be.a('function');
 	});
 
-	it('Should have a generateExpressionTree function', function(){
+	xit('Should have a generateExpressionTree function', function(){
 		expect(engine).to.not.be.undefined;
 		expect(engine.generateExpressionTree).to.be.a('function');
 	});
 
-	it('When search empty - result should be true', function(){
+	xit('When search empty - result should be true', function(){
 		var isFiltered = engine.filterBookmark(null, '');
 		expect(isFiltered).to.be.true;
 	});
 
-	describe('Check generate expression:', function(){
+	xdescribe('Check generate expression:', function(){
 
 		it('When search null - result should be empty', function(){
 
@@ -93,7 +93,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search "string" - will try to find a match in any object field.', function(){	
+	xdescribe('When search "string" - will try to find a match in any object field.', function(){	
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -133,7 +133,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search "tag:string" - will try to find a match only in object tag property.', function(){
+	xdescribe('When search "tag:string" - will try to find a match only in object tag property.', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -159,7 +159,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
+	xdescribe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -193,7 +193,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
+	xdescribe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -227,7 +227,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search title pattern contains AND expression - will try to find both of the search', function(){
+	xdescribe('When search title pattern contains AND expression - will try to find both of the search', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -261,7 +261,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search url pattern contains AND expression - will try to find both of the search', function(){
+	xdescribe('When search url pattern contains AND expression - will try to find both of the search', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -295,7 +295,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 		});
 	});
 
-	describe('When search tag pattern contains AND expression - will try to find both of the search', function(){
+	xdescribe('When search tag pattern contains AND expression - will try to find both of the search', function(){
 		var bookmark, searchText;
 		
 		beforeEach(function(){
@@ -326,6 +326,101 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			searchText = 'tag: tag2 AND nottag';
 			var isFiltered = engine.filterBookmark(bookmark, searchText);
 			expect(isFiltered).to.be.false;
+		});
+	});
+
+
+	// ----------------------------------
+
+	it('Should have a generate function', function(){
+		expect(engine).to.not.be.undefined;
+		expect(engine.generate).to.be.a('function');
+	});
+
+	describe('Check generate expression tree like an object:', function(){
+
+		it('When search null - result should be undefined', function(){
+
+			var result = engine.generate(null);
+			expect(result).to.be.undefined;
+		});
+
+		it('When search is empty - result should be empty', function(){
+
+			var result = engine.generate('');
+			expect(result).to.be.undefined;
+		});
+
+		it('When search is whitespace - result should be empty', function(){
+
+			var result = engine.generate('   ');
+			expect(result).to.be.undefined;
+		});
+
+		var checkFlatTreeNode = function(node, searchText){
+			expect(node).to.not.be.undefined;
+			expect(node).to.be.an('array');
+			expect(node.length).to.equal(1);
+
+			expect(node[0].pattern).to.be.a('string');
+			expect(node[0].pattern).to.equal('none');
+			
+			expect(node[0].search).to.be.a('string');
+			expect(node[0].search).to.equal(searchText);
+		};
+
+		it('When search is text - result should be same', function(){
+
+			var searchText = 'asdf';
+			var result = engine.generate(searchText);
+			checkFlatTreeNode(result, searchText);
+		});
+
+		it('When search contains whitespaces - result should trim it', function(){
+
+			var result = engine.generate('   asdf   ');
+			checkFlatTreeNode(result, 'asdf');
+		});
+
+		var checkPatternTreeNode = function(node, searchText, pattern){
+			expect(node).to.not.be.undefined;
+			expect(node).to.be.an('array');
+			expect(node.length).to.equal(1);
+
+			expect(node[0].pattern).to.be.a('string');
+			expect(node[0].pattern).to.equal(pattern);
+			
+			expect(node[0].search).to.be.a('string');
+			expect(node[0].search).to.be.undefined;
+		};
+
+		it('When search contains pattern - result should have tree node with literals', function(){
+
+			var result = engine.generate(' tag: qwerty  ');
+			checkPatternTreeNode(result, 'qwerty', 'tag');
+
+			// result = engine.generateExpressionTree(' asdf tag:qwerty  ');
+			// expect(result).to.be.an('array');
+			// expect(result.length).to.equal(2);
+			// expect(result[0]).to.equal('asdf');
+			// expect(result[1]).to.equal('tag:qwerty');
+		});
+
+		xit('When seach contains expression - result should have one item', function(){
+
+			var result = engine.generateExpressionTree('title: 0 AND 1');
+			expect(result).to.be.an('array');
+			expect(result.length).to.equal(1);
+			expect(result[0]).to.equal('title:0 and 1');
+		});
+
+		xit('When seach contains pattern and expression - result should have two items', function(){
+
+			var result = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
+			expect(result).to.be.an('array');
+			expect(result.length).to.equal(2);
+			expect(result[0]).to.equal('asdf');
+			expect(result[1]).to.equal('tag:qwerty and 123');
 		});
 	});
 });

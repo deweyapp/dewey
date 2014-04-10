@@ -91,6 +91,47 @@ var BooleanSearchEngine = function () {
         }
     };
 
+    var searchTextForTree;
+    var exTree;
+    this.generate = function(searchText, callback){
+
+        if(isBlank(searchText)) return exTree;
+
+        // if(_.isEqual(searchTextForTree, searchText)) return exTree;
+
+        var searchWords = words(searchText);
+        if(_.isEmpty(searchWords))
+            return exTree;
+
+        var node = '';
+        exTree = [];
+        _.each(searchWords, function(word){
+
+            var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
+            
+            if(!_.isUndefined(findPattern)) {
+                if(!isBlank(node))
+                    exTree.push({
+                        pattern: 'none',
+                        search: trim(node)
+                    });
+                
+                node = word;
+            }
+            else{
+                
+            }           
+        });
+
+        if(!isBlank(node))
+            exTree.push({
+                pattern: 'none',
+                search: trim(node)
+            });
+
+        return exTree;
+    };
+
     // TODO AGRYGOR: Should be calculated one per search text.
     // Generate expression tree by search text.
     this.generateExpressionTree = function(searchText){
