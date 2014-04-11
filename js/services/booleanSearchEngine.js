@@ -113,31 +113,33 @@ var BooleanSearchEngine = function () {
         if(_.isEmpty(searchWords))
             return exTree;
 
-        var node = '';
+        var node;
+        var nodeSearchText = '';
         exTree = [];
         _.each(searchWords, function(word){
 
             var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
             
             if(!_.isUndefined(findPattern)) {
-                if(!isBlank(node))
-                    exTree.push({
-                        pattern: 'none',
-                        search: trim(node)
-                    });
+                if(_.isUndefined(node)) node = { pattern: findPattern };
+
+                if(!isBlank(nodeSearchText)){
+                    node.search = nodeSearchText;
+                    exTree.push(node);
+                }
                 
-                node = word;
+                nodeSearchText = word.replace(findPattern, '');
             }
             else{
-                
+                if(_.isUndefined(node)) node = { pattern: 'none' };
+                nodeSearchText = nodeSearchText + word;
             }           
         });
 
-        if(!isBlank(node))
-            exTree.push({
-                pattern: 'none',
-                search: trim(node)
-            });
+        if(!isBlank(nodeSearchText)){
+            node.search = nodeSearchText;
+            exTree.push(node);
+        }
 
         return exTree;
     };

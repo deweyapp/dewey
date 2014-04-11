@@ -410,8 +410,12 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
 		it('When search contains pattern - result should have tree node with literals', function(){
 
-			var result = engine.generate(' tag: qwerty  ');
-			checkPatternTreeNode(result, 'qwerty', 'tag');
+			var result = engine.generate(' tag:qwerty  ');
+			checkPatternTreeNode(result, 'qwerty', 'tag:');
+
+			expect(node[0].literals).to.not.be.undefined;
+			expect(node[0].literals.length).to.equal(1);
+			expect(node[0].literals[0]).to.equal('qwerty');
 
 			// result = engine.generateExpressionTree(' asdf tag:qwerty  ');
 			// expect(result).to.be.an('array');
