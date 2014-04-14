@@ -466,6 +466,7 @@ input[type="search"]::-webkit-search-cancel-button {
   top: 0;
   transition: top 200ms cubic-bezier(.65, 0, .75, 1);
   -webkit-backface-visibility: hidden;
+  -webkit-transform: scale(1);
 }
 
 .panel:hover,
