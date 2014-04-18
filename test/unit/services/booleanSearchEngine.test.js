@@ -371,70 +371,80 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			expect(result).to.be.undefined;
 		});
 
-		var checkFlatTreeNode = function(node, searchText){
+		it('When search is text - result should be same', function(){
+
+			var searchText = 'asdf';
+			var node = engine.generate(searchText);
+			
 			expect(node).to.not.be.undefined;
 			expect(node).to.be.an('array');
 			expect(node.length).to.equal(1);
 
 			expect(node[0].pattern).to.be.a('string');
 			expect(node[0].pattern).to.equal('none');
-			
-			expect(node[0].search).to.be.a('string');
-			expect(node[0].search).to.equal(searchText);
-		};
 
-		it('When search is text - result should be same', function(){
+			expect(node[0].literals).to.be.an('array');
+			expect(node[0].literals.length).to.equal(1);
 
-			var searchText = 'asdf';
-			var result = engine.generate(searchText);
-			checkFlatTreeNode(result, searchText);
+			expect(node[0].literals[0].text).to.equal(searchText);
+			expect(node[0].literals[0].expression).to.equal('none');
 		});
 
 		it('When search contains whitespaces - result should trim it', function(){
 
-			var result = engine.generate('   asdf   ');
-			checkFlatTreeNode(result, 'asdf');
-		});
+			var node = engine.generate('   asdf   ');
 
-		var checkPatternTreeNode = function(node, pattern){
 			expect(node).to.not.be.undefined;
 			expect(node).to.be.an('array');
 			expect(node.length).to.equal(1);
 
 			expect(node[0].pattern).to.be.a('string');
-			expect(node[0].pattern).to.equal(pattern);
+			expect(node[0].pattern).to.equal('none');
 
-			expect(node[0].search).to.be.undefined;
-		};
+			expect(node[0].literals).to.be.an('array');
+			expect(node[0].literals.length).to.equal(1);
+
+			expect(node[0].literals[0].text).to.equal('asdf');
+			expect(node[0].literals[0].expression).to.equal('none');
+		});
 
 		it('When search contains pattern - result should have one node with literals', function(){
 
 			var node = engine.generate(' tag:qwerty  ');
-			checkPatternTreeNode(node, 'tag:');
 
-			expect(node[0].literals).to.not.be.undefined;
+			expect(node).to.not.be.undefined;
+			expect(node).to.be.an('array');
+			expect(node.length).to.equal(1);
+
+			expect(node[0].pattern).to.be.a('string');
+			expect(node[0].pattern).to.equal('tag:');
+
+			expect(node[0].literals).to.be.an('array');
 			expect(node[0].literals.length).to.equal(1);
-			expect(node[0].literals[0].text).to.equal('qwerty');
 
-			// result = engine.generateExpressionTree(' asdf tag:qwerty  ');
-			// expect(result).to.be.an('array');
-			// expect(result.length).to.equal(2);
-			// expect(result[0]).to.equal('asdf');
-			// expect(result[1]).to.equal('tag:qwerty');
+			expect(node[0].literals[0].text).to.equal('qwerty');
+			expect(node[0].literals[0].expression).to.equal('none');
 		});
 
 		it('When seach contains expression - result should have one node with two literals', function(){
 
-			var node = engine.generate('title:0 AND 1');
-			checkPatternTreeNode(node, 'tag:');
+			var node = engine.generate('title:asdf AND qwerty');
 
-			expect(node[0].literals).to.not.be.undefined;
-			expect(node[0].literals.length).to.equal(2);
-			expect(node[0].literals[0].text).to.equal('0');
-			expect(node[0].literals[0].expression).to.equal('AND');
+			expect(node).to.not.be.undefined;
+			expect(node).to.be.an('array');
+			expect(node.length).to.equal(1);
 
-			expect(node[0].literals[1].text).to.equal('1');
-			expect(node[0].literals[1].expression).to.equal('NONE');
+			expect(node[0].pattern).to.be.a('string');
+			expect(node[0].pattern).to.equal('title:');
+
+			expect(node[0].literals).to.be.an('array');
+			expect(node[0].literals.length).to.equal(1);
+
+			expect(node[0].literals[0].text).to.equal('asdf');
+			expect(node[0].literals[0].expression).to.equal('and');
+
+			expect(node[0].literals[1].text).to.equal('qwerty');
+			expect(node[0].literals[1].expression).to.equal('none');
 		});
 
 		xit('When seach contains pattern and expression - result should have two items', function(){

@@ -10,6 +10,7 @@ function(_) { "use strict";
 var BooleanSearchEngine = function () {
 
     var andExpression = 'and';
+    var nonePattern = 'none';
     var patterns = ['tag:', 'url:', 'title:'];
     var bookmarks = {};
 
@@ -101,59 +102,90 @@ var BooleanSearchEngine = function () {
         }
     };
 
-    var searchTextForTree;
-    var exTree;
+    var exTree;    
     this.generate = function(searchText, callback){
 
         if(isBlank(searchText)) return exTree;
-
-        // if(_.isEqual(searchTextForTree, searchText)) return exTree;
 
         var searchWords = words(searchText);
         if(_.isEmpty(searchWords))
             return exTree;
 
-        var node;
-        var nodeSearchText = '';
         exTree = [];
+        var node = { pattern: nonePattern, literals:[] };
+        var literal = { text: '', expression: nonePattern};
+        
         _.each(searchWords, function(word){
 
-            if(_.isEqual(word.toLowerCase(), andExpression.toLowerCase())){
-                node.literals =[{
-                    text: nodeSearchText,
-                    expression = andExpression
-                }];
-            }
-
-            var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
-            
-            if(!_.isUndefined(findPattern)) {
-                if(_.isUndefined(node)) node = { pattern: findPattern };
-
-                if(!isBlank(nodeSearchText)){
-                    node.search = nodeSearchText;
-                    exTree.push(node);
-                }
+            if(_.isEqual(word, andExpression)){
                 
-                nodeSearchText = word.replace(findPattern, '');
+                literal.expression = andExpression;
+                return;
             }
-            else{
-                if(_.isUndefined(node)) node = { pattern: 'none' };
-                nodeSearchText = nodeSearchText + word;
-            }           
-        });
+            
+            var pattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; }) || nonePattern;
 
-        if(!isBlank(nodeSearchText)){
-            if(node.pattern === 'none'){
-                node.search = nodeSearchText;
+            if(node.pattern != pattern){
+                // flush node
+                if(node.literals.length !== 0) exTree.push(node);
+
+                // create a new node
+                node = {                    
+                    pattern: pattern,
+                    literals:[]
+                };
+                
+                literal.text = word.replace(pattern, '');
             }
             else{
-                node.literals =[{
-                    text: nodeSearchText
-                }];
-            }
+
+                literal.text = word;
+            }    
+                        
+
+           
+
+            // if(_.isEqual(word.toLowerCase(), andExpression.toLowerCase())){
+            //     node.literals =[{
+            //         text: nodeSearchText,
+            //         expression: andExpression
+            //     }];
+            // }
+
+            // var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
+            
+            // if(!_.isUndefined(findPattern)) {
+            //     if(_.isUndefined(node)) node = { pattern: findPattern };
+
+            //     if(!isBlank(nodeSearchText)){
+            //         node.search = nodeSearchText;
+            //         exTree.push(node);
+            //     }
+                
+            //     nodeSearchText = word.replace(findPattern, '');
+            // }
+            // else{
+            //     if(_.isUndefined(node)) node = { pattern: 'none' };
+            //     nodeSearchText = nodeSearchText + word;
+            // }
+        });
+        
+        if(!_.isNull(literal)){
+            node.literals.push(literal);
             exTree.push(node);
         }
+
+        // if(!isBlank(nodeSearchText)){
+        //     if(node.pattern === 'none'){
+        //         node.search = nodeSearchText;
+        //     }
+        //     else{
+        //         node.literals =[{
+        //             text: nodeSearchText
+        //         }];
+        //     }
+        //     exTree.push(node);
+        // }
 
         return exTree;
     };
