@@ -118,6 +118,13 @@ var BooleanSearchEngine = function () {
         exTree = [];
         _.each(searchWords, function(word){
 
+            if(_.isEqual(word.toLowerCase(), andExpression.toLowerCase())){
+                node.literals =[{
+                    text: nodeSearchText,
+                    expression = andExpression
+                }];
+            }
+
             var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
             
             if(!_.isUndefined(findPattern)) {
@@ -137,7 +144,14 @@ var BooleanSearchEngine = function () {
         });
 
         if(!isBlank(nodeSearchText)){
-            node.search = nodeSearchText;
+            if(node.pattern === 'none'){
+                node.search = nodeSearchText;
+            }
+            else{
+                node.literals =[{
+                    text: nodeSearchText
+                }];
+            }
             exTree.push(node);
         }
 

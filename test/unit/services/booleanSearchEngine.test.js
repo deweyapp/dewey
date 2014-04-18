@@ -396,26 +396,25 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			checkFlatTreeNode(result, 'asdf');
 		});
 
-		var checkPatternTreeNode = function(node, searchText, pattern){
+		var checkPatternTreeNode = function(node, pattern){
 			expect(node).to.not.be.undefined;
 			expect(node).to.be.an('array');
 			expect(node.length).to.equal(1);
 
 			expect(node[0].pattern).to.be.a('string');
 			expect(node[0].pattern).to.equal(pattern);
-			
-			expect(node[0].search).to.be.a('string');
+
 			expect(node[0].search).to.be.undefined;
 		};
 
-		it('When search contains pattern - result should have tree node with literals', function(){
+		it('When search contains pattern - result should have one node with literals', function(){
 
-			var result = engine.generate(' tag:qwerty  ');
-			checkPatternTreeNode(result, 'qwerty', 'tag:');
+			var node = engine.generate(' tag:qwerty  ');
+			checkPatternTreeNode(node, 'tag:');
 
 			expect(node[0].literals).to.not.be.undefined;
 			expect(node[0].literals.length).to.equal(1);
-			expect(node[0].literals[0]).to.equal('qwerty');
+			expect(node[0].literals[0].text).to.equal('qwerty');
 
 			// result = engine.generateExpressionTree(' asdf tag:qwerty  ');
 			// expect(result).to.be.an('array');
@@ -424,12 +423,18 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 			// expect(result[1]).to.equal('tag:qwerty');
 		});
 
-		xit('When seach contains expression - result should have one item', function(){
+		it('When seach contains expression - result should have one node with two literals', function(){
 
-			var result = engine.generateExpressionTree('title: 0 AND 1');
-			expect(result).to.be.an('array');
-			expect(result.length).to.equal(1);
-			expect(result[0]).to.equal('title:0 and 1');
+			var node = engine.generate('title:0 AND 1');
+			checkPatternTreeNode(node, 'tag:');
+
+			expect(node[0].literals).to.not.be.undefined;
+			expect(node[0].literals.length).to.equal(2);
+			expect(node[0].literals[0].text).to.equal('0');
+			expect(node[0].literals[0].expression).to.equal('AND');
+
+			expect(node[0].literals[1].text).to.equal('1');
+			expect(node[0].literals[1].expression).to.equal('NONE');
 		});
 
 		xit('When seach contains pattern and expression - result should have two items', function(){
