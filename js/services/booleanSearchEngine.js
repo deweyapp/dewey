@@ -31,7 +31,7 @@ var BooleanSearchEngine = function () {
 
     // Splits input string by words. Defaults to whitespace characters.
     var words = function(str, delimiter) {
-        if (isBlank(str)) return [];
+        if (isBlank(str)) return [];        
         return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
@@ -102,12 +102,18 @@ var BooleanSearchEngine = function () {
         }
     };
 
+    this.spliteWords = function(text){
+        // return text.split(/^([\S\s]*?)(?:foo|bar)([\S\s]*)$/);
+        return text.split(/(tag:|title:|url:)/);
+    };
+
     var exTree;    
     this.generate = function(searchText, callback){
 
         if(isBlank(searchText)) return exTree;
 
-        var searchWords = words(searchText);
+        var searchWords = searchText.split(/(tag:|title:|url:)/);
+        // var searchWords = words(searchText, '/(tag:)/');
         if(_.isEmpty(searchWords))
             return exTree;
 
@@ -116,6 +122,7 @@ var BooleanSearchEngine = function () {
         var literal = { text: '', expression: nonePattern};
         
         _.each(searchWords, function(word){
+            if(isBlank(word)) return;
 
             if(_.isEqual(word, andExpression)){
                 
@@ -123,9 +130,9 @@ var BooleanSearchEngine = function () {
                 return;
             }
             
-            var pattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; }) || nonePattern;
-
-            if(node.pattern != pattern){
+            var pattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
+            if(!_.isUndefined(pattern)){
+                if(!isBlank(literal.text)) node.literals.push(literal);
                 // flush node
                 if(node.literals.length !== 0) exTree.push(node);
 
@@ -134,58 +141,42 @@ var BooleanSearchEngine = function () {
                     pattern: pattern,
                     literals:[]
                 };
-                
-                literal.text = word.replace(pattern, '');
+
+                return;
             }
-            else{
 
-                literal.text = word;
-            }    
-                        
+            var exps = word.toLowerCase().split(/(and|or)/);
+            _.each(exps, function(item){
+                if(isBlank(word)) return;
 
-           
+                if(item === andExpression){
+                    if(isBlank(literal.text)) return;
 
-            // if(_.isEqual(word.toLowerCase(), andExpression.toLowerCase())){
-            //     node.literals =[{
-            //         text: nodeSearchText,
-            //         expression: andExpression
-            //     }];
-            // }
+                    literal.expression = andExpression;
+                    node.literals.push(literal);
 
-            // var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
-            
-            // if(!_.isUndefined(findPattern)) {
-            //     if(_.isUndefined(node)) node = { pattern: findPattern };
+                    literal = null;
+                }
+                else if(item === 'or'){
+                    if(isBlank(literal.text)) return;
 
-            //     if(!isBlank(nodeSearchText)){
-            //         node.search = nodeSearchText;
-            //         exTree.push(node);
-            //     }
-                
-            //     nodeSearchText = word.replace(findPattern, '');
-            // }
-            // else{
-            //     if(_.isUndefined(node)) node = { pattern: 'none' };
-            //     nodeSearchText = nodeSearchText + word;
-            // }
+                    literal.expression = 'or';
+                    node.literals.push(literal);
+
+                    literal = null;
+                }
+                else{
+                    literal = {
+                        expression: nonePattern,
+                        text: trim(item)
+                    };
+                }
+            });
+
+            if(!isBlank(literal.text)) node.literals.push(literal);
         });
-        
-        if(!_.isNull(literal)){
-            node.literals.push(literal);
-            exTree.push(node);
-        }
 
-        // if(!isBlank(nodeSearchText)){
-        //     if(node.pattern === 'none'){
-        //         node.search = nodeSearchText;
-        //     }
-        //     else{
-        //         node.literals =[{
-        //             text: nodeSearchText
-        //         }];
-        //     }
-        //     exTree.push(node);
-        // }
+        exTree.push(node);
 
         return exTree;
     };
