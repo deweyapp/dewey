@@ -480,6 +480,54 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
+    describe('When search url pattern contains OR expression - will try to find one of the search', function(){
+        var bookmark, searchText;
+        
+        beforeEach(function(){
+
+            searchText = 'url: 27 OR 0:1';
+            bookmark = {
+                title: 'title',
+                url: 'http://127:0:0:1',
+                tag:[{text: 'tag1'}, {text: 'tag2'}, {text: 'tag3'}]
+            };
+        });
+
+        it('When pattern contains both items - result should be true', function(){
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain first item - result should be true', function(){
+
+            searchText = 'url: noturl OR 27';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain second item - result should be true', function(){
+
+            searchText = 'url: 27 OR noturl';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search contains text and pattern with OR expression - result should be true', function(){
+
+            searchText = 'titl url: 27 OR 0:1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search does not contain text and pattern with OR expression - result should be false', function(){
+
+            searchText = 'nottitl url: 27 OR 0:1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
+        });
+    });
+
     describe('When search tag pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
         
@@ -518,6 +566,54 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             searchText = 'titl tag: tag2 AND tag1';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.true;
+        });
+    });
+
+    describe('When search tag pattern contains OR expression - will try to find one of the search', function(){
+        var bookmark, searchText;
+        
+        beforeEach(function(){
+
+            searchText = 'tag: tag2 OR tag1';
+            bookmark = {
+                title: 'title',
+                url: 'http://127:0:0:1',
+                tag:[{text: 'tag1'}, {text: 'tag2'}, {text: 'tag3'}]
+            };
+        });
+
+        it('When pattern contains both items - result should be true', function(){
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain first item - result should be true', function(){
+
+            searchText = 'tag: nottag OR tag2';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain second item - result should be true', function(){
+
+            searchText = 'tag: tag2 OR nottag';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search contains text and pattern with OR expression - result should be true', function(){
+
+            searchText = 'titl tag: tag2 OR tag1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search does not contain text and pattern with OR expression - result should be false', function(){
+
+            searchText = 'nottitl tag: tag2 OR tag1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
         });
     });
 });
