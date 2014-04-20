@@ -11,6 +11,7 @@ var BooleanSearchEngine = function () {
 
     var exTree;
     var andExpression = 'and';
+    var orExpression = 'or';
     var nonePattern = 'none';
     var patterns = ['tag:', 'url:', 'title:'];
     var bookmarks = {};
@@ -100,10 +101,10 @@ var BooleanSearchEngine = function () {
 
                     literal = null;
                 }
-                else if(item === 'or'){
+                else if(item === orExpression){
                     if(isBlank(literal.text)) return;
 
-                    literal.expression = 'or';
+                    literal.expression = orExpression;
                     node.literals.push(literal);
 
                     literal = null;
@@ -145,11 +146,6 @@ var BooleanSearchEngine = function () {
             evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
         }
 
-        // var failureWord = _.find(node.literals, function(literal){
-        //     return evaluateFunc(literal.text);
-        // });
-        // return _.isUndefined(failureWord);
-
         if(node.literals.length === 1){
             return evaluateFunc(node.literals[0].text);
         }
@@ -163,7 +159,7 @@ var BooleanSearchEngine = function () {
             {
                 result = result && literalResult;
             }
-            else if(exp === 'or'){
+            else if(exp === orExpression){
                 result = result || literalResult;
             }
             exp = literal.expression;
