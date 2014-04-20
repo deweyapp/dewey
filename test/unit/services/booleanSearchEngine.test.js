@@ -361,6 +361,82 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.true;
         });
+
+        it('When search contains text and pattern with AND expression - result should be true', function(){
+
+            searchText = 'http title: tit AND itle';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+    });
+
+    describe('When search title pattern contains OR expression - will try to find one of the search', function(){
+        var bookmark, searchText;
+        
+        beforeEach(function(){
+
+            searchText = 'title: ti OR le';
+            bookmark = {
+                title: 'title',
+                url: 'http://127:0:0:1',
+                tag:[{text: 'tag1'}, {text: 'tag2'}, {text: 'tag3'}]
+            };
+        });
+
+        it('When pattern contains both items - result should be true', function(){
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain first item - result should be true', function(){
+
+            searchText = 'title: notitle OR le';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain second item - result should be true', function(){
+
+            searchText = 'title: le OR notitle';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern does not contain both items - result should be false', function(){
+
+            searchText = 'title: notit AND notitle';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
+        });
+
+        it('When pattern contains only first item without whitespace - result should be true', function(){
+
+            searchText = 'title: le OR';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When pattern contains only first item with whitespace - result should be true', function(){
+
+            searchText = 'title: le OR ';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search contains text and pattern with OR expression - result should be true', function(){
+
+            searchText = 'http title: tit OR itle';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When search does not contain text and pattern with OR expression - result should be false', function(){
+
+            searchText = 'http nottitle: tit OR itle';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
+        });
     });
 
     describe('When search url pattern contains AND expression - will try to find both of the search', function(){
@@ -395,6 +471,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
         });
+
+        it('When search contains text and pattern with AND expression - result should be true', function(){
+
+            searchText = 'titl url: 27 AND 0:1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
     });
 
     describe('When search tag pattern contains AND expression - will try to find both of the search', function(){
@@ -428,6 +511,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             searchText = 'tag: tag2 AND nottag';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
+        });
+
+        it('When search contains text and pattern with AND expression - result should be true', function(){
+
+            searchText = 'titl tag: tag2 AND tag1';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
         });
     });
 });

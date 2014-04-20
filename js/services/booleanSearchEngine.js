@@ -136,20 +136,40 @@ var BooleanSearchEngine = function () {
 
         var evaluateFunc;
         if(node.pattern === 'tag:'){
-            evaluateFunc = function(word){ return !containsTag(bookmark.tag, word); };
+            evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
         }
         else if(node.pattern === 'title:'){
-            evaluateFunc = function(word){ return !containsTitle(bookmark.title, word); };
+            evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };
         }
         else if(node.pattern === 'url:'){
-            evaluateFunc = function(word){ return !containsUrl(bookmark.url, word); };
+            evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
         }
 
-        var failureWord = _.find(node.literals, function(literal){
-            return evaluateFunc(literal.text);
+        // var failureWord = _.find(node.literals, function(literal){
+        //     return evaluateFunc(literal.text);
+        // });
+        // return _.isUndefined(failureWord);
+
+        if(node.literals.length === 1){
+            return evaluateFunc(node.literals[0].text);
+        }
+
+        var result = true;
+        var exp = andExpression;
+        _.each(node.literals, function(literal){
+
+            var literalResult = evaluateFunc(literal.text);
+            if(exp === andExpression)
+            {
+                result = result && literalResult;
+            }
+            else if(exp === 'or'){
+                result = result || literalResult;
+            }
+            exp = literal.expression;
         });
 
-        return _.isUndefined(failureWord);
+        return result;
     };
 
     // Check that bookmark could be reached by following search text.
@@ -158,12 +178,12 @@ var BooleanSearchEngine = function () {
         var search = searchText;
         if(!search) return true;
 
-        var searchWords = this.generateExpressionTree(search);
-        var failureWord = _.find(searchWords, function(word){
-            return !evaluateExpression(bookmark, word);
+        var tree = this.generateExpressionTree(search);
+        var failureNode = _.find(tree, function(node){
+            return !evaluateExpression(bookmark, node);
         });
 
-        return _.isUndefined(failureWord);
+        return _.isUndefined(failureNode);
     };
 };
 
