@@ -102,18 +102,12 @@ var BooleanSearchEngine = function () {
         }
     };
 
-    this.spliteWords = function(text){
-        // return text.split(/^([\S\s]*?)(?:foo|bar)([\S\s]*)$/);
-        return text.split(/(tag:|title:|url:)/);
-    };
-
     var exTree;    
     this.generate = function(searchText, callback){
 
         if(isBlank(searchText)) return exTree;
 
         var searchWords = searchText.split(/(tag:|title:|url:)/);
-        // var searchWords = words(searchText, '/(tag:)/');
         if(_.isEmpty(searchWords))
             return exTree;
 
@@ -132,7 +126,6 @@ var BooleanSearchEngine = function () {
             
             var pattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
             if(!_.isUndefined(pattern)){
-                if(!isBlank(literal.text)) node.literals.push(literal);
                 // flush node
                 if(node.literals.length !== 0) exTree.push(node);
 
@@ -218,15 +211,67 @@ var BooleanSearchEngine = function () {
         return expressionTree;
     };
 
+    // // Check that bookmark could be reached by following search text.
+    // this.filterBookmark = function(bookmark, searchText){
+        
+    //     var search = searchText;
+    //     if(!search) return true;
+
+    //     var searchWords = this.generateExpressionTree(search);
+    //     var failureWord = _.find(searchWords, function(word){
+    //         return !evaluateExpression(bookmark, word);
+    //     });
+
+    //     return _.isUndefined(failureWord);
+    // };
+
+    var evaluate = function(bookmark, node){
+        if(node.pattern === nonePattern && node.literals.length === 1){
+            var literal = node.literals[0];
+            var filteredValue = _.find(_.values(bookmark), function(propertyValue){
+                return propertyValue.toString().indexOf(trim(literal.text)) != -1;
+            });
+            return !_.isUndefined(filteredValue);
+        }
+
+
+        // var searchWords = [];
+        
+        // var patternText = trim(searchText.substring(pattern.length));
+        
+        // if(endsWith(patternText, ' ' + andExpression)){
+        //     searchWords = words(patternText, ' ' + andExpression);
+        // } else{
+        //     searchWords = words(patternText, ' ' + andExpression + ' ');
+        // }
+
+        var evaluateFunc;
+        if(node.pattern === 'tag:'){
+            evaluateFunc = function(word){ return !containsTag(bookmark.tag, word); };
+        }
+        else if(node.pattern === 'title:'){
+            evaluateFunc = function(word){ return !containsTitle(bookmark.title, word); };
+        }
+        else if(node.pattern === 'url:'){
+            evaluateFunc = function(word){ return !containsUrl(bookmark.url, word); };
+        }
+
+        var failureWord = _.find(node.literals, function(literal){
+            return evaluateFunc(literal.text);
+        });
+
+        return _.isUndefined(failureWord);
+    };
+
     // Check that bookmark could be reached by following search text.
     this.filterBookmark = function(bookmark, searchText){
         
         var search = searchText;
         if(!search) return true;
 
-        var searchWords = this.generateExpressionTree(search);
+        var searchWords = this.generate(search);
         var failureWord = _.find(searchWords, function(word){
-            return !evaluateExpression(bookmark, word);
+            return !evaluate(bookmark, word);
         });
 
         return _.isUndefined(failureWord);

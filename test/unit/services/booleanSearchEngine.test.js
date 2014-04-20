@@ -15,96 +15,85 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         engine = booleanSearchEngine;
     }));
 
-    it('asdf', function(){
-     var text = 'asdf tag: foo AND qwe title:bar123';
-     var result = engine.spliteWords(text);
-     expect(result.length).to.equal(5);
-     expect(result[0]).to.equal('asdf ');
-     expect(result[1]).to.equal('tag:');
-     expect(result[2]).to.equal(' foo AND qwe ');
-     expect(result[3]).to.equal('title:');
-     expect(result[4]).to.equal('bar123');
-    });
-
-    xit('Should have a filterBookmark function', function(){
+    it('Should have a filterBookmark function', function(){
         expect(engine).to.not.be.undefined;
         expect(engine.filterBookmark).to.be.a('function');
     });
 
-    xit('Should have a generateExpressionTree function', function(){
+    it('Should have a generateExpressionTree function', function(){
         expect(engine).to.not.be.undefined;
         expect(engine.generateExpressionTree).to.be.a('function');
     });
 
-    xit('When search empty - result should be true', function(){
+    it('When search empty - result should be true', function(){
         var isFiltered = engine.filterBookmark(null, '');
         expect(isFiltered).to.be.true;
     });
 
-    xdescribe('Check generate expression:', function(){
+    // xdescribe('Check generate expression:', function(){
 
-        it('When search null - result should be empty', function(){
+    //     it('When search null - result should be empty', function(){
 
-            var result = engine.generateExpressionTree(null);
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(0);
-        });
+    //         var result = engine.generateExpressionTree(null);
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(0);
+    //     });
 
-        it('When search is empty - result should be empty', function(){
+    //     it('When search is empty - result should be empty', function(){
 
-            var result = engine.generateExpressionTree('');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(0);
-        });
+    //         var result = engine.generateExpressionTree('');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(0);
+    //     });
 
-        it('When search is whitespace - result should be empty', function(){
+    //     it('When search is whitespace - result should be empty', function(){
 
-            var result = engine.generateExpressionTree('   ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(0);
-        });
+    //         var result = engine.generateExpressionTree('   ');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(0);
+    //     });
 
-        it('When search contains whitespaces - result should trim it', function(){
+    //     it('When search contains whitespaces - result should trim it', function(){
 
-            var result = engine.generateExpressionTree('   asdf   ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(1);
-        });
+    //         var result = engine.generateExpressionTree('   asdf   ');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(1);
+    //     });
 
-        it('When search contains pattern - result should have two items', function(){
+    //     it('When search contains pattern - result should have two items', function(){
 
-            var result = engine.generateExpressionTree(' asdf tag: qwerty  ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(2);
-            expect(result[0]).to.equal('asdf');
-            expect(result[1]).to.equal('tag:qwerty');
+    //         var result = engine.generateExpressionTree(' asdf tag: qwerty  ');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(2);
+    //         expect(result[0]).to.equal('asdf');
+    //         expect(result[1]).to.equal('tag:qwerty');
 
-            result = engine.generateExpressionTree(' asdf tag:qwerty  ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(2);
-            expect(result[0]).to.equal('asdf');
-            expect(result[1]).to.equal('tag:qwerty');
-        });
+    //         result = engine.generateExpressionTree(' asdf tag:qwerty  ');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(2);
+    //         expect(result[0]).to.equal('asdf');
+    //         expect(result[1]).to.equal('tag:qwerty');
+    //     });
 
-        it('When seach contains expression - result should have one item', function(){
+    //     it('When seach contains expression - result should have one item', function(){
 
-            var result = engine.generateExpressionTree('title: 0 AND 1');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(1);
-            expect(result[0]).to.equal('title:0 and 1');
-        });
+    //         var result = engine.generateExpressionTree('title: 0 AND 1');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(1);
+    //         expect(result[0]).to.equal('title:0 and 1');
+    //     });
 
-        it('When seach contains pattern and expression - result should have two items', function(){
+    //     it('When seach contains pattern and expression - result should have two items', function(){
 
-            var result = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(2);
-            expect(result[0]).to.equal('asdf');
-            expect(result[1]).to.equal('tag:qwerty and 123');
-        });
-    });
+    //         var result = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
+    //         expect(result).to.be.an('array');
+    //         expect(result.length).to.equal(2);
+    //         expect(result[0]).to.equal('asdf');
+    //         expect(result[1]).to.equal('tag:qwerty and 123');
+    //     });
+    // });
 
-    xdescribe('When search "string" - will try to find a match in any object field.', function(){   
+    describe('When search "string" - will try to find a match in any object field.', function(){   
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -144,7 +133,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search "tag:string" - will try to find a match only in object tag property.', function(){
+    describe('When search "tag:string" - will try to find a match only in object tag property.', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -170,7 +159,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
+    describe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -204,7 +193,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
+    describe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -238,7 +227,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search title pattern contains AND expression - will try to find both of the search', function(){
+    describe('When search title pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -286,7 +275,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search url pattern contains AND expression - will try to find both of the search', function(){
+    describe('When search url pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -320,7 +309,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search tag pattern contains AND expression - will try to find both of the search', function(){
+    describe('When search tag pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
         
         beforeEach(function(){
@@ -458,13 +447,58 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node[0].literals[1].expression).to.equal('none');
         });
 
-        xit('When seach contains pattern and expression - result should have two items', function(){
+        it('When seach contains pattern and expression - result should have two items', function(){
 
-            var result = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
-            expect(result).to.be.an('array');
-            expect(result.length).to.equal(2);
-            expect(result[0]).to.equal('asdf');
-            expect(result[1]).to.equal('tag:qwerty and 123');
+            var node = engine.generate(' asdf tag: qwerty and 123 ');
+            
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(2);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('none');
+
+            expect(node[1].literals).to.be.an('array');
+            expect(node[1].literals.length).to.equal(2);
+
+            expect(node[1].literals[0].text).to.equal('qwerty');
+            expect(node[1].literals[0].expression).to.equal('and');
+
+            expect(node[1].literals[1].text).to.equal('123');
+            expect(node[1].literals[1].expression).to.equal('none');
+        });
+
+        it('When seach contains pattern and expression - result should have two items', function(){
+
+            var node = engine.generate(' asdf tag:qwerty and 123 ');
+            
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(2);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('none');
+
+            expect(node[1].literals).to.be.an('array');
+            expect(node[1].literals.length).to.equal(2);
+
+            expect(node[1].literals[0].text).to.equal('qwerty');
+            expect(node[1].literals[0].expression).to.equal('and');
+
+            expect(node[1].literals[1].text).to.equal('123');
+            expect(node[1].literals[1].expression).to.equal('none');
         });
     });
 });
