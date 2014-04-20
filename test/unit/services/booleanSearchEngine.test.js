@@ -30,68 +30,156 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         expect(isFiltered).to.be.true;
     });
 
-    // xdescribe('Check generate expression:', function(){
+    describe('Check generate expression tree like an object:', function(){
 
-    //     it('When search null - result should be empty', function(){
+        it('When search null - result should be undefined', function(){
 
-    //         var result = engine.generateExpressionTree(null);
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(0);
-    //     });
+            var result = engine.generateExpressionTree(null);
+            expect(result).to.be.undefined;
+        });
 
-    //     it('When search is empty - result should be empty', function(){
+        it('When search is empty - result should be empty', function(){
 
-    //         var result = engine.generateExpressionTree('');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(0);
-    //     });
+            var result = engine.generateExpressionTree('');
+            expect(result).to.be.undefined;
+        });
 
-    //     it('When search is whitespace - result should be empty', function(){
+        it('When search is whitespace - result should be empty', function(){
 
-    //         var result = engine.generateExpressionTree('   ');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(0);
-    //     });
+            var result = engine.generateExpressionTree('   ');
+            expect(result).to.be.undefined;
+        });
 
-    //     it('When search contains whitespaces - result should trim it', function(){
+        it('When search is text - result should be same', function(){
 
-    //         var result = engine.generateExpressionTree('   asdf   ');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(1);
-    //     });
+            var searchText = 'asdf';
+            var node = engine.generateExpressionTree(searchText);
+            
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
 
-    //     it('When search contains pattern - result should have two items', function(){
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
 
-    //         var result = engine.generateExpressionTree(' asdf tag: qwerty  ');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(2);
-    //         expect(result[0]).to.equal('asdf');
-    //         expect(result[1]).to.equal('tag:qwerty');
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
 
-    //         result = engine.generateExpressionTree(' asdf tag:qwerty  ');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(2);
-    //         expect(result[0]).to.equal('asdf');
-    //         expect(result[1]).to.equal('tag:qwerty');
-    //     });
+            expect(node[0].literals[0].text).to.equal(searchText);
+            expect(node[0].literals[0].expression).to.equal('none');
+        });
 
-    //     it('When seach contains expression - result should have one item', function(){
+        it('When search contains whitespaces - result should trim it', function(){
 
-    //         var result = engine.generateExpressionTree('title: 0 AND 1');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(1);
-    //         expect(result[0]).to.equal('title:0 and 1');
-    //     });
+            var node = engine.generateExpressionTree('   asdf   ');
 
-    //     it('When seach contains pattern and expression - result should have two items', function(){
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
 
-    //         var result = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
-    //         expect(result).to.be.an('array');
-    //         expect(result.length).to.equal(2);
-    //         expect(result[0]).to.equal('asdf');
-    //         expect(result[1]).to.equal('tag:qwerty and 123');
-    //     });
-    // });
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('none');
+        });
+
+        it('When search contains pattern - result should have one node with literals', function(){
+
+            var node = engine.generateExpressionTree(' tag:qwerty  ');
+
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('tag:');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('qwerty');
+            expect(node[0].literals[0].expression).to.equal('none');
+        });
+
+        it('When seach contains expression - result should have one node with two literals', function(){
+
+            var node = engine.generateExpressionTree('title:asdf AND qwerty');
+
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('title:');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(2);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('and');
+
+            expect(node[0].literals[1].text).to.equal('qwerty');
+            expect(node[0].literals[1].expression).to.equal('none');
+        });
+
+        it('When seach contains pattern and expression - result should have two items', function(){
+
+            var node = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
+            
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(2);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('none');
+
+            expect(node[1].literals).to.be.an('array');
+            expect(node[1].literals.length).to.equal(2);
+
+            expect(node[1].literals[0].text).to.equal('qwerty');
+            expect(node[1].literals[0].expression).to.equal('and');
+
+            expect(node[1].literals[1].text).to.equal('123');
+            expect(node[1].literals[1].expression).to.equal('none');
+        });
+
+        it('When seach contains pattern and expression - result should have two items', function(){
+
+            var node = engine.generateExpressionTree(' asdf tag:qwerty and 123 ');
+            
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(2);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('none');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('asdf');
+            expect(node[0].literals[0].expression).to.equal('none');
+
+            expect(node[1].literals).to.be.an('array');
+            expect(node[1].literals.length).to.equal(2);
+
+            expect(node[1].literals[0].text).to.equal('qwerty');
+            expect(node[1].literals[0].expression).to.equal('and');
+
+            expect(node[1].literals[1].text).to.equal('123');
+            expect(node[1].literals[1].expression).to.equal('none');
+        });
+    });
 
     describe('When search "string" - will try to find a match in any object field.', function(){   
         var bookmark, searchText;
@@ -340,165 +428,6 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             searchText = 'tag: tag2 AND nottag';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
-        });
-    });
-
-
-    // ----------------------------------
-
-    it('Should have a generate function', function(){
-        expect(engine).to.not.be.undefined;
-        expect(engine.generate).to.be.a('function');
-    });
-
-    describe('Check generate expression tree like an object:', function(){
-
-        it('When search null - result should be undefined', function(){
-
-            var result = engine.generate(null);
-            expect(result).to.be.undefined;
-        });
-
-        it('When search is empty - result should be empty', function(){
-
-            var result = engine.generate('');
-            expect(result).to.be.undefined;
-        });
-
-        it('When search is whitespace - result should be empty', function(){
-
-            var result = engine.generate('   ');
-            expect(result).to.be.undefined;
-        });
-
-        it('When search is text - result should be same', function(){
-
-            var searchText = 'asdf';
-            var node = engine.generate(searchText);
-            
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(1);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(1);
-
-            expect(node[0].literals[0].text).to.equal(searchText);
-            expect(node[0].literals[0].expression).to.equal('none');
-        });
-
-        it('When search contains whitespaces - result should trim it', function(){
-
-            var node = engine.generate('   asdf   ');
-
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(1);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(1);
-
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
-        });
-
-        it('When search contains pattern - result should have one node with literals', function(){
-
-            var node = engine.generate(' tag:qwerty  ');
-
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(1);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('tag:');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(1);
-
-            expect(node[0].literals[0].text).to.equal('qwerty');
-            expect(node[0].literals[0].expression).to.equal('none');
-        });
-
-        it('When seach contains expression - result should have one node with two literals', function(){
-
-            var node = engine.generate('title:asdf AND qwerty');
-
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(1);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('title:');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(2);
-
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('and');
-
-            expect(node[0].literals[1].text).to.equal('qwerty');
-            expect(node[0].literals[1].expression).to.equal('none');
-        });
-
-        it('When seach contains pattern and expression - result should have two items', function(){
-
-            var node = engine.generate(' asdf tag: qwerty and 123 ');
-            
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(2);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(1);
-
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
-
-            expect(node[1].literals).to.be.an('array');
-            expect(node[1].literals.length).to.equal(2);
-
-            expect(node[1].literals[0].text).to.equal('qwerty');
-            expect(node[1].literals[0].expression).to.equal('and');
-
-            expect(node[1].literals[1].text).to.equal('123');
-            expect(node[1].literals[1].expression).to.equal('none');
-        });
-
-        it('When seach contains pattern and expression - result should have two items', function(){
-
-            var node = engine.generate(' asdf tag:qwerty and 123 ');
-            
-            expect(node).to.not.be.undefined;
-            expect(node).to.be.an('array');
-            expect(node.length).to.equal(2);
-
-            expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
-
-            expect(node[0].literals).to.be.an('array');
-            expect(node[0].literals.length).to.equal(1);
-
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
-
-            expect(node[1].literals).to.be.an('array');
-            expect(node[1].literals.length).to.equal(2);
-
-            expect(node[1].literals[0].text).to.equal('qwerty');
-            expect(node[1].literals[0].expression).to.equal('and');
-
-            expect(node[1].literals[1].text).to.equal('123');
-            expect(node[1].literals[1].expression).to.equal('none');
         });
     });
 });
