@@ -10,11 +10,13 @@ function(_) { "use strict";
 var BooleanSearchEngine = function () {
 
     var exTree;
+    var searchTextForExTree;
+
     var andExpression = 'and';
     var orExpression = 'or';
     var nonePattern = 'none';
+
     var patterns = ['tag:', 'url:', 'title:'];
-    var bookmarks = {};
 
     // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
@@ -51,6 +53,49 @@ var BooleanSearchEngine = function () {
     var containsUrl = function(url, patternText){
 
         return url.indexOf(trim(patternText)) != -1;
+    };
+
+    // Check that bookmark could be reached by following expression.
+    var evaluateExpression = function(bookmark, node){
+        if(node.pattern === nonePattern && node.literals.length === 1){
+            var literal = node.literals[0];
+            var filteredValue = _.find(_.values(bookmark), function(propertyValue){
+                return propertyValue.toString().indexOf(trim(literal.text)) != -1;
+            });
+            return !_.isUndefined(filteredValue);
+        }
+
+        var evaluateFunc;
+        if(node.pattern === 'tag:'){
+            evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
+        }
+        else if(node.pattern === 'title:'){
+            evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };
+        }
+        else if(node.pattern === 'url:'){
+            evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
+        }
+
+        if(node.literals.length === 1){
+            return evaluateFunc(node.literals[0].text);
+        }
+
+        var result = true;
+        var exp = andExpression;
+        _.each(node.literals, function(literal){
+
+            var literalResult = evaluateFunc(literal.text);
+            if(exp === andExpression)
+            {
+                result = result && literalResult;
+            }
+            else if(exp === orExpression){
+                result = result || literalResult;
+            }
+            exp = literal.expression;
+        });
+
+        return result;
     };
     
     // Generate expression tree by search text.    
@@ -125,57 +170,17 @@ var BooleanSearchEngine = function () {
         return exTree;
     };
 
-    // Check that bookmark could be reached by following expression.
-    var evaluateExpression = function(bookmark, node){
-        if(node.pattern === nonePattern && node.literals.length === 1){
-            var literal = node.literals[0];
-            var filteredValue = _.find(_.values(bookmark), function(propertyValue){
-                return propertyValue.toString().indexOf(trim(literal.text)) != -1;
-            });
-            return !_.isUndefined(filteredValue);
-        }
-
-        var evaluateFunc;
-        if(node.pattern === 'tag:'){
-            evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
-        }
-        else if(node.pattern === 'title:'){
-            evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };
-        }
-        else if(node.pattern === 'url:'){
-            evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
-        }
-
-        if(node.literals.length === 1){
-            return evaluateFunc(node.literals[0].text);
-        }
-
-        var result = true;
-        var exp = andExpression;
-        _.each(node.literals, function(literal){
-
-            var literalResult = evaluateFunc(literal.text);
-            if(exp === andExpression)
-            {
-                result = result && literalResult;
-            }
-            else if(exp === orExpression){
-                result = result || literalResult;
-            }
-            exp = literal.expression;
-        });
-
-        return result;
-    };
-
     // Check that bookmark could be reached by following search text.
     this.filterBookmark = function(bookmark, searchText){
         
-        var search = searchText;
-        if(!search) return true;
+        if(!searchText) return true;
 
-        var tree = this.generateExpressionTree(search);
-        var failureNode = _.find(tree, function(node){
+        if(!_.isEqual(this.search, searchText)){
+            this.search = searchText;
+            this.generateExpressionTree(this.search);
+        }
+        
+        var failureNode = _.find(exTree, function(node){
             return !evaluateExpression(bookmark, node);
         });
 
