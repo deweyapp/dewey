@@ -9,9 +9,14 @@ function(_) { "use strict";
 */
 var BooleanSearchEngine = function () {
 
+    var exTree;
+    var searchTextForExTree;
+
     var andExpression = 'and';
+    var orExpression = 'or';
+    var nonePattern = 'none';
+
     var patterns = ['tag:', 'url:', 'title:'];
-    var bookmarks = {};
 
     // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
@@ -26,12 +31,6 @@ var BooleanSearchEngine = function () {
     var isBlank = function(str){
         if (_.isNull(str)) str = '';
         return (/^\s*$/).test(str);
-    };
-
-    // Splits input string by words. Defaults to whitespace characters.
-    var words = function(str, delimiter) {
-        if (isBlank(str)) return [];
-        return trim(str, delimiter).split(delimiter || /\s+/);
     };
 
     // Check that tag collection contains search.
@@ -57,89 +56,135 @@ var BooleanSearchEngine = function () {
     };
 
     // Check that bookmark could be reached by following expression.
-    var evaluateExpression = function(bookmark, searchText){
-
-        var pattern  = _.find(patterns, function(item){ return searchText.indexOf(item) === 0; });
-
-        if(!pattern){
+    var evaluateExpression = function(bookmark, node){
+        if(node.pattern === nonePattern && node.literals.length === 1){
+            var literal = node.literals[0];
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
-                return propertyValue.toString().indexOf(trim(searchText)) != -1;
+                return propertyValue.toString().indexOf(trim(literal.text)) != -1;
             });
             return !_.isUndefined(filteredValue);
         }
-        else{
-            var evaluateFunc;
 
-            var patternText = trim(searchText.substring(pattern.length));
-            var searchWords = words(patternText, ' ' + andExpression + ' ');
-
-            if(pattern === 'tag:'){
-                evaluateFunc =function(word){ return !containsTag(bookmark.tag, word); };
-            }
-            else if(pattern === 'title:'){
-                evaluateFunc = function(word){ return !containsTitle(bookmark.title, word); };
-            }
-            else if(pattern === 'url:'){
-                evaluateFunc = function(word){ return !containsUrl(bookmark.url, word); };
-            }
-
-            var failureWord = _.find(searchWords, function(word){
-                return evaluateFunc(word);
-            });
-
-            return _.isUndefined(failureWord);
+        var evaluateFunc;
+        if(node.pattern === 'tag:'){
+            evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
         }
-    };
+        else if(node.pattern === 'title:'){
+            evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };
+        }
+        else if(node.pattern === 'url:'){
+            evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
+        }
 
-    // TODO AGRYGOR: Should be calculated one per search text.
-    // Generate expression tree by search text.
-    this.generateExpressionTree = function(searchText){
-        
-        var pattern = '';
-        var expressionTree = [];
-        if(isBlank(searchText)) return expressionTree;
+        if(node.literals.length === 1){
+            return evaluateFunc(node.literals[0].text);
+        }
 
-        var search = searchText.replace('tag: ', 'tag:').replace('url: ', 'url:').replace('title: ', 'title:');
-        
-        var searchWords = words(search);
+        var result = true;
+        var exp = andExpression;
+        _.each(node.literals, function(literal){
 
-        if(_.isEmpty(searchWords))
-            return expressionTree;
-      
-        _.each(searchWords, function(word){
-            
-            var findPattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
-            if(!_.isUndefined(findPattern)) {
-                
-                if(!isBlank(pattern))
-                    expressionTree.push(pattern);
-                
-                pattern = word;
+            var literalResult = evaluateFunc(literal.text);
+            if(exp === andExpression)
+            {
+                result = result && literalResult;
             }
-            else{
-                if(word.toLowerCase() === andExpression){ pattern = pattern + ' ' + word.toLowerCase() + ' '; }
-                else{ pattern = pattern + word; }
+            else if(exp === orExpression){
+                result = result || literalResult;
             }
+            exp = literal.expression;
         });
 
-        if(!isBlank(pattern))
-            expressionTree.push(pattern);
+        return result;
+    };
+    
+    // Generate expression tree by search text.    
+    this.generateExpressionTree = function(searchText, callback){
 
-        return expressionTree;
+        if(isBlank(searchText)) return exTree;
+
+        var searchWords = searchText.split(/(tag:|title:|url:)/);
+        if(_.isEmpty(searchWords))
+            return exTree;
+
+        exTree = [];
+        var node = { pattern: nonePattern, literals:[] };
+        var literal = { text: '', expression: nonePattern};
+        
+        _.each(searchWords, function(word){
+            if(isBlank(word)) return;
+
+            if(_.isEqual(word, andExpression)){
+                
+                literal.expression = andExpression;
+                return;
+            }
+            
+            var pattern = _.find(patterns, function(it){ return word.indexOf(it) != -1; });
+            if(!_.isUndefined(pattern)){
+                // flush node
+                if(node.literals.length !== 0) exTree.push(node);
+
+                // create a new node
+                node = {                    
+                    pattern: pattern,
+                    literals:[]
+                };
+
+                return;
+            }
+
+            var exps = word.toLowerCase().split(/(and|or)/);
+            _.each(exps, function(item){
+                if(isBlank(word)) return;
+
+                if(item === andExpression){
+                    if(isBlank(literal.text)) return;
+
+                    literal.expression = andExpression;
+                    node.literals.push(literal);
+
+                    literal = null;
+                }
+                else if(item === orExpression){
+                    if(isBlank(literal.text)) return;
+
+                    literal.expression = orExpression;
+                    node.literals.push(literal);
+
+                    literal = null;
+                }
+                else{
+                    literal = {
+                        expression: nonePattern,
+                        text: trim(item)
+                    };
+                }
+            });
+
+            if(!isBlank(literal.text)) node.literals.push(literal);
+        });
+
+        exTree.push(node);
+
+        return exTree;
     };
 
     // Check that bookmark could be reached by following search text.
     this.filterBookmark = function(bookmark, searchText){
         
-        var search = searchText;
-        if(!search) return true;
+        if(!searchText) return true;
 
-        var searchWords = this.generateExpressionTree(search);
-        var failureWord = _.find(searchWords, function(word){
-            return !evaluateExpression(bookmark, word);
+        if(!_.isEqual(this.search, searchText)){
+            this.search = searchText;
+            this.generateExpressionTree(this.search);
+        }
+        
+        var failureNode = _.find(exTree, function(node){
+            return !evaluateExpression(bookmark, node);
         });
 
-        return _.isUndefined(failureWord);
+        return _.isUndefined(failureNode);
     };
 };
 
