@@ -7,29 +7,29 @@
 <div class="modal-body">
   <form ng-submit="save()">
     <div class="form-group">
-      <input type="text" 
-              id="textBoxTitle" 
-              class="form-control" 
-              autofocus="true" 
-              placeholder="Bookmark Title" 
+      <input type="text"
+              id="textBoxTitle"
+              class="form-control"
+              autofocus="true"
+              placeholder="Bookmark Title"
               ng-model="bookmarkModel.title" >
-      <input type="text" 
-              id="textBoxURL" 
-              class="form-control" 
-              placeholder="Bookmark URL" 
+      <input type="text"
+              id="textBoxURL"
+              class="form-control"
+              placeholder="Bookmark URL"
               ng-model="bookmarkModel.url" >
     </div >
-    
+
     <div class="form-group tags">
        <ul class="list-inline">
         <li ng-repeat="folder in bookmarkModel.folders">
           <span class="tag">{{folder}}</span>
         </li>
         <li class="custom-tags">
-          <bootstrap-tagsinput type="text" 
-                    id="textBoxCustomTags" 
-                    class="form-control" 
-                    placeholder="Add a tag" 
+          <bootstrap-tagsinput type="text"
+                    id="textBoxCustomTags"
+                    class="form-control"
+                    placeholder="Add a tag"
                     ng-model="bookmarkModel.customTags"
                     tagclass="tag custom-tag" >
         </li>
