@@ -5,7 +5,7 @@ define(
 function($) { 'use strict';
 var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmarksStorage) {
 
-  $(".grid").addClass("scale-down");
+  $(".grid").addClass("scale-blur");
 
   $scope.bookmarkModel = {
     title: bookmark.title,
@@ -18,13 +18,13 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
     _gaq.push(['_trackEvent', 'BookmarkEdit', 'editBookmark-save']);
     bookmarksStorage.update(bookmark, $scope.bookmarkModel);
     $modalInstance.close(bookmark);
-    $(".grid").removeClass("scale-down");
+    $(".grid").removeClass("scale-blur");
   };
 
   $scope.cancel = function() {
     _gaq.push(['_trackEvent', 'BookmarkEdit', 'editBookmark-cancel']);
     $modalInstance.dismiss('cancel');
-    $(".grid").removeClass("scale-down");
+    $(".grid").removeClass("scale-blur");
   };
 
   $scope.delete = function() {
@@ -34,7 +34,7 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
       bookmarksStorage.remove(bookmark);
       $modalInstance.close(null);
     }
-    $(".grid").removeClass("scale-down");
+    $(".grid").removeClass("scale-blur");
   };
 
   setTimeout(function() {

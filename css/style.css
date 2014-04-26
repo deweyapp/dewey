@@ -608,7 +608,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /*-----------------------------
-  Special Styles for Links to Dewey - Need to be updated when we get final app ID - @ line 1071, also
+  Special Styles for Links to Dewey
 -----------------------------*/
 
 .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
@@ -684,9 +684,10 @@ input[type="search"]::-webkit-search-cancel-button {
   Edit Modal Window
 -----------------------------*/
 
-.scale-down {
+.scale-blur {
   -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transform: scale(.97);
+  -webkit-transform: scale(.98);
+  -webkit-filter: blur(5px);
 }
 
 .close {
