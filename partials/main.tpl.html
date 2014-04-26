@@ -5,7 +5,11 @@
     <nav id="search">
       <form class="search" role="search">
         <div class="form-group search-group">
-          <input autofocus="true" type="search" class="form-control" ng-model="searchText" typeahead="tag for tag in getTypeheadSuggestions($viewValue) | limitTo:10">
+          <input autofocus="true" 
+                 type="search" 
+                 class="form-control" 
+                 ng-model="searchText" 
+                 typeahead="tag for tag in getTypeheadSuggestions($viewValue)">
         </div>
       </form>
     </nav>

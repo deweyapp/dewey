@@ -99,7 +99,7 @@ var BooleanSearchEngine = function () {
     };
     
     // Generate expression tree by search text.    
-    this.generateExpressionTree = function(searchText, callback){
+    this.generateExpressionTree = function(searchText){
 
         if(isBlank(searchText)) return exTree;
 
