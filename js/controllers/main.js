@@ -15,6 +15,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
+  $scope.filteredBookmarks = [];
   $scope.tags = []; // All tags
   $scope.orders = [ // Different sorting orders
                     {title:'Date', value: 'date'},
@@ -34,7 +35,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
   $(window).scroll(function () {
-    if (getFilteredBookmarks().length > $scope.totalDisplayed) {
+    if ($scope.filteredBookmarks.length > $scope.totalDisplayed) {
       if (loadMorePlaceholder.getBoundingClientRect().top <= window.innerHeight) {
         $scope.totalDisplayed += defaultTotalDisplayed;
         $scope.$apply();
@@ -79,7 +80,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       if (match && !_(['tag', 'url', 'title']).contains(match[1])) {
         window.location = 'https://' + match[1] + (match[2] || '.com') + '/?q=' + encodeURIComponent(match[3].trim());
       } else {
-        var result = getFilteredBookmarks();
+        var result = $scope.filteredBookmarks;
         if (result.length > $scope.selectedIndex) {
           window.location.href = result[$scope.selectedIndex].url;
         }
@@ -133,27 +134,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
   });
 
-  $scope.searchTextFn = function(actual, search){
-    if(!search) return true;
-
-    var item = _.find($scope.bookmarks, function(item){ return item.title == actual; });
-    if(_.isUndefined(item)) return false;
-
-    return booleanSearchEngine.filterBookmark(item, search);
-  };
-
-  // Get bookmarks we show on the page (in right order)
-  var getFilteredBookmarks = function() {
-    return $scope.filteredItems;
-    // var bookmarksFilter = $filter('complex');
-    // return bookmarksFilter($scope.bookmarks, $scope.searchText, $scope.currentOrder.value);
-  };
-
   var loadBookmarks = function() {
     bookmarksStorage.getAll(function(bookmarks, setttings) {
       $scope.hideTopLevelFolders = appSettings.hideTopLevelFolders = setttings.hideTopLevelFolders;
       $scope.showThumbnails = appSettings.showThumbnails = setttings.showThumbnails;
       $scope.bookmarks = bookmarks;
+      $scope.filteredBookmarks = bookmarks;
 
       $scope.tags = _.chain(bookmarks)
                       .map(function (item) { return item.tag; })
@@ -208,6 +194,13 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   // When user change search string we scroll to top of the page and set total displayed items to default
   $scope.$watch('searchText', function() {
+    $scope.filteredBookmarks = 
+      _.filter(
+        $scope.bookmarks, 
+        function(bookmark){ 
+          return booleanSearchEngine.filterBookmark(bookmark, $scope.searchText); 
+        }
+      );
     resetView();
   });
 
@@ -275,7 +268,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   };
 
   $scope.getTypeheadSuggestions = function($viewValue) {
-    var pattern = 'none';
+    var pattern = 'NONE';
     var searchText = $viewValue;
     var definedSearch = $viewValue;
 
@@ -286,7 +279,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         var lastLiteral = _.last(node.literals);
         pattern = node.pattern;
 
-        searchText = (lastLiteral && lastLiteral.expression === 'none' ? lastLiteral.text : '');
+        searchText = (lastLiteral && lastLiteral.expression === 'NONE' ? lastLiteral.text : '');
 
         definedSearch = $viewValue.replace(/\s+$/, '');
         definedSearch = definedSearch.substr(0, $viewValue.length - searchText.length);
@@ -294,26 +287,25 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
           definedSearch += ' ';
         }
       }
-      
     }
 
-    if (pattern === 'none') {
-      pattern = 'title:';
+    if (pattern === 'NONE') {
+      pattern = 'TITLE:';
     }
 
     var chain;
 
-    if (pattern === 'title:') {
+    if (pattern === 'TITLE:') {
       chain = _.chain(this.bookmarks)
         .map(function(b) {
           return b.title;
         });
-    } else if (pattern === 'tag:') {
+    } else if (pattern === 'TAG:') {
        chain = _.chain(this.tags)
         .map(function(t) {
           return t.tagText;
         });
-    } else if (pattern === 'url:') {
+    } else if (pattern === 'URL:') {
       chain = _.chain(this.bookmarks)
         .map(function(b) {
           return b.url;
