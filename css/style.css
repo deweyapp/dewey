@@ -4,18 +4,14 @@
   Pace Page Load - http://github.hubspot.com/pace
 -----------------------------*/
 
-.pace .pace-progress {
-  background: #f18260;
+.pace-progress {
+  background: hsl(14, 84%, 66%);
   position: fixed;
-  z-index: 2000;
+  z-index: 10000;
   top: 0;
   left: 0;
-  height: 2px;
-
-  -webkit-transition: width 1s;
-  -moz-transition: width 1s;
-  -o-transition: width 1s;
-  transition: width 1s;
+  height: .15rem;
+  transition: width 200ms;
 }
 
 .pace-inactive {
