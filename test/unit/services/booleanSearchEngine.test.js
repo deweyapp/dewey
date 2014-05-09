@@ -60,13 +60,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(1);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
+            expect(node[0].pattern).to.equal('NONE');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(1);
 
-            expect(node[0].literals[0].text).to.equal(searchText);
-            expect(node[0].literals[0].expression).to.equal('none');
+            expect(node[0].literals[0].text).to.equal(searchText.toUpperCase());
+            expect(node[0].literals[0].expression).to.equal('NONE');
         });
 
         it('When search contains whitespaces - result should trim it', function(){
@@ -78,13 +78,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(1);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
+            expect(node[0].pattern).to.equal('NONE');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(1);
 
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
+            expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('NONE');
         });
 
         it('When search contains pattern - result should have one node with literals', function(){
@@ -96,13 +96,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(1);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('tag:');
+            expect(node[0].pattern).to.equal('TAG:');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(1);
 
-            expect(node[0].literals[0].text).to.equal('qwerty');
-            expect(node[0].literals[0].expression).to.equal('none');
+            expect(node[0].literals[0].text).to.equal('QWERTY');
+            expect(node[0].literals[0].expression).to.equal('NONE');
         });
 
         it('When seach contains expression - result should have one node with two literals', function(){
@@ -114,16 +114,16 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(1);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('title:');
+            expect(node[0].pattern).to.equal('TITLE:');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(2);
 
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('and');
+            expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('AND');
 
-            expect(node[0].literals[1].text).to.equal('qwerty');
-            expect(node[0].literals[1].expression).to.equal('none');
+            expect(node[0].literals[1].text).to.equal('QWERTY');
+            expect(node[0].literals[1].expression).to.equal('NONE');
         });
 
         it('When seach contains pattern and expression - result should have two items', function(){
@@ -135,22 +135,22 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(2);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
+            expect(node[0].pattern).to.equal('NONE');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(1);
 
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
+            expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('NONE');
 
             expect(node[1].literals).to.be.an('array');
             expect(node[1].literals.length).to.equal(2);
 
-            expect(node[1].literals[0].text).to.equal('qwerty');
-            expect(node[1].literals[0].expression).to.equal('and');
+            expect(node[1].literals[0].text).to.equal('QWERTY');
+            expect(node[1].literals[0].expression).to.equal('AND');
 
             expect(node[1].literals[1].text).to.equal('123');
-            expect(node[1].literals[1].expression).to.equal('none');
+            expect(node[1].literals[1].expression).to.equal('NONE');
         });
 
         it('When seach contains pattern and expression - result should have two items', function(){
@@ -162,22 +162,22 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node.length).to.equal(2);
 
             expect(node[0].pattern).to.be.a('string');
-            expect(node[0].pattern).to.equal('none');
+            expect(node[0].pattern).to.equal('NONE');
 
             expect(node[0].literals).to.be.an('array');
             expect(node[0].literals.length).to.equal(1);
 
-            expect(node[0].literals[0].text).to.equal('asdf');
-            expect(node[0].literals[0].expression).to.equal('none');
+            expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('NONE');
 
             expect(node[1].literals).to.be.an('array');
             expect(node[1].literals.length).to.equal(2);
 
-            expect(node[1].literals[0].text).to.equal('qwerty');
-            expect(node[1].literals[0].expression).to.equal('and');
+            expect(node[1].literals[0].text).to.equal('QWERTY');
+            expect(node[1].literals[0].expression).to.equal('AND');
 
             expect(node[1].literals[1].text).to.equal('123');
-            expect(node[1].literals[1].expression).to.equal('none');
+            expect(node[1].literals[1].expression).to.equal('NONE');
         });
     });
 
@@ -617,18 +617,6 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });

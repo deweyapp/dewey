@@ -12,11 +12,11 @@ var BooleanSearchEngine = function () {
     var exTree;
     var searchTextForExTree;
 
-    var andExpression = 'and';
-    var orExpression = 'or';
-    var nonePattern = 'none';
+    var andExpression = 'AND';
+    var orExpression = 'OR';
+    var nonePattern = 'NONE';
 
-    var patterns = ['tag:', 'url:', 'title:'];
+    var patterns = ['TAG:', 'URL:', 'TITLE:'];
 
     // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
@@ -37,7 +37,7 @@ var BooleanSearchEngine = function () {
     var containsTag = function(tags, patternText){
         
         var tag = _.find(tags, function(item){
-            return item.text.indexOf(patternText) != -1;
+            return item.text.toUpperCase().indexOf(patternText) != -1;
         });
 
         return !_.isUndefined(tag);
@@ -46,13 +46,13 @@ var BooleanSearchEngine = function () {
     // Check that title contains search.
     var containsTitle = function(title, patternText){
 
-        return title.indexOf(trim(patternText)) != -1;
+        return title.toUpperCase().indexOf(trim(patternText)) != -1;
     };
 
     // Check that url contains search.
     var containsUrl = function(url, patternText){
 
-        return url.indexOf(trim(patternText)) != -1;
+        return url.toUpperCase().indexOf(trim(patternText)) != -1;
     };
 
     // Check that bookmark could be reached by following expression.
@@ -60,19 +60,19 @@ var BooleanSearchEngine = function () {
         if(node.pattern === nonePattern && node.literals.length === 1){
             var literal = node.literals[0];
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
-                return propertyValue.toString().indexOf(trim(literal.text)) != -1;
+                return propertyValue.toString().toUpperCase().indexOf(trim(literal.text)) != -1;
             });
             return !_.isUndefined(filteredValue);
         }
 
         var evaluateFunc;
-        if(node.pattern === 'tag:'){
+        if(node.pattern === 'TAG:'){
             evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
         }
-        else if(node.pattern === 'title:'){
+        else if(node.pattern === 'TITLE:'){
             evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };
         }
-        else if(node.pattern === 'url:'){
+        else if(node.pattern === 'URL:'){
             evaluateFunc = function(word){ return containsUrl(bookmark.url, word); };
         }
 
@@ -99,11 +99,13 @@ var BooleanSearchEngine = function () {
     };
     
     // Generate expression tree by search text.    
-    this.generateExpressionTree = function(searchText, callback){
+    this.generateExpressionTree = function(searchText){
 
         if(isBlank(searchText)) return exTree;
 
-        var searchWords = searchText.split(/(tag:|title:|url:)/);
+        searchText = searchText.toUpperCase();
+
+        var searchWords = searchText.split(/(TAG:|TITLE:|URL:)/);
         if(_.isEmpty(searchWords))
             return exTree;
 
@@ -134,7 +136,7 @@ var BooleanSearchEngine = function () {
                 return;
             }
 
-            var exps = word.toLowerCase().split(/(and|or)/);
+            var exps = word.split(/(AND|OR)/);
             _.each(exps, function(item){
                 if(isBlank(word)) return;
 
