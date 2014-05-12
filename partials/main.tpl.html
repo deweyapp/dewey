@@ -5,7 +5,11 @@
     <nav id="search">
       <form class="search" role="search">
         <div class="form-group search-group">
-          <input autofocus="true" type="search" class="form-control" ng-model="searchText">
+          <input autofocus="true" 
+                 type="search" 
+                 class="form-control" 
+                 ng-model="searchText" 
+                 typeahead="tag for tag in getTypeheadSuggestions($viewValue)">
         </div>
       </form>
     </nav>
@@ -70,12 +74,14 @@
     <ul id="sort">
       <li ng-cloak>
         <p>Sort:</p>
-        <a ng-repeat="order in orders" ng-class="{ 'active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
+        <a ng-repeat="order in orders" ng-class="{ 'sort-active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
       </li>
     </ul>
 
     <ul id="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}" ng-repeat="bookmark in bookmarks | complex:searchText:currentOrder.value | limitTo:totalDisplayed" ng-cloak>
+      <li ng-class="{'panel-primary': ($index == selectedIndex)}" 
+          ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)" 
+          ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
           <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>
