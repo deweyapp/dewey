@@ -1,7 +1,6 @@
 <div class="modal-body">
   <form ng-submit="save()">
     <div class="form-group">
-      <a class="launch" href="{{bookmarkModel.url}}" target="_blank"></a>
       <textarea
           id="textBoxTitle"
           class="form-control"
@@ -9,7 +8,7 @@
           placeholder="Bookmark Title"
           ng-model="bookmarkModel.title" >
       </textarea>
-
+      <a class="launch" href="{{bookmarkModel.url}}" target="_blank"></a>
       <input type="text"
           id="textBoxURL"
           class="form-control"
@@ -27,7 +26,7 @@
               type="text"
               id="textBoxCustomTags"
               class="form-control"
-              placeholder="Add a tag"
+              placeholder="+ Add a tag"
               ng-model="bookmarkModel.customTags"
               tagclass="tag custom-tag" >
         </li>

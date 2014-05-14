@@ -631,7 +631,7 @@ strong { /* highlights matching letters in results */
   top: 1.75rem;
 }
 
-.panel-small .edit-icon {
+.panel-small .edit-toggle {
   top: 1.75rem;
 }
 
@@ -773,7 +773,7 @@ strong { /* highlights matching letters in results */
 }
 
 .modal-dialog {
-  margin: 15% auto;
+  margin: 20vh auto;
   width: 38rem;
   height: auto;
   z-index: 1050;
@@ -785,17 +785,6 @@ strong { /* highlights matching letters in results */
 .modal.in .modal-dialog {
   opacity: 1;
   -webkit-transform: translate3d(0,0,0);
-}
-
-.launch {
-  content: url(../images/launch.svg);
-  height: 1.4rem;
-  width: 1.4rem;
-  position: absolute;
-  margin-left: -3.25rem;
-  margin-top: .5rem;
-  -webkit-filter: saturate(0);
-  opacity: .5;
 }
 
 .modal-body {
@@ -817,10 +806,14 @@ strong { /* highlights matching letters in results */
   color: hsla(201, 16%, 17%, 1);
   border: none;
   font: 700 2.35rem/1 "Source Sans Pro";
-  margin-bottom: 1.25rem;
+  margin-bottom: .75rem;
   width: 100%;
   min-height: 5rem;
   resize: none;
+}
+
+#textBoxTitle::-webkit-input-placeholder {
+  color: hsla(201, 16%, 17%, .25);
 }
 
 /*-----------------------------
@@ -829,6 +822,24 @@ strong { /* highlights matching letters in results */
 
 #textBoxTitle::-webkit-scrollbar { width: .25rem }
 #textBoxTitle::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
+
+/*-----------------------------
+  URL Input
+-----------------------------*/
+
+.launch {
+  content: url(../images/launch.svg);
+  width: 1.2rem;
+  margin-bottom: -2.25rem;
+  -webkit-filter: saturate(0);
+  opacity: .5;
+  transition: -webkit-filter 250ms ease, opacity 250ms ease;
+}
+
+.launch:hover {
+  opacity: 1;
+  -webkit-filter: saturate(1);
+}
 
 #textBoxURL {
   -webkit-appearance: none;
@@ -841,6 +852,7 @@ strong { /* highlights matching letters in results */
   font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
+  padding-left: 2.5rem;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -863,28 +875,36 @@ strong { /* highlights matching letters in results */
 }
 
 .bootstrap-tagsinput input {
-  -webkit-appearance: none;
-  background: hsl(0, 0%, 96%);
+  background: transparent;
   border-radius: 3px;
-  border: 1px solid hsla(14, 84%, 66%, 0);
-  color: hsl(0, 0%, 33%);
-  font-size: .75rem;
-  height: 2.5rem;
+  border: 1px solid hsla(14, 84%, 66%, 1);
+  color: hsla(201, 16%, 17%, 1);
+  display: inline-block;
+  font: 700 1rem/1 "Source Sans Pro";
+  height: 3.25rem;
+  margin: 0 .5rem .5rem 0;
   min-width: 6.25rem;
-  padding: 0 .625rem;
-  transition: border .3s ease-in-out;
+  padding: .85rem 1rem;
+  text-align: left;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
 .bootstrap-tagsinput input::-webkit-input-placeholder {
-  color: lightgray;
+  color: hsla(201, 16%, 17%, 1);
+  transition: color 250ms ease;
+}
+
+.bootstrap-tagsinput input:focus::-webkit-input-placeholder {
+  color: hsla(201, 16%, 17%, .25);
 }
 
 .bootstrap-tagsinput input:focus {
-  border: 1px solid hsla(14, 84%, 66%, 1);
   outline: none;
 }
 
 .bootstrap-tagsinput .tag [data-role="remove"] {
+  border: none;
   margin-left: .5rem;
   cursor: pointer;
 }
@@ -919,7 +939,7 @@ strong { /* highlights matching letters in results */
   color: hsla(201, 16%, 17%, 1);
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
-  height: 3rem;
+  height: 3.25rem;
   margin: 0 .5rem .5rem 0;
   min-width: 6.25rem;
   padding: .85rem 1rem;
@@ -934,7 +954,6 @@ strong { /* highlights matching letters in results */
   float: left;
   margin-right: .75rem;
   margin-top: -2px;
-  -webkit-filter: brightness(.8);
 }
 
 .tag:empty {
@@ -950,11 +969,14 @@ strong { /* highlights matching letters in results */
 }
 
 .custom-tag {
-  background-color: hsl(14, 84%, 66%) !important;
+  background-color: hsla(201, 16%, 17%, 1) !important;
+  color: white;
+  cursor: default;
 }
 
 .custom-tag:before {
-  content: none;
+  content: url(../images/tags-white.svg);
+  margin-top: 1px;
 }
 
 .custom-tag a:hover {
