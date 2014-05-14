@@ -5,10 +5,10 @@
     <nav id="search">
       <form class="search" role="search">
         <div class="form-group search-group">
-          <input autofocus="true" 
-                 type="search" 
-                 class="form-control" 
-                 ng-model="searchText" 
+          <input autofocus="true"
+                 type="search"
+                 class="form-control"
+                 ng-model="searchText"
                  typeahead="tag for tag in getTypeheadSuggestions($viewValue)">
         </div>
       </form>
@@ -63,7 +63,7 @@
   <div class="grid">
 
     <div id="tags">
-      <a class="tags-icon" data-toggle="dropdown"></a>
+      <a class="tags-toggle" data-toggle="dropdown"></a>
       <ui class="dropdown-menu">
         <li ng-repeat="tag in tags | orderBy: 'tagText'">
           <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
@@ -79,12 +79,12 @@
     </ul>
 
     <ul id="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}" 
-          ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)" 
+      <li ng-class="{'panel-primary': ($index == selectedIndex)}"
+          ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)"
           ng-cloak>
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
-          <div class="edit-icon" ng-click="editBookmark(bookmark)" title="Edit"></div>
+          <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
           <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link" target="_blank"></a>
 
           <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}"></div>

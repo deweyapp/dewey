@@ -194,11 +194,11 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   // When user change search string we scroll to top of the page and set total displayed items to default
   $scope.$watch('searchText', function() {
-    $scope.filteredBookmarks = 
+    $scope.filteredBookmarks =
       _.filter(
-        $scope.bookmarks, 
-        function(bookmark){ 
-          return booleanSearchEngine.filterBookmark(bookmark, $scope.searchText); 
+        $scope.bookmarks,
+        function(bookmark){
+          return booleanSearchEngine.filterBookmark(bookmark, $scope.searchText);
         }
       );
     resetView();
@@ -233,7 +233,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         }
       },
       keyboard: true,
-      backdrop: 'static'
+      backdrop: false
     });
 
     modalInstance.result.then(function (updatedBookmark) {
@@ -335,7 +335,7 @@ return [
   '$filter',
   '$modal',
   'bookmarksStorage',
-  'appSettings', 
+  'appSettings',
   'booleanSearchEngine',
   MainController
 ];

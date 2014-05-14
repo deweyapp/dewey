@@ -48,7 +48,7 @@ var BookmarksStorage = function () {
         break;
       }
     }
-    // If don't have chunk with less than 20 items 
+    // If don't have chunk with less than 20 items
     // Create new one.
     if (!chunk) {
       chunk = { d: {} };
@@ -62,7 +62,7 @@ var BookmarksStorage = function () {
       index = customTagsStorage.length;
       customTagsStorage.push(chunk);
     }
-    // Save custom tags for bookmark 
+    // Save custom tags for bookmark
     chunk.d[bookmarkUrl] = customTags;
     saveCustomTagsChunk(index, chunk);
   };
@@ -162,7 +162,7 @@ var BookmarksStorage = function () {
       enumerateAllCustomTagChunks({n: true}, -1, function() {
         chrome.bookmarks.getTree(function(tree) {
           enumerateChildren(tree, [], /* level: */ 0, settings.hideTopLevelFolders);
-          // Custom tags is legacy storage 
+          // Custom tags is legacy storage
           // TODO: remove after couple releases support of customTgs key.
           chrome.storage.sync.get('customTags', function(data) {
             if (data && data.customTags) {
@@ -180,20 +180,18 @@ var BookmarksStorage = function () {
     });
   };
 
-  /*
-  * Update bookmark. I think I screwed this up. I'm sorry.
-  */
+
   this.update = function(bookmark, changes) {
     var update = {};  // Prepare update document
-    
+
     if (changes.url !== bookmark.url) {  // If url is different add it to update
       update.url = changes.url;
     }
-    
+
     if (changes.title !== bookmark.title) {  // If title different add it to update
-      update.title = change.title;
+      update.title = changes.title;
     }
-    
+
     if (_.keys(update).length > 0) {  // If we have something to change (title or url) let's do it
       chrome.bookmarks.update(bookmark.id, update);
       _.extend(bookmark, update);  // Copy all updates to bookmark after updating chrome bookmarks
@@ -235,16 +233,16 @@ var BookmarksStorage = function () {
   this.loadSettings = function(cb) {
     chrome.storage.sync.get(
       [
-        'show-thumbnails', 
+        'show-thumbnails',
         'hide-top-level-folders'
-      ], 
+      ],
       function(flag) {
         cb(
           {
             showThumbnails: flag['show-thumbnails'], // Default value is true.
             hideTopLevelFolders: flag['hide-top-level-folders'] || false // Default value is false.
           }
-        ); 
+        );
       }
     );
   };

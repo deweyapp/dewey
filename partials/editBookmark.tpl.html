@@ -1,23 +1,20 @@
-<div class="modal-header">
-  <button class="close" ng-click="cancel()">&times;</button>
-  <h4 class="modal-title">Edit bookmark</h4>
-  <a class="launch" href="{{bookmarkModel.url}}" target="_blank"></a>
-</div>
-
 <div class="modal-body">
   <form ng-submit="save()">
     <div class="form-group">
+      <a class="launch" href="{{bookmarkModel.url}}" target="_blank"></a>
+      <textarea
+          id="textBoxTitle"
+          class="form-control"
+          autofocus="true"
+          placeholder="Bookmark Title"
+          ng-model="bookmarkModel.title" >
+      </textarea>
+
       <input type="text"
-              id="textBoxTitle"
-              class="form-control"
-              autofocus="true"
-              placeholder="Bookmark Title"
-              ng-model="bookmarkModel.title" >
-      <input type="text"
-              id="textBoxURL"
-              class="form-control"
-              placeholder="Bookmark URL"
-              ng-model="bookmarkModel.url" >
+          id="textBoxURL"
+          class="form-control"
+          placeholder="Bookmark URL"
+          ng-model="bookmarkModel.url" >
     </div >
 
     <div class="form-group tags">
@@ -26,22 +23,22 @@
           <span class="tag">{{folder}}</span>
         </li>
         <li class="custom-tags">
-          <bootstrap-tagsinput type="text"
-                    id="textBoxCustomTags"
-                    class="form-control"
-                    placeholder="Add a tag"
-                    ng-model="bookmarkModel.customTags"
-                    tagclass="tag custom-tag" >
+          <bootstrap-tagsinput
+              type="text"
+              id="textBoxCustomTags"
+              class="form-control"
+              placeholder="Add a tag"
+              ng-model="bookmarkModel.customTags"
+              tagclass="tag custom-tag" >
         </li>
       </ul>
     </div>
 
-    <p class="help-block">Press enter to apply a tag. Use a comma, colon or semicolon bewtween multiples. Bookmark Manager folders are treated as tags. (Mac &ndash; Opt+Cmd+B) (Windows &ndash; Ctrl+Shift+B)</p>
-  </form>
+  <div class="modal-footer">
+    <button class="delete" ng-click="delete()" tabindex="2">Delete</button>
+    <button class="cancel" ng-click="cancel()" tabindex="3">Cancel</button>
+    <button class="save" ng-click="save()" tabindex="0">Save</button>
+  </div>
 
 </div>
-<div class="modal-footer">
-  <button class="delete" ng-click="delete()" tabindex="2">Delete</button>
-  <button class="cancel" ng-click="cancel()" tabindex="3">Cancel</button>
-  <button class="save" ng-click="save()" tabindex="0">Save</button>
-</div>
+

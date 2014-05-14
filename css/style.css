@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400,700);
 
 /*-----------------------------
   Pace Page Load - http://github.hubspot.com/pace
@@ -110,6 +110,10 @@ table {
   from { -webkit-transform: translateX(5rem); }
   to { -webkit-transform: translateX(0); }}
 
+@-webkit-keyframes modal {
+  from { -webkit-transform: translateY(-20rem); opacity: 0; }
+  to { -webkit-transform: translateY(0); opacity: 1; }}
+
 /*-----------------------------
   Global
 -----------------------------*/
@@ -121,7 +125,7 @@ table {
 }
 
 html  {
-  background: hsla(201, 16%, 17%, 0.1);
+  background: hsla(201, 16%, 17%, 0.12);
   font-size: 100%;
   margin-top: 3.125rem;
 }
@@ -161,7 +165,7 @@ body {
   background: url(../images/search.svg) no-repeat;
   background-position: 1rem 1rem;
   border: none;
-  font: 400 1.35rem 'Source Sans Pro', sans-serif;
+  font: 300 1.35rem 'Source Sans Pro', sans-serif;
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
@@ -193,15 +197,17 @@ input[type="search"]::-webkit-search-cancel-button {
 -----------------------------*/
 
 .typeahead-dropdown {
-  background-color: hsl(201, 16%, 17%);
-  color: hsl(201, 16%, 85%);
+  background-color: hsla(201, 16%, 17%, .9);
+  color: hsla(0, 0%, 100%, .95);
   z-index: 10000;
 }
 
 .typeahead-dropdown > li {
   cursor: pointer;
-  line-height: 1.5rem;
+  line-height: 1.2;
   padding: .5rem 1rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
 }
 
 .typeahead-dropdown > li a:focus {
@@ -218,7 +224,7 @@ strong { /* highlights matching letters in results */
 
 .active {
   color: hsl(14, 84%, 66%);
-  background: hsla(0, 0%, 100%, 0.05);
+  background: hsla(0, 0%, 100%, 0.075);
 }
 
 /*-----------------------------
@@ -390,7 +396,7 @@ strong { /* highlights matching letters in results */
   margin-left: 1rem;
 }
 
-.tags-icon {
+.tags-toggle {
   background: url(../images/tags.svg) no-repeat center;
   background-size: contain;
   cursor: pointer;
@@ -401,7 +407,7 @@ strong { /* highlights matching letters in results */
   transition: -webkit-filter 100ms ease-in-out;
 }
 
-.tags-icon:hover {
+.tags-toggle:hover {
   -webkit-filter: saturate(1);
 }
 
@@ -433,9 +439,9 @@ strong { /* highlights matching letters in results */
   Tags Dropdown Scrollbar
 -----------------------------*/
 
-#tags .dropdown-menu::-webkit-scrollbar { width: .4rem; height: 0; }
-#tags .dropdown-menu::-webkit-scrollbar-track-piece { background-color: white; }
-#tags .dropdown-menu::-webkit-scrollbar-thumb:vertical { height: 1.5rem; background-color: #F18260; }
+#tags .dropdown-menu::-webkit-scrollbar { width: .25rem; height: 0; }
+#tags .dropdown-menu::-webkit-scrollbar-track { background-color: white; }
+#tags .dropdown-menu::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
 
 /*-----------------------------
   Sort
@@ -447,14 +453,14 @@ strong { /* highlights matching letters in results */
 }
 
 #sort p, #sort a {
-  color: hsl(0, 0%, 59%);
+  color: hsla(201, 16%, 17%, 0.8);
   display: inline-block;
   list-style: none;
   margin-right: 1rem;
 }
 
 #sort a {
-  color: hsl(0, 0%, 80%);
+  color: hsla(201, 16%, 17%, 0.3);
   cursor: pointer;
   transition: color 250ms ease;
 }
@@ -475,8 +481,16 @@ strong { /* highlights matching letters in results */
 .grid {
   margin: 3.25rem auto 0;
   width: 72.5em;
-  transition: -webkit-transform 350ms cubic-bezier(0.5, -.75, .25, 1.5);
-  -webkit-transform-origin: center center;
+  transition: -webkit-transform 250ms cubic-bezier(0.5, -.75, .25, 1.5);
+  -webkit-transform-origin: center;
+}
+
+/*Effect for edit modal*/
+
+.scale-blur {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: scale(.97);
+  -webkit-filter: blur(7px);
 }
 
 #list-bookmarks {
@@ -533,11 +547,6 @@ strong { /* highlights matching letters in results */
   outline: none;
 }
 
-.panel:active {
-  transition: -webkit-transform 60ms cubic-bezier(.65, 0, .75, 1.25);
-  -webkit-transform: scale(1.015);
-}
-
 .bookmark-link {
   text-decoration: none;
   position: absolute;
@@ -563,7 +572,7 @@ strong { /* highlights matching letters in results */
   opacity: 1;
 }
 
-.edit-icon {
+.edit-toggle {
   content: url(../images/edit.svg);
   position: absolute;
   height: 2rem;
@@ -575,12 +584,12 @@ strong { /* highlights matching letters in results */
   z-index: 510;
 }
 
-.edit-icon:hover {
+.edit-toggle:hover {
   opacity: 1;
 }
 
 .panel:after,
-.edit-icon {
+.edit-toggle {
   transition: opacity 300ms ease;
 }
 
@@ -590,7 +599,7 @@ strong { /* highlights matching letters in results */
 
 .thumbnail-loading,
 .thumbnail {
-  -webkit-filter: brightness(.75);
+  -webkit-filter: brightness(.8);
   background-position: center;
   background-repeat: no-repeat;
   height: 9.375rem;
@@ -724,7 +733,7 @@ strong { /* highlights matching letters in results */
   font-size: 0.75rem;
   padding-bottom: 0.4rem;
   padding-right: 0.35rem;
-  transition: color .25s ease;
+  transition: color 250ms ease;
 }
 
 .tag-links a:hover {
@@ -740,124 +749,53 @@ strong { /* highlights matching letters in results */
   Edit Modal Window
 -----------------------------*/
 
-.scale-blur {
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transform: scale(.98);
-  -webkit-filter: blur(5px);
-}
-
-.close {
-  color: hsl(0, 0%, 100%);
-  position: absolute;
-  font-size: 1.3rem;
-  top: 0;
-  right: 0;
-}
-
-.close:hover,
-.close:focus {
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 0.5;
-  outline: none;
-}
-
-button.close {
-  -webkit-appearance: none;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-}
-
 .modal-open {
   overflow: hidden;
 }
 
 .modal {
+  top: 0;
   bottom: 0;
-  display: none;
+  right: 0;
   left: 0;
   overflow-y: scroll;
   overflow: auto;
   position: fixed;
-  right: 0;
-  top: 0;
+  display: block;
   z-index: 1040;
-}
-
-.modal.fade .modal-dialog {
+  background-color: hsla(0, 0%, 100%, .8);
   opacity: 0;
-  -webkit-transform: translate3d(0,0,0) perspective(1000px) rotateY(100deg) scale(.5) translateY(300px);
-  transition: -webkit-transform 250ms ease, opacity 200ms ease;
-  -webkit-backface-visibility: hidden;
+  transition: opacity 500ms ease;
 }
 
-.modal.in .modal-dialog {
-  -webkit-transform: perspective(1000px) rotateY(0deg) scale(1) translateY(0);
+.modal.in {
   opacity: 1;
 }
 
 .modal-dialog {
-  margin-left: auto;
-  margin-right: auto;
-  padding: .625rem;
-  width: auto;
+  margin: 15% auto;
+  width: 38rem;
+  height: auto;
   z-index: 1050;
+  -webkit-transform: translate3d(0,-30rem,0);
+  opacity: 0;
+  transition: -webkit-transform 250ms ease-out,opacity 100ms ease-in;
 }
 
-.modal-content {
-  background-clip: padding-box;
-  background-color: hsl(0, 0%, 100%);
-  outline: none;
-  position: relative;
-}
-
-.modal-backdrop {
-  background-color: hsla(201, 16%, 17%, 0.95);
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 1030;
-}
-
-.modal-backdrop.fade {
-  -webkit-animation: modal-fade-out 250ms;
-}
-
-.modal-backdrop.in {
-  -webkit-animation: modal-fade-in 250ms;
-}
-
-@-webkit-keyframes modal-fade-in {
-  from {opacity: 0}
-  to {opacity: 1}
-}
-
-@-webkit-keyframes modal-fade-out {
-  from {opacity: 1}
-  to {opacity: 0}
-}
-
-.modal-header {
-  height: 4.5rem;
-  padding: 1.5rem;
-  background: hsl(0, 0%, 96%);
-}
-
-.modal-title {
-  font: 700 1rem/1.4 "Source Sans Pro";
-  float: left;
-  margin-right: .625rem;
+.modal.in .modal-dialog {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
 }
 
 .launch {
   content: url(../images/launch.svg);
-  height: 1rem;
-  width: 1rem;
-  margin-top: 3px;
+  height: 1.4rem;
+  width: 1.4rem;
+  position: absolute;
+  margin-left: -3.25rem;
+  margin-top: .5rem;
+  -webkit-filter: saturate(0);
+  opacity: .5;
 }
 
 .modal-body {
@@ -866,82 +804,52 @@ button.close {
 }
 
 .modal-footer {
-  padding: 1.5rem;
   text-align: right;
-  border-top: 1px solid hsl(0, 0%, 90%);
-}
-
-.modal-footer:before,
-.modal-footer:after {
-  display: table;
-  content: " ";
-}
-
-.modal-footer:after {
-  clear: both;
-}
-
-.modal-footer:before,
-.modal-footer:after {
-  display: table;
-  content: " ";
-}
-
-.modal-footer:after {
-  clear: both;
-}
-
-@media screen and (min-width: 600px) {
-  .modal-dialog {
-    right: auto;
-    left: 50%;
-    width: 37rem;
-    padding-top: 15vh;
-    padding-bottom: 2rem;
-  }
-}
-
-/*-----------------------------
-  Form Control
------------------------------*/
-
-
-.form-control[disabled],
-.form-control[readonly],
-fieldset[disabled] .form-control {
-  cursor: not-allowed;
-  background-color: hsl(0, 0%, 93%);
-}
-
-textarea.form-control {
-  height: auto;
 }
 
 /*-----------------------------
   Inputs: Title, URL
 -----------------------------*/
 
-#textBoxTitle, #textBoxURL {
+#textBoxTitle {
   -webkit-appearance: none;
-  background: hsl(0, 0%, 96%);
-  border-radius: 3px;
-  border: 1px solid hsla(14, 84%, 66%, 0);
-  color: hsl(0, 0%, 33%);
+  background: transparent;
+  color: hsla(201, 16%, 17%, 1);
+  border: none;
+  font: 700 2.35rem/1 "Source Sans Pro";
+  margin-bottom: 1.25rem;
+  width: 100%;
+  min-height: 5rem;
+  resize: none;
+}
+
+/*-----------------------------
+  Title Textarea Scrollbar
+-----------------------------*/
+
+#textBoxTitle::-webkit-scrollbar { width: .25rem }
+#textBoxTitle::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
+
+#textBoxURL {
+  -webkit-appearance: none;
+  background: transparent;
+  border-bottom: 1px dotted hsla(201, 16%, 17%, 0.25);
+  border-top: 1px dotted hsla(201, 16%, 17%, 0.25);
+  border-left: none;
+  border-right: none;
+  color: hsla(201, 16%, 17%, 0.5);
   font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
-  padding: 0 1rem;
-  transition: border .3s ease-in-out, background .3s ease-in-out;
   width: 100%;
-}
-
-#textBoxTitle {
-  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #textBoxTitle:focus, #textBoxURL:focus {
-  border: 1px solid hsla(14, 84%, 66%, 1);
   outline: none;
+  color: hsl(14, 84%, 66%);
 }
 
 /*-----------------------------
@@ -1005,16 +913,16 @@ textarea.form-control {
 }
 
 .tag {
-  background-color: hsl(200, 6%, 46%);
+  background: transparent;
   border-radius: 3px;
-  border: none;
-  color: hsl(0, 0%, 100%);
+  border: 1px solid hsla(201, 16%, 17%, 0.25);
+  color: hsla(201, 16%, 17%, 1);
   display: inline-block;
-  font-size: .85rem;
-  height: 2.5rem;
-  margin: 0 .25rem .25rem 0;
+  font: 700 1rem/1 "Source Sans Pro";
+  height: 3rem;
+  margin: 0 .5rem .5rem 0;
   min-width: 6.25rem;
-  padding: .8rem 1rem 1rem;
+  padding: .85rem 1rem;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
@@ -1024,8 +932,9 @@ textarea.form-control {
   content: url(../images/folder.svg);
   display: block;
   float: left;
-  margin-right: 10px;
-  margin-top: -3px;
+  margin-right: .75rem;
+  margin-top: -2px;
+  -webkit-filter: brightness(.8);
 }
 
 .tag:empty {
@@ -1101,22 +1010,16 @@ textarea.form-control {
 }
 
 .save {
-  background: hsl(0, 0%, 100%);
-  background: lightgray;
+  background: hsl(14, 84%, 66%);
   border-radius: 3px;
-  border: 2px solid lightgray;
   color: white;
   letter-spacing: 1px;
-  padding: .75rem;
-  text-transform: uppercase;
+  padding: 1rem;
   width: 6.25rem;
-  transition: background 300ms ease-out,
-              border 300ms ease-out;
 }
 
 .save:hover, .save:focus {
   background: hsl(14, 84%, 66%);
-  border: 2px solid hsl(14, 84%, 66%);
 }
 
 .cancel {

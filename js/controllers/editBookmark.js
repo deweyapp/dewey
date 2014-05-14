@@ -36,10 +36,6 @@ var EditBookmarkController = function ($scope, $modalInstance, bookmark, bookmar
     }
     $(".grid").removeClass("scale-blur");
   };
-
-  setTimeout(function() {
-    $('.modal-body input[autofocus]').focus();
-  }, 350);
 };
 
 return [
