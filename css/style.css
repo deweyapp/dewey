@@ -110,9 +110,6 @@ table {
   from { -webkit-transform: translateX(5rem); }
   to { -webkit-transform: translateX(0); }}
 
-@-webkit-keyframes modal {
-  from { -webkit-transform: translateY(-20rem); opacity: 0; }
-  to { -webkit-transform: translateY(0); opacity: 1; }}
 
 /*-----------------------------
   Global
@@ -810,10 +807,12 @@ strong { /* highlights matching letters in results */
   width: 100%;
   min-height: 5rem;
   resize: none;
+  transition: color 200ms ease;
 }
 
 #textBoxTitle::-webkit-input-placeholder {
   color: hsla(201, 16%, 17%, .25);
+
 }
 
 /*-----------------------------
@@ -829,8 +828,8 @@ strong { /* highlights matching letters in results */
 
 .launch {
   content: url(../images/launch.svg);
-  width: 1.2rem;
-  margin-bottom: -2.25rem;
+  width: 1rem;
+  margin-bottom: -2.15rem;
   -webkit-filter: saturate(0);
   opacity: .5;
   transition: -webkit-filter 250ms ease, opacity 250ms ease;
@@ -852,11 +851,12 @@ strong { /* highlights matching letters in results */
   font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
-  padding-left: 2.5rem;
+  padding-left: 2.15rem;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 200ms ease;
 }
 
 #textBoxTitle:focus, #textBoxURL:focus {
@@ -882,17 +882,23 @@ strong { /* highlights matching letters in results */
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
-  margin: 0 .5rem .5rem 0;
   min-width: 6.25rem;
-  padding: .85rem 1rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
   text-align: left;
-  vertical-align: baseline;
+  vertical-align: middle;
   white-space: nowrap;
 }
 
 .bootstrap-tagsinput input::-webkit-input-placeholder {
   color: hsla(201, 16%, 17%, 1);
-  transition: color 250ms ease;
+  transition: color 200ms ease;
+  -webkit-transform: translateY(2px)
+}
+
+.bootstrap-tagsinput input::-webkit-input-placeholder:before {
+  content: "+   ";
 }
 
 .bootstrap-tagsinput input:focus::-webkit-input-placeholder {
@@ -910,7 +916,7 @@ strong { /* highlights matching letters in results */
 }
 .bootstrap-tagsinput .tag [data-role="remove"]:after {
   content: "╳";
-  padding: 0px 2px;
+  padding: 1px 2px;
 }
 
 /*-----------------------------
@@ -918,7 +924,7 @@ strong { /* highlights matching letters in results */
 -----------------------------*/
 
 .tags {
-  margin-bottom: 1.5rem;
+  margin: 1rem 0;
 }
 
 .list-inline {
@@ -940,11 +946,11 @@ strong { /* highlights matching letters in results */
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
-  margin: 0 .5rem .5rem 0;
-  min-width: 6.25rem;
-  padding: .85rem 1rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
   text-align: center;
-  vertical-align: baseline;
+  vertical-align: middle;
   white-space: nowrap;
 }
 
