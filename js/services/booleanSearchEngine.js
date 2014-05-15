@@ -57,11 +57,12 @@ var BooleanSearchEngine = function () {
 
     // Check that bookmark could be reached by following expression.
     var evaluateExpression = function(bookmark, node){
+
         if(node.pattern === nonePattern && node.literals.length === 1){
             var literal = node.literals[0];
             var filteredValue = _.find(_.values(bookmark), function(propertyValue){
                 return propertyValue.toString().toUpperCase().indexOf(trim(literal.text)) != -1;
-            });
+            });           
             return !_.isUndefined(filteredValue);
         }
 
@@ -181,12 +182,19 @@ var BooleanSearchEngine = function () {
             this.search = searchText;
             this.generateExpressionTree(this.search);
         }
-        
-        var failureNode = _.find(exTree, function(node){
-            return !evaluateExpression(bookmark, node);
-        });
 
-        return _.isUndefined(failureNode);
+        if(exTree.length == 1){
+            return evaluateExpression(bookmark, exTree[0]);
+        }
+
+        if(exTree.length > 1){
+            var failureNode = _.find(exTree, function(node){
+                return !evaluateExpression(bookmark, node);
+            });
+
+            return _.isUndefined(failureNode);    
+        }
+        return false;
     };
 };
 
