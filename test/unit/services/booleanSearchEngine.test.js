@@ -263,6 +263,46 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
+    xdescribe('When search "string" with AND expression - will try to find both of the search in any object field.', function(){
+        var bookmark, searchText;
+
+        beforeEach(function(){
+
+            searchText = 'string AND asdf';
+            bookmark = {
+                title: 'asdf QstringQ',
+                url: 'http://127:0:0:1'
+            };
+        });
+
+        it('When title contains both strings - result should be true', function(){
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When url contains both strings - result should be true', function(){
+            searchText = '0: AND 127';
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When bookmark contains both strings - result should be true', function(){
+            searchText = 'string AND 127';
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When bookmark does not contains both strings - result should be false', function(){
+            searchText = 'notstring AND 127';
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
+        });
+    });
+
     describe('When search "tag:string" - will try to find a match only in object tag property.', function(){
         var bookmark, searchText;
 
@@ -659,6 +699,5 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 });
-
 
 });
