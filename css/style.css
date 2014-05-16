@@ -223,6 +223,44 @@ strong { /* highlights matching letters in results */
   color: hsl(14, 84%, 66%);
 }
 
+/*-----------------------------
+  Animating Results as they generate
+-----------------------------*/
+
+.results {
+  -webkit-animation: slide-left ease-in-out;
+}
+
+.results:nth-child(1){
+  -webkit-animation-duration: 60ms;
+}
+
+.results:nth-child(2){
+  -webkit-animation-duration: 80ms;
+}
+
+.results:nth-child(3){
+  -webkit-animation-duration: 80ms;
+}
+
+.results:nth-child(4){
+  -webkit-animation-duration: 100ms;
+}
+
+.results:nth-child(5){
+  -webkit-animation-duration: 120ms;
+}
+
+.results:nth-child(6){
+  -webkit-animation-duration: 140ms;
+}
+
+
+/*-----------------------------
+  Custom Scrollbars for search results
+-----------------------------*/
+
+
 .typeahead-dropdown::-webkit-scrollbar { width: 3px; }
 .typeahead-dropdown::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
 .typeahead-dropdown::-webkit-scrollbar-thumb { background: #F18260; }
@@ -546,7 +584,7 @@ strong { /* highlights matching letters in results */
 #list-bookmarks li:active {
   box-shadow: 0 0 15px 5px hsla(201, 16%, 17%, .1);
   top: -.5rem;
-  transition: box-shadow 150ms ease, top 250ms ease-in-out;
+  transition: box-shadow 100ms ease, top 100ms ease-in-out;
 }
 
 /*-----------------------------

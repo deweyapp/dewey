@@ -13,7 +13,7 @@
 
     <script id="template/typeahead/typeahead-popup.html" type="text/ng-template">
       <ul class="typeahead-dropdown" ng-style="{display: isOpen()&&'block' || 'none'}">
-        <li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+        <li class="results" ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
             <div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
         </li>
       </ul>
