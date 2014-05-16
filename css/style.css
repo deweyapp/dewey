@@ -228,7 +228,7 @@ strong { /* highlights matching letters in results */
 -----------------------------*/
 
 .results {
-  -webkit-animation: slide-left ease-in-out;
+  -webkit-animation: slide-left ease-out;
 }
 
 .results:nth-child(1){
