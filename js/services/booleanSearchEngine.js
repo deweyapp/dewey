@@ -58,7 +58,8 @@ var BooleanSearchEngine = function () {
     // Check that bookmark fields contain search.
     var containsField = function(bookmark, patternText){
 
-        var filteredValue = _.find(_.values(_.pick(bookmark, 'title', 'url')), function(propertyValue){
+        // var filteredValue = _.find(_.values(_.pick(bookmark, 'title', 'url')), function(propertyValue){
+        var filteredValue = _.find([bookmark.title, bookmark.url], function(propertyValue){
             return propertyValue.toString().toUpperCase().indexOf(trim(patternText)) != -1;
         });
         return !_.isUndefined(filteredValue);
