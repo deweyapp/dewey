@@ -55,18 +55,24 @@ var BooleanSearchEngine = function () {
         return url.toUpperCase().indexOf(trim(patternText)) != -1;
     };
 
+    // Check that bookmark fields contain search.
+    var containsField = function(bookmark, patternText){
+
+        var filteredValue = _.find(_.values(_.pick(bookmark, 'title', 'url')), function(propertyValue){
+            return propertyValue.toString().toUpperCase().indexOf(trim(patternText)) != -1;
+        });
+        return !_.isUndefined(filteredValue);
+    };
+
     // Check that bookmark could be reached by following expression.
     var evaluateExpression = function(bookmark, node){
 
         if(node.pattern === nonePattern && node.literals.length === 1){
             var literal = node.literals[0];
-            var filteredValue = _.find(_.values(_.pick(bookmark, 'title', 'url')), function(propertyValue){
-                return propertyValue.toString().toUpperCase().indexOf(trim(literal.text)) != -1;
-            });
-            return !_.isUndefined(filteredValue);
+            return containsField(bookmark, literal.text);
         }
 
-        var evaluateFunc;
+        var evaluateFunc = function(word){ return containsField(bookmark, word); };
         if(node.pattern === 'TAG:'){
             evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
         }

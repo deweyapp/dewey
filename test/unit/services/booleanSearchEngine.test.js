@@ -263,7 +263,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    xdescribe('When search "string" with AND expression - will try to find both of the search in any object field.', function(){
+    describe('When search "string" with AND expression - will try to find both of the search in any object field.', function(){
         var bookmark, searchText;
 
         beforeEach(function(){
