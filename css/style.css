@@ -189,9 +189,13 @@ input[type="search"]::-webkit-search-cancel-button {
 -----------------------------*/
 
 .typeahead-dropdown {
-  background-color: hsla(201, 16%, 17%, .9);
+  background-color: hsla(201, 16%, 17%, 1);
   color: hsla(0, 0%, 100%, .95);
   z-index: 10000;
+  max-height: 13.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  direction: rtl;
 }
 
 .typeahead-dropdown > li {
@@ -218,6 +222,10 @@ strong { /* highlights matching letters in results */
   background: hsla(0, 0%, 100%, 0.075);
   color: hsl(14, 84%, 66%);
 }
+
+.typeahead-dropdown::-webkit-scrollbar { width: 3px; }
+.typeahead-dropdown::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
+.typeahead-dropdown::-webkit-scrollbar-thumb { background: #F18260; }
 
 /*-----------------------------
   Settings Dropdown Menu
@@ -426,7 +434,8 @@ strong { /* highlights matching letters in results */
   max-height: 24rem;
   min-width: 11rem;
   opacity: 0;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: .5rem 0;
   position: absolute;
   top: -0.5rem;
@@ -454,9 +463,9 @@ strong { /* highlights matching letters in results */
   Tags Dropdown Scrollbar
 -----------------------------*/
 
-#tags .tags-list::-webkit-scrollbar { width: 4px; height: 0; }
+#tags .tags-list::-webkit-scrollbar { width: 3px; }
 #tags .tags-list::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
-#tags .tags-list::-webkit-scrollbar-thumb { background: #F18260; border-radius: 2px; }
+#tags .tags-list::-webkit-scrollbar-thumb { background: #F18260; }
 
 /*-----------------------------
   Sort
@@ -531,6 +540,13 @@ strong { /* highlights matching letters in results */
 #list-bookmarks li:hover,
 #list-bookmarks li.panel-primary {
   top: -.2rem;
+}
+
+
+#list-bookmarks li:active {
+  box-shadow: 0 0 15px 5px hsla(201, 16%, 17%, .1);
+  top: -.5rem;
+  transition: box-shadow 150ms ease, top 250ms ease-in-out;
 }
 
 /*-----------------------------
@@ -851,7 +867,7 @@ strong { /* highlights matching letters in results */
   Title Textarea Scrollbar
 -----------------------------*/
 
-#textBoxTitle::-webkit-scrollbar { width: .25rem }
+#textBoxTitle::-webkit-scrollbar { width: 3px }
 #textBoxTitle::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
 
 /*-----------------------------
