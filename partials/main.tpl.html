@@ -5,18 +5,19 @@
     <nav id="search">
       <form class="search" role="search">
         <div class="form-group search-group">
-          <input autofocus="true"
-                 type="search"
-                 class="form-control"
-                 ng-model="searchText"
-                 typeahead="tag for tag in getTypeheadSuggestions($viewValue)">
+          <input
+            autofocus="true"
+            type="search"
+            class="form-control"
+            ng-model="searchText"
+            typeahead="tag for tag in getTypeheadSuggestions($viewValue)">
         </div>
       </form>
     </nav>
 
     <div id="settings">
       <a class="settings-toggle" data-toggle="dropdown"></a>
-      <ul class="dropdown dropdown-menu" role="menu">
+      <ul class="settings" role="menu">
         <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">Docs</a></li>
         <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
         <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
@@ -64,7 +65,7 @@
 
     <div id="tags">
       <a class="tags-toggle" data-toggle="dropdown"></a>
-      <ui class="dropdown-menu">
+      <ui class="tags-list">
         <li ng-repeat="tag in tags | orderBy: 'tagText'">
           <a target="_blank" ng-click="selectTag(tag.tagText)">{{tag.tagText}}</a>
         </li>

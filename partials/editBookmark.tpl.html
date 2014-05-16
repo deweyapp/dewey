@@ -4,7 +4,7 @@
       <textarea
           id="textBoxTitle"
           class="form-control"
-          autofocus="true"
+          tabindex="10"
           placeholder="Bookmark Title"
           ng-model="bookmarkModel.title" >
       </textarea>
@@ -13,6 +13,7 @@
           id="textBoxURL"
           class="form-control"
           placeholder="Bookmark URL"
+          tabindex="20"
           ng-model="bookmarkModel.url" >
     </div >
 
@@ -26,6 +27,9 @@
               type="text"
               id="textBoxCustomTags"
               class="form-control"
+              tabindex="30"
+
+          autofocus="true"
               placeholder="+ Add a tag"
               ng-model="bookmarkModel.customTags"
               tagclass="tag custom-tag" >
@@ -34,9 +38,9 @@
     </div>
 
   <div class="modal-footer">
-    <button class="delete" ng-click="delete()" tabindex="2">Delete</button>
-    <button class="cancel" ng-click="cancel()" tabindex="3">Cancel</button>
-    <button class="save" ng-click="save()" tabindex="0">Save</button>
+    <a class="delete" ng-click="delete()" tabindex="50">Delete</a>
+    <a class="cancel" ng-click="cancel()" tabindex="60">Cancel</a>
+    <a class="save" ng-click="save()" tabindex="40">Save</a>
   </div>
 
 </div>
