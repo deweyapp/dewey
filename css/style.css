@@ -157,7 +157,7 @@ body {
   background: url(../images/search.svg) no-repeat;
   background-position: 1rem 1rem;
   border: none;
-  font: 300 1.35rem 'Source Sans Pro', sans-serif;
+  font: 400 1.35rem 'Source Sans Pro', sans-serif;
   height: 3.125rem;
   padding-left: 3rem;
   text-align: left;
@@ -232,11 +232,11 @@ strong { /* highlights matching letters in results */
 }
 
 .results:nth-child(1){
-  -webkit-animation-duration: 60ms;
+  -webkit-animation-duration: 40ms;
 }
 
 .results:nth-child(2){
-  -webkit-animation-duration: 80ms;
+  -webkit-animation-duration: 60ms;
 }
 
 .results:nth-child(3){
