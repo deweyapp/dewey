@@ -60,7 +60,7 @@ var BooleanSearchEngine = function () {
 
         if(node.pattern === nonePattern && node.literals.length === 1){
             var literal = node.literals[0];
-            var filteredValue = _.find(_.values(bookmark), function(propertyValue){
+            var filteredValue = _.find(_.values(_.pick(bookmark, 'title', 'url')), function(propertyValue){
                 return propertyValue.toString().toUpperCase().indexOf(trim(literal.text)) != -1;
             });           
             return !_.isUndefined(filteredValue);
@@ -183,18 +183,18 @@ var BooleanSearchEngine = function () {
             this.generateExpressionTree(this.search);
         }
 
-        if(exTree.length == 1){
-            return evaluateExpression(bookmark, exTree[0]);
-        }
+        // if(exTree.length == 1){
+        //     return evaluateExpression(bookmark, exTree[0]);
+        // }
 
-        if(exTree.length > 1){
+        // if(exTree.length > 1){
             var failureNode = _.find(exTree, function(node){
                 return !evaluateExpression(bookmark, node);
             });
 
             return _.isUndefined(failureNode);    
-        }
-        return false;
+        // }
+        // return false;
     };
 };
 
