@@ -110,14 +110,14 @@ table {
 }
 
 html  {
-  background: hsla(201, 16%, 17%, 0.12);
+  background: hsla(150, 4%, 90%, 1);
   font-size: 100%;
-  margin-top: 3.125rem;
 }
 
 body {
   color: hsla(201, 16%, 17%, 0.33);
   font-family: 'Source Sans Pro', sans-serif;
+  padding-top: 3.125rem;
   padding-bottom: 20rem;
 }
 
