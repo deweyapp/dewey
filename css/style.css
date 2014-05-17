@@ -590,13 +590,6 @@ width: 12.5rem;
   top: -.2rem;
 }
 
-/*
-#list-bookmarks li:active {
-  box-shadow: 0 0 15px 5px hsla(201, 16%, 17%, .1);
-  top: -.5rem;
-  transition: box-shadow 100ms ease, top 100ms ease-in-out;
-}
-*/
 /*-----------------------------
   Grid Panel Animation
 -----------------------------*/
@@ -655,7 +648,7 @@ width: 12.5rem;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
   transition: opacity 400ms ease,
-              -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.25);
+              -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.5);
 }
 
 .panel:after {
@@ -668,7 +661,7 @@ width: 12.5rem;
   width: 2rem;
   -webkit-transform: translateY(1rem);
   transition: opacity 200ms ease,
-              -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.25);
+              -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.5);
 }
 
 .panel:hover:before,
