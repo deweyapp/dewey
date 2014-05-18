@@ -269,7 +269,7 @@ strong { /* highlights matching letters in results */
 .typeahead-dropdown::-webkit-scrollbar-thumb { background: #F18260; }
 
 /*-----------------------------
-  Settings Dropdown Menu
+  Settings Overlay Menu
 -----------------------------*/
 
 .settings-toggle {
@@ -462,8 +462,6 @@ label.css-label {
 .open .col-2 div:nth-child(6) {
   -webkit-animation-duration: 300ms;
 }
-
-
 
 /*-----------------------------
   Tags Dropdown
