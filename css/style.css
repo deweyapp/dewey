@@ -95,6 +95,10 @@ table {
   from { -webkit-transform: translateX(5rem); }
   to { -webkit-transform: translateX(0); }}
 
+@-webkit-keyframes slide-far-left {
+  from { -webkit-transform: translateX(15rem); }
+  to { -webkit-transform: translateX(0); }}
+
 @-webkit-keyframes scale-up {
   from { -webkit-transform: scale(0); }
   to { -webkit-transform: scale(1); }}
@@ -260,7 +264,6 @@ strong { /* highlights matching letters in results */
   Custom Scrollbars for search results
 -----------------------------*/
 
-
 .typeahead-dropdown::-webkit-scrollbar { width: 3px; }
 .typeahead-dropdown::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
 .typeahead-dropdown::-webkit-scrollbar-thumb { background: #F18260; }
@@ -291,77 +294,78 @@ strong { /* highlights matching letters in results */
 
 .settings {
   background: hsla(201, 16%, 17%, .95);
-  list-style: none;
   height: 100vh;
-  width: 100vw;
-  top: 0;
-  position: absolute;
-  padding: 10vh 10vw;
-  visibility: hidden;
+  list-style: none;
   opacity: 0;
-  -webkit-transform: scale(.9);
+  padding: 0 8%;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100vw;
   -webkit-transform-origin: center;
+  -webkit-transform: scale(.9);
   transition: opacity 200ms ease,
               visibility 200ms ease,
               -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.25);
+}
+
+.settings:after {
+  content: url(../images/close.svg);
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .open > .settings {
   -webkit-transform: scale(1);
   visibility: visible;
   opacity: 1;
-
 }
 
-.dropdown-backdrop {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-}
-
-.settings {
-
+.settings-wrap {
+  margin: 25vh auto;
+  min-height: 16rem;
+  position: relative;
+  width: 35rem;
 }
 
 .col-1,
-.col-2,
-.col-3 {
+.col-2 {
   display: inline-block;
+  width: 14rem;
   vertical-align: top;
-  line-height: 3.5rem;
-  color: white;
-  font-size: 1.125rem;
-  font-weight: 100;
-}
-
-.col-1 {
-  width: 15rem;
 }
 
 .col-2 {
-  width: 25rem;
+  width: 16rem;
 }
 
-.col-3 {
-  line-height: 1.75rem;
-  font-size: 1rem;
+.settings ul li,
+.checkbox label,
+.checkbox input,
+.screenshots {
+  cursor: pointer;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 6vh;
 }
 
-.settings ul a {
+.settings a {
   color: white;
   text-decoration: none;
 }
 
-.options:before,
-.website:before,
-.review:before,
+/*-----------------------------
+  Settings & Link Icons
+-----------------------------*/
+
+.docs:before,
 .feedback:before,
+.review:before,
 .donate:before,
 .email:before,
-.docs:before,
-.checkbox input[type=checkbox] {
+.website:before {
   margin-right: 1rem;
   vertical-align: middle;
 }
@@ -390,9 +394,76 @@ strong { /* highlights matching letters in results */
   content: url(../images/link.svg);
 }
 
+.screenshots {
+  vertical-align: bottom;
+}
+
 .important {
   color: hsl(14, 84%, 66%) !important;
+  font-weight: 400;
 }
+
+/*-----------------------------
+  Custom Checkboxes
+-----------------------------*/
+
+input[type=checkbox].css-checkbox {
+  display: none;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 2rem;
+  height: 1.375rem;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background: url(../images/checkbox-checked.svg) 0 -2px no-repeat;
+}
+
+label.css-label {
+  background: url(../images/checkbox.svg) 0 -2px no-repeat;
+}
+
+/*-----------------------------
+  Settings List Animation
+-----------------------------*/
+
+.open .col-1 li,
+.open .col-2 div {
+  -webkit-animation: slide-far-left ease-out;
+}
+
+.open .col-1 li:nth-child(1),
+.open .col-2 div:nth-child(1) {
+  -webkit-animation-duration: 200ms;
+}
+
+.open .col-1 li:nth-child(2),
+.open .col-2 div:nth-child(2) {
+  -webkit-animation-duration: 220ms;
+}
+
+.open .col-1 li:nth-child(3),
+.open .col-2 div:nth-child(3) {
+  -webkit-animation-duration: 240ms;
+}
+
+.open .col-1 li:nth-child(4),
+.open .col-2 div:nth-child(4) {
+  -webkit-animation-duration: 260ms;
+}
+
+.open .col-1 li:nth-child(5),
+.open .col-2 div:nth-child(5) {
+  -webkit-animation-duration: 280ms;
+}
+
+.open .col-1 li:nth-child(6),
+.open .col-2 div:nth-child(6) {
+  -webkit-animation-duration: 300ms;
+}
+
+
 
 /*-----------------------------
   Tags Dropdown
