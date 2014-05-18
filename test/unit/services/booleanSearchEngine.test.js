@@ -7,7 +7,7 @@ define(
 function(angular, mocks) {
 
 describe('booleanSearchEngine.test.js', function() { 'use strict';
-    
+
     var engine;
     beforeEach(mocks.module('dewey.services'));
 
@@ -29,6 +29,48 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         var isFiltered = engine.filterBookmark(null, '');
         expect(isFiltered).to.be.true;
     });
+
+    it('Complex over 1000 items', function() {
+
+        var bookmarks = [];
+        var i, result;
+
+        console.time('Search engine perf');
+
+        function filter(input, search) {
+          return _.filter(
+            input,
+            function(bookmark){
+                return engine.filterBookmark(bookmark, search);
+            }
+          );
+        }
+
+        for (i = 1000; i < 2000; i ++) {
+          bookmarks.push({
+            title: 'Bookmark ' + i + ' title',
+            url: 'http://' + i + '.example.com',
+            tag: [
+              { text: 'tag' + i, custom: false },
+              { text: 'tag' + (i % 100), custom: false }
+            ]
+          });
+        }
+
+        for (i = 1; i < 50; i++) {
+          result = filter(bookmarks, 'tag:tag' + 50);
+          expect(result).to.be.array;
+          expect(result.length).to.equal(10);
+        }
+
+        for (i = 1; i < 50; i++) {
+          result = filter(bookmarks, '50');
+          expect(result).to.be.array;
+          expect(result.length).to.equal(20);
+        }
+
+        console.timeEnd('Search engine perf');
+      });
 
     describe('Check generate expression tree like an object:', function(){
 
@@ -54,7 +96,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
             var searchText = 'asdf';
             var node = engine.generateExpressionTree(searchText);
-            
+
             expect(node).to.not.be.undefined;
             expect(node).to.be.an('array');
             expect(node.length).to.equal(1);
@@ -129,7 +171,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         it('When seach contains pattern and expression - result should have two items', function(){
 
             var node = engine.generateExpressionTree(' asdf tag: qwerty and 123 ');
-            
+
             expect(node).to.not.be.undefined;
             expect(node).to.be.an('array');
             expect(node.length).to.equal(2);
@@ -156,7 +198,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         it('When seach contains pattern and expression - result should have two items', function(){
 
             var node = engine.generateExpressionTree(' asdf tag:qwerty and 123 ');
-            
+
             expect(node).to.not.be.undefined;
             expect(node).to.be.an('array');
             expect(node.length).to.equal(2);
@@ -181,11 +223,11 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 
-    describe('When search "string" - will try to find a match in any object field.', function(){   
+    describe('When search "string" - will try to find a match in any object field.', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
-            
+
             searchText = 'string';
             bookmark = {
                 title: 'asdf QstringQ',
@@ -193,29 +235,69 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             };
         });
 
-        it('When title contains string - result should be true', function(){            
-            
+        it('When title contains string - result should be true', function(){
+
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.true;
         });
 
         it('When title does not contain - result should be false', function(){
-            
+
             searchText = 'notString';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
         });
 
-        it('When url contains string - result should be true', function(){          
-            
+        it('When url contains string - result should be true', function(){
+
             searchText = ':0:0';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.true;
         });
 
         it('When url does not contain - result should be false', function(){
-            
+
             searchText = ':1:0';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.false;
+        });
+    });
+
+    describe('When search "string" with AND expression - will try to find both of the search in any object field.', function(){
+        var bookmark, searchText;
+
+        beforeEach(function(){
+
+            searchText = 'string AND asdf';
+            bookmark = {
+                title: 'asdf QstringQ',
+                url: 'http://127:0:0:1'
+            };
+        });
+
+        it('When title contains both strings - result should be true', function(){
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When url contains both strings - result should be true', function(){
+            searchText = '0: AND 127';
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When bookmark contains both strings - result should be true', function(){
+            searchText = 'string AND 127';
+
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
+        });
+
+        it('When bookmark does not contains both strings - result should be false', function(){
+            searchText = 'notstring AND 127';
+
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
         });
@@ -223,9 +305,9 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search "tag:string" - will try to find a match only in object tag property.', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
-            
+
             searchText = 'tag:tag2';
             bookmark = {
                 title: 'title',
@@ -240,7 +322,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
 
         it('When tag does not contain - result should be false', function(){
-            
+
             searchText = 'tag:tag4';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
@@ -249,9 +331,9 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search "string1 tag:string2" - will try to find a match for search2 in object "tag" property an search1 title field.', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
-            
+
             searchText = 'itl tag:tag2';
             bookmark = {
                 title: 'title',
@@ -261,7 +343,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
 
         it('When title contains - result should be true', function(){
-            
+
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.true;
         });
@@ -283,9 +365,9 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search pattern contains whitespace - will try to find a match the same as without it', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
-            
+
             searchText = 'tag: tag2';
             bookmark = {
                 title: 'title',
@@ -317,7 +399,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search title pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'title: ti AND le';
@@ -372,7 +454,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search title pattern contains OR expression - will try to find one of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'title: ti OR le';
@@ -441,7 +523,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search url pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'url: 27 AND 0:1';
@@ -482,7 +564,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search url pattern contains OR expression - will try to find one of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'url: 27 OR 0:1';
@@ -530,7 +612,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search tag pattern contains AND expression - will try to find both of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'tag: tag2 AND tag1';
@@ -571,7 +653,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
 
     describe('When search tag pattern contains OR expression - will try to find one of the search', function(){
         var bookmark, searchText;
-        
+
         beforeEach(function(){
 
             searchText = 'tag: tag2 OR tag1';
@@ -617,6 +699,5 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         });
     });
 });
-
 
 });
