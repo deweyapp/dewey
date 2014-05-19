@@ -19,59 +19,6 @@
 }
 
 /*-----------------------------
-  RESET
------------------------------*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, table, caption,
-tbody, tfoot, thead, tr, th, td, article, aside,
-canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output,
-ruby, section, summary,time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, main, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, q:before,
-blockquote:after, q:after, {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/*-----------------------------
   Animations
 -----------------------------*/
 
@@ -231,31 +178,31 @@ strong { /* highlights matching letters in results */
   Animating Results as they generate
 -----------------------------*/
 
-.results {
+.results-item {
   -webkit-animation: slide-left ease-out;
 }
 
-.results:nth-child(1){
+.results-item:nth-child(1){
   -webkit-animation-duration: 40ms;
 }
 
-.results:nth-child(2){
+.results-item:nth-child(2){
   -webkit-animation-duration: 60ms;
 }
 
-.results:nth-child(3){
+.results-item:nth-child(3){
   -webkit-animation-duration: 80ms;
 }
 
-.results:nth-child(4){
+.results-item:nth-child(4){
   -webkit-animation-duration: 100ms;
 }
 
-.results:nth-child(5){
+.results-item:nth-child(5){
   -webkit-animation-duration: 120ms;
 }
 
-.results:nth-child(6){
+.results-item:nth-child(6){
   -webkit-animation-duration: 140ms;
 }
 
@@ -338,6 +285,10 @@ strong { /* highlights matching letters in results */
 
 .col-2 {
   width: 16rem;
+}
+
+.settings ul {
+  list-style: none;
 }
 
 .settings ul li,
