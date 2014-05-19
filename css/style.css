@@ -300,6 +300,7 @@ strong { /* highlights matching letters in results */
   font-size: 1.125rem;
   font-weight: 300;
   line-height: 6vh;
+  vertical-align: middle;
 }
 
 .settings a {
