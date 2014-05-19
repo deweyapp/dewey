@@ -436,6 +436,7 @@ label.css-label {
   height: 1.25rem;
   transition: -webkit-filter 100ms ease-in-out;
   width: 1.25rem;
+  -webkit-backface-visibility: hidden;
 }
 
 .tags-toggle:hover {
@@ -627,16 +628,27 @@ width: 12.5rem;
   content: url(../images/quick-delete.svg);
   height: 2rem;
   position: absolute;
-  color: white;
-  display: block;
-  right: .25rem;
+  right: 0;
   opacity: 0;
+  text-align: center;
   z-index: 100000;
-  top: .25rem;
+  top: 0;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
   transition: opacity 400ms ease,
               -webkit-transform 200ms cubic-bezier(0, 0, .25, 1.5);
+}
+
+.quick-delete { /*transparent element to hold delete function*/
+  height: 2rem;
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  display: block;
+  right: 0;
+  z-index: 110000;
+  top: 0;
+  width: 2rem;
 }
 
 .panel:after {
@@ -657,19 +669,6 @@ width: 12.5rem;
   opacity: 1;
   -webkit-transform: translateY(0);
 }
-
-.quick-delete {
-  height: 2.5rem;
-  position: absolute;
-  cursor: pointer;
-  color: white;
-  display: block;
-  right: 0rem;
-  z-index: 110000;
-  top: 0rem;
-  width: 2.5rem;
-}
-
 
 .edit-toggle {
   content: url(../images/edit.svg);
