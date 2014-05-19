@@ -11,7 +11,7 @@ ga.src = 'https://ssl.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0];
 s.parentNode.insertBefore(ga, s);
 
-require.config({ 
+require.config({
   baseUrl: '/js',
   paths: {
     'underscore': '../bower_components/underscore/underscore',
@@ -22,7 +22,8 @@ require.config({
     'bootstrap-tagsinput': '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput',
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
     'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
-    'color-thief': '../bower_components/color-thief/js/color-thief'
+    'color-thief': '../bower_components/color-thief/js/color-thief',
+    'pace': '../bower_components/pace'
   },
   shim: {
     'jQuery': {
@@ -53,6 +54,9 @@ require.config({
     },
     'color-thief': {
       exports: 'ColorThief'
+    },
+    'pace': {
+      exports: 'pace'
     }
   }
 });
@@ -60,7 +64,7 @@ require.config({
 require([
   'angular',
   './dewey'
-], 
+],
 function(angular) {
   angular.bootstrap(document, ['dewey']);
 });
