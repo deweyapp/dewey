@@ -81,7 +81,7 @@ body {
   Search and Settings
 -----------------------------*/
 
-#nav-wrap {
+.nav-wrap {
   -webkit-animation: fade-in-down 300ms ease-in-out;
   -webkit-transform-origin: center;
   background: white;
@@ -94,7 +94,7 @@ body {
   z-index: 1000;
 }
 
-#search {
+.search-wrap {
   height: 3.125rem;
   text-align: left;
 }
@@ -419,7 +419,7 @@ label.css-label {
   Tags Dropdown
 -----------------------------*/
 
-#tags {
+.tags-wrap {
   float: left;
   margin-left: 1rem;
   margin-top: -.25rem;
@@ -490,33 +490,33 @@ label.css-label {
   Tags Dropdown Scrollbar
 -----------------------------*/
 
-#tags .tags-list::-webkit-scrollbar { width: 3px; }
-#tags .tags-list::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
-#tags .tags-list::-webkit-scrollbar-thumb { background: #F18260; }
+.tags-list::-webkit-scrollbar { width: 3px; }
+.tags-list::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
+.tags-list::-webkit-scrollbar-thumb { background: #F18260; }
 
 /*-----------------------------
   Sort
 -----------------------------*/
 
-#sort {
+.sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   text-align: right;
 }
 
-#sort p, #sort a {
+.sort p, .sort a {
   color: hsla(201, 16%, 17%, 0.8);
   display: inline-block;
   list-style: none;
   margin-right: 1rem;
 }
 
-#sort a {
+.sort a {
   color: hsla(201, 16%, 17%, 0.3);
   cursor: pointer;
   transition: color 250ms ease;
 }
 
-#sort a:hover, #sort a:focus {
+.sort a:hover, .sort a:focus {
   color: hsl(14, 84%, 66%);
   outline: none;
 }
@@ -545,12 +545,12 @@ label.css-label {
   -webkit-transform: scale(0.97);
 }
 
-#list-bookmarks {
+.list-bookmarks {
   font-size: 0;
   margin-top: 2.25rem;
 }
 
-#list-bookmarks li {
+.list-bookmarks li {
   -webkit-animation: fade-in-up 300ms ease forwards;
   -webkit-backface-visibility: hidden;
   background: transparent;
@@ -564,7 +564,7 @@ label.css-label {
   width: 12.5rem;
 }
 
-#list-bookmarks li:before {
+.list-bookmarks li:before {
 background: hsl(14, 84%, 66%);
 bottom: 0;
 content: " ";
@@ -574,8 +574,8 @@ position: absolute;
 width: 12.5rem;
 }
 
-#list-bookmarks li:hover,
-#list-bookmarks li.panel-primary {
+.list-bookmarks li:hover,
+.list-bookmarks li.panel-primary {
   top: -.2rem;
 }
 
@@ -583,8 +583,8 @@ width: 12.5rem;
   Grid Panel Animation
 -----------------------------*/
 
-#list-bookmarks li:nth-child(3n+3),
-#list-bookmarks li:nth-child(5n+1) {
+.list-bookmarks li:nth-child(3n+3),
+.list-bookmarks li:nth-child(5n+1) {
   -webkit-animation-duration: 500ms;
 }
 
@@ -901,7 +901,7 @@ width: 12.5rem;
   Bookmark Title
 -----------------------------*/
 
-#textBoxTitle {
+.title-input {
   -webkit-appearance: none;
   background: transparent;
   border: none;
@@ -915,20 +915,20 @@ width: 12.5rem;
   width: 100%;
 }
 
-#textBoxTitle:hover,
-#textBoxURL:hover {
+.title-input:hover,
+.url-input:hover {
   background: hsla(14, 84%, 66%, .1);
 
 }
 
-#textBoxTitle:focus,
-#textBoxURL:focus {
+.title-input:focus,
+.url-input:focus {
   background: transparent;
   color: hsl(14, 84%, 66%);
   outline: none;
 }
 
-#textBoxTitle::-webkit-input-placeholder {
+.title-input::-webkit-input-placeholder {
   color: hsla(201, 16%, 17%, .25);
 }
 
@@ -936,8 +936,8 @@ width: 12.5rem;
   Title Textarea Scrollbar
 -----------------------------*/
 
-#textBoxTitle::-webkit-scrollbar { width: 3px }
-#textBoxTitle::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
+.title-input::-webkit-scrollbar { width: 3px }
+.title-input::-webkit-scrollbar-thumb:vertical { background-color: #F18260; }
 
 /*-----------------------------
   URL Input
@@ -956,7 +956,7 @@ width: 12.5rem;
   opacity: 1;
 }
 
-#textBoxURL {
+.url-input {
   -webkit-appearance: none;
   background: transparent;
   border-bottom: 1px dotted hsla(201, 16%, 17%, 0.25);
@@ -985,7 +985,12 @@ width: 12.5rem;
   padding: 0;
 }
 
-.bootstrap-tagsinput input {
+.custom-tag-input {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.custom-tag-input input {
   background: transparent;
   border-radius: 3px;
   border: 3px solid hsla(201, 16%, 17%, 1);
@@ -1004,35 +1009,30 @@ width: 12.5rem;
   white-space: nowrap;
 }
 
-.bootstrap-tagsinput input:focus {
+.custom-tag-input input:focus {
   border: 3px solid hsla(14, 84%, 66%, 1);
 }
 
-.form-control {
-  -webkit-appearance: none;
-  outline: none;
-}
-
-.bootstrap-tagsinput input::-webkit-input-placeholder {
+.custom-tag-input input::-webkit-input-placeholder {
   -webkit-transform: translateY(2px);
   color: hsla(201, 16%, 17%, 1);
   transition: color 200ms ease;
 }
 
-.bootstrap-tagsinput input::-webkit-input-placeholder:before {
+.custom-tag-input input::-webkit-input-placeholder:before {
   content: "+   ";
 }
 
-.bootstrap-tagsinput input:focus::-webkit-input-placeholder {
+.custom-tag-input input:focus::-webkit-input-placeholder {
   color: hsla(201, 16%, 17%, .25);
 }
 
-.bootstrap-tagsinput .tag [data-role="remove"] {
+.custom-tag-input .tag [data-role="remove"] {
   border: none;
   cursor: pointer;
   margin-left: .5rem;
 }
-.bootstrap-tagsinput .tag [data-role="remove"]:after {
+.custom-tag-input .tag [data-role="remove"]:after {
   content: "╳";
   padding: 1px 2px;
 }
@@ -1082,10 +1082,6 @@ width: 12.5rem;
 
 .tag:empty {
   display: none;
-}
-
-.tag:focus {
-    border-size: 3px;
 }
 
 /*-----------------------------
@@ -1214,11 +1210,15 @@ body canvas {
 @media only screen and (max-width: 29rem) {
   .grid { width: 12.5rem; }
 
-  #list-bookmarks li { margin: 1.25rem 0 0 0; }
+  .settings-wrap { margin: 0; width: auto; }
 
-  #tags { margin-left: 0; }
+  .list-bookmarks li { margin: 1.25rem 0 0 0; }
 
-  #sort p, #sort a { margin-right: .5rem; }
+  .tags-wrap { margin-left: 0; }
 
-  #sort a:last-child { margin-right: 0; }
+  .tags-list { left: 0; width: 12.5rem; }
+
+  .sort p, .sort a { margin-right: .5rem; }
+
+  .sort a:last-child { margin-right: 0; }
 }

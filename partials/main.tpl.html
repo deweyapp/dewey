@@ -1,8 +1,8 @@
 <main id="mainContent">
 
-  <header id="nav-wrap">
+  <header class="nav-wrap">
 
-    <nav id="search">
+    <nav class="search-wrap">
       <form class="search" role="search">
         <div class="form-group search-group">
           <input
@@ -67,7 +67,7 @@
 
   <div class="grid">
 
-    <div id="tags">
+    <div class="tags-wrap">
       <a class="tags-toggle" data-toggle="dropdown"></a>
       <ui class="tags-list">
         <li ng-repeat="tag in tags | orderBy: 'tagText'">
@@ -76,14 +76,14 @@
       </ui>
     </div>
 
-    <ul id="sort">
+    <ul class="sort">
       <li ng-cloak>
         <p>Sort:</p>
         <a ng-repeat="order in orders" ng-class="{ 'sort-active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
       </li>
     </ul>
 
-    <ul id="list-bookmarks">
+    <ul class="list-bookmarks">
       <li ng-class="{'panel-primary': ($index == selectedIndex)}"
           ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)"
           ng-cloak>

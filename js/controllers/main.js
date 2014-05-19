@@ -323,7 +323,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       .sortBy(function(t) {
         return t;
       })
-      .first(10)
+      .first(25)
       .map(function(t) {
         return definedSearch + t;
       }).value();
