@@ -12,10 +12,16 @@
 
     <script id="template/typeahead/typeahead-popup.html" type="text/ng-template">
       <ul class="typeahead-dropdown" ng-style="{display: isOpen()&&'block' || 'none'}">
-        <li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+        <li class="results-item" ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
             <div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
         </li>
       </ul>
+    </script>
+
+    <script id="template/modal/window.html" type="text/ng-template">
+      <div tabindex="-1" class="modal fade {{ windowClass }}" ng-class="{in: animate}" ng-click="close($event)">
+          <div class="modal-dialog" ng-transclude></div>
+      </div>
     </script>
 
   </head>

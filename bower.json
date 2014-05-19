@@ -10,6 +10,7 @@
     "ui-bootstrap": "~0.10.0",
     "bootstrap-tagsinput": "~0.3.9",
     "color-thief": "*",
-    "angular-route": "~1.2.15"
+    "angular-route": "~1.2.15",
+    "pace": "~0.5.1"
   }
 }

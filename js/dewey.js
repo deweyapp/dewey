@@ -9,16 +9,16 @@ define(
   'angular-route',
   'ui.bootstrap',
   'bootstrap-tagsinput-angular'
-], 
+],
 function(angular, routesConfiguration) { 'use strict';
 
 var module = angular.module(
-  'dewey', 
+  'dewey',
   [
     'ngRoute',
-    'ui.bootstrap', 
-    'bootstrap-tagsinput', 
-    'dewey.filters', 
+    'ui.bootstrap',
+    'bootstrap-tagsinput',
+    'dewey.filters',
     'dewey.directives',
     'dewey.services',
     'dewey.controllers'
@@ -30,7 +30,7 @@ module.config(routesConfiguration);
 // Configure logging
 // TODO: Should be enabled/disabled based on url or somehow differently
 module.config(function($logProvider) {
-  $logProvider.debugEnabled(true); 
+  $logProvider.debugEnabled(true);
 });
 
 return module;
