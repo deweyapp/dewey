@@ -23,7 +23,7 @@ require.config({
     'bootstrap-tagsinput-angular': 'lib/bootstrap-tagsinput-angular',
     'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
     'color-thief': '../bower_components/color-thief/js/color-thief',
-    'pace': '../bower_components/pace'
+    'pace': '../bower_components/pace/pace'
   },
   shim: {
     'jQuery': {
@@ -67,6 +67,10 @@ require([
 ],
 function(angular) {
   angular.bootstrap(document, ['dewey']);
+});
+
+define(['pace'], function(pace) {
+  pace.start();
 });
 
 })();
