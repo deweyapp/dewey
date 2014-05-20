@@ -248,7 +248,7 @@ strong { /* highlights matching letters in results */
   position: absolute;
   top: 0;
   visibility: hidden;
-  width: 100vw;
+  width: 100%;
   -webkit-transform-origin: center;
   -webkit-transform: scale(.8);
   transition: opacity 200ms ease,
@@ -1000,7 +1000,6 @@ width: 12.5rem;
   height: 3.25rem;
   margin-bottom: 1.25rem;
   margin-right: 1.25rem;
-  min-width: 6.25rem;
   outline: none;
   padding: 1rem;
   text-align: left;
@@ -1017,10 +1016,6 @@ width: 12.5rem;
   -webkit-transform: translateY(2px);
   color: hsla(201, 16%, 17%, 1);
   transition: color 200ms ease;
-}
-
-.custom-tag-input input::-webkit-input-placeholder:before {
-  content: "+   ";
 }
 
 .custom-tag-input input:focus::-webkit-input-placeholder {
