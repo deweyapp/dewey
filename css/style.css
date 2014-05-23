@@ -949,6 +949,7 @@ width: 12.5rem;
   margin-bottom: -2.25rem;
   margin-left: .75rem;
   transition: -webkit-filter 250ms ease, opacity 250ms ease;
+  -webkit-backface-visibility: hidden;
 }
 
 .launch:hover {
