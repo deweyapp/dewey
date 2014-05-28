@@ -60,7 +60,6 @@ require.config({
       exports: 'pace'
     },
     'dewey-animation': {
-      deps: ['jQuery'],
       exports: 'dewey-animation'
     }
   }

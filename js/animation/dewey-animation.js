@@ -1,11 +1,8 @@
-define(
-[
-  'jQuery'
-],
-function($) { 'use strict';
+$(document).ready(function(){
 
     $( ".settings-toggle" ).click(function( event ) {
-        $( ".settings" ).addClass( "open" );
+        $( ".settings" ).toggleClass( "open" );
+        $( "body" ).toggleClass( "no-scroll" );
 
     });
 

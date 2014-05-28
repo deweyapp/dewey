@@ -72,6 +72,10 @@ body {
   padding-bottom: 20rem;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 ::selection {
   background: hsl(14, 84%, 66%);
   color: white;
@@ -263,7 +267,7 @@ strong { /* highlights matching letters in results */
   right: 0;
 }
 
-.open > .settings {
+.open {
   -webkit-transform: scale(1);
   visibility: visible;
   opacity: 1;
