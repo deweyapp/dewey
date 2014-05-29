@@ -95,7 +95,7 @@ body {
   top: 0;
   transition: -webkit-transform 250ms cubic-bezier(0.5, -.75, .25, 1.5);
   width: 100%;
-  z-index: 1000;
+  z-index: 9000;
 }
 
 .search-wrap {
@@ -237,6 +237,7 @@ strong { /* highlights matching letters in results */
   top: 0;
   transition: -webkit-filter 200ms ease-in-out;
   width: 3.125rem;
+  z-index: 9010;
 }
 
 .settings-toggle:hover {
@@ -253,6 +254,7 @@ strong { /* highlights matching letters in results */
   top: 0;
   visibility: hidden;
   width: 100vw;
+  z-index: 9020;
   -webkit-transform-origin: center;
   -webkit-transform: scale(.8);
   transition: opacity 200ms ease,
@@ -265,6 +267,10 @@ strong { /* highlights matching letters in results */
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.settings:hover:after {
+    cursor: pointer;
 }
 
 .open {
@@ -429,6 +435,7 @@ label.css-label {
   margin-top: -.25rem;
   position: relative;
   text-align: left;
+  z-index: 8000;
 }
 
 .tags-toggle {
@@ -472,7 +479,6 @@ label.css-label {
   top: -0.5rem;
   transition: visibility 100ms ease, opacity 200ms ease, -webkit-transform 200ms cubic-bezier(.6, 0, .2, 1.5);
   visibility: hidden;
-  z-index: 990;
 }
 
 .tags-list > li > a {
@@ -540,6 +546,7 @@ label.css-label {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-origin: bottom;
   -webkit-backface-visibility: hidden;
+  z-index: 7000;
 }
 
 /*Effect for edit modal*/
@@ -625,7 +632,7 @@ width: 12.5rem;
   right: 0;
   text-decoration: none;
   top: 0;
-  z-index: 500;
+  z-index: 7010;
 }
 
 .panel:before {
@@ -635,7 +642,7 @@ width: 12.5rem;
   right: 0;
   opacity: 0;
   text-align: center;
-  z-index: 100000;
+  z-index: 7999;
   top: 0;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
@@ -650,7 +657,7 @@ width: 12.5rem;
   color: white;
   display: block;
   right: 0;
-  z-index: 110000;
+  z-index: 7999;
   top: 0;
   width: 2rem;
 }
@@ -684,7 +691,7 @@ width: 12.5rem;
   right: 0;
   top: 9.375rem;
   width: 2rem;
-  z-index: 510;
+  z-index: 7020;
   transition: opacity 400ms ease;
 }
 
@@ -828,7 +835,7 @@ width: 12.5rem;
 .tag-links {
   margin-top: 1rem;
   position: relative;
-  z-index: 510;
+  z-index: 7020;
 }
 
 .tag-links a {
@@ -869,7 +876,7 @@ width: 12.5rem;
   right: 0;
   top: 0;
   transition: opacity 300ms ease;
-  z-index: 1040;
+  z-index: 10000;
 }
 
 .modal.in {
@@ -880,7 +887,7 @@ width: 12.5rem;
   height: auto;
   margin: 15vh auto;
   max-width: 38rem;
-  z-index: 1050;
+  z-index: 10010;
   opacity: 0;
   -webkit-transform: translate3d(0, 6rem, 0) perspective(400px) rotateY(160deg) scale(0.5);
   transition: -webkit-transform 350ms ease-out, opacity 350ms ease;
