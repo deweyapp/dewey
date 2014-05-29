@@ -24,7 +24,7 @@ require.config({
     'ui.bootstrap': '../bower_components/ui-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0',
     'color-thief': '../bower_components/color-thief/js/color-thief',
     'pace': '../bower_components/pace/pace',
-    'dewey-animation': 'animation/dewey-animation'
+    'deweyAnimation': '/animation/deweyAnimation'
   },
   shim: {
     'jQuery': {
@@ -59,8 +59,9 @@ require.config({
     'pace': {
       exports: 'pace'
     },
-    'dewey-animation': {
-      exports: 'dewey-animation'
+    'deweyAnimation': {
+      deps: ['jQuery'],
+      exports: 'deweyAnimation'
     }
   }
 });
