@@ -74,11 +74,12 @@ define(['pace'], function(pace) {
   pace.start();
 });
 
+// Settings
 setTimeout(function(){
-  $( ".settings-toggle, .settings" ).click(function( event ) {
-      $( ".settings" ).toggleClass( "open" );
-      $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
-      $( "body" ).toggleClass( "no-scroll" );
+  $( ".settings-toggle, .close" ).click(function( event ) {
+    $( ".settings" ).toggleClass( "open" );
+    $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
+    $( "body" ).toggleClass( "no-scroll" );
   });
 }, 500);
 
