@@ -76,6 +76,12 @@ body {
   overflow: hidden;
 }
 
+body::-webkit-scrollbar { width: 3px; background: white; }
+body::-webkit-scrollbar-track { background: white; margin-top: 3.125rem; }
+body::-webkit-scrollbar:corner-present { background: #f6f9f9; }
+body::-webkit-scrollbar-thumb { background: white; }
+body::-webkit-scrollbar-track-piece:start { background: hsl(14, 84%, 66%); }
+
 ::selection {
   background: hsl(14, 84%, 66%);
   color: white;
@@ -146,19 +152,22 @@ input[type="search"]::-webkit-search-cancel-button {
 .typeahead-dropdown {
   background-color: hsla(201, 16%, 17%, .95);
   color: hsla(0, 0%, 100%, .95);
-  z-index: 10000;
-  max-height: 13.5rem;
-  overflow-y: auto;
-  overflow-x: hidden;
   direction: rtl;
+  max-height: 13.5rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 10000;
 }
 
 .typeahead-dropdown > li {
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
   font-weight: 600;
+  left: 0;
   line-height: 1.2;
   padding: .5rem 1rem;
+  position: relative;
 }
 
 .typeahead-dropdown > li a:focus {
@@ -183,7 +192,7 @@ strong { /* highlights matching letters in results */
 -----------------------------*/
 
 .results-item {
-  -webkit-animation: slide-left ease-out;
+  -webkit-animation: fade-in-up ease-out;
 }
 
 .results-item:nth-child(1){
@@ -210,7 +219,6 @@ strong { /* highlights matching letters in results */
   -webkit-animation-duration: 140ms;
 }
 
-
 /*-----------------------------
   Custom Scrollbars for search results
 -----------------------------*/
@@ -227,13 +235,13 @@ strong { /* highlights matching letters in results */
   -webkit-animation: slide-left 500ms cubic-bezier(.65, -1, .25, 1.75);
   -webkit-backface-visibility: hidden;
   -webkit-filter: saturate(0);
-  background: hsla(201, 16%, 17%, 0.05) url(../images/settings.svg) no-repeat center;
+  background: #f6f9f9 url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
   height: 3.125rem;
   position: fixed;
-  right: 0;
+  right: -3px;
   top: 0;
   transition: -webkit-filter 200ms ease-in-out;
   width: 3.125rem;
