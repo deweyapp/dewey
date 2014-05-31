@@ -72,6 +72,16 @@ body {
   padding-bottom: 20rem;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar { width: 3px; background: white; }
+body::-webkit-scrollbar-track { background: white; margin-top: 3.125rem; }
+body::-webkit-scrollbar:corner-present { background: #f6f9f9; }
+body::-webkit-scrollbar-thumb { background: white; }
+body::-webkit-scrollbar-track-piece:start { background: hsl(14, 84%, 66%); }
+
 ::selection {
   background: hsl(14, 84%, 66%);
   color: white;
@@ -91,7 +101,7 @@ body {
   top: 0;
   transition: -webkit-transform 250ms cubic-bezier(0.5, -.75, .25, 1.5);
   width: 100%;
-  z-index: 1000;
+  z-index: 9000;
 }
 
 .search-wrap {
@@ -142,19 +152,22 @@ input[type="search"]::-webkit-search-cancel-button {
 .typeahead-dropdown {
   background-color: hsla(201, 16%, 17%, .95);
   color: hsla(0, 0%, 100%, .95);
-  z-index: 10000;
-  max-height: 13.5rem;
-  overflow-y: auto;
-  overflow-x: hidden;
   direction: rtl;
+  max-height: 13.5rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 10000;
 }
 
 .typeahead-dropdown > li {
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
   font-weight: 600;
+  left: 0;
   line-height: 1.2;
   padding: .5rem 1rem;
+  position: relative;
 }
 
 .typeahead-dropdown > li a:focus {
@@ -179,7 +192,7 @@ strong { /* highlights matching letters in results */
 -----------------------------*/
 
 .results-item {
-  -webkit-animation: slide-left ease-out;
+  -webkit-animation: fade-in-up ease-out;
 }
 
 .results-item:nth-child(1){
@@ -206,7 +219,6 @@ strong { /* highlights matching letters in results */
   -webkit-animation-duration: 140ms;
 }
 
-
 /*-----------------------------
   Custom Scrollbars for search results
 -----------------------------*/
@@ -223,16 +235,17 @@ strong { /* highlights matching letters in results */
   -webkit-animation: slide-left 500ms cubic-bezier(.65, -1, .25, 1.75);
   -webkit-backface-visibility: hidden;
   -webkit-filter: saturate(0);
-  background: hsla(201, 16%, 17%, 0.05) url(../images/settings.svg) no-repeat center;
+  background: #f6f9f9 url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
   height: 3.125rem;
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: -3px;
   top: 0;
   transition: -webkit-filter 200ms ease-in-out;
   width: 3.125rem;
+  z-index: 9010;
 }
 
 .settings-toggle:hover {
@@ -245,10 +258,15 @@ strong { /* highlights matching letters in results */
   list-style: none;
   opacity: 0;
   padding: 0 8%;
-  position: absolute;
+  position: fixed;
   top: 0;
   visibility: hidden;
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 100vw;
+  z-index: 9020;
+>>>>>>> settings-and-scrollbars
   -webkit-transform-origin: center;
   -webkit-transform: scale(.8);
   transition: opacity 200ms ease,
@@ -256,17 +274,18 @@ strong { /* highlights matching letters in results */
               -webkit-transform 200ms cubic-bezier(0, 0, 0, 1);
 }
 
-.settings:after {
-  content: url(../images/close.svg);
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.open > .settings {
+.open {
   -webkit-transform: scale(1);
   visibility: visible;
   opacity: 1;
+}
+
+.close {
+  content: url(../images/close.svg);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .settings-wrap {
@@ -425,6 +444,7 @@ label.css-label {
   margin-top: -.25rem;
   position: relative;
   text-align: left;
+  z-index: 8000;
 }
 
 .tags-toggle {
@@ -468,7 +488,6 @@ label.css-label {
   top: -0.5rem;
   transition: visibility 100ms ease, opacity 200ms ease, -webkit-transform 200ms cubic-bezier(.6, 0, .2, 1.5);
   visibility: hidden;
-  z-index: 990;
 }
 
 .tags-list > li > a {
@@ -536,6 +555,7 @@ label.css-label {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-origin: bottom;
   -webkit-backface-visibility: hidden;
+  z-index: 7000;
 }
 
 /*Effect for edit modal*/
@@ -621,7 +641,7 @@ width: 12.5rem;
   right: 0;
   text-decoration: none;
   top: 0;
-  z-index: 500;
+  z-index: 7010;
 }
 
 .panel:before {
@@ -631,7 +651,7 @@ width: 12.5rem;
   right: 0;
   opacity: 0;
   text-align: center;
-  z-index: 100000;
+  z-index: 7999;
   top: 0;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
@@ -646,7 +666,7 @@ width: 12.5rem;
   color: white;
   display: block;
   right: 0;
-  z-index: 110000;
+  z-index: 7999;
   top: 0;
   width: 2rem;
 }
@@ -668,30 +688,6 @@ width: 12.5rem;
 .panel:hover:after {
   opacity: 1;
   -webkit-transform: translateY(0);
-}
-
-.edit-toggle {
-  content: url(../images/edit.svg);
-  background: white;
-  cursor: pointer;
-  height: 2rem;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 9.375rem;
-  width: 2rem;
-  z-index: 510;
-  transition: opacity 400ms ease;
-}
-
-.edit-toggle:hover {
-  opacity: 1;
-}
-
-.edit-toggle:active {
-  -webkit-transform-origin: center;
-  -webkit-transform: scale(.75);
-  transition: -webkit-transform 50ms ease-in-out;
 }
 
 /*-----------------------------
@@ -824,7 +820,7 @@ width: 12.5rem;
 .tag-links {
   margin-top: 1rem;
   position: relative;
-  z-index: 510;
+  z-index: 7020;
 }
 
 .tag-links a {
@@ -850,6 +846,30 @@ width: 12.5rem;
   Edit Modal Window
 -----------------------------*/
 
+.edit-toggle {
+  content: url(../images/edit.svg);
+  background: white;
+  cursor: pointer;
+  height: 2rem;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 9.375rem;
+  width: 2rem;
+  z-index: 7020;
+  transition: opacity 400ms ease;
+}
+
+.edit-toggle:hover {
+  opacity: 1;
+}
+
+.edit-toggle:active {
+  -webkit-transform-origin: center;
+  -webkit-transform: scale(.75);
+  transition: -webkit-transform 50ms ease-in-out;
+}
+
 .modal-open {
   overflow: hidden;
 }
@@ -865,7 +885,7 @@ width: 12.5rem;
   right: 0;
   top: 0;
   transition: opacity 300ms ease;
-  z-index: 1040;
+  z-index: 10000;
 }
 
 .modal.in {
@@ -876,7 +896,7 @@ width: 12.5rem;
   height: auto;
   margin: 15vh auto;
   max-width: 38rem;
-  z-index: 1050;
+  z-index: 10010;
   opacity: 0;
   -webkit-transform: translate3d(0, 6rem, 0) perspective(400px) rotateY(160deg) scale(0.5);
   transition: -webkit-transform 350ms ease-out, opacity 350ms ease;

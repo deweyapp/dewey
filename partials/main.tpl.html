@@ -1,7 +1,6 @@
 <main id="mainContent">
 
   <header class="nav-wrap">
-
     <nav class="search-wrap">
       <form class="search" role="search">
         <div class="form-group search-group">
@@ -14,56 +13,56 @@
         </div>
       </form>
     </nav>
-
-      <a class="settings-toggle" data-toggle="dropdown"></a>
-      <div class="settings dropdown" role="menu">
-        <div class="settings-wrap">
-          <ul class="col-1">
-            <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>
-            <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
-            <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
-            <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
-            <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
-            <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
-          </ul>
-          <ul class="col-2">
-            <li>
-              <form>
-
-                <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
-                  <input id="hide-thumbs" class="css-checkbox" type="checkbox" ng-checked="showThumbnails" />
-                  <label for="hide-thumbs" class="css-label">Show Screenshots</label>
-                </div>
-
-                <div class="checkbox" title="Open Links in New Tab" ng-click="">
-                  <input id="new-tab" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="new-tab" class="css-label">Open Links in New Tab</label>
-                </div>
-
-                <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
-                  <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
-                  <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
-                </div>
-
-                <div class="checkbox" title="Hide Favicons" ng-click="">
-                  <input id="hide-favicons" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="hide-favicons" class="css-label">Hide Favicons</label>
-                </div>
-
-                <div class="checkbox" title="Hide Tag Links on Bookmark Panels" ng-click="">
-                  <input id="hide-tags" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="hide-tags" class="css-label">Hide Tags</label>
-                </div>
-
-                <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
-
-              </form>
-            </li>
-          </ul>
-        </div> <!-- col-wrap -->
-      </div> <!-- settings -->
-
+    <a class="settings-toggle"></a>
   </header>
+
+  <div class="settings">
+    <a class="close"></a>
+    <div class="settings-wrap">
+      <ul class="col-1">
+        <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>
+        <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
+        <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
+        <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
+        <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
+        <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
+      </ul>
+      <ul class="col-2">
+        <li>
+          <form>
+
+            <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
+              <input id="hide-thumbs" class="css-checkbox" type="checkbox" ng-checked="showThumbnails" />
+              <label for="hide-thumbs" class="css-label">Show Screenshots</label>
+            </div>
+
+            <div class="checkbox" title="Open Links in New Tab" ng-click="">
+              <input id="new-tab" class="css-checkbox" type="checkbox" ng-checked="" />
+              <label for="new-tab" class="css-label">Open Links in New Tab</label>
+            </div>
+
+            <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
+              <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
+              <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
+            </div>
+
+            <div class="checkbox" title="Hide Favicons" ng-click="">
+              <input id="hide-favicons" class="css-checkbox" type="checkbox" ng-checked="" />
+              <label for="hide-favicons" class="css-label">Hide Favicons</label>
+            </div>
+
+            <div class="checkbox" title="Hide Tag Links on Bookmark Panels" ng-click="">
+              <input id="hide-tags" class="css-checkbox" type="checkbox" ng-checked="" />
+              <label for="hide-tags" class="css-label">Hide Tags</label>
+            </div>
+
+            <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
+
+          </form>
+        </li>
+      </ul>
+    </div> <!-- col-wrap -->
+  </div> <!-- settings -->
 
   <div class="grid">
 
