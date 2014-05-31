@@ -261,12 +261,8 @@ strong { /* highlights matching letters in results */
   position: fixed;
   top: 0;
   visibility: hidden;
-<<<<<<< HEAD
   width: 100%;
-=======
-  width: 100vw;
   z-index: 9020;
->>>>>>> settings-and-scrollbars
   -webkit-transform-origin: center;
   -webkit-transform: scale(.8);
   transition: opacity 200ms ease,
