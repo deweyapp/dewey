@@ -1,0 +1,81 @@
+/*-----------------------------
+  Typeahead Styling
+-----------------------------*/
+
+.typeahead-dropdown {
+  background-color: hsla(201, 16%, 17%, .95);
+  color: hsla(0, 0%, 100%, .95);
+  direction: rtl;
+  max-height: 13.5rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 10000;
+}
+
+.typeahead-dropdown > li {
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  font-weight: 600;
+  left: 0;
+  line-height: 1.2;
+  padding: .5rem 1rem;
+  position: relative;
+}
+
+.typeahead-dropdown > li a:focus {
+  outline: none;
+}
+
+.typeahead-dropdown > li:last-child {
+  padding-bottom: .75rem;
+}
+
+strong { /* highlights matching letters in results */
+  color: hsl(14, 84%, 66%);
+}
+
+.active {
+  background: hsla(0, 0%, 100%, 0.075);
+  color: hsl(14, 84%, 66%);
+}
+
+/*-----------------------------
+  Animating Results as they generate
+-----------------------------*/
+
+.results-item {
+  -webkit-animation: fade-in-up ease-out;
+}
+
+.results-item:nth-child(1){
+  -webkit-animation-duration: 40ms;
+}
+
+.results-item:nth-child(2){
+  -webkit-animation-duration: 60ms;
+}
+
+.results-item:nth-child(3){
+  -webkit-animation-duration: 80ms;
+}
+
+.results-item:nth-child(4){
+  -webkit-animation-duration: 100ms;
+}
+
+.results-item:nth-child(5){
+  -webkit-animation-duration: 120ms;
+}
+
+.results-item:nth-child(6){
+  -webkit-animation-duration: 140ms;
+}
+
+/*-----------------------------
+  Custom Scrollbars for search results
+-----------------------------*/
+
+.typeahead-dropdown::-webkit-scrollbar { width: 3px; }
+.typeahead-dropdown::-webkit-scrollbar-track { background: hsla(0, 0%, 100%, 0.15); }
+.typeahead-dropdown::-webkit-scrollbar-thumb { background: #F18260; }

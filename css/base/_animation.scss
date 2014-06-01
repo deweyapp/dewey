@@ -1,0 +1,31 @@
+/*-----------------------------
+  Animations
+-----------------------------*/
+
+@-webkit-keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}}
+
+@-webkit-keyframes fade-in-up {
+  from { opacity: 0; -webkit-transform: translateY(1.25rem); }
+  to { opacity: 1;-webkit-transform: translateY(0); }}
+
+@-webkit-keyframes fade-in-down {
+  from { opacity: 0; -webkit-transform: translateY(-2rem); }
+  to { opacity: 1;-webkit-transform: translateY(0); }}
+
+@-webkit-keyframes slide-right {
+  from { -webkit-transform: translateX(-5rem); }
+  to { -webkit-transform: translateX(0); }}
+
+@-webkit-keyframes slide-left {
+  from { -webkit-transform: translateX(5rem); }
+  to { -webkit-transform: translateX(0); }}
+
+@-webkit-keyframes slide-far-left {
+  from { -webkit-transform: translateX(15rem); }
+  to { -webkit-transform: translateX(0); }}
+
+@-webkit-keyframes scale-up {
+  from { -webkit-transform: scale(0); }
+  to { -webkit-transform: scale(1); }}

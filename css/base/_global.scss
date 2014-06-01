@@ -1,0 +1,46 @@
+/*-----------------------------
+  Global
+-----------------------------*/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400,700);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html  {
+  background: hsla(150, 4%, 90%, 1);
+  font-size: 100%;
+}
+
+body {
+  color: hsla(201, 16%, 17%, 0.33);
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-top: 3.125rem;
+  padding-bottom: 20rem;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar { width: 3px; background: white; }
+body::-webkit-scrollbar-track { background: white; margin-top: 3.125rem; }
+body::-webkit-scrollbar:corner-present { background: #f6f9f9; }
+body::-webkit-scrollbar-thumb { background: white; }
+body::-webkit-scrollbar-track-piece:start { background: hsl(14, 84%, 66%); }
+
+::selection {
+  background: hsl(14, 84%, 66%);
+  color: white;
+}
+
+/*-----------------------------
+  Color Thief
+-----------------------------*/
+
+body canvas {
+  display: none;
+}
