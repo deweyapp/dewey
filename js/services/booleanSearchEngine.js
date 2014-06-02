@@ -143,11 +143,11 @@ var BooleanSearchEngine = function () {
                 return;
             }
 
-            var exps = word.split(/(AND|OR)/);
+            var exps = word.split(/(\sAND\s|\sOR\s)/);
             _.each(exps, function(item){
                 if(isBlank(word)) return;
 
-                if(item === andExpression){
+                if(trim(item) === andExpression){
                     if(isBlank(literal.text)) return;
 
                     literal.expression = andExpression;
@@ -155,7 +155,7 @@ var BooleanSearchEngine = function () {
 
                     literal = null;
                 }
-                else if(item === orExpression){
+                else if(trim(item) === orExpression){
                     if(isBlank(literal.text)) return;
 
                     literal.expression = orExpression;

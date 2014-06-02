@@ -30,47 +30,47 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         expect(isFiltered).to.be.true;
     });
 
-    it('Complex over 1000 items', function() {
+    // it('Complex over 1000 items', function() {
 
-        var bookmarks = [];
-        var i, result;
+    //     var bookmarks = [];
+    //     var i, result;
 
-        console.time('Search engine perf');
+    //     console.time('Search engine perf');
 
-        function filter(input, search) {
-          return _.filter(
-            input,
-            function(bookmark){
-                return engine.filterBookmark(bookmark, search);
-            }
-          );
-        }
+    //     function filter(input, search) {
+    //       return _.filter(
+    //         input,
+    //         function(bookmark){
+    //             return engine.filterBookmark(bookmark, search);
+    //         }
+    //       );
+    //     }
 
-        for (i = 1000; i < 2000; i ++) {
-          bookmarks.push({
-            title: 'Bookmark ' + i + ' title',
-            url: 'http://' + i + '.example.com',
-            tag: [
-              { text: 'tag' + i, custom: false },
-              { text: 'tag' + (i % 100), custom: false }
-            ]
-          });
-        }
+    //     for (i = 1000; i < 2000; i ++) {
+    //       bookmarks.push({
+    //         title: 'Bookmark ' + i + ' title',
+    //         url: 'http://' + i + '.example.com',
+    //         tag: [
+    //           { text: 'tag' + i, custom: false },
+    //           { text: 'tag' + (i % 100), custom: false }
+    //         ]
+    //       });
+    //     }
 
-        for (i = 1; i < 50; i++) {
-          result = filter(bookmarks, 'tag:tag' + 50);
-          expect(result).to.be.array;
-          expect(result.length).to.equal(10);
-        }
+    //     for (i = 1; i < 50; i++) {
+    //       result = filter(bookmarks, 'tag:tag' + 50);
+    //       expect(result).to.be.array;
+    //       expect(result.length).to.equal(10);
+    //     }
 
-        for (i = 1; i < 50; i++) {
-          result = filter(bookmarks, '50');
-          expect(result).to.be.array;
-          expect(result.length).to.equal(20);
-        }
+    //     for (i = 1; i < 50; i++) {
+    //       result = filter(bookmarks, '50');
+    //       expect(result).to.be.array;
+    //       expect(result.length).to.equal(20);
+    //     }
 
-        console.timeEnd('Search engine perf');
-      });
+    //     console.timeEnd('Search engine perf');
+    //   });
 
     describe('Check generate expression tree like an object:', function(){
 
@@ -126,6 +126,24 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node[0].literals.length).to.equal(1);
 
             expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('NONE');
+        });
+
+        it('When search contains pattern and word with OR - result should have one node with literal', function(){
+
+            var node = engine.generateExpressionTree('tag:form');
+
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('TAG:');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('FORM');
             expect(node[0].literals[0].expression).to.equal('NONE');
         });
 
