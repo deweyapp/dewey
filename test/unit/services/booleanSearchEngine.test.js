@@ -70,7 +70,7 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
         }
 
         console.timeEnd('Search engine perf');
-      });
+    });
 
     describe('Check generate expression tree like an object:', function(){
 
@@ -126,6 +126,24 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             expect(node[0].literals.length).to.equal(1);
 
             expect(node[0].literals[0].text).to.equal('ASDF');
+            expect(node[0].literals[0].expression).to.equal('NONE');
+        });
+
+        it('When search contains pattern and word with OR - result should have one node with literal', function(){
+
+            var node = engine.generateExpressionTree('tag:form');
+
+            expect(node).to.not.be.undefined;
+            expect(node).to.be.an('array');
+            expect(node.length).to.equal(1);
+
+            expect(node[0].pattern).to.be.a('string');
+            expect(node[0].pattern).to.equal('TAG:');
+
+            expect(node[0].literals).to.be.an('array');
+            expect(node[0].literals.length).to.equal(1);
+
+            expect(node[0].literals[0].text).to.equal('FORM');
             expect(node[0].literals[0].expression).to.equal('NONE');
         });
 

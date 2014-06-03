@@ -18,7 +18,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   $scope.filteredBookmarks = [];
   $scope.tags = []; // All tags
   $scope.orders = [ // Different sorting orders
-                    {title:'Date', value: 'date'},
+                    {title:'Date', value: '-date'},
                     {title:'Title', value: 'title'},
                     {title:'URL', value: 'url'}
                   ];
