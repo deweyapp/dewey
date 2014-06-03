@@ -26,11 +26,11 @@ body {
   overflow: hidden;
 }
 
-body::-webkit-scrollbar { width: 3px; background: white; }
-body::-webkit-scrollbar-track { background: white; margin-top: 3.125rem; }
-body::-webkit-scrollbar:corner-present { background: #f6f9f9; }
-body::-webkit-scrollbar-thumb { background: white; }
-body::-webkit-scrollbar-track-piece:start { background: hsl(14, 84%, 66%); }
+// body::-webkit-scrollbar { width: 2px; background: white; }
+// body::-webkit-scrollbar-track { background: white; margin-top: 3.125rem; }
+// body::-webkit-scrollbar:corner-present { background: #f6f9f9; }
+// body::-webkit-scrollbar-thumb { background: white; }
+// body::-webkit-scrollbar-track-piece:start { background: hsl(14, 84%, 66%); }
 
 ::selection {
   background: hsl(14, 84%, 66%);

@@ -45,7 +45,7 @@ strong { /* highlights matching letters in results */
 -----------------------------*/
 
 .results-item {
-  -webkit-animation: fade-in-up ease-out;
+  -webkit-animation: fade-in-up cubic-bezier(.5, -.25, .5, 1.75);
 }
 
 .results-item:nth-child(1){
