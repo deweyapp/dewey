@@ -143,7 +143,7 @@ var BooleanSearchEngine = function () {
                 return;
             }
 
-            var exps = word.split(/(\sAND($|\s)|\sOR($|\s))/);
+            var exps = word.split(/(\s+AND($|\s+)|\s+OR($|\s+))/);
             _.each(exps, function(item){
                 if(isBlank(word)) return;
 
