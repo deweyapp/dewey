@@ -249,7 +249,8 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             searchText = 'string';
             bookmark = {
                 title: 'asdf QstringQ',
-                url: 'http://127:0:0:1'
+                url: 'http://127:0:0:1',
+                tag: [{text: 'tag1'}, {text: 'version control'}, {text: 'tag2'}]
             };
         });
 
@@ -278,6 +279,13 @@ describe('booleanSearchEngine.test.js', function() { 'use strict';
             searchText = ':1:0';
             var isFiltered = engine.filterBookmark(bookmark, searchText);
             expect(isFiltered).to.be.false;
+        });
+
+         it('When tag contains multi-word - result should be true', function(){
+
+            searchText = 'version control';
+            var isFiltered = engine.filterBookmark(bookmark, searchText);
+            expect(isFiltered).to.be.true;
         });
     });
 
