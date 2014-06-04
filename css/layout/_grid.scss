@@ -25,7 +25,7 @@
 }
 
 .list-bookmarks li {
-  -webkit-animation: fade-in-up 300ms ease forwards;
+  -webkit-animation: fade-in-up 300ms ease;
   -webkit-backface-visibility: hidden;
   background: transparent;
   display: inline-block;
@@ -33,9 +33,13 @@
   margin: 1rem;
   position: relative;
   top: 0;
-  transition: top 300ms cubic-bezier(.65, -1, .25, 2.5);
+  transition: top 300ms cubic-bezier(.65, -1, .25, 2.5), -webkit-transform 50ms ease;
   vertical-align: top;
   width: 12.5rem;
+}
+
+.list-bookmarks li:active {
+  -webkit-transform: scale(.98);
 }
 
 .list-bookmarks li:before {
