@@ -69,7 +69,7 @@ function(angular) {
 // Settings
 setTimeout(function(){
   $( ".settings-toggle, .close" ).click(function( event ) {
-    $( ".grid" ).toggleClass( "scale-blur" );
+    $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
     $( ".settings" ).toggleClass( "open" );
     $( "body" ).toggleClass( "no-scroll" );
   });

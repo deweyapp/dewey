@@ -48,11 +48,11 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   });
 
   var getAllPanels = function() {
-    return $('#list-bookmarks div.panel');
+    return $('.list-bookmarks div.panel');
   };
 
   var countItemsPerRow = function() {
-    var bookmarksList = angular.element('#list-bookmarks'),
+    var bookmarksList = angular.element('.list-bookmarks'),
     boxSize = bookmarksList.find('li:first-child').width(),
     bookmarksListW = bookmarksList.width(),
     perRow = Math.floor( bookmarksListW / boxSize);
@@ -72,7 +72,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
 
     var updated = false;
-    if (e.which === 13) { // Enter press on page - go to the selected bookmark
+    if (e.keyCode == 13 && e.metaKey) { // Enter press on page - go to the selected bookmark
       _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
 
       // If first pattern is not our filter let's assume that user wants to search on this domain
