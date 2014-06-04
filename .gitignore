@@ -6,6 +6,7 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.sass-cache
 
 pids
 logs
