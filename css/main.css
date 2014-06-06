@@ -80,7 +80,6 @@ body canvas {
   transition: -webkit-transform 250ms cubic-bezier(0.5, -0.75, 0.25, 1.5);
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-origin: bottom;
-  -webkit-backface-visibility: hidden;
   z-index: 7000; }
 
 /*Effect for edit modal*/
@@ -95,7 +94,6 @@ body canvas {
 
 .list-bookmarks li {
   -webkit-animation: fade-in-up 300ms ease;
-  -webkit-backface-visibility: hidden;
   background: transparent;
   display: inline-block;
   list-style: none;
@@ -107,7 +105,7 @@ body canvas {
   width: 12.5rem; }
 
 .list-bookmarks li:active {
-  -webkit-transform: scale(0.98); }
+  -webkit-transform: scale(0.99); }
 
 .list-bookmarks li:before {
   background: #f1815f;
@@ -261,7 +259,6 @@ strong {
 
 .settings-toggle {
   -webkit-animation: slide-left 500ms cubic-bezier(0.65, -1, 0.25, 1.75);
-  -webkit-backface-visibility: hidden;
   -webkit-filter: saturate(0);
   background: #f6f9f9 url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
@@ -471,8 +468,7 @@ label.css-label {
   display: block;
   height: 1.25rem;
   transition: -webkit-filter 100ms ease-in-out;
-  width: 1.25rem;
-  -webkit-backface-visibility: hidden; }
+  width: 1.25rem; }
 
 .tags-toggle:hover {
   -webkit-filter: saturate(1); }
@@ -533,11 +529,11 @@ label.css-label {
 -----------------------------*/
 
 .panel {
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-transform: scale(1); }
 
 .panel,
 .panel-primary {
-  -webkit-backface-visibility: hidden;
   position: relative;
   top: 0;
   transition: top 200ms cubic-bezier(0.65, 0, 0.75, 1); }
@@ -560,6 +556,8 @@ label.css-label {
   top: 0;
   z-index: 7010; }
 
+/* Quick Delete X Button */
+
 .panel:before {
   content: url(../images/quick-delete.svg);
   height: 2rem;
@@ -573,8 +571,9 @@ label.css-label {
   -webkit-transform: translateY(-2rem);
   transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
 
+/* Transparent Element to Hold Delete Function */
+
 .quick-delete {
-  /*transparent element to hold delete function*/
   height: 2rem;
   position: absolute;
   cursor: pointer;
@@ -584,6 +583,8 @@ label.css-label {
   z-index: 7999;
   top: 0;
   width: 2rem; }
+
+/* Edit Rollover Icon */
 
 .panel:after {
   content: url(../images/edit-gray.svg);
@@ -690,7 +691,9 @@ label.css-label {
   background: white;
   cursor: pointer;
   padding: 1rem;
-  text-decoration: none; }
+  text-decoration: none;
+  position: relative;
+  width: 100%; }
 
 .details h2 {
   color: #545454;
@@ -749,11 +752,6 @@ label.css-label {
 
 .edit-toggle:hover {
   opacity: 1; }
-
-.edit-toggle:active {
-  -webkit-transform-origin: center;
-  -webkit-transform: scale(0.75);
-  transition: -webkit-transform 50ms ease-in-out; }
 
 .modal-open {
   overflow: hidden; }
@@ -1042,43 +1040,39 @@ label.css-label {
 -----------------------------*/
 
 @media only screen and (min-width: 135rem) {
-  html {
-    font-size: 125%; }
 
-  .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
-    background: url(../images/dewey-big.png) !important; } }
+  html { font-size: 125%; }
+
+  .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] { background: url(../images/dewey-big.png) !important; }}
+
 @media only screen and (min-width: 100rem) {
-  .grid {
-    width: 87rem; } }
+
+  .grid { width: 87rem; }}
+
 @media only screen and (max-width: 72.5rem) {
-  .grid {
-    width: 58rem; } }
+
+  .grid { width: 58rem; }}
+
 @media only screen and (max-width: 58rem) {
-  .grid {
-    width: 43.5rem; } }
+
+  .grid { width: 43.5rem; }}
+
 @media only screen and (max-width: 43.5rem) {
-  .grid {
-    width: 29rem; } }
+
+  .grid { width: 29rem; }}
+
 @media only screen and (max-width: 29rem) {
-  .grid {
-    width: 12.5rem; }
 
-  .settings-wrap {
-    margin: 0;
-    width: auto; }
+  .grid { width: 12.5rem; }
 
-  .list-bookmarks li {
-    margin: 1.25rem 0 0 0; }
+  .settings-wrap { margin: 0; width: auto; }
 
-  .tags-wrap {
-    margin-left: 0; }
+  .list-bookmarks li { margin: 1.25rem 0 0 0; }
 
-  .tags-list {
-    left: 0;
-    width: 12.5rem; }
+  .tags-wrap { margin-left: 0; }
 
-  .sort p, .sort a {
-    margin-right: .5rem; }
+  .tags-list { left: 0; width: 12.5rem; }
 
-  .sort a:last-child {
-    margin-right: 0; } }
+  .sort p, .sort a { margin-right: .5rem; }
+
+  .sort a:last-child { margin-right: 0; }}
