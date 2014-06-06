@@ -82,51 +82,11 @@ body canvas {
   -webkit-transform-origin: bottom;
   z-index: 7000; }
 
-/*Effect for edit modal*/
+/* Effect for Edit Modal Background */
 
 .scale-blur {
   -webkit-filter: blur(7px);
   -webkit-transform: scale(0.97); }
-
-.list-bookmarks {
-  font-size: 0;
-  margin-top: 2.25rem; }
-
-.list-bookmarks li {
-  -webkit-animation: fade-in-up 300ms ease;
-  background: transparent;
-  display: inline-block;
-  list-style: none;
-  margin: 1rem;
-  position: relative;
-  top: 0;
-  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 50ms ease;
-  vertical-align: top;
-  width: 12.5rem; }
-
-.list-bookmarks li:active {
-  -webkit-transform: scale(0.99); }
-
-.list-bookmarks li:before {
-  background: #f1815f;
-  bottom: 0;
-  content: " ";
-  display: inline-block;
-  height: 1rem;
-  position: absolute;
-  width: 12.5rem; }
-
-.list-bookmarks li:hover,
-.list-bookmarks li.panel-primary {
-  top: -.2rem; }
-
-/*-----------------------------
-  Grid Panel Animation
------------------------------*/
-
-.list-bookmarks li:nth-child(3n+3),
-.list-bookmarks li:nth-child(5n+1) {
-  -webkit-animation-duration: 500ms; }
 
 /*-----------------------------
   Search
@@ -207,8 +167,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .typeahead-dropdown > li:last-child {
   padding-bottom: .75rem; }
 
+/* Highlights Matching Letters in Results */
+
 strong {
-  /* highlights matching letters in results */
   color: #f1815f; }
 
 .active {
@@ -525,6 +486,48 @@ label.css-label {
   background: #F18260; }
 
 /*-----------------------------
+  Link Panel Grid Layout
+-----------------------------*/
+
+.list-bookmarks {
+  font-size: 0;
+  margin-top: 2.25rem; }
+
+.list-bookmarks li {
+  -webkit-animation: fade-in-up 300ms ease;
+  background: transparent;
+  display: inline-block;
+  list-style: none;
+  margin: 1rem;
+  position: relative;
+  top: 0;
+  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 50ms ease;
+  vertical-align: top;
+  width: 12.5rem; }
+
+.list-bookmarks li:active {
+  -webkit-transform: scale(0.99); }
+
+.list-bookmarks li:before {
+  background: #f1815f;
+  bottom: 0;
+  content: " ";
+  display: inline-block;
+  height: 1rem;
+  position: absolute;
+  width: 12.5rem; }
+
+.list-bookmarks li:hover,
+.list-bookmarks li.panel-primary {
+  top: -.2rem; }
+
+/* Grid Panel Animation */
+
+.list-bookmarks li:nth-child(3n+3),
+.list-bookmarks li:nth-child(5n+1) {
+  -webkit-animation-duration: 500ms; }
+
+/*-----------------------------
   Link Panels
 -----------------------------*/
 
@@ -545,8 +548,11 @@ label.css-label {
 .panel:focus {
   outline: none; }
 
+/*-----------------------------
+ Transparent Element to Hold Link
+-----------------------------*/
+
 .bookmark-link {
-  /*this is a transparent element to hold the link*/
   bottom: 0;
   display: block;
   left: 0;
@@ -556,7 +562,9 @@ label.css-label {
   top: 0;
   z-index: 7010; }
 
-/* Quick Delete X Button */
+/*-----------------------------
+ Quick Delete Rollover X Button
+-----------------------------*/
 
 .panel:before {
   content: url(../images/quick-delete.svg);
@@ -571,7 +579,9 @@ label.css-label {
   -webkit-transform: translateY(-2rem);
   transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
 
-/* Transparent Element to Hold Delete Function */
+/*-----------------------------
+ Transparent Element to Hold Delete Function
+-----------------------------*/
 
 .quick-delete {
   height: 2rem;
@@ -584,7 +594,9 @@ label.css-label {
   top: 0;
   width: 2rem; }
 
-/* Edit Rollover Icon */
+/*-----------------------------
+  Edit Rollover Icon
+-----------------------------*/
 
 .panel:after {
   content: url(../images/edit-gray.svg);
@@ -603,7 +615,7 @@ label.css-label {
   -webkit-transform: translateY(0); }
 
 /*-----------------------------
-  Link Thumbnail
+  Thumbnail / Screenshot
 -----------------------------*/
 
 .thumbnail-loading,
