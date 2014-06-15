@@ -182,7 +182,7 @@ strong {
 -----------------------------*/
 
 .results-item {
-  -webkit-animation: fade-in-up cubic-bezier(0.5, -0.25, 0.5, 1.75); }
+  -webkit-animation: fade-in-up ease-out; }
 
 .results-item:nth-child(1) {
   -webkit-animation-duration: 40ms; }
@@ -292,6 +292,10 @@ strong {
   font-weight: 300;
   line-height: 6vh;
   vertical-align: middle; }
+
+.screenshots {
+  cursor: default;
+}
 
 .settings a {
   color: white;
