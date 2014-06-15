@@ -35,24 +35,9 @@
                   <label for="hide-thumbs" class="css-label">Show Screenshots</label>
                 </div>
 
-                <div class="checkbox" title="Open Links in New Tab" ng-click="">
-                  <input id="new-tab" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="new-tab" class="css-label">Open Links in New Tab</label>
-                </div>
-
                 <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
                   <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
                   <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
-                </div>
-
-                <div class="checkbox" title="Hide Favicons" ng-click="">
-                  <input id="hide-favicons" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="hide-favicons" class="css-label">Hide Favicons</label>
-                </div>
-
-                <div class="checkbox" title="Hide Tag Links on Bookmark Panels" ng-click="">
-                  <input id="hide-tags" class="css-checkbox" type="checkbox" ng-checked="" />
-                  <label for="hide-tags" class="css-label">Hide Tags</label>
                 </div>
 
                 <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
@@ -92,7 +77,7 @@
 
           <div class="quick-delete" ng-click="delete()" title="Delete"></div>
           <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
-          <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link" target="_blank"></a>
+          <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
 
           <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}"></div>
 
