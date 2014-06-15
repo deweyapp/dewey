@@ -82,7 +82,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       } else {
         var result = $scope.filteredBookmarks;
         if (result.length > $scope.selectedIndex) {
-          window.location.href = result[$scope.selectedIndex].url;
+          window.location.href = $filter('orderBy')(result, $scope.currentOrder.value)[$scope.selectedIndex].url;
         }
       }
     } else if (e.which === 37) { // left arrow key
