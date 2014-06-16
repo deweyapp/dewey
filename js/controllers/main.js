@@ -337,7 +337,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
     $( ".settings" ).toggleClass( "open" );
     $( "body" ).toggleClass( "no-scroll" );
-  }
+  };
 };
 
 return [
