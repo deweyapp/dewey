@@ -328,6 +328,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         return definedSearch + t;
       }).value();
   };
+
+  $scope.toggleSettings = function() {
+    $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
+    $( ".settings" ).toggleClass( "open" );
+    $( "body" ).toggleClass( "no-scroll" );
+  }
 };
 
 return [

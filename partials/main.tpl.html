@@ -13,11 +13,13 @@
         </div>
       </form>
     </nav>
-    <a class="settings-toggle"></a>
+    <a class="settings-toggle" 
+       ng-click="toggleSettings()"></a>
   </header>
 
   <div class="settings">
-    <a class="close"></a>
+    <a class="close" 
+       ng-click="toggleSettings()"></a>
     <div class="settings-wrap">
       <ul class="col-1">
         <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>

@@ -66,13 +66,4 @@ function(angular) {
   angular.bootstrap(document, ['dewey']);
 });
 
-// Settings
-setTimeout(function(){
-  $( ".settings-toggle, .close" ).click(function( event ) {
-    $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
-    $( ".settings" ).toggleClass( "open" );
-    $( "body" ).toggleClass( "no-scroll" );
-  });
-}, 500);
-
 })();
