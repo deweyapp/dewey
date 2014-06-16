@@ -1,8 +1,7 @@
 <main id="mainContent">
 
-  <header id="nav-wrap">
-
-    <nav id="search">
+  <header class="nav-wrap">
+    <nav class="search-wrap">
       <form class="search" role="search">
         <div class="form-group search-group">
           <input
@@ -14,45 +13,49 @@
         </div>
       </form>
     </nav>
-
-      <a class="settings-toggle" data-toggle="dropdown"></a>
-      <div class="settings dropdown" role="menu">
-        <div class="settings-wrap">
-          <ul class="col-1">
-            <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>
-            <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
-            <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
-            <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
-            <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
-            <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
-          </ul>
-          <ul class="col-2">
-            <li>
-              <form>
-
-                <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
-                  <input id="hide-thumbs" class="css-checkbox" type="checkbox" ng-checked="showThumbnails" />
-                  <label for="hide-thumbs" class="css-label">Show Screenshots</label>
-                </div>
-
-                <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
-                  <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
-                  <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
-                </div>
-
-                <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
-
-              </form>
-            </li>
-          </ul>
-        </div> <!-- col-wrap -->
-      </div> <!-- settings -->
-
+    <a class="settings-toggle" 
+       ng-click="toggleSettings()"></a>
   </header>
+
+  <div class="settings">
+    <a class="close" 
+       ng-click="toggleSettings()"></a>
+    <div class="settings-wrap">
+      <ul class="col-1">
+        <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>
+        <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
+        <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
+        <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
+        <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
+        <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
+      </ul>
+      <ul class="col-2">
+        <li>
+          <form>
+
+            <div>Settings:</div>
+
+            <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
+              <input id="hide-thumbs" class="css-checkbox" type="checkbox" ng-checked="showThumbnails" />
+              <label for="hide-thumbs" class="css-label">Show Screenshots</label>
+            </div>
+
+            <div class="checkbox" title="Don&rsquo;t show top-level folders as tags (Mobile Bookmarks, Other Bookmarks, ...)" ng-click="setHideTopLevelFolders()">
+              <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
+              <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
+            </div>
+
+            <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
+
+          </form>
+        </li>
+      </ul>
+    </div> <!-- col-wrap -->
+  </div> <!-- settings -->
 
   <div class="grid">
 
-    <div id="tags">
+    <div class="tags-wrap">
       <a class="tags-toggle" data-toggle="dropdown"></a>
       <ui class="tags-list">
         <li ng-repeat="tag in tags | orderBy: 'tagText'">
@@ -61,21 +64,20 @@
       </ui>
     </div>
 
-    <ul id="sort">
+    <ul class="sort">
       <li ng-cloak>
         <p>Sort:</p>
         <a ng-repeat="order in orders" ng-class="{ 'sort-active': order == currentOrder }" ng-click="changeOrder(order)">{{order.title}}</a>
       </li>
     </ul>
 
-    <ul id="list-bookmarks">
+    <ul class="list-bookmarks">
       <li ng-class="{'panel-primary': ($index == selectedIndex)}"
           ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)"
           ng-cloak>
 
         <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
-          <div class="quick-delete" ng-click="delete()" title="Delete"></div>
           <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
           <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
 

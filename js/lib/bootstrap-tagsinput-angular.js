@@ -18,7 +18,7 @@ angular.module('bootstrap-tagsinput', [])
     scope: {
       model: '=ngModel'
     },
-    template: '<select multiple placeholder="Add a tag"></select>',
+    template: '<select multiple placeholder="+  Add Tag"></select>',
     replace: false,
     link: function(scope, element, attrs) {
       $(function() {

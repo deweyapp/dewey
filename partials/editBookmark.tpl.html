@@ -1,9 +1,9 @@
 <div class="modal-body">
   <form ng-submit="save()">
-    <div class="form-group">
+    <div class="edit-wrap">
       <textarea
           id="textBoxTitle"
-          class="form-control"
+          class="title-input"
           tabindex="10"
           placeholder="Bookmark Title"
           ng-model="bookmarkModel.title" >
@@ -11,7 +11,7 @@
       <a class="launch" href="{{bookmarkModel.url}}" target="_blank"></a>
       <input type="text"
           id="textBoxURL"
-          class="form-control"
+          class="url-input"
           placeholder="Bookmark URL"
           tabindex="20"
           ng-model="bookmarkModel.url" >
@@ -26,10 +26,8 @@
           <bootstrap-tagsinput
               type="text"
               id="textBoxCustomTags"
-              class="form-control"
-              tabindex="30"
-              autofocus="true"
-              placeholder="+ Add a tag"
+              class="custom-tag-input"
+              placeholder="+ Add Tag"
               ng-model="bookmarkModel.customTags"
               tagclass="tag custom-tag" >
         </li>
@@ -37,9 +35,9 @@
     </div>
 
   <div class="modal-footer">
-    <a class="delete" ng-click="delete()" tabindex="50">Delete</a>
-    <a class="cancel" ng-click="cancel()" tabindex="60">Cancel</a>
-    <a class="save" ng-click="save()" tabindex="40">Save</a>
+    <a class="delete" ng-click="delete()" tabindex="40">Delete</a>
+    <a class="cancel" ng-click="cancel()" tabindex="50">Cancel</a>
+    <a class="save" ng-click="save()" tabindex="30">Save</a>
   </div>
 
 </div>

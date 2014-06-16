@@ -48,11 +48,11 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   });
 
   var getAllPanels = function() {
-    return $('#list-bookmarks div.panel');
+    return $('.list-bookmarks div.panel');
   };
 
   var countItemsPerRow = function() {
-    var bookmarksList = angular.element('#list-bookmarks'),
+    var bookmarksList = angular.element('.list-bookmarks'),
     boxSize = bookmarksList.find('li:first-child').width(),
     bookmarksListW = bookmarksList.width(),
     perRow = Math.floor( bookmarksListW / boxSize);
@@ -72,7 +72,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
 
     var updated = false;
-    if (e.which === 13) { // Enter press on page - go to the selected bookmark
+    if (e.keyCode == 13 && e.metaKey) { // Enter press on page - go to the selected bookmark
       _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
 
       // If first pattern is not our filter let's assume that user wants to search on this domain
@@ -223,8 +223,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
     var originalBookmark = _.clone(bookmark);
 
+    $(".nav-wrap, .grid").addClass("scale-blur");
+
     var modalInstance = $modal.open({
-      scope: $scope.$new(true /* isolate */),
       templateUrl: 'partials/editBookmark.tpl.html',
       controller: 'editBookmarkController',
       resolve: {
@@ -248,6 +249,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         // Bookmark was deleted
         $scope.bookmarks.splice(_.indexOf($scope.bookmarks, bookmark), 1);
       }
+       $(".nav-wrap, .grid").removeClass("scale-blur");
+    }, function() {
+       $(".nav-wrap, .grid").removeClass("scale-blur");
     });
 
     return false;
@@ -323,10 +327,16 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       .sortBy(function(t) {
         return t;
       })
-      .first(10)
+      .first(25)
       .map(function(t) {
         return definedSearch + t;
       }).value();
+  };
+
+  $scope.toggleSettings = function() {
+    $( ".grid, .nav-wrap" ).toggleClass( "scale-blur" );
+    $( ".settings" ).toggleClass( "open" );
+    $( "body" ).toggleClass( "no-scroll" );
   };
 };
 
