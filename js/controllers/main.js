@@ -223,8 +223,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
     var originalBookmark = _.clone(bookmark);
 
+    $(".nav-wrap, .grid").addClass("scale-blur");
+
     var modalInstance = $modal.open({
-      scope: $scope.$new(true /* isolate */),
       templateUrl: 'partials/editBookmark.tpl.html',
       controller: 'editBookmarkController',
       resolve: {
@@ -248,6 +249,9 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         // Bookmark was deleted
         $scope.bookmarks.splice(_.indexOf($scope.bookmarks, bookmark), 1);
       }
+       $(".nav-wrap, .grid").removeClass("scale-blur");
+    }, function() {
+       $(".nav-wrap, .grid").removeClass("scale-blur");
     });
 
     return false;
