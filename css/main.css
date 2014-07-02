@@ -146,7 +146,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .typeahead-dropdown {
   background-color: rgba(36, 45, 50, 0.95);
   color: rgba(255, 255, 255, 0.95);
-  direction: rtl;
+  /*direction: rtl;*/
   max-height: 13.5rem;
   overflow-x: hidden;
   overflow-y: scroll;
