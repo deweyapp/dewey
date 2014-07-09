@@ -34,9 +34,12 @@ var BooleanSearchEngine = function () {
     };
 
     // Check that tag collection contains search.
-    var containsTag = function(tags, patternText){
+    var containsTag = function(bookmark, patternText){
 
-        var tag = _.find(tags, function(item){
+        // ARG: improve in future
+        //return bookmark.tagsAsString.toUpperCase().indexOf(trim(patternText)) != -1;
+
+        var tag = _.find(bookmark.tag, function(item){
             return item.text.toUpperCase().indexOf(patternText) != -1;
         });
 
@@ -58,18 +61,9 @@ var BooleanSearchEngine = function () {
     // Check that bookmark fields contain search.
     var containsField = function(bookmark, patternText){
 
-        var tags = _.chain(bookmark)
-            .flatten()
-            .map(function(tag){ return [tag, tag.text];})
-            .reject(_.isUndefined)
-            .value();
-
-        var values = _.union([bookmark.title, bookmark.url], tags);
-
-        var filteredValue = _.find(values, function(propertyValue){
-            return propertyValue.toString().toUpperCase().indexOf(trim(patternText)) !== -1;
-        });
-        return !_.isUndefined(filteredValue);
+        return containsTitle(bookmark.title, patternText) ||
+                containsUrl(bookmark.url, patternText) ||
+                containsTag(bookmark, patternText);
     };
 
     // Check that bookmark could be reached by following expression.
@@ -82,7 +76,7 @@ var BooleanSearchEngine = function () {
 
         var evaluateFunc = function(word){ return containsField(bookmark, word); };
         if(node.pattern === 'TAG:'){
-            evaluateFunc = function(word){ return containsTag(bookmark.tag, word); };
+            evaluateFunc = function(word){ return containsTag(bookmark, word); };
         }
         else if(node.pattern === 'TITLE:'){
             evaluateFunc = function(word){ return containsTitle(bookmark.title, word); };

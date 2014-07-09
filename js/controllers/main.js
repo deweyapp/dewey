@@ -150,11 +150,27 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
                       })
                       .value();
 
+      // ARG: improve in future
+      // applyTagsAsString(bookmarks);
+
       $scope.$apply();
       countItemsPerRow();
     }.bind(this));
   }.bind(this);
   loadBookmarks();
+
+  var applyTagsAsString = function(bookmarks){
+
+      var separator = '|';
+      _.each(bookmarks, function(item){
+
+          item.tagsAsString = _.chain(item.tag)
+                                .map(function(tag) { return tag.text; })
+                                .join(separator)
+                                .value();
+          item.tagsAsString += separator;
+      });
+  };
 
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
