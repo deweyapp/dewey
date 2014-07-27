@@ -60,10 +60,10 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $scope.itemsPerRow = perRow;
   };
 
-  var isElementInViewport = function(el) {
-    var rect = el.getBoundingClientRect();
-    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width();
-  };
+  // var isElementInViewport = function(el) {
+  //   var rect = el.getBoundingClientRect();
+  //   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width();
+  // };
 
   // Key down events handlers
   $('#mainContent').keydown(function(e) {
@@ -159,18 +159,18 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   }.bind(this);
   loadBookmarks();
 
-  var applyTagsAsString = function(bookmarks){
+  // var applyTagsAsString = function(bookmarks){
 
-      var separator = '|';
-      _.each(bookmarks, function(item){
+  //     var separator = '|';
+  //     _.each(bookmarks, function(item){
 
-          item.tagsAsString = _.chain(item.tag)
-                                .map(function(tag) { return tag.text; })
-                                .join(separator)
-                                .value();
-          item.tagsAsString += separator;
-      });
-  };
+  //         item.tagsAsString = _.chain(item.tag)
+  //                               .map(function(tag) { return tag.text; })
+  //                               .join(separator)
+  //                               .value();
+  //         item.tagsAsString += separator;
+  //     });
+  // };
 
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
