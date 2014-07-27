@@ -18,7 +18,7 @@ var BooleanSearchEngine = function () {
 
     var patterns = ['TAG:', 'URL:', 'TITLE:'];
 
-    // Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
+    // Trims defined characters from beginning and ending of the string. Defaults to whitespace characters.
     var trim = function(input, characters){
         if (!_.isString(input)) return input;
 
@@ -204,6 +204,73 @@ var BooleanSearchEngine = function () {
             return _.isUndefined(failureNode);
         }
         return false;
+    };
+
+    // Filter bookmark collection by search test or expression
+    this.getFilteredBookmarks = function(bookmarks, newSearchText, tags){
+        
+        var pattern = 'NONE';
+        var searchText = newSearchText;
+        var definedSearch = newSearchText;
+
+        var expressionTree = this.generateExpressionTree(newSearchText);
+        if (expressionTree && expressionTree.length > 0) {
+            
+            var node = _.last(expressionTree);
+            
+            if (node) {
+            
+                var lastLiteral = _.last(node.literals);
+                pattern = node.pattern;
+
+                searchText = (lastLiteral && lastLiteral.expression === 'NONE' ? lastLiteral.text : '');
+
+                definedSearch = newSearchText.replace(/\s+$/, '');
+                definedSearch = definedSearch.substr(0, newSearchText.length - searchText.length);
+                if (definedSearch.length > 0) {
+                    definedSearch += ' ';
+                }
+            }
+        }
+
+        if (pattern === 'NONE') {
+            pattern = 'TITLE:';
+        }
+
+        var chain;
+
+        if (pattern === 'TITLE:') {
+            chain = _.chain(bookmarks)
+                .map(function(b) {
+                    return b.title;
+                });
+        } else if (pattern === 'TAG:') {
+            chain = _.chain(tags)
+                .map(function(t) {
+                    return t.tagText;
+                });
+        } else if (pattern === 'URL:') {
+            chain = _.chain(bookmarks)
+                .map(function(b) {
+                return b.url;
+                });
+        }
+
+        if (!chain) {
+            return [];
+        }
+
+        return chain
+            .filter(function(t) {
+                return t.toUpperCase().indexOf(searchText.toUpperCase()) >= 0;
+            })
+            .sortBy(function(t) {
+                return t;
+            })
+            .first(25)
+            .map(function(t) {
+                return definedSearch + t;
+            }).value();
     };
 };
 

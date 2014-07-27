@@ -288,65 +288,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   };
 
   $scope.getTypeheadSuggestions = function($viewValue) {
-    var pattern = 'NONE';
-    var searchText = $viewValue;
-    var definedSearch = $viewValue;
 
-    var expressionTree = booleanSearchEngine.generateExpressionTree($viewValue);
-    if (expressionTree && expressionTree.length > 0) {
-      var node = _.last(expressionTree);
-      if (node) {
-        var lastLiteral = _.last(node.literals);
-        pattern = node.pattern;
-
-        searchText = (lastLiteral && lastLiteral.expression === 'NONE' ? lastLiteral.text : '');
-
-        definedSearch = $viewValue.replace(/\s+$/, '');
-        definedSearch = definedSearch.substr(0, $viewValue.length - searchText.length);
-        if (definedSearch.length > 0) {
-          definedSearch += ' ';
-        }
-      }
-    }
-
-    if (pattern === 'NONE') {
-      pattern = 'TITLE:';
-    }
-
-    var chain;
-
-    if (pattern === 'TITLE:') {
-      chain = _.chain(this.bookmarks)
-        .map(function(b) {
-          return b.title;
-        });
-    } else if (pattern === 'TAG:') {
-       chain = _.chain(this.tags)
-        .map(function(t) {
-          return t.tagText;
-        });
-    } else if (pattern === 'URL:') {
-      chain = _.chain(this.bookmarks)
-        .map(function(b) {
-          return b.url;
-        });
-    }
-
-    if (!chain) {
-      return [];
-    }
-
-    return chain
-      .filter(function(t) {
-        return t.toUpperCase().indexOf(searchText.toUpperCase()) >= 0;
-      })
-      .sortBy(function(t) {
-        return t;
-      })
-      .first(25)
-      .map(function(t) {
-        return definedSearch + t;
-      }).value();
+    return booleanSearchEngine.getFilteredBookmarks($scope.bookmarks, $viewValue, $scope.tags);
   };
 
   $scope.toggleSettings = function() {
