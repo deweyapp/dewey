@@ -8,7 +8,7 @@ function(_, $) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine1, omniboxEngine) {
 
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -31,6 +31,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   $scope.hideTopLevelFolders = false;
   $scope.showThumbnails = true;
+
+  omniboxEngine.init();
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
@@ -306,6 +308,7 @@ return [
   'bookmarksStorage',
   'appSettings',
   'booleanSearchEngine',
+  'omniboxEngine',
   MainController
 ];
 
