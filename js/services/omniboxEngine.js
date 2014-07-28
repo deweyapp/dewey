@@ -11,42 +11,43 @@ var OmniboxEngine = function(){
         bookmarks,
         tags;
 
-
 	this.init = function(booleanSearchEngine, bookmarks, tags){
 
         this.booleanSearchEngine = booleanSearchEngine;
         this.bookmarks = bookmarks;
         this.tags = tags;
-
-		chrome.omnibox.setDefaultSuggestion({
-		    description: 'dew: Search the Dewey for %s'
-		});
-
-        chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
-            console.log('inputChanged: ' + text);
-
-            filteredBookmarks = booleanSearchEngine.getFilteredBookmarks(bookmarks, text, tags);
-            var suggestions = [];
-            _.each(filteredBookmarks, function(item, key){
-                    //content: key.toString(), description: item
-                // suggestions.push({
-                //     content: key.toString(), description: item.toString()
-                // });
-                suggest([{content: key.toString(), description: item.toString()}]);
-            });
-
-            suggest(suggestions);
-        });
-
-        chrome.omnibox.onInputEntered.addListener(function(text) {
-            console.log('inputEntered: ' + text);
-            //alert('You just typed "' + text + '"');
-
-            var bookmarkTitle = filteredBookmarks[parseInt(text)];
-            var bookmark = _.find(bookmarks, function(item){ return item.title == bookmarkTitle; });
-            window.location.href = bookmark.url;
-        });
 	};
+
+    var resultsList = [],
+        unlikely = "GOSHDARNYOUCHROME";
+
+    // Return the suggestions
+chrome.omnibox.onInputChanged.addListener(
+  function(text, suggest) {
+    console.log('inputChanged: ' + text);
+    suggest([
+      {content: unlikely + "http://www.ii.gl/", description: "the first one (ASDF 1)"},
+      {content: unlikely + "http://www.google.com/", description: "the second entry (ASDF 1)"}
+    ]);
+  });
+
+    // Activate the selection on submit
+    chrome.omnibox.onInputEntered.addListener(
+      function(text) {
+        // If text doesn't have unlikely prepended its the stupid default
+        if(text.substring(0, unlikely.length) !== unlikely) {
+          text = resultsList[0].content;
+        }
+
+        text = text.substring(unlikely.length); // Trim the unlikely string
+
+        if (text.substring(0, 11) == "javascript:") {
+          chrome.tabs.executeScript(null, { code: decodeURIComponent(text) });
+        } else {
+          chrome.tabs.update({ url: text });
+        }
+      }
+    );
 };
 
 /*
