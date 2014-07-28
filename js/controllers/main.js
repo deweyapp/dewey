@@ -32,7 +32,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   $scope.hideTopLevelFolders = false;
   $scope.showThumbnails = true;
 
-  omniboxEngine.init();
+
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
@@ -154,6 +154,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
       // ARG: improve in future
       // applyTagsAsString(bookmarks);
+      omniboxEngine.init(booleanSearchEngine, $scope.bookmarks, $scope.tags);
 
       $scope.$apply();
       countItemsPerRow();

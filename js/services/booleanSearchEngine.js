@@ -208,18 +208,18 @@ var BooleanSearchEngine = function () {
 
     // Filter bookmark collection by search test or expression
     this.getFilteredBookmarks = function(bookmarks, newSearchText, tags){
-        
+
         var pattern = 'NONE';
         var searchText = newSearchText;
         var definedSearch = newSearchText;
 
         var expressionTree = this.generateExpressionTree(newSearchText);
         if (expressionTree && expressionTree.length > 0) {
-            
+
             var node = _.last(expressionTree);
-            
+
             if (node) {
-            
+
                 var lastLiteral = _.last(node.literals);
                 pattern = node.pattern;
 
