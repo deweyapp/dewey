@@ -1,30 +1,48 @@
 var resultsList = [],
-    unlikely = "GOSHDARNYOUCHROME";
+    unlikely = "dewey";
 
 // Return the suggestions
-chrome.omnibox.onInputChanged.addListener(
-  function(text, suggest) {
-    // Search the bookmarks
-    suggest([
-      {content: unlikely + "http://www.ii.gl/", description: "the first one (ASDF 1)"},
-      {content: unlikely + "http://www.google.com/", description: "the second entry (ASDF 1)"}
-    ]);
+chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
+
+    chrome.bookmarks.search(text, function(searchResults) {
+
+        resultsList = [];
+
+        for (var i = 0; i < searchResults.length; i++) {
+
+            var item = searchResults[i];
+            if(item.url === void 0) continue;
+
+            var isBookmarklet = (item.url.substring(0, 11) == "javascript:");
+
+            resultsList.push({
+                content:     unlikely + item.url,
+                description: item.title.replace(new RegExp("(" + text + ")", "gi"), "<match>$1</match>") + " <dim>" + (isBookmarklet ? "(Bookmarklet)" : "(URL)") + "</dim>"
+            });
+        };
+
+        var defaultSuggestion = '';
+        if(resultsList.length > 0){
+            defaultSuggestion = resultsList[0].description;
+            suggest(resultsList.slice(1, -1));
+        }
+        chrome.omnibox.setDefaultSuggestion({ description: defaultSuggestion });
+    })
 });
 
-// Activate the selection on submit
-chrome.omnibox.onInputEntered.addListener(
-  function(text) {
+chrome.omnibox.onInputEntered.addListener( function(text) {
+
     // If text doesn't have unlikely prepended its the stupid default
     if(text.substring(0, unlikely.length) !== unlikely) {
-      text = resultsList[0].content;
+        text = resultsList[0].content;
     }
 
     text = text.substring(unlikely.length); // Trim the unlikely string
 
     if (text.substring(0, 11) == "javascript:") {
-      chrome.tabs.executeScript(null, { code: decodeURIComponent(text) });
-    } else {
-      chrome.tabs.update({ url: text });
+        chrome.tabs.executeScript(null, { code: decodeURIComponent(text) });
     }
-  }
-);
+    else {
+        chrome.tabs.update({ url: text });
+    }
+});

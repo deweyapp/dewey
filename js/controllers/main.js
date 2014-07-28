@@ -154,7 +154,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
       // ARG: improve in future
       // applyTagsAsString(bookmarks);
-      omniboxEngine.init(booleanSearchEngine, $scope.bookmarks, $scope.tags);
+      //omniboxEngine.init(booleanSearchEngine, $scope.bookmarks, $scope.tags);
 
       $scope.$apply();
       countItemsPerRow();

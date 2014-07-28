@@ -63,7 +63,6 @@ require([
   './dewey'
 ],
 function(angular) {
-  alert('YEP!');
   angular.bootstrap(document, ['dewey']);
 });
 
