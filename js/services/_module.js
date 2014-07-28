@@ -18,7 +18,7 @@ module.factory('bookmarksStorage', bookmarksStorage);
 module.factory('booleanSearchEngine', booleanSearchEngine);
 
 // Register omniboxEngine service
-module.factory('omniboxEngine', omniboxEngine);
+//module.factory('omniboxEngine', omniboxEngine);
 
 // Register settings service
 module.value('appSettings', settings);

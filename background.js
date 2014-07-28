@@ -13,11 +13,11 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
             var item = searchResults[i];
             if(item.url === void 0) continue;
 
-            var isBookmarklet = (item.url.substring(0, 11) == "javascript:");
+            if(item.url.substring(0, 11) === "javascript:") continue;
 
             resultsList.push({
                 content:     unlikely + item.url,
-                description: item.title.replace(new RegExp("(" + text + ")", "gi"), "<match>$1</match>") + " <dim>" + (isBookmarklet ? "(Bookmarklet)" : "(URL)") + "</dim>"
+                description: item.title.replace(new RegExp("(" + text + ")", "gi"), "<match>$1</match>")
             });
         };
 
