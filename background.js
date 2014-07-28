@@ -43,6 +43,8 @@ chrome.omnibox.onInputEntered.addListener( function(text) {
         chrome.tabs.executeScript(null, { code: decodeURIComponent(text) });
     }
     else {
-        chrome.tabs.update({ url: text });
+        //chrome.tabs.update({ url: text });
+
+        chrome.tabs.update({ url: chrome.extension.getURL('app.html') });
     }
 });
