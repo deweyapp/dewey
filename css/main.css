@@ -284,7 +284,7 @@ strong {
 .settings ul li,
 .checkbox label,
 .checkbox input,
-.screenshots {
+.credits {
   cursor: pointer;
   color: white;
   font-size: 1.125rem;
@@ -292,8 +292,15 @@ strong {
   line-height: 6vh;
   vertical-align: middle; }
 
-.screenshots {
+.credits {
   cursor: default;
+  vertical-align: bottom; }
+
+.makers {
+  font-size: 80%;
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
 }
 
 .settings a {
@@ -331,11 +338,8 @@ strong {
 .website:before {
   content: url(../images/link.svg); }
 
-.screenshots {
-  vertical-align: bottom; }
-
 .important {
-  color: #f1815f !important;
+  color: #F18260 !important;
   font-weight: 400; }
 
 /*-----------------------------
@@ -1085,7 +1089,7 @@ label.css-label {
 
   .grid { width: 12.5rem; }
 
-  .settings-wrap { margin: 0; width: auto; }
+  .settings-wrap { margin: 20px; width: auto; }
 
   .list-bookmarks li { margin: 1.25rem 0 0 0; }
 

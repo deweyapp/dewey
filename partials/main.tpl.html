@@ -13,12 +13,12 @@
         </div>
       </form>
     </nav>
-    <a class="settings-toggle" 
+    <a class="settings-toggle"
        ng-click="toggleSettings()"></a>
   </header>
 
   <div class="settings">
-    <a class="close" 
+    <a class="close"
        ng-click="toggleSettings()"></a>
     <div class="settings-wrap">
       <ul class="col-1">
@@ -28,11 +28,10 @@
         <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
         <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
         <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
-      </ul>
+      </ul> <!-- .col-1 -->
       <ul class="col-2">
         <li>
           <form>
-
             <div>Settings:</div>
 
             <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
@@ -44,13 +43,19 @@
               <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
               <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
             </div>
-
-            <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
-
+            <div class="credits"><p>Screenshots by <a class="important" href="http://snapito.io" target="_blank">Snapito</a></p></div>
           </form>
         </li>
-      </ul>
-    </div> <!-- col-wrap -->
+      </ul> <!-- .col-2 -->
+    </div> <!-- .settings-wrap -->
+
+    <div class="credits makers">
+      Built by:
+      <a class="important" href="https://twitter.com/outcoldman" target="_blank">Denis</a>,
+      <a class="important" href="https://twitter.com/jmwlsn" target="_blank">Jamie</a>
+      and <a class="important" href="https://twitter.com/artemgrygor" target="_blank">Artem</a></p>
+    </div>
+
   </div> <!-- settings -->
 
   <div class="grid">

@@ -22,9 +22,9 @@ var myUpdateBackgroundFactory = function(appSettings) {
 
         if (appSettings.showThumbnails) {
           backgrounds.push(
-            'url(\'http://api.snapito.com/web/sapuk-363c81e6-0e5e082b-73e5544a-71f3-4f05fc39-3/250x188?url=' +
+            'url(\'http://api.snapito.io/v2/webshot/spu-611151-o3bp-du0ixqlrpknnlggm?url=' +
               encodeURIComponent(scope.bookmark.url) +
-              '&delay=1&freshness=-1\')'
+              '&delay=1&width=250\')'
           );
         }
 
