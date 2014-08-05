@@ -1,10 +1,52 @@
 @charset "UTF-8";
 
-/*-----------------------------
-  Global
------------------------------*/
+/*====================================================
+  Table of Contents
+====================================================*/
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400,700);
+/*
+  - Global
+  - Color Thief
+  - Animations
+  - Grid
+  - Search
+  - Typeahead Styling
+  - Animating Results as they generate
+  - Custom Scrollbars for search results
+  - Settings Overlay Menu
+  - Settings & Link Icons
+  - Custom Checkboxes
+  - Settings List Animation
+  - Sort
+  - Tags Dropdown
+  - Tags Dropdown Scrollbar
+  - Link Panel Grid Layout
+  - Link Panels
+  - Transparent Element to Hold Link
+  - Quick Delete Rollover X Button
+  - Transparent Element to Hold Delete Function
+  - Edit Rollover Icon
+  - Thumbnail / Screenshot
+  - Styles for Hide Thumbnails Option
+  - Special Styles for Links to PDFs
+  - Special Styles for Links to local Chrome urls
+  - Special Styles for Links to Dewey
+  - Link Details
+  - Link Tags
+  - Edit Modal
+  - Bookmark Title
+  - Title Textarea Scrollbar
+  - URL Input
+  - Bootstrap Tags Input
+  - Folders as Tags
+  - Custom Tags
+  - Buttons
+  - Media Queries
+*/
+
+/*====================================================
+  Global
+====================================================*/
 
 * {
   box-sizing: border-box;
@@ -31,16 +73,16 @@ body {
 ol, ul {
   list-style: none; }
 
-/*-----------------------------
+/*====================================================
   Color Thief
------------------------------*/
+====================================================*/
 
 body canvas {
   display: none; }
 
-/*-----------------------------
+/*====================================================
   Animations
------------------------------*/
+====================================================*/
 
 @-webkit-keyframes fade-in {
   from { opacity: 0; }
@@ -70,9 +112,9 @@ body canvas {
   from { -webkit-transform: scale(0); }
   to { -webkit-transform: scale(1); }}
 
-/*-----------------------------
-  Grid
------------------------------*/
+/*====================================================
+    Grid
+====================================================*/
 
 .grid {
   margin: 3.25rem auto 0;
@@ -89,9 +131,9 @@ body canvas {
   -webkit-filter: blur(7px);
   -webkit-transform: scale(.98); }
 
-/*-----------------------------
-  Search
------------------------------*/
+/*====================================================
+    Search
+====================================================*/
 
 .nav-wrap {
   -webkit-animation: fade-in-down 300ms ease-in-out;
@@ -139,9 +181,9 @@ input[type="search"]::-webkit-search-cancel-button {
   .search-group input[type="search"] {
     width: 80%; } }
 
-/*-----------------------------
-  Typeahead Styling
------------------------------*/
+/*====================================================
+    Typeahead Styling
+====================================================*/
 
 .typeahead-dropdown {
   background-color: rgba(36, 45, 50, 0.95);
@@ -176,9 +218,9 @@ strong {
   background: rgba(255, 255, 255, 0.075);
   color: #f1815f; }
 
-/*-----------------------------
-  Animating Results as they generate
------------------------------*/
+/*====================================================
+    Animating Results as they generate
+====================================================*/
 
 .results-item {
   -webkit-animation: fade-in-up ease-out; }
@@ -201,9 +243,9 @@ strong {
 .results-item:nth-child(6) {
   -webkit-animation-duration: 140ms; }
 
-/*-----------------------------
-  Custom Scrollbars for search results
------------------------------*/
+/*====================================================
+    Custom Scrollbars for search results
+====================================================*/
 
 .typeahead-dropdown::-webkit-scrollbar {
   width: 3px; }
@@ -214,9 +256,9 @@ strong {
 .typeahead-dropdown::-webkit-scrollbar-thumb {
   background: #F18260; }
 
-/*-----------------------------
-  Settings Overlay Menu
------------------------------*/
+/*====================================================
+    Settings Overlay Menu
+====================================================*/
 
 .settings-toggle {
   -webkit-animation: slide-left 500ms cubic-bezier(0.65, -1, 0.25, 1.75);
@@ -307,9 +349,9 @@ strong {
   color: white;
   text-decoration: none; }
 
-/*-----------------------------
-  Settings & Link Icons
------------------------------*/
+/*====================================================
+    Settings & Link Icons
+====================================================*/
 
 .docs:before,
 .feedback:before,
@@ -342,9 +384,9 @@ strong {
   color: #F18260 !important;
   font-weight: 400; }
 
-/*-----------------------------
-  Custom Checkboxes
------------------------------*/
+/*====================================================
+    Custom Checkboxes
+====================================================*/
 
 input[type=checkbox].css-checkbox {
   display: none; }
@@ -359,9 +401,9 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 label.css-label {
   background: url(../images/checkbox.svg) 0 -2px no-repeat; }
 
-/*-----------------------------
-  Settings List Animation
------------------------------*/
+/*====================================================
+    Settings List Animation
+====================================================*/
 
 .open .col-1 li,
 .open .col-2 div {
@@ -392,9 +434,9 @@ label.css-label {
 .open .col-2 div:nth-child(6) {
   -webkit-animation-duration: 300ms; }
 
-/*-----------------------------
-  Sort
------------------------------*/
+/*====================================================
+    Sort
+====================================================*/
 
 .sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
@@ -418,9 +460,9 @@ label.css-label {
 .sort-active {
   border-bottom: 1px solid; }
 
-/*-----------------------------
-  Tags Dropdown
------------------------------*/
+/*====================================================
+    Tags Dropdown
+====================================================*/
 
 .tags-wrap {
   float: left;
@@ -481,9 +523,9 @@ label.css-label {
   background: rgba(255, 255, 255, 0.05);
   color: #f1815f; }
 
-/*-----------------------------
-  Tags Dropdown Scrollbar
------------------------------*/
+/*====================================================
+    Tags Dropdown Scrollbar
+====================================================*/
 
 .tags-list::-webkit-scrollbar {
   width: 3px; }
@@ -494,13 +536,15 @@ label.css-label {
 .tags-list::-webkit-scrollbar-thumb {
   background: #F18260; }
 
-/*-----------------------------
-  Link Panel Grid Layout
------------------------------*/
+/*====================================================
+    Link Panel Grid Layout
+====================================================*/
 
 .list-bookmarks {
   font-size: 0;
-  margin-top: 2.25rem; }
+  margin-top: 2.25rem;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden; }
 
 .list-bookmarks li {
   -webkit-animation: fade-in-up 300ms ease;
@@ -510,12 +554,14 @@ label.css-label {
   margin: 1rem;
   position: relative;
   top: 0;
-  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 50ms ease;
+  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 25ms linear;
   vertical-align: top;
-  width: 12.5rem; }
+  width: 12.5rem;
+  -webkit-backface-visibility: hidden; }
 
 .list-bookmarks li:active {
-  -webkit-transform: scale(0.99); }
+  -webkit-transform: scale(.98);
+  -webkit-backface-visibility: hidden; }
 
 .list-bookmarks li:before {
   background: #f1815f;
@@ -528,7 +574,7 @@ label.css-label {
 
 .list-bookmarks li:hover,
 .list-bookmarks li.panel-primary {
-  top: -.2rem; }
+  top: -.2rem;}
 
 /* Grid Panel Animation */
 
@@ -536,9 +582,9 @@ label.css-label {
 .list-bookmarks li:nth-child(5n+1) {
   -webkit-animation-duration: 500ms; }
 
-/*-----------------------------
-  Link Panels
------------------------------*/
+/*====================================================
+    Link Panels
+====================================================*/
 
 .panel {
   overflow: hidden;
@@ -557,9 +603,9 @@ label.css-label {
 .panel:focus {
   outline: none; }
 
-/*-----------------------------
- Transparent Element to Hold Link
------------------------------*/
+/*====================================================
+    Transparent Element to Hold Link
+====================================================*/
 
 .bookmark-link {
   bottom: 0;
@@ -571,9 +617,9 @@ label.css-label {
   top: 0;
   z-index: 7010; }
 
-/*-----------------------------
- Quick Delete Rollover X Button
------------------------------*/
+/*====================================================
+    Quick Delete Rollover X Button
+====================================================*/
 
 /*.panel:before {
   content: url(../images/quick-delete.svg);
@@ -588,9 +634,9 @@ label.css-label {
   -webkit-transform: translateY(-2rem);
   transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }*/
 
-/*-----------------------------
- Transparent Element to Hold Delete Function
------------------------------*/
+/*====================================================
+    Transparent Element to Hold Delete Function
+====================================================*/
 
 /*.quick-delete {
   height: 2rem;
@@ -603,9 +649,9 @@ label.css-label {
   top: 0;
   width: 2rem; }*/
 
-/*-----------------------------
-  Edit Rollover Icon
------------------------------*/
+/*====================================================
+    Edit Rollover Icon
+====================================================*/
 
 .panel:after {
   content: url(../images/edit-gray.svg);
@@ -623,9 +669,9 @@ label.css-label {
   opacity: 1;
   -webkit-transform: translateY(0); }
 
-/*-----------------------------
-  Thumbnail / Screenshot
------------------------------*/
+/*====================================================
+    Thumbnail / Screenshot
+====================================================*/
 
 .thumbnail-loading,
 .thumbnail {
@@ -643,9 +689,9 @@ label.css-label {
   background-size: cover !important;
   -webkit-backface-visibility: hidden; }
 
-/*-----------------------------
-  Styles for Hide Thumbnails Option
------------------------------*/
+/*====================================================
+    Styles for Hide Thumbnails Option
+====================================================*/
 
 .panel-small .thumbnail-loading {
   background-size: 18px 18px !important; }
@@ -661,9 +707,9 @@ label.css-label {
 .panel-small .edit-toggle {
   top: 1.75rem; }
 
-/*-----------------------------
-  Special Styles for Links to PDFs
------------------------------*/
+/*====================================================
+    Special Styles for Links to PDFs
+====================================================*/
 
 .thumbnail[title$=".pdf"] {
   background: white url(../images/pdf.svg) !important;
@@ -675,9 +721,9 @@ label.css-label {
 .favicon[src$=".pdf?defaulticon=lightpng"] {
   content: url(../images/link.svg); }
 
-/*-----------------------------
-  Special Styles for Links to local Chrome urls
------------------------------*/
+/*====================================================
+    Special Styles for Links to local Chrome urls
+====================================================*/
 
 .thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"] {
@@ -692,9 +738,9 @@ label.css-label {
 .favicon[src*="chrome-extension://"] {
   content: url(../images/chrome-32.png); }
 
-/*-----------------------------
-  Special Styles for Links to Dewey
------------------------------*/
+/*====================================================
+    Special Styles for Links to Dewey
+====================================================*/
 
 .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   background: url(../images/dewey-small.png) !important;
@@ -707,9 +753,9 @@ label.css-label {
 .favicon[src*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   content: url(http://deweyapp.io/images/favicon.png); }
 
-/*-----------------------------
-  Link Details
------------------------------*/
+/*====================================================
+    Link Details
+====================================================*/
 
 .details {
   background: white;
@@ -732,9 +778,9 @@ label.css-label {
   margin-bottom: .5rem;
   width: 16px; }
 
-/*-----------------------------
-  Link Tags
------------------------------*/
+/*====================================================
+    Link Tags
+====================================================*/
 
 .tag-links {
   margin-top: 1rem;
@@ -757,9 +803,9 @@ label.css-label {
 .tag-links .badge-custom {
   color: #787878; }
 
-/*-----------------------------
-  Edit Modal
------------------------------*/
+/*====================================================
+    Edit Modal
+====================================================*/
 
 .edit-toggle {
   content: url(../images/edit.svg);
@@ -817,9 +863,9 @@ label.css-label {
 .modal-footer {
   text-align: right; }
 
-/*-----------------------------
-  Bookmark Title
------------------------------*/
+/*====================================================
+    Bookmark Title
+====================================================*/
 
 .title-input {
   -webkit-appearance: none;
@@ -847,9 +893,9 @@ label.css-label {
 .title-input::-webkit-input-placeholder {
   color: rgba(36, 45, 50, 0.25); }
 
-/*-----------------------------
-  Title Textarea Scrollbar
------------------------------*/
+/*====================================================
+    Title Textarea Scrollbar
+====================================================*/
 
 .title-input::-webkit-scrollbar {
   width: 3px; }
@@ -857,9 +903,9 @@ label.css-label {
 .title-input::-webkit-scrollbar-thumb:vertical {
   background-color: #F18260; }
 
-/*-----------------------------
-  URL Input
------------------------------*/
+/*====================================================
+    URL Input
+====================================================*/
 
 .launch {
   -webkit-filter: saturate(0);
@@ -891,9 +937,9 @@ label.css-label {
   white-space: nowrap;
   width: 100%; }
 
-/*-----------------------------
-  Bootstrap Tags Input
------------------------------*/
+/*====================================================
+    Bootstrap Tags Input
+====================================================*/
 
 .bootstrap-tagsinput {
   background: transparent;
@@ -941,9 +987,9 @@ label.css-label {
   content: "╳";
   padding: 1px 2px; }
 
-/*-----------------------------
-  Folders as Tags
------------------------------*/
+/*====================================================
+    Folders as Tags
+====================================================*/
 
 .tags {
   margin: 1rem 0; }
@@ -982,9 +1028,9 @@ label.css-label {
 .tag:empty {
   display: none; }
 
-/*-----------------------------
-  Custom Tags
------------------------------*/
+/*====================================================
+    Custom Tags
+====================================================*/
 
 .custom-tags {
   display: inline; }
@@ -1009,9 +1055,9 @@ label.css-label {
   padding: 2px;
   width: 6.25rem; }
 
-/*-----------------------------
-  Buttons
------------------------------*/
+/*====================================================
+    Buttons
+====================================================*/
 
 .save,
 .cancel,
@@ -1059,9 +1105,9 @@ label.css-label {
   opacity: 1;
   text-decoration: underline; }
 
-/*-----------------------------
-  Media Queries
------------------------------*/
+/*====================================================
+    Media Queries
+====================================================*/
 
 @media only screen and (min-width: 135rem) {
 
