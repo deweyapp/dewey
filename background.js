@@ -13,13 +13,14 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
             var item = searchResults[i];
             if(item.url === void 0) continue;
 
-            if(item.url.substring(0, 11) === "javascript:") continue;
+            /* jshint scripturl:true */
+            if(item.url.substring(0, 11) === 'javascript:') continue;
 
             resultsList.push({
                 content:     unlikely + item.url,
                 description: item.title.replace(new RegExp("(" + text + ")", "gi"), "<match>$1</match>")
             });
-        };
+        }
 
         var defaultSuggestion = '';
         if(resultsList.length > 0){
@@ -27,7 +28,7 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
             suggest(resultsList.slice(1, -1));
         }
         chrome.omnibox.setDefaultSuggestion({ description: defaultSuggestion });
-    })
+    });
 });
 
 chrome.omnibox.onInputEntered.addListener( function(text) {
@@ -35,16 +36,10 @@ chrome.omnibox.onInputEntered.addListener( function(text) {
     // If text doesn't have unlikely prepended its the stupid default
     if(text.substring(0, unlikely.length) !== unlikely) {
         text = resultsList[0].content;
+        chrome.tabs.update({ url: chrome.extension.getURL('app.html') + '/github' });
     }
 
     text = text.substring(unlikely.length); // Trim the unlikely string
 
-    if (text.substring(0, 11) == "javascript:") {
-        chrome.tabs.executeScript(null, { code: decodeURIComponent(text) });
-    }
-    else {
-        chrome.tabs.update({ url: text });
-
-        //chrome.tabs.update({ url: chrome.extension.getURL('app.html') });
-    }
+    chrome.tabs.update({ url: text });
 });

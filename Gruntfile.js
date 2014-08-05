@@ -8,6 +8,7 @@ module.exports = function(grunt) {
       options: {
       },
       app: [
+        'background.js',
         'js/**/*.js',
         '!js/lib/*'
       ],
