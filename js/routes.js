@@ -5,11 +5,11 @@ define(
 function() { 'use strict';
 
 var routesConfiguration = function($routeProvider, $locationProvider) {
-  $routeProvider.when('/main', {
-    templateUrl: 'partials/main.tpl.html',
-    controller: 'mainController'
-  });
-  $routeProvider.otherwise({redirectTo: '/main'});
+  	$routeProvider.when('/main/:search?', {
+    	templateUrl: 'partials/main.tpl.html',
+    	controller: 'mainController'
+  	});
+  	$routeProvider.otherwise({redirectTo: '/main'});
 };
 
 return ['$routeProvider', '$locationProvider', routesConfiguration];

@@ -40,9 +40,8 @@ chrome.omnibox.onInputEntered.addListener( function(text) {
     // If text doesn't have unlikely prepended its the default
     if(text.substring(0, unlikely.length) !== unlikely) {
         text = resultsList[0].content;
-
-        alert(text);
-        chrome.tabs.update({ url: chrome.extension.getURL('app.html') + '?' + text });
+        
+        chrome.tabs.update({ url: chrome.extension.getURL('app.html') + '#main?search=' + text });
     }
     else{
         text = text.substring(unlikely.length);

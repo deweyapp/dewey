@@ -8,7 +8,7 @@ function(_, $) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine, $routeParams) {
 
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -31,8 +31,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
   $scope.hideTopLevelFolders = false;
   $scope.showThumbnails = true;
-
-
 
   // Auto add showing bookmarks when user scroll to page down
   var loadMorePlaceholder = $('#loadMorePlaceholder').get(0);
@@ -149,12 +147,16 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
       // ARG: improve in future
       // applyTagsAsString(bookmarks);
+      
+      if(!_.isUndefined($routeParams.search)){
+        $scope.searchText = $routeParams.search;
+      }
 
       $scope.$apply();
       countItemsPerRow();
     }.bind(this));
   }.bind(this);
-  loadBookmarks();
+  
 
   // var applyTagsAsString = function(bookmarks){
 
@@ -294,6 +296,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $( ".settings" ).toggleClass( "open" );
     $( "body" ).toggleClass( "no-scroll" );
   };
+
+  $scope.init = function(){
+      loadBookmarks();
+  };
+
+  $scope.init();
 };
 
 return [
@@ -303,6 +311,7 @@ return [
   'bookmarksStorage',
   'appSettings',
   'booleanSearchEngine',
+  '$routeParams',
   MainController
 ];
 
