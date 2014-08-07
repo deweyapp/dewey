@@ -1,5 +1,5 @@
 var resultsList = [],
-    unlikely = "dewey";
+    unlikely = "dewey:";
 
 // Return the suggestions
 chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
@@ -7,6 +7,10 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
     chrome.bookmarks.search(text, function(searchResults) {
 
         resultsList = [];
+        resultsList.push({
+            content: text,
+            description: 'Search Dewey for: ' + text
+        });
 
         for (var i = 0; i < searchResults.length; i++) {
 
@@ -33,13 +37,25 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
 
 chrome.omnibox.onInputEntered.addListener( function(text) {
 
-    // If text doesn't have unlikely prepended its the stupid default
+    // If text doesn't have unlikely prepended its the default
     if(text.substring(0, unlikely.length) !== unlikely) {
         text = resultsList[0].content;
-        chrome.tabs.update({ url: chrome.extension.getURL('app.html') + '/github' });
+
+        alert(text);
+        chrome.tabs.update({ url: chrome.extension.getURL('app.html') + '?' + text });
     }
+    else{
+        text = text.substring(unlikely.length);
 
-    text = text.substring(unlikely.length); // Trim the unlikely string
-
-    chrome.tabs.update({ url: text });
+        chrome.tabs.update({ url: text });
+    }
 });
+
+
+
+
+
+
+
+
+
