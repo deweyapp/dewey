@@ -24,7 +24,7 @@ var myUpdateBackgroundFactory = function(appSettings) {
           backgrounds.push(
             'url(\'http://api.snapito.io/v2/webshot/spu-611151-o3bp-du0ixqlrpknnlggm?url=' +
               encodeURIComponent(scope.bookmark.url) +
-              '&delay=1&width=250\')'
+              '&size=250x188&screen=1000x752&quality=low&type=jpg\')'
           );
         }
 

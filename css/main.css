@@ -675,19 +675,26 @@ label.css-label {
 
 .thumbnail-loading,
 .thumbnail {
-  -webkit-filter: brightness(0.8);
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
   height: 9.375rem; }
 
 .thumbnail-loading {
-  background-size: 24px 24px !important; }
+  background-size: 24px 24px !important;
+  background-position: center !important; }
 
 /* Forcing Cover and Hiding Backface Keeps Transitions Smooth */
 
 .thumbnail {
-  background-size: cover !important;
-  -webkit-backface-visibility: hidden; }
+  background-size: cover !important; }
+
+.thumbnail:after,
+.thumbnail-loading:after {
+  background: rgba(36, 45, 50, 0.2);
+  display: block;
+  height: 100%;
+  width: 100%;
+  content: ""; }
 
 /*====================================================
     Styles for Hide Thumbnails Option
@@ -698,8 +705,7 @@ label.css-label {
 
 .panel-small .thumbnail-loading,
 .panel-small .thumbnail {
-  height: 1.75rem;
-  -webkit-filter: brightness(0.85); }
+  height: 1.75rem; }
 
 .panel-small:after {
   top: 1.75rem; }
