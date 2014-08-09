@@ -495,7 +495,7 @@ label.css-label {
   -webkit-transform: scale(0.25);
   background: #242d32;
   border-radius: 3px;
-  box-shadow: 0 0 20px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 16px 0 rgba(36, 45, 50, 0.15);
   color: white;
   left: 2rem;
   list-style: none;
@@ -552,29 +552,11 @@ label.css-label {
   display: inline-block;
   list-style: none;
   margin: 1rem;
-  position: relative;
-  top: 0;
-  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 25ms linear;
   vertical-align: top;
-  width: 12.5rem;
-  -webkit-backface-visibility: hidden; }
+  width: 12.5rem;}
 
 .list-bookmarks li:active {
-  -webkit-transform: scale(.98);
-  -webkit-backface-visibility: hidden; }
-
-.list-bookmarks li:before {
-  background: #f1815f;
-  bottom: 0;
-  content: " ";
-  display: inline-block;
-  height: 1rem;
-  position: absolute;
-  width: 12.5rem; }
-
-.list-bookmarks li:hover,
-.list-bookmarks li.panel-primary {
-  top: -.2rem;}
+  -webkit-transform: scale(.99);}
 
 /* Grid Panel Animation */
 
@@ -586,21 +568,39 @@ label.css-label {
     Link Panels
 ====================================================*/
 
-.panel {
+.card {
+  border-radius: 3px;
+  box-shadow: 0 2px 4px -2px rgba(36, 45, 50, 0.2);
   overflow: hidden;
-  -webkit-transform: scale(1); }
-
-.panel,
-.panel-primary {
   position: relative;
   top: 0;
-  transition: top 200ms cubic-bezier(0.65, 0, 0.75, 1); }
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden !important;
+  transition: box-shadow 300ms cubic-bezier(0.65, -1, 0.25, 2.5),
+              top 300ms cubic-bezier(0.65, -1, 0.25, 2.5); }
 
-.panel:hover,
-.panel-primary {
-  top: -.45rem; }
+.card:hover,
+.card-primary {
+  top: -0.3rem;
+  box-shadow: 0 10px 16px -4px rgba(36, 45, 50, 0.15); }
 
-.panel:focus {
+.card:before {
+  background: #F18260;
+  bottom: 0;
+  content: " ";
+  display: inline-block;
+  height: 0.25rem;
+  position: absolute;
+  -webkit-transform: scaleY(0);
+  transform-origin: bottom;
+  transition: -webkit-transform 300ms cubic-bezier(0.65, -1, 0.25, 3);
+  width: 12.5rem;
+  z-index: 7020; }
+
+.card-primary:before {
+  -webkit-transform: scaleY(1); }
+
+.card:focus {
   outline: none; }
 
 /*====================================================
@@ -618,10 +618,10 @@ label.css-label {
   z-index: 7010; }
 
 /*====================================================
-    Quick Delete Rollover X Button
+    Quick Delete Rollover X Button - NEEDS TO BE REVISED without using .card:before
 ====================================================*/
 
-/*.panel:before {
+/*.card:before; {
   content: url(../images/quick-delete.svg);
   height: 2rem;
   position: absolute;
@@ -632,10 +632,14 @@ label.css-label {
   top: 0;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
-  transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }*/
+  transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
+
+.card:hover:before {
+  opacity: 1;
+  -webkit-transform: translateY(0); }*/
 
 /*====================================================
-    Transparent Element to Hold Delete Function
+    Empty Element to Hold Delete Function
 ====================================================*/
 
 /*.quick-delete {
@@ -653,7 +657,7 @@ label.css-label {
     Edit Rollover Icon
 ====================================================*/
 
-.panel:after {
+.card:after {
   content: url(../images/edit-gray.svg);
   height: 2rem;
   opacity: 0;
@@ -664,8 +668,7 @@ label.css-label {
   -webkit-transform: translateY(1rem);
   transition: opacity 200ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
 
-.panel:hover:before,
-.panel:hover:after {
+.card:hover:after {
   opacity: 1;
   -webkit-transform: translateY(0); }
 
@@ -700,17 +703,17 @@ label.css-label {
     Styles for Hide Thumbnails Option
 ====================================================*/
 
-.panel-small .thumbnail-loading {
+.card-small .thumbnail-loading {
   background-size: 18px 18px !important; }
 
-.panel-small .thumbnail-loading,
-.panel-small .thumbnail {
+.card-small .thumbnail-loading,
+.card-small .thumbnail {
   height: 1.75rem; }
 
-.panel-small:after {
+.card-small:after {
   top: 1.75rem; }
 
-.panel-small .edit-toggle {
+.card-small .edit-toggle {
   top: 1.75rem; }
 
 /*====================================================
@@ -721,7 +724,7 @@ label.css-label {
   background: white url(../images/pdf.svg) !important;
   background-position: center !important; }
 
-.panel-small .thumbnail[title$=".pdf"] {
+.card-small .thumbnail[title$=".pdf"] {
   background: #f1815f !important; }
 
 .favicon[src$=".pdf?defaulticon=lightpng"] {
@@ -736,8 +739,8 @@ label.css-label {
   background: url(../images/chrome.svg) !important;
   background-position: center !important; }
 
-.panel-small .thumbnail[title*="chrome://"],
-.panel-small .thumbnail[title*="chrome-extension://"] {
+.card-small .thumbnail[title*="chrome://"],
+.card-small .thumbnail[title*="chrome-extension://"] {
   background: #f1815f !important; }
 
 .favicon[src*="chrome://"],
@@ -753,7 +756,7 @@ label.css-label {
   -webkit-filter: brightness(1) !important;
   background-size: 12.5rem 9.375rem !important; }
 
-.panel-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
+.card-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   background: #242d32 !important; }
 
 .favicon[src*="aahpfefkmihhdabllidnlipghcjgpkdm"] {

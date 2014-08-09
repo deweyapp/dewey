@@ -77,11 +77,9 @@
     </ul>
 
     <ul class="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}"
-          ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)"
-          ng-cloak>
+      <li ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)" ng-cloak>
 
-        <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
+        <div class="card" ng-class="{'card-primary': ($index == selectedIndex), 'card-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
           <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
           <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
@@ -100,7 +98,7 @@
             </div><!-- tags -->
 
           </div><!-- details -->
-        </div><!-- panel -->
+        </div><!-- card -->
       </li><!-- bookmarks in bookmarks -->
     </ul><!-- list-bookmarks -->
   </div><!-- grid -->
