@@ -58,7 +58,7 @@ html {
   font-size: 100%; }
 
 body {
-  color: rgba(36, 45, 50, 0.33);
+  color: rgba(36, 45, 50, 0.3);
   font-family: 'Source Sans Pro', sans-serif;
   padding-top: 3.125rem;
   padding-bottom: 20rem; }
@@ -67,7 +67,7 @@ body {
   overflow: hidden; }
 
 ::selection {
-  background: #f1815f;
+  background: rgba(241, 129, 95, 1);
   color: white; }
 
 ol, ul {
@@ -212,11 +212,11 @@ input[type="search"]::-webkit-search-cancel-button {
 /* Highlights Matching Letters in Results */
 
 strong {
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
 .active {
   background: rgba(255, 255, 255, 0.075);
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
 /*====================================================
     Animating Results as they generate
@@ -254,7 +254,7 @@ strong {
   background: rgba(255, 255, 255, 0.15); }
 
 .typeahead-dropdown::-webkit-scrollbar-thumb {
-  background: #F18260; }
+  background: rgba(241, 129, 95, 1); }
 
 /*====================================================
     Settings Overlay Menu
@@ -263,7 +263,7 @@ strong {
 .settings-toggle {
   -webkit-animation: slide-left 500ms cubic-bezier(0.65, -1, 0.25, 1.75);
   -webkit-filter: saturate(0);
-  background: #f6f9f9 url(../images/settings.svg) no-repeat center;
+  background: rgba(36, 45, 50, 0.05) url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
@@ -271,11 +271,13 @@ strong {
   position: fixed;
   right: -3px;
   top: 0;
-  transition: -webkit-filter 200ms ease-in-out;
+  transition: -webkit-filter 100ms ease-in-out, background-size 200ms cubic-bezier(0.65, -0.5, 0.25, 1.75);
   width: 3.125rem;
   z-index: 9010; }
 
 .settings-toggle:hover {
+  background-color: rgba(36, 45, 50, 0.1);
+  background-size: 1.4rem 1.4rem;
   -webkit-filter: saturate(1); }
 
 .settings {
@@ -381,7 +383,7 @@ strong {
   content: url(../images/link.svg); }
 
 .important {
-  color: #F18260 !important;
+  color: rgba(241, 129, 95, 1) !important;
   font-weight: 400; }
 
 /*====================================================
@@ -442,19 +444,20 @@ label.css-label {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   text-align: right; }
 
+.sort p {
+  color: rgba(36, 45, 50, 0.8); }
+
 .sort p, .sort a {
-  color: rgba(36, 45, 50, 0.8);
   display: inline-block;
   list-style: none;
   margin-right: 1rem; }
 
 .sort a {
-  color: rgba(36, 45, 50, 0.3);
   cursor: pointer;
   transition: color 250ms ease; }
 
 .sort a:hover, .sort a:focus {
-  color: #f1815f;
+  color: rgba(241, 129, 95, 1);
   outline: none; }
 
 .sort-active {
@@ -493,7 +496,7 @@ label.css-label {
 .tags-list {
   -webkit-transform-origin: top left;
   -webkit-transform: scale(0.25);
-  background: #242d32;
+  background: rgba(36, 45, 50, 1);
   border-radius: 3px;
   box-shadow: 0 10px 16px 0 rgba(36, 45, 50, 0.15);
   color: white;
@@ -521,7 +524,7 @@ label.css-label {
 .tags-list > li > a:hover,
 .tags-list > li > a:focus {
   background: rgba(255, 255, 255, 0.05);
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
 /*====================================================
     Tags Dropdown Scrollbar
@@ -534,7 +537,7 @@ label.css-label {
   background: rgba(255, 255, 255, 0.15); }
 
 .tags-list::-webkit-scrollbar-thumb {
-  background: #F18260; }
+  background: rgba(241, 129, 95, 1); }
 
 /*====================================================
     Link Panel Grid Layout
@@ -585,7 +588,7 @@ label.css-label {
   box-shadow: 0 10px 16px -4px rgba(36, 45, 50, 0.15); }
 
 .card:before {
-  background: #F18260;
+  background: rgba(241, 129, 95, 1);
   bottom: 0;
   content: " ";
   display: inline-block;
@@ -725,7 +728,7 @@ label.css-label {
   background-position: center !important; }
 
 .card-small .thumbnail[title$=".pdf"] {
-  background: #f1815f !important; }
+  background: rgba(241, 129, 95, 1) !important; }
 
 .favicon[src$=".pdf?defaulticon=lightpng"] {
   content: url(../images/link.svg); }
@@ -741,7 +744,7 @@ label.css-label {
 
 .card-small .thumbnail[title*="chrome://"],
 .card-small .thumbnail[title*="chrome-extension://"] {
-  background: #f1815f !important; }
+  background: rgba(241, 129, 95, 1) !important; }
 
 .favicon[src*="chrome://"],
 .favicon[src*="chrome-extension://"] {
@@ -757,7 +760,7 @@ label.css-label {
   background-size: 12.5rem 9.375rem !important; }
 
 .card-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
-  background: #242d32 !important; }
+  background: rgba(36, 45, 50, 1); !important; }
 
 .favicon[src*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   content: url(http://deweyapp.io/images/favicon.png); }
@@ -775,7 +778,7 @@ label.css-label {
   width: 100%; }
 
 .details h2 {
-  color: #545454;
+  color: rgba(36, 45, 50, 0.8);
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   overflow: hidden;
@@ -797,7 +800,8 @@ label.css-label {
   z-index: 7020; }
 
 .tag-links a {
-  color: #bababa;
+  color: rgba(36, 45, 50, 0.35);
+  font-weight: 600;
   cursor: pointer;
   display: inline-block;
   font-size: 0.75rem;
@@ -806,11 +810,10 @@ label.css-label {
   transition: color 250ms ease; }
 
 .tag-links a:hover {
-  color: #f1815f;
-  text-decoration: underline; }
+  color: rgba(241, 129, 95, 1); }
 
 .tag-links .badge-custom {
-  color: #787878; }
+  color: rgba(36, 45, 50, 0.7); }
 
 /*====================================================
     Edit Modal
@@ -836,7 +839,7 @@ label.css-label {
   overflow: hidden; }
 
 .modal {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.85);
   bottom: 0;
   display: block;
   left: 0;
@@ -880,7 +883,7 @@ label.css-label {
   -webkit-appearance: none;
   background: transparent;
   border: none;
-  color: #242d32;
+  color: rgba(36, 45, 50, 1);
   cursor: url(../images/edit-gray.svg);
   font: 700 2.35rem/1 "Source Sans Pro";
   margin-bottom: .75rem;
@@ -896,7 +899,7 @@ label.css-label {
 .title-input:focus,
 .url-input:focus {
   background: transparent;
-  color: #f1815f;
+  color: rgba(241, 129, 95, 1);
   outline: none; }
 
 .title-input::-webkit-input-placeholder {
@@ -910,7 +913,7 @@ label.css-label {
   width: 3px; }
 
 .title-input::-webkit-scrollbar-thumb:vertical {
-  background-color: #F18260; }
+  background-color: rgba(241, 129, 95, 1); }
 
 /*====================================================
     URL Input
@@ -962,8 +965,8 @@ label.css-label {
 .custom-tag-input input {
   background: transparent;
   border-radius: 3px;
-  border: 3px solid #242d32;
-  color: #242d32;
+  border: 3px solid rgba(36, 45, 50, 1);
+  color: rgba(36, 45, 50, 1);
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
@@ -977,11 +980,11 @@ label.css-label {
   white-space: nowrap; }
 
 .custom-tag-input input:focus {
-  border: 3px solid #f1815f; }
+  border: 3px solid rgba(241, 129, 95, 1); }
 
 .custom-tag-input input::-webkit-input-placeholder {
   -webkit-transform: translateY(2px);
-  color: #242d32;
+  color: rgba(36, 45, 50, 0.7);
   transition: color 200ms ease; }
 
 .custom-tag-input input:focus::-webkit-input-placeholder {
@@ -1016,7 +1019,7 @@ label.css-label {
   background: transparent;
   border-radius: 3px;
   border: 1px solid rgba(36, 45, 50, 0.25);
-  color: #242d32;
+  color: rgba(36, 45, 50, 1);
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
@@ -1045,7 +1048,7 @@ label.css-label {
   display: inline; }
 
 .custom-tag {
-  background-color: #242d32 !important;
+  background-color: rgba(36, 45, 50, .9) !important;
   color: white;
   cursor: default;
   -webkit-animation: scale-up 200ms cubic-bezier(0.65, 0, 0.75, 1.5); }
@@ -1078,7 +1081,7 @@ label.css-label {
 
 .save {
   -webkit-transform-origin: center;
-  background: #f1815f;
+  background: rgba(241, 129, 95, 1);
   border-radius: 3px;
   color: white;
   display: inline-block;

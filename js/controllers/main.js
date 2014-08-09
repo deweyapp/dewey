@@ -11,7 +11,7 @@ function(_, $) { 'use strict';
 var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine) {
 
   // Constant: default value of how many items we want to display on main page.
-  var defaultTotalDisplayed = 20;
+  var defaultTotalDisplayed = 15;
 
   $scope.searchText = ''; // Search text
   $scope.bookmarks = []; // All bookmarks
