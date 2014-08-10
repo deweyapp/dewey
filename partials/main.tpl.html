@@ -81,8 +81,8 @@
 
         <div class="card" ng-class="{'card-primary': ($index == selectedIndex), 'card-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
-          <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
-          <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
+          <div class="edit-toggle" ng-click="editBookmark(bookmark)"></div>
+          <a class="bookmark-link" href="{{bookmark.url}}"></a>
 
           <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}"></div>
 
@@ -93,7 +93,7 @@
 
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
-                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)" title="Search Tag">{{tag.text}}</a>
+                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
               </span>
             </div><!-- tags -->
 
