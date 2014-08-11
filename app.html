@@ -4,15 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="images/favicon.png" rel="shortcut icon">
-    
+
     <title>Dewey</title>
 
-    <link rel='stylesheet' href='css/style.css'>
-    <script src='bower_components/requirejs/require.js'></script>
-    <script src='js/startup.js'></script>
+    <link rel='stylesheet' href='css/main.css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+    <script data-main='js/startup' src='bower_components/requirejs/require.js'></script>
+
+    <script id="template/typeahead/typeahead-popup.html" type="text/ng-template">
+      <ul class="typeahead-dropdown" ng-style="{display: isOpen()&&'block' || 'none'}">
+        <li class="results-item" ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+            <div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+        </li>
+      </ul>
+    </script>
+
+    <script id="template/modal/window.html" type="text/ng-template">
+      <div tabindex="-1" class="modal fade {{ windowClass }}" ng-class="{in: animate}" ng-click="close($event)">
+          <div class="modal-dialog" ng-transclude></div>
+      </div>
+    </script>
+
   </head>
   <body>
-    <div ui-view></div>
+    <div ng-view></div>
     <div class="row" id="loadMorePlaceholder" />
   </body>
 </html>

@@ -4,7 +4,7 @@ zip -r webstore/published/dewey\($(date +"%F")\).zip ./ \
   -i css/*.css \
   -i images/* \
   -i bower_components/angular/angular.min.js \
-  -i bower_components/angular-ui-router/release/angular-ui-router.min.js \
+  -i bower_components/angular-route/angular-route.min.js \
   -i bower_components/jquery/jquery.min.js \
   -i bower_components/bootstrap/dist/js/bootstrap.min.js \
   -i bower_components/requirejs/require.js \
