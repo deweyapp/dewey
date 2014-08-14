@@ -123,7 +123,8 @@ body canvas {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-origin: bottom;
   -webkit-backface-visibility: hidden;
-  z-index: 7000; }
+  z-index: 7000;
+  -webkit-will-change: -webkit-transform, -webkit-filter; }
 
 /* Effect for Edit Modal Background */
 
@@ -430,7 +431,7 @@ label.css-label {
 .open .col-1 li,
 .open .col-2 div {
   -webkit-animation: slide-far-left ease-out;
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-will-change: -webkit-transform; }
 
 .open .col-1 li:nth-child(1),
 .open .col-2 div:nth-child(1) {
@@ -576,7 +577,8 @@ label.css-label {
   list-style: none;
   margin: 1rem;
   vertical-align: top;
-  width: 12.5rem;}
+  width: 12.5rem;
+  -webkit-will-change: -webkit-transform, opacity; }
 
 .list-bookmarks li:active {
   -webkit-transform: scale(.99);}
@@ -600,7 +602,8 @@ label.css-label {
   -webkit-transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden !important;
   transition: box-shadow 300ms cubic-bezier(0.65, -1, 0.25, 2.5),
-              top 300ms cubic-bezier(0.65, -1, 0.25, 2.5); }
+              top 300ms cubic-bezier(0.65, -1, 0.25, 2.5);
+  -webkit-will-change: -webkit-transform, box-shadow; }
 
 .card:hover,
 .card-primary {
