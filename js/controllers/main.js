@@ -72,7 +72,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
 
     var updated = false;
-    if (e.which == 13 && (e.ctrlKey||e.metaKey)) { // Cmd/Ctrl + Enter press on page - open link in new window
+    if (e.which == 13) { // Cmd/Ctrl + Enter press on page - open link in new window
       _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
 
       // If first pattern is not our filter let's assume that user wants to search on this domain
