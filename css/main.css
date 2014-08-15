@@ -1,10 +1,52 @@
 @charset "UTF-8";
 
-/*-----------------------------
-  Global
------------------------------*/
+/*====================================================
+  Table of Contents
+====================================================*/
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400,700);
+/*
+  - Global
+  - Color Thief
+  - Animations
+  - Grid
+  - Search
+  - Typeahead Styling
+  - Animating Results as they generate
+  - Custom Scrollbars for search results
+  - Settings Overlay Menu
+  - Settings & Link Icons
+  - Custom Checkboxes
+  - Settings List Animation
+  - Sort
+  - Tags Dropdown
+  - Tags Dropdown Scrollbar
+  - Link Panel Grid Layout
+  - Link Panels
+  - Transparent Element to Hold Link
+  - Quick Delete Rollover X Button
+  - Transparent Element to Hold Delete Function
+  - Edit Rollover Icon
+  - Thumbnail / Screenshot
+  - Styles for Hide Thumbnails Option
+  - Special Styles for Links to PDFs
+  - Special Styles for Links to local Chrome urls
+  - Special Styles for Links to Dewey
+  - Link Details
+  - Link Tags
+  - Edit Modal
+  - Bookmark Title
+  - Title Textarea Scrollbar
+  - URL Input
+  - Bootstrap Tags Input
+  - Folders as Tags
+  - Custom Tags
+  - Buttons
+  - Media Queries
+*/
+
+/*====================================================
+  Global
+====================================================*/
 
 * {
   box-sizing: border-box;
@@ -16,7 +58,7 @@ html {
   font-size: 100%; }
 
 body {
-  color: rgba(36, 45, 50, 0.33);
+  color: rgba(36, 45, 50, 0.3);
   font-family: 'Source Sans Pro', sans-serif;
   padding-top: 3.125rem;
   padding-bottom: 20rem; }
@@ -25,22 +67,22 @@ body {
   overflow: hidden; }
 
 ::selection {
-  background: #f1815f;
+  background: rgba(241, 129, 95, 1);
   color: white; }
 
 ol, ul {
   list-style: none; }
 
-/*-----------------------------
+/*====================================================
   Color Thief
------------------------------*/
+====================================================*/
 
 body canvas {
   display: none; }
 
-/*-----------------------------
+/*====================================================
   Animations
------------------------------*/
+====================================================*/
 
 @-webkit-keyframes fade-in {
   from { opacity: 0; }
@@ -70,9 +112,9 @@ body canvas {
   from { -webkit-transform: scale(0); }
   to { -webkit-transform: scale(1); }}
 
-/*-----------------------------
-  Grid
------------------------------*/
+/*====================================================
+    Grid
+====================================================*/
 
 .grid {
   margin: 3.25rem auto 0;
@@ -81,7 +123,8 @@ body canvas {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-origin: bottom;
   -webkit-backface-visibility: hidden;
-  z-index: 7000; }
+  z-index: 7000;
+  -webkit-will-change: -webkit-transform, -webkit-filter; }
 
 /* Effect for Edit Modal Background */
 
@@ -89,9 +132,9 @@ body canvas {
   -webkit-filter: blur(7px);
   -webkit-transform: scale(.98); }
 
-/*-----------------------------
-  Search
------------------------------*/
+/*====================================================
+    Search
+====================================================*/
 
 .nav-wrap {
   -webkit-animation: fade-in-down 300ms ease-in-out;
@@ -116,6 +159,7 @@ body canvas {
   -webkit-appearance: none;
   background: url(../images/search.svg) no-repeat;
   background-position: 1rem 1rem;
+  background-size: 1.3rem;
   border: none;
   font: 400 1.35rem 'Source Sans Pro', sans-serif;
   height: 3.125rem;
@@ -139,9 +183,9 @@ input[type="search"]::-webkit-search-cancel-button {
   .search-group input[type="search"] {
     width: 80%; } }
 
-/*-----------------------------
-  Typeahead Styling
------------------------------*/
+/*====================================================
+    Typeahead Styling
+====================================================*/
 
 .typeahead-dropdown {
   background-color: rgba(36, 45, 50, 0.95);
@@ -170,15 +214,15 @@ input[type="search"]::-webkit-search-cancel-button {
 /* Highlights Matching Letters in Results */
 
 strong {
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
 .active {
   background: rgba(255, 255, 255, 0.075);
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
-/*-----------------------------
-  Animating Results as they generate
------------------------------*/
+/*====================================================
+    Animating Results as they generate
+====================================================*/
 
 .results-item {
   -webkit-animation: fade-in-up ease-out; }
@@ -201,9 +245,9 @@ strong {
 .results-item:nth-child(6) {
   -webkit-animation-duration: 140ms; }
 
-/*-----------------------------
-  Custom Scrollbars for search results
------------------------------*/
+/*====================================================
+    Custom Scrollbars for search results
+====================================================*/
 
 .typeahead-dropdown::-webkit-scrollbar {
   width: 3px; }
@@ -212,16 +256,16 @@ strong {
   background: rgba(255, 255, 255, 0.15); }
 
 .typeahead-dropdown::-webkit-scrollbar-thumb {
-  background: #F18260; }
+  background: rgba(241, 129, 95, 1); }
 
-/*-----------------------------
-  Settings Overlay Menu
------------------------------*/
+/*====================================================
+    Settings Overlay Menu
+====================================================*/
 
 .settings-toggle {
   -webkit-animation: slide-left 500ms cubic-bezier(0.65, -1, 0.25, 1.75);
   -webkit-filter: saturate(0);
-  background: #f6f9f9 url(../images/settings.svg) no-repeat center;
+  background: rgba(36, 45, 50, 0.05) url(../images/settings.svg) no-repeat center;
   background-size: 1.25rem 1.25rem;
   cursor: pointer;
   display: block;
@@ -229,12 +273,33 @@ strong {
   position: fixed;
   right: -3px;
   top: 0;
-  transition: -webkit-filter 200ms ease-in-out;
   width: 3.125rem;
-  z-index: 9010; }
+  z-index: 9010;
+  transition: -webkit-filter 200ms ease-in-out,
+              width 300ms 150ms cubic-bezier(0.65, -1, 0.25, 1.75),
+              background-position 300ms 150ms cubic-bezier(0.65, -1, 0.25, 1.75); }
 
 .settings-toggle:hover {
-  -webkit-filter: saturate(1); }
+  width: 6.5rem;
+  -webkit-filter: saturate(1);
+  background-position: 15% center; }
+
+.settings-toggle:after {
+  content: "Settings";
+  margin-left: 2.5rem;
+  line-height: 3rem;
+  font-size: .9rem;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateX(5rem);
+  transition: -webkit-transform 300ms 150ms cubic-bezier(0.65, -1, 0.25, 1.5),
+              opacity 300ms 150ms ease,
+              visibility 300ms 150ms ease; }
+
+.settings-toggle:hover:after {
+  -webkit-transform: translateX(0);
+  visibility: visible;
+  opacity: 1; }
 
 .settings {
   background: rgba(36, 45, 50, 0.95);
@@ -249,7 +314,9 @@ strong {
   z-index: 9020;
   -webkit-transform-origin: center;
   -webkit-transform: scale(0.8);
-  transition: opacity 200ms ease, visibility 200ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0, 1); }
+  transition: opacity 200ms ease, visibility 200ms ease,
+              -webkit-transform 200ms cubic-bezier(0, 0, 0, 1);
+  -webkit-will-change: opacity, visibility, -webkit-transform; }
 
 .open {
   -webkit-transform: scale(1);
@@ -284,7 +351,7 @@ strong {
 .settings ul li,
 .checkbox label,
 .checkbox input,
-.screenshots {
+.credits {
   cursor: pointer;
   color: white;
   font-size: 1.125rem;
@@ -292,17 +359,24 @@ strong {
   line-height: 6vh;
   vertical-align: middle; }
 
-.screenshots {
+.credits {
   cursor: default;
+  vertical-align: bottom; }
+
+.makers {
+  font-size: 80%;
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
 }
 
 .settings a {
   color: white;
   text-decoration: none; }
 
-/*-----------------------------
-  Settings & Link Icons
------------------------------*/
+/*====================================================
+    Settings & Link Icons
+====================================================*/
 
 .docs:before,
 .feedback:before,
@@ -331,16 +405,13 @@ strong {
 .website:before {
   content: url(../images/link.svg); }
 
-.screenshots {
-  vertical-align: bottom; }
-
 .important {
-  color: #f1815f !important;
+  color: rgba(241, 129, 95, 1) !important;
   font-weight: 400; }
 
-/*-----------------------------
-  Custom Checkboxes
------------------------------*/
+/*====================================================
+    Custom Checkboxes
+====================================================*/
 
 input[type=checkbox].css-checkbox {
   display: none; }
@@ -355,14 +426,14 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 label.css-label {
   background: url(../images/checkbox.svg) 0 -2px no-repeat; }
 
-/*-----------------------------
-  Settings List Animation
------------------------------*/
+/*====================================================
+    Settings List Animation
+====================================================*/
 
 .open .col-1 li,
 .open .col-2 div {
   -webkit-animation: slide-far-left ease-out;
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-will-change: -webkit-transform; }
 
 .open .col-1 li:nth-child(1),
 .open .col-2 div:nth-child(1) {
@@ -388,35 +459,36 @@ label.css-label {
 .open .col-2 div:nth-child(6) {
   -webkit-animation-duration: 300ms; }
 
-/*-----------------------------
-  Sort
------------------------------*/
+/*====================================================
+    Sort
+====================================================*/
 
 .sort {
   font: 400 .85rem/1rem 'Source Sans Pro', sans-serif;
   text-align: right; }
 
+.sort p {
+  color: rgba(36, 45, 50, 0.8); }
+
 .sort p, .sort a {
-  color: rgba(36, 45, 50, 0.8);
   display: inline-block;
   list-style: none;
   margin-right: 1rem; }
 
 .sort a {
-  color: rgba(36, 45, 50, 0.3);
   cursor: pointer;
   transition: color 250ms ease; }
 
 .sort a:hover, .sort a:focus {
-  color: #f1815f;
+  color: rgba(241, 129, 95, 1);
   outline: none; }
 
 .sort-active {
   border-bottom: 1px solid; }
 
-/*-----------------------------
-  Tags Dropdown
------------------------------*/
+/*====================================================
+    Tags Dropdown
+====================================================*/
 
 .tags-wrap {
   float: left;
@@ -447,9 +519,9 @@ label.css-label {
 .tags-list {
   -webkit-transform-origin: top left;
   -webkit-transform: scale(0.25);
-  background: #242d32;
+  background: rgba(36, 45, 50, 1);
   border-radius: 3px;
-  box-shadow: 0 0 20px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 16px 0 rgba(36, 45, 50, 0.15);
   color: white;
   left: 2rem;
   list-style: none;
@@ -475,11 +547,11 @@ label.css-label {
 .tags-list > li > a:hover,
 .tags-list > li > a:focus {
   background: rgba(255, 255, 255, 0.05);
-  color: #f1815f; }
+  color: rgba(241, 129, 95, 1); }
 
-/*-----------------------------
-  Tags Dropdown Scrollbar
------------------------------*/
+/*====================================================
+    Tags Dropdown Scrollbar
+====================================================*/
 
 .tags-list::-webkit-scrollbar {
   width: 3px; }
@@ -488,43 +560,30 @@ label.css-label {
   background: rgba(255, 255, 255, 0.15); }
 
 .tags-list::-webkit-scrollbar-thumb {
-  background: #F18260; }
+  background: rgba(241, 129, 95, 1); }
 
-/*-----------------------------
-  Link Panel Grid Layout
------------------------------*/
+/*====================================================
+    Link Panel Grid Layout
+====================================================*/
 
 .list-bookmarks {
   font-size: 0;
-  margin-top: 2.25rem; }
+  margin-top: 2.25rem;
+  -webkit-transform: translate3d(0,0,0); } /*hack to keep keyboard navigation from making grid choppy*/
 
 .list-bookmarks li {
   -webkit-animation: fade-in-up 300ms ease;
   background: transparent;
   display: inline-block;
+  -webkit-transform: translate3d(0,0,0);
   list-style: none;
   margin: 1rem;
-  position: relative;
-  top: 0;
-  transition: top 300ms cubic-bezier(0.65, -1, 0.25, 2.5), -webkit-transform 50ms ease;
   vertical-align: top;
-  width: 12.5rem; }
+  width: 12.5rem;
+  -webkit-will-change: -webkit-transform, opacity; }
 
 .list-bookmarks li:active {
-  -webkit-transform: scale(0.99); }
-
-.list-bookmarks li:before {
-  background: #f1815f;
-  bottom: 0;
-  content: " ";
-  display: inline-block;
-  height: 1rem;
-  position: absolute;
-  width: 12.5rem; }
-
-.list-bookmarks li:hover,
-.list-bookmarks li.panel-primary {
-  top: -.2rem; }
+  -webkit-transform: scale(.99);}
 
 /* Grid Panel Animation */
 
@@ -532,30 +591,50 @@ label.css-label {
 .list-bookmarks li:nth-child(5n+1) {
   -webkit-animation-duration: 500ms; }
 
-/*-----------------------------
-  Link Panels
------------------------------*/
+/*====================================================
+    Link Panels
+====================================================*/
 
-.panel {
+.card {
+  border-radius: 3px;
+  box-shadow: 0 2px 4px -2px rgba(36, 45, 50, 0.2);
   overflow: hidden;
-  -webkit-transform: scale(1); }
-
-.panel,
-.panel-primary {
   position: relative;
   top: 0;
-  transition: top 200ms cubic-bezier(0.65, 0, 0.75, 1); }
+  -webkit-transform: translateY(0);
+  -webkit-backface-visibility: hidden !important;
+  transition: box-shadow 300ms cubic-bezier(0.65, -1, 0.25, 2.5),
+              -webkit-transform 300ms cubic-bezier(0.65, -1, 0.25, 2.5);
+  -webkit-will-change: -webkit-transform, box-shadow; }
 
-.panel:hover,
-.panel-primary {
-  top: -.45rem; }
+.card:hover,
+.card-primary {
+  -webkit-transform: translateY(-0.3rem);
+  box-shadow: 0 10px 16px -4px rgba(36, 45, 50, 0.15); }
 
-.panel:focus {
+.card:before {
+  background: rgba(241, 129, 95, 1);
+  bottom: 0;
+  content: " ";
+  display: inline-block;
+  height: 0.25rem;
+  position: absolute;
+  -webkit-transform: scaleY(0);
+  transform-origin: bottom;
+  transition: -webkit-transform 300ms cubic-bezier(0.65, -1, 0.25, 3);
+  width: 12.5rem;
+  z-index: 7020;
+  -webkit-will-change: -webkit-transform; }
+
+.card-primary:before {
+  -webkit-transform: scaleY(1); }
+
+.card:focus {
   outline: none; }
 
-/*-----------------------------
- Transparent Element to Hold Link
------------------------------*/
+/*====================================================
+    Transparent Element to Hold Link
+====================================================*/
 
 .bookmark-link {
   bottom: 0;
@@ -567,11 +646,11 @@ label.css-label {
   top: 0;
   z-index: 7010; }
 
-/*-----------------------------
- Quick Delete Rollover X Button
------------------------------*/
+/*====================================================
+    Quick Delete Rollover X Button - NEEDS TO BE REVISED without using .card:before
+====================================================*/
 
-/*.panel:before {
+/*.card:before; {
   content: url(../images/quick-delete.svg);
   height: 2rem;
   position: absolute;
@@ -582,11 +661,15 @@ label.css-label {
   top: 0;
   width: 2rem;
   -webkit-transform: translateY(-2rem);
-  transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }*/
+  transition: opacity 400ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
 
-/*-----------------------------
- Transparent Element to Hold Delete Function
------------------------------*/
+.card:hover:before {
+  opacity: 1;
+  -webkit-transform: translateY(0); }*/
+
+/*====================================================
+    Empty Element to Hold Delete Function
+====================================================*/
 
 /*.quick-delete {
   height: 2rem;
@@ -599,11 +682,11 @@ label.css-label {
   top: 0;
   width: 2rem; }*/
 
-/*-----------------------------
-  Edit Rollover Icon
------------------------------*/
+/*====================================================
+    Edit Rollover Icon
+====================================================*/
 
-.panel:after {
+.card:after {
   content: url(../images/edit-gray.svg);
   height: 2rem;
   opacity: 0;
@@ -614,98 +697,103 @@ label.css-label {
   -webkit-transform: translateY(1rem);
   transition: opacity 200ms ease, -webkit-transform 200ms cubic-bezier(0, 0, 0.25, 1.5); }
 
-.panel:hover:before,
-.panel:hover:after {
+.card:hover:after {
   opacity: 1;
   -webkit-transform: translateY(0); }
 
-/*-----------------------------
-  Thumbnail / Screenshot
------------------------------*/
+/*====================================================
+    Thumbnail / Screenshot
+====================================================*/
 
 .thumbnail-loading,
 .thumbnail {
-  -webkit-filter: brightness(0.8);
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
   height: 9.375rem; }
 
 .thumbnail-loading {
-  background-size: 24px 24px !important; }
+  background-size: 24px 24px !important;
+  background-position: center !important; }
 
 /* Forcing Cover and Hiding Backface Keeps Transitions Smooth */
 
 .thumbnail {
-  background-size: cover !important;
-  -webkit-backface-visibility: hidden; }
+  background-size: cover !important; }
 
-/*-----------------------------
-  Styles for Hide Thumbnails Option
------------------------------*/
+.thumbnail:after,
+.thumbnail-loading:after {
+  background: rgba(36, 45, 50, 0.2);
+  display: block;
+  height: 100%;
+  width: 100%;
+  content: ""; }
 
-.panel-small .thumbnail-loading {
+/*====================================================
+    Styles for Hide Thumbnails Option
+====================================================*/
+
+.card-small .thumbnail-loading {
   background-size: 18px 18px !important; }
 
-.panel-small .thumbnail-loading,
-.panel-small .thumbnail {
-  height: 1.75rem;
-  -webkit-filter: brightness(0.85); }
+.card-small .thumbnail-loading,
+.card-small .thumbnail {
+  height: 1.75rem; }
 
-.panel-small:after {
+.card-small:after {
   top: 1.75rem; }
 
-.panel-small .edit-toggle {
+.card-small .edit-toggle {
   top: 1.75rem; }
 
-/*-----------------------------
-  Special Styles for Links to PDFs
------------------------------*/
+/*====================================================
+    Special Styles for Links to PDFs
+====================================================*/
 
 .thumbnail[title$=".pdf"] {
   background: white url(../images/pdf.svg) !important;
   background-position: center !important; }
 
-.panel-small .thumbnail[title$=".pdf"] {
-  background: #f1815f !important; }
+.card-small .thumbnail[title$=".pdf"] {
+  background: rgba(241, 129, 95, 1) !important; }
 
 .favicon[src$=".pdf?defaulticon=lightpng"] {
   content: url(../images/link.svg); }
 
-/*-----------------------------
-  Special Styles for Links to local Chrome urls
------------------------------*/
+/*====================================================
+    Special Styles for Links to local Chrome urls
+====================================================*/
 
 .thumbnail[title*="chrome://"],
 .thumbnail[title*="chrome-extension://"] {
   background: url(../images/chrome.svg) !important;
   background-position: center !important; }
 
-.panel-small .thumbnail[title*="chrome://"],
-.panel-small .thumbnail[title*="chrome-extension://"] {
-  background: #f1815f !important; }
+.card-small .thumbnail[title*="chrome://"],
+.card-small .thumbnail[title*="chrome-extension://"] {
+  background: rgba(241, 129, 95, 1) !important; }
 
 .favicon[src*="chrome://"],
 .favicon[src*="chrome-extension://"] {
   content: url(../images/chrome-32.png); }
 
-/*-----------------------------
-  Special Styles for Links to Dewey
------------------------------*/
+/*====================================================
+    Special Styles for Links to Dewey
+====================================================*/
 
 .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   background: url(../images/dewey-small.png) !important;
   -webkit-filter: brightness(1) !important;
   background-size: 12.5rem 9.375rem !important; }
 
-.panel-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
-  background: #242d32 !important; }
+.card-small .thumbnail[title*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
+  background: rgba(36, 45, 50, 1); !important; }
 
 .favicon[src*="aahpfefkmihhdabllidnlipghcjgpkdm"] {
   content: url(http://deweyapp.io/images/favicon.png); }
 
-/*-----------------------------
-  Link Details
------------------------------*/
+/*====================================================
+    Link Details
+====================================================*/
 
 .details {
   background: white;
@@ -716,7 +804,7 @@ label.css-label {
   width: 100%; }
 
 .details h2 {
-  color: #545454;
+  color: rgba(36, 45, 50, 0.8);
   font: 700 1rem/1rem 'Source Sans Pro', sans-serif;
   height: auto;
   overflow: hidden;
@@ -728,9 +816,9 @@ label.css-label {
   margin-bottom: .5rem;
   width: 16px; }
 
-/*-----------------------------
-  Link Tags
------------------------------*/
+/*====================================================
+    Link Tags
+====================================================*/
 
 .tag-links {
   margin-top: 1rem;
@@ -738,7 +826,8 @@ label.css-label {
   z-index: 7020; }
 
 .tag-links a {
-  color: #bababa;
+  color: rgba(36, 45, 50, 0.35);
+  font-weight: 600;
   cursor: pointer;
   display: inline-block;
   font-size: 0.75rem;
@@ -747,15 +836,14 @@ label.css-label {
   transition: color 250ms ease; }
 
 .tag-links a:hover {
-  color: #f1815f;
-  text-decoration: underline; }
+  color: rgba(241, 129, 95, 1); }
 
 .tag-links .badge-custom {
-  color: #787878; }
+  color: rgba(36, 45, 50, 0.7); }
 
-/*-----------------------------
-  Edit Modal
------------------------------*/
+/*====================================================
+    Edit Modal
+====================================================*/
 
 .edit-toggle {
   content: url(../images/edit.svg);
@@ -777,7 +865,7 @@ label.css-label {
   overflow: hidden; }
 
 .modal {
-  background-color: rgba(255, 255, 255, 0.8);
+  background: rgba(36, 45, 50, 0.95);
   bottom: 0;
   display: block;
   left: 0;
@@ -794,7 +882,7 @@ label.css-label {
 
 .modal-dialog {
   height: auto;
-  margin: 15vh auto;
+  margin: 20vh auto;
   max-width: 38rem;
   z-index: 10010;
   opacity: 0;
@@ -813,22 +901,25 @@ label.css-label {
 .modal-footer {
   text-align: right; }
 
-/*-----------------------------
-  Bookmark Title
------------------------------*/
+/*====================================================
+    Bookmark Title
+====================================================*/
 
 .title-input {
   -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
   background: transparent;
   border: none;
-  color: #242d32;
-  cursor: url(../images/edit-gray.svg);
+  color: rgba(255, 255, 255, 1);
   font: 700 2.35rem/1 "Source Sans Pro";
   margin-bottom: .75rem;
   min-height: 5rem;
   resize: none;
-  transition: color 200ms ease, background 300ms ease;
   width: 100%; }
+
+.title-input,
+.url-input {
+  transition: color 200ms ease, background 200ms ease; }
 
 .title-input:hover,
 .url-input:hover {
@@ -837,32 +928,32 @@ label.css-label {
 .title-input:focus,
 .url-input:focus {
   background: transparent;
-  color: #f1815f;
+  color: rgba(241, 129, 95, 1);
   outline: none; }
 
 .title-input::-webkit-input-placeholder {
   color: rgba(36, 45, 50, 0.25); }
 
-/*-----------------------------
-  Title Textarea Scrollbar
------------------------------*/
+/*====================================================
+    Title Textarea Scrollbar
+====================================================*/
 
 .title-input::-webkit-scrollbar {
   width: 3px; }
 
 .title-input::-webkit-scrollbar-thumb:vertical {
-  background-color: #F18260; }
+  background-color: rgba(241, 129, 95, 1); }
 
-/*-----------------------------
-  URL Input
------------------------------*/
+/*====================================================
+    URL Input
+====================================================*/
 
 .launch {
   -webkit-filter: saturate(0);
   content: url(../images/launch.svg);
   margin-bottom: -2.25rem;
   margin-left: .75rem;
-  transition: -webkit-filter 250ms ease, opacity 250ms ease;
+  transition: -webkit-filter 200ms ease, opacity 200ms ease;
   -webkit-backface-visibility: hidden; }
 
 .launch:hover {
@@ -872,24 +963,26 @@ label.css-label {
 .url-input {
   -webkit-appearance: none;
   background: transparent;
-  border-bottom: 1px dotted rgba(36, 45, 50, 0.25);
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
   border-left: none;
   border-right: none;
-  border-top: 1px dotted rgba(36, 45, 50, 0.25);
-  color: rgba(36, 45, 50, 0.5);
+  border-top: 1px dotted rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.25);
   font-size: .825rem;
   height: 3rem;
   margin-bottom: 1.25rem;
   overflow: hidden;
   padding-left: 2.75rem;
   text-overflow: ellipsis;
-  transition: color 200ms ease;
   white-space: nowrap;
   width: 100%; }
 
-/*-----------------------------
-  Bootstrap Tags Input
------------------------------*/
+.url-input:hover {
+  color: rgba(255, 255, 255, 0.5); }
+
+/*====================================================
+    Bootstrap Tags Input
+====================================================*/
 
 .bootstrap-tagsinput {
   background: transparent;
@@ -903,8 +996,8 @@ label.css-label {
 .custom-tag-input input {
   background: transparent;
   border-radius: 3px;
-  border: 3px solid #242d32;
-  color: #242d32;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 1);
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
@@ -913,20 +1006,21 @@ label.css-label {
   outline: none;
   padding: 1rem;
   text-align: left;
-  transition: border 250ms ease;
+  transition: border 200ms ease;
   vertical-align: middle;
-  white-space: nowrap; }
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased; }
 
 .custom-tag-input input:focus {
-  border: 3px solid #f1815f; }
+  border: 3px solid rgba(241, 129, 95, 1); }
 
 .custom-tag-input input::-webkit-input-placeholder {
   -webkit-transform: translateY(2px);
-  color: #242d32;
+  color: rgba(255, 255, 255, 0.25);
   transition: color 200ms ease; }
 
 .custom-tag-input input:focus::-webkit-input-placeholder {
-  color: rgba(36, 45, 50, 0.25); }
+  color: rgba(255, 255, 255, 0.15); }
 
 .custom-tag-input .tag [data-role="remove"] {
   border: none;
@@ -937,9 +1031,9 @@ label.css-label {
   content: "╳";
   padding: 1px 2px; }
 
-/*-----------------------------
-  Folders as Tags
------------------------------*/
+/*====================================================
+    Folders as Tags
+====================================================*/
 
 .tags {
   margin: 1rem 0; }
@@ -954,10 +1048,11 @@ label.css-label {
   display: inline; }
 
 .tag {
+  -webkit-font-smoothing: antialiased;
   background: transparent;
   border-radius: 3px;
-  border: 1px solid rgba(36, 45, 50, 0.25);
-  color: #242d32;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
   display: inline-block;
   font: 700 1rem/1 "Source Sans Pro";
   height: 3.25rem;
@@ -973,26 +1068,27 @@ label.css-label {
   display: block;
   float: left;
   margin-right: .75rem;
-  margin-top: -2px; }
+  margin-top: 1px;
+  width: 20px; }
 
 .tag:empty {
   display: none; }
 
-/*-----------------------------
-  Custom Tags
------------------------------*/
+/*====================================================
+    Custom Tags
+====================================================*/
 
 .custom-tags {
   display: inline; }
 
 .custom-tag {
-  background-color: #242d32 !important;
-  color: white;
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: rgba(36, 45, 50, 1);
   cursor: default;
   -webkit-animation: scale-up 200ms cubic-bezier(0.65, 0, 0.75, 1.5); }
 
 .custom-tag:before {
-  content: url(../images/tags-white.svg);
+  content: url(../images/tags-blue.svg);
   margin-top: 1px; }
 
 .custom-tag a:hover {
@@ -1005,9 +1101,9 @@ label.css-label {
   padding: 2px;
   width: 6.25rem; }
 
-/*-----------------------------
-  Buttons
------------------------------*/
+/*====================================================
+    Buttons
+====================================================*/
 
 .save,
 .cancel,
@@ -1015,49 +1111,53 @@ label.css-label {
   -webkit-appearance: none;
   border: none;
   cursor: pointer;
-  outline: none; }
+  outline: none;
+  transition: color 200ms ease-out; }
 
 .save {
   -webkit-transform-origin: center;
-  background: #f1815f;
+  background: rgba(241, 129, 95, 1);
   border-radius: 3px;
   color: white;
   display: inline-block;
-  font: 600 1rem/1 "Source Sans Pro";
+  font: 700 1rem/1 "Source Sans Pro";
   letter-spacing: 1px;
+  text-transform: uppercase;
   padding: 1rem;
   text-align: center;
   transition: -webkit-transform 100ms cubic-bezier(0.65, 0, 0.75, 1.5);
-  width: 6.25rem; }
+  width: 6.25rem;
+  -webkit-font-smoothing: antialiased; }
 
 .save:hover {
   -webkit-transform: scale(1.05); }
 
-.save:focus {
+.save:focus,
+.save:active {
   -webkit-transform: scale(1);
-  transition-duration: 20ms; }
+  transition-duration: 10ms; }
 
 .cancel {
+  color: rgba(255, 255, 255, 0.5);
   background: none;
-  margin-right: 10px; }
+  margin-right: 20px; }
 
 .cancel:hover {
+  color: rgba(255, 255, 255, 1);
   text-decoration: underline; }
 
 .delete {
-  color: #de1b1b;
+  color: rgba(230, 61, 61, 0.5);
   float: left;
-  line-height: 3.25;
-  opacity: .65;
-  transition: opacity 300ms ease-out; }
+  line-height: 3.25; }
 
 .delete:hover {
-  opacity: 1;
+  color: rgba(230, 61, 61, 1);
   text-decoration: underline; }
 
-/*-----------------------------
-  Media Queries
------------------------------*/
+/*====================================================
+    Media Queries
+====================================================*/
 
 @media only screen and (min-width: 135rem) {
 
@@ -1085,7 +1185,7 @@ label.css-label {
 
   .grid { width: 12.5rem; }
 
-  .settings-wrap { margin: 0; width: auto; }
+  .settings-wrap { margin: 20px; width: auto; }
 
   .list-bookmarks li { margin: 1.25rem 0 0 0; }
 
