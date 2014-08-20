@@ -147,7 +147,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
       // ARG: improve in future
       // applyTagsAsString(bookmarks);
-      
+
       if(!_.isUndefined($routeParams.search)){
         $scope.searchText = $routeParams.search;
       }
@@ -156,7 +156,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       countItemsPerRow();
     }.bind(this));
   }.bind(this);
-  
+
 
   // var applyTagsAsString = function(bookmarks){
 
@@ -218,6 +218,17 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       );
     resetView();
   });
+
+  $scope.updateBookmarks = function(searchText){
+    $scope.filteredBookmarks =
+      _.filter(
+        $scope.bookmarks,
+        function(bookmark){
+          return booleanSearchEngine.filterBookmark(bookmark, searchText);
+        }
+      );
+    resetView();
+  }
 
   // On tag click we set search text
   $scope.selectTag = function(tag) {
