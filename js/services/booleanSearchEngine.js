@@ -110,7 +110,7 @@ var BooleanSearchEngine = function () {
     // Generate expression tree by search text.
     this.generateExpressionTree = function(searchText){
 
-        if(isBlank(searchText)) return exTree;
+        if(_.isUndefined(searchText) || isBlank(searchText)) return exTree;
 
         searchText = searchText.toUpperCase();
 
@@ -212,6 +212,8 @@ var BooleanSearchEngine = function () {
         var pattern = 'NONE';
         var searchText = newSearchText;
         var definedSearch = newSearchText;
+
+        if(_.isUndefined(searchText)) return [];
 
         var expressionTree = this.generateExpressionTree(newSearchText);
         if (expressionTree && expressionTree.length > 0) {

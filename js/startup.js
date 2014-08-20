@@ -17,6 +17,7 @@ require.config({
   paths: {
     'underscore': '../bower_components/underscore/underscore',
     'jQuery': '../bower_components/jquery/jquery',
+    'jqueryui': '../bower_components/jquery-ui/jquery-ui',
     'angular': '../bower_components/angular/angular',
     'angular-route': '../bower_components/angular-route/angular-route',
     'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap',
@@ -29,11 +30,15 @@ require.config({
     'jQuery': {
       exports : 'jQuery'
     },
+    'jqueryui': {
+      deps: ['jQuery'],
+      exports : 'jQuery'
+    },
     'underscore': {
       exports : '_'
     },
     'angular': {
-      deps: ['jQuery'],
+      deps: ['jQuery', 'jqueryui'],
       exports : 'angular'
     },
     'angular-route': {
