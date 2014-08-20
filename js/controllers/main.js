@@ -219,17 +219,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     resetView();
   });
 
-  $scope.updateBookmarks = function(searchText){
-    $scope.filteredBookmarks =
-      _.filter(
-        $scope.bookmarks,
-        function(bookmark){
-          return booleanSearchEngine.filterBookmark(bookmark, searchText);
-        }
-      );
-    resetView();
-  }
-
   // On tag click we set search text
   $scope.selectTag = function(tag) {
     _gaq.push(['_trackEvent', 'Navigation', 'selectTag']);

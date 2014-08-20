@@ -17,12 +17,7 @@ define(['jQuery'], function ($) {
                             source: suggestions,
                             select: function(event, ui) {
 
-                                $scope.updateBookmarks(ui.item.label);
-
-
-                                var label = ui.item.label;
-                                // var value = ui.item.value;
-                                //alert(label);
+                                $scope.$apply(function () { $scope.searchText = ui.item.label; });
                             }
                         });
                 });
