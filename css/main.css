@@ -167,6 +167,34 @@ input[type="search"]::-webkit-search-cancel-button {
 .typeahead-dropdown > li:last-child {
   padding-bottom: .75rem; }
 
+
+.ui-autocomplete {
+  background-color: rgba(36, 45, 50, 0.95);
+  color: rgba(255, 255, 255, 0.95);
+  max-height: 13.5rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 10000; }
+
+.ui-autocomplete > li {
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  font-weight: 600;
+  left: 0;
+  line-height: 1.2;
+  padding: .5rem 1rem;
+  position: relative; }
+
+.ui-autocomplete > li a:focus {
+  outline: none; }
+
+.ui-autocomplete > li:last-child {
+  padding-bottom: .75rem; }
+
+.ui-helper-hidden-accessible {
+  display:none; }
+
 /* Highlights Matching Letters in Results */
 
 strong {
