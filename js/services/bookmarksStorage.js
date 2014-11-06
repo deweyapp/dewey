@@ -239,7 +239,7 @@ var BookmarksStorage = function () {
       function(flag) {
         cb(
           {
-            showThumbnails: flag['show-thumbnails'], // Default value is true.
+            showThumbnails: flag['show-thumbnails'] === false ? false : true, // Default value is true.
             hideTopLevelFolders: flag['hide-top-level-folders'] || false // Default value is false.
           }
         );
