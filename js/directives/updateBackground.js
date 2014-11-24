@@ -9,27 +9,34 @@ function($, _, ColorThief) { 'use strict';
 var myUpdateBackgroundFactory = function(appSettings, $http) {
     var thief = new ColorThief();
 
-    var updateThumbnail = function(element, backgrounds){
+    var updateThumbnail = function(element, url){
+        var background = 'url(' + url + ')';
 
+        var thumbnail = $('.thumbnail', element.parent().parent().parent());
+        thumbnail.css('background', background);
+    };
+
+    var updateThumbnailColor = function(element){
         var color = null;
         try {
             color = thief.getColor(element.get(0));
         } catch(e) {}
 
-        backgrounds.push(color ? 'rgb(' + color.join(',') + ')' : 'white');
+        var background = color ? 'rgb(' + color.join(',') + ')' : 'white';
 
         var thumbnail = $('.thumbnail-loading', element.parent().parent().parent());
         thumbnail
           .removeClass('thumbnail-loading')
           .addClass('thumbnail')
-          .css('background', backgrounds.join(', '));
+          .css('background', background);
     };
 
     return function(scope, element, attrs) {
         scope.$watch(attrs.dLoad, function(value) {
-            element.on('load', function() {
-       
-                var backgrounds = [];
+            element.on('load', function() {       
+                
+                updateThumbnailColor(element);
+
                 if (appSettings.showThumbnails) {
           
                     $http({
@@ -43,15 +50,9 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
                     }).success(function(responseData) {
 
                         if(!_.isUndefined(responseData.image_url)){
-                            backgrounds.push('url(' + responseData.image_url + ')');  
+                            updateThumbnail(element, responseData.image_url);
                         }
-                        updateThumbnail(element, backgrounds);
-                    }).error(function(data, status, header, config) {
-                        updateThumbnail(element, backgrounds);
                     });
-                }
-                else{
-                    updateThumbnail(element, backgrounds);
                 }
             });
         });
