@@ -8,7 +8,7 @@ function(_, $) { 'use strict';
 /*
 * Application controller.
 */
-var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine) {
+var MainController = function($scope, $filter, $modal, bookmarksStorage, appSettings, booleanSearchEngine, $routeParams) {
 
   // Constant: default value of how many items we want to display on main page.
   var defaultTotalDisplayed = 20;
@@ -47,8 +47,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     countItemsPerRow();
   });
 
-  var getAllPanels = function() {
-    return $('.list-bookmarks div.panel');
+  var getAllCards = function() {
+    return $('.list-bookmarks div.card');
   };
 
   var countItemsPerRow = function() {
@@ -60,11 +60,6 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $scope.itemsPerRow = perRow;
   };
 
-  var isElementInViewport = function(el) {
-    var rect = el.getBoundingClientRect();
-    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width();
-  };
-
   // Key down events handlers
   $('#mainContent').keydown(function(e) {
     if (e.isDefaultPrevented()) {
@@ -72,7 +67,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
 
     var updated = false;
-    if (e.keyCode == 13 && e.metaKey) { // Enter press on page - go to the selected bookmark
+    if (e.which == 13) { // Cmd/Ctrl + Enter press on page - open link in new window
       _gaq.push(['_trackEvent', 'Navigation', 'keydown', 'Navigation via enter']);
 
       // If first pattern is not our filter let's assume that user wants to search on this domain
@@ -91,7 +86,7 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
         updated = true;
       }
     } else if (e.which === 39) { // right arrow key
-      if (getAllPanels().length > $scope.selectedIndex + 1) {
+      if (getAllCards().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
       }
@@ -103,12 +98,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
       }
 
     } else if (e.which === 9) { // tab key
-      if (getAllPanels().length > $scope.selectedIndex + 1) {
+      if (getAllCards().length > $scope.selectedIndex + 1) {
         $scope.selectedIndex++;
         updated = true;
       }
     } else if (e.which === 40) { // down key
-      if (getAllPanels().length > $scope.selectedIndex + $scope.itemsPerRow) {
+      if (getAllCards().length > $scope.selectedIndex + $scope.itemsPerRow) {
         $scope.selectedIndex += $scope.itemsPerRow;
         updated = true;
       }
@@ -120,13 +115,13 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     }
     if (updated) { // right arrow, left arrow, down arrow, up arrow, tab, and shift+tab key pressed - select next element
       $scope.$apply();
-      var panels = getAllPanels();
-      var selectedElement = panels.get($scope.selectedIndex);
+      var cards = getAllCards();
+      var selectedElement = cards.get($scope.selectedIndex);
       if (selectedElement) {
         var rect = selectedElement.getBoundingClientRect(); // If element is not visible - scroll to it
         if (!(rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width())) {
           $("body").stop().animate({
-            scrollTop: ($(panels.get($scope.selectedIndex)).offset().top - $(panels.get(0)).offset().top)
+            scrollTop: ($(cards.get($scope.selectedIndex)).offset().top - $(cards.get(0)).offset().top)
           }, 500);
         }
       }
@@ -152,25 +147,29 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
 
       // ARG: improve in future
       // applyTagsAsString(bookmarks);
+      
+      if(!_.isUndefined($routeParams.search)){
+        $scope.searchText = $routeParams.search;
+      }
 
       $scope.$apply();
       countItemsPerRow();
     }.bind(this));
   }.bind(this);
-  loadBookmarks();
+  
 
-  var applyTagsAsString = function(bookmarks){
+  // var applyTagsAsString = function(bookmarks){
 
-      var separator = '|';
-      _.each(bookmarks, function(item){
+  //     var separator = '|';
+  //     _.each(bookmarks, function(item){
 
-          item.tagsAsString = _.chain(item.tag)
-                                .map(function(tag) { return tag.text; })
-                                .join(separator)
-                                .value();
-          item.tagsAsString += separator;
-      });
-  };
+  //         item.tagsAsString = _.chain(item.tag)
+  //                               .map(function(tag) { return tag.text; })
+  //                               .join(separator)
+  //                               .value();
+  //         item.tagsAsString += separator;
+  //     });
+  // };
 
   // Set maximum total displayed items to default and scroll to top of the page
   var resetView = function() {
@@ -288,65 +287,8 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
   };
 
   $scope.getTypeheadSuggestions = function($viewValue) {
-    var pattern = 'NONE';
-    var searchText = $viewValue;
-    var definedSearch = $viewValue;
 
-    var expressionTree = booleanSearchEngine.generateExpressionTree($viewValue);
-    if (expressionTree && expressionTree.length > 0) {
-      var node = _.last(expressionTree);
-      if (node) {
-        var lastLiteral = _.last(node.literals);
-        pattern = node.pattern;
-
-        searchText = (lastLiteral && lastLiteral.expression === 'NONE' ? lastLiteral.text : '');
-
-        definedSearch = $viewValue.replace(/\s+$/, '');
-        definedSearch = definedSearch.substr(0, $viewValue.length - searchText.length);
-        if (definedSearch.length > 0) {
-          definedSearch += ' ';
-        }
-      }
-    }
-
-    if (pattern === 'NONE') {
-      pattern = 'TITLE:';
-    }
-
-    var chain;
-
-    if (pattern === 'TITLE:') {
-      chain = _.chain(this.bookmarks)
-        .map(function(b) {
-          return b.title;
-        });
-    } else if (pattern === 'TAG:') {
-       chain = _.chain(this.tags)
-        .map(function(t) {
-          return t.tagText;
-        });
-    } else if (pattern === 'URL:') {
-      chain = _.chain(this.bookmarks)
-        .map(function(b) {
-          return b.url;
-        });
-    }
-
-    if (!chain) {
-      return [];
-    }
-
-    return chain
-      .filter(function(t) {
-        return t.toUpperCase().indexOf(searchText.toUpperCase()) >= 0;
-      })
-      .sortBy(function(t) {
-        return t;
-      })
-      .first(25)
-      .map(function(t) {
-        return definedSearch + t;
-      }).value();
+    return booleanSearchEngine.getFilteredBookmarks($scope.bookmarks, $viewValue, $scope.tags);
   };
 
   $scope.toggleSettings = function() {
@@ -354,6 +296,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $( ".settings" ).toggleClass( "open" );
     $( "body" ).toggleClass( "no-scroll" );
   };
+
+  $scope.init = function(){
+      loadBookmarks();
+  };
+
+  $scope.init();
 };
 
 return [
@@ -363,6 +311,7 @@ return [
   'bookmarksStorage',
   'appSettings',
   'booleanSearchEngine',
+  '$routeParams',
   MainController
 ];
 

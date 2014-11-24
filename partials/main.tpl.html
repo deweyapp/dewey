@@ -13,26 +13,25 @@
         </div>
       </form>
     </nav>
-    <a class="settings-toggle" 
+    <a class="settings-toggle"
        ng-click="toggleSettings()"></a>
   </header>
 
   <div class="settings">
-    <a class="close" 
+    <a class="close"
        ng-click="toggleSettings()"></a>
     <div class="settings-wrap">
       <ul class="col-1">
         <li><a class="docs" href="https://github.com/deweyapp/dewey-website/blob/master/README.md" target="_blank">How To</a></li>
-        <li><a class="feedback" href="https://github.com/deweyapp/deweyapp/issues" target="_blank">Feedback</a></li>
-        <li><a class="review" href="https://chrome.google.com/webstore/detail/bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
-        <li><a class="donate" href="https://github.com/deweyapp/deweyapp#donate" target="_blank">Donate</a></li>
+        <li><a class="feedback" href="https://github.com/deweyapp/dewey/issues" target="_blank">Feedback</a></li>
+        <li><a class="review" href="https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm/reviews" target="_blank">Review</a></li>
+        <li><a class="donate" href="https://github.com/deweyapp/dewey-website/blob/master/README.md#donate" target="_blank">Donate</a></li>
         <li><a class="email" href="mailto:support@deweyapp.io?Subject=Hello, Dewey.">Email Us</a></li>
         <li><a class="website" href="http://deweyapp.io" target="_blank">Website</a></li>
-      </ul>
+      </ul> <!-- .col-1 -->
       <ul class="col-2">
         <li>
           <form>
-
             <div>Settings:</div>
 
             <div class="checkbox" title="Don&rsquo;t show thumbnails for bookmarks" ng-click="setShowThumbnails()">
@@ -44,13 +43,19 @@
               <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
               <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
             </div>
-
-            <div class="screenshots">Screenshots by <a class="important" href="http://snapito.com/" target="_blank">Snapito</a></div>
-
+            <div class="credits"><p>Screenshots by <a class="important" href="http://www.page2images.com/" target="_blank">Page2Images</a></p></div>
           </form>
         </li>
-      </ul>
-    </div> <!-- col-wrap -->
+      </ul> <!-- .col-2 -->
+    </div> <!-- .settings-wrap -->
+
+    <div class="credits makers">
+      Built by:
+      <a class="important" href="https://twitter.com/outcoldman" target="_blank">Denis</a>,
+      <a class="important" href="https://twitter.com/jmwlsn" target="_blank">Jamie</a>
+      and <a class="important" href="https://twitter.com/artemgrygor" target="_blank">Artem</a>
+    </div>
+
   </div> <!-- settings -->
 
   <div class="grid">
@@ -72,14 +77,12 @@
     </ul>
 
     <ul class="list-bookmarks">
-      <li ng-class="{'panel-primary': ($index == selectedIndex)}"
-          ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)"
-          ng-cloak>
+      <li ng-repeat="bookmark in (filteredBookmarks | orderBy:currentOrder.value | limitTo:totalDisplayed)" ng-cloak>
 
-        <div class="panel" ng-class="{'panel-primary': ($index == selectedIndex), 'panel-small': !showThumbnails}" ng-click="selectBookmark($index)">
+        <div class="card" ng-class="{'card-primary': ($index == selectedIndex), 'card-small': !showThumbnails}" ng-click="selectBookmark($index)">
 
-          <div class="edit-toggle" ng-click="editBookmark(bookmark)" title="Edit"></div>
-          <a class="bookmark-link" href="{{bookmark.url}}" title="Visit Link"></a>
+          <div class="edit-toggle" ng-click="editBookmark(bookmark)"></div>
+          <a class="bookmark-link" href="{{bookmark.url}}"></a>
 
           <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}"></div>
 
@@ -90,12 +93,12 @@
 
             <div class="tag-links">
               <span ng-repeat="tag in bookmark.tag">
-                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)" title="Search Tag">{{tag.text}}</a>
+                <a ng-class="{'badge-custom': tag.custom}" ng-click="selectTag(tag.text)">{{tag.text}}</a>
               </span>
             </div><!-- tags -->
 
           </div><!-- details -->
-        </div><!-- panel -->
+        </div><!-- card -->
       </li><!-- bookmarks in bookmarks -->
     </ul><!-- list-bookmarks -->
   </div><!-- grid -->

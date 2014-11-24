@@ -5,7 +5,7 @@
 **With Dewey you can:**
 
 - Add custom tags
-- Generate screenshots of your bookmarks (Provided by [Snapito](http://snapito.com))
+- Generate screenshots of your bookmarks (Provided by [Page2Images Website Screenshot](http://www.page2images.com/))
 - Search and sort in a much smarter and faster way
 - [More on how to use Dewey](https://github.com/deweyapp/dewey-website/blob/master/README.md) →
 
@@ -19,6 +19,7 @@ Apache License, Version 2.0
 ***
   
 ### Changelog
+- 3.0 (August 15 2014) - Redesign, fix issue with thumbnails, improved search (AND/OR).
 - 2.0.3 (March 27 2014) - Fix issue with thumbnail backgrounds (#68).
 - 2.0.2 (February 12 2014) - Update CSS styles to Dewey thumbnails.
 - 2.0 (February 11 2014) - Redesign, rebranding. First Dewey version.
