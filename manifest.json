@@ -6,7 +6,7 @@
   "description": "Dewey adds custom tags, screenshots, and smarter search to your Chrome bookmarks.",
 
   "permissions": [
-    "bookmarks", "storage"
+    "bookmarks", "storage", "tabs"
   ],
 
   "app": {
@@ -14,11 +14,16 @@
       "local_path": "app.html"
     }
   },
+  "background": {
+    "scripts": ["background.js"]
+  },
 
   "icons": {
     "128": "icon_128.png",
     "16": "icon_16.png"
   },
 
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self'",
+
+  "omnibox": { "keyword" : "-d" }
 }
