@@ -354,6 +354,12 @@ var MainController = function($scope, $filter, $modal, bookmarksStorage, appSett
     $( ".settings" ).toggleClass( "open" );
     $( "body" ).toggleClass( "no-scroll" );
   };
+
+  $scope.getBokmarkUrlDomain = function(bookmark) {
+    // http://stackoverflow.com/a/23945027/421143
+    var urlparts = bookmark.url.split('/');
+    return urlparts[2] || urlparts[0];
+  };
 };
 
 return [

@@ -6,7 +6,7 @@
   "description": "Dewey adds custom tags, screenshots, and smarter search to your Chrome bookmarks.",
 
   "permissions": [
-    "bookmarks", "storage"
+    "bookmarks", "storage", "http://www.google.com/"
   ],
 
   "app": {
