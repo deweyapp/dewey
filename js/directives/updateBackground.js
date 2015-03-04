@@ -11,9 +11,12 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
 
     var updateThumbnail = function(element, url){
         var background = 'url(' + url + ')';
-
-        var thumbnail = $('.thumbnail', element.parent().parent().parent());
-        thumbnail.css('background', background);
+        
+        var thumbnail = $('.thumbnail-loading', element.parent());
+        thumbnail
+            .removeClass('thumbnail-loading')
+            .addClass('thumbnail')
+            .css('background', background);
     };
 
     var updateThumbnailColor = function(element){
@@ -24,7 +27,7 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
 
         var background = color ? 'rgb(' + color.join(',') + ')' : 'white';
 
-        var thumbnail = $('.thumbnail-loading', element.parent().parent().parent());
+        var thumbnail = $('.thumbnail-loading', element.parent());
         thumbnail
           .removeClass('thumbnail-loading')
           .addClass('thumbnail')
@@ -58,16 +61,17 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
     };
 
     return function(scope, element, attrs) {
-        scope.$watch(attrs.dLoad, function(value) {
-            element.on('load', function() {       
-
-                updateThumbnailColor(element);
-
-                if (appSettings.showThumbnails) {
-                    requestThumbnail(element, scope.bookmark.url, 0);
-                }
+        // request thumbnails separately from favicons
+        if (appSettings.showThumbnails) {
+            requestThumbnail(element, scope.bookmark.url, 0);
+        }
+        else{
+            scope.$watch(attrs.dLoad, function(value) {
+                element.on('load', function() {               
+                    updateThumbnailColor(element);                
+                });
             });
-        });
+        }
     };
 };
 
