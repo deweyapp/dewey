@@ -18,10 +18,10 @@ var exportBookmarkFactory = function(bookmarksStorage, exporter) {
                     var fileData = exporter.exportToNetscape(bookmarks);
                     var blob = new Blob([fileData], { type:"text/html;charset=utf-8;" });     
                     
-                    // var downloadLink = angular.element('<a></a>');
-                    // downloadLink.attr('href',window.URL.createObjectURL(blob));
-                    // downloadLink.attr('download', 'deweyapp.html');
-                    // downloadLink[0].click();
+                    var downloadLink = angular.element('<a></a>');
+                    downloadLink.attr('href',window.URL.createObjectURL(blob));
+                    downloadLink.attr('download', 'deweyapp.html');
+                    downloadLink[0].click();
                 });    
             };
         }
