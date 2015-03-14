@@ -16,11 +16,11 @@ var exportBookmarkFactory = function(bookmarksStorage, exporter) {
                 bookmarksStorage.getAll(function(bookmarks, setttings) {
 
                     var fileData = exporter.exportToNetscape(bookmarks);
-                    var blob = new Blob([fileData], { type:"application/json;charset=utf-8;" });     
+                    var blob = new Blob([fileData], { type:"text/html;charset=utf-8;" });     
                     
                     var downloadLink = angular.element('<a></a>');
                     downloadLink.attr('href',window.URL.createObjectURL(blob));
-                    downloadLink.attr('download', 'deweyapp.json');
+                    downloadLink.attr('download', 'deweyapp.html');
                     downloadLink[0].click();
                 });    
             };
