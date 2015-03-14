@@ -9,11 +9,6 @@ function(_) { "use strict";
 */
 var Exporter = function () {
 
-    // this.exportToNetscape = function(bookmarks){
-
-    //     return angular.toJson(bookmarks);
-    // };
-
     var header = function(){
         return '<!DOCTYPE NETSCAPE-Bookmark-file-1>'+
                 '<!-- This is an automatically generated file.'+
@@ -31,11 +26,6 @@ var Exporter = function () {
 
     var exportBookmark = function(bookmark){
 
-        //<DT><A HREF="https://.apple.com/" 
-        //ADD_DATE="1414706885" 
-        //PRIVATE="0" 
-        //TAGS="javascript,mac,osx,yosemite">JavaScript for Automation Release Notes</A>
-
         var tags = '';
         if(bookmark.tag.length > 0) {
             tags = _.pluck(bookmark.tag, 'text').join(',');
@@ -50,9 +40,9 @@ var Exporter = function () {
 
         var fileData = header();
 
-        if(!_.isNull(bookmarks) 
-            && toString.call(bookmarks) === "[object Array]"
-            && bookmarks.length > 0){
+        if(!_.isNull(bookmarks) &&
+            toString.call(bookmarks) === "[object Array]" &&
+            bookmarks.length > 0){
             
             _.each(bookmarks, function(bookmark){
                 fileData += exportBookmark(bookmark);
