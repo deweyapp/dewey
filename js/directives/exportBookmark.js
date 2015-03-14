@@ -10,9 +10,9 @@ var exportBookmarkFactory = function(bookmarksStorage, exporter) {
         replace: true,
         scope: {},
         templateUrl: '/partials/exportBookmark.tpl.html',
-        link: function ($scope, $element) {
-            $element.find('.action-button').on('click', function () {
+        controller: function($scope, $element){
 
+            $scope.export = function(){
                 bookmarksStorage.getAll(function(bookmarks, setttings) {
 
                     var fileData = exporter.exportToNetscape(bookmarks);
@@ -22,8 +22,8 @@ var exportBookmarkFactory = function(bookmarksStorage, exporter) {
                     downloadLink.attr('href',window.URL.createObjectURL(blob));
                     downloadLink.attr('download', 'deweyapp.json');
                     downloadLink[0].click();
-                });                
-            });
+                });    
+            };
         }
     };
 };

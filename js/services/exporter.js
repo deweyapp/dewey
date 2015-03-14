@@ -9,8 +9,6 @@ function(_) { "use strict";
 */
 var Exporter = function () {
 
-    var exTree
-
     this.exportToNetscape = function(bookmarks){
 
         return angular.toJson(bookmarks);
@@ -25,7 +23,7 @@ var ExporterFactory = function() {
 };
 
 return [
-  ExporterFactory
+    ExporterFactory
 ];
 
 });
