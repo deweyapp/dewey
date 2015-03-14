@@ -4,7 +4,7 @@ define(
 ],
 function(_) { 'use strict';
 
-var exportBookmarkFactory = function(bookmarksStorage) {
+var exportBookmarkFactory = function(bookmarksStorage, exporter) {
     return {
         restrict: 'E',
         replace: true,
@@ -15,8 +15,8 @@ var exportBookmarkFactory = function(bookmarksStorage) {
 
                 bookmarksStorage.getAll(function(bookmarks, setttings) {
 
-                    var toJSON = angular.toJson(bookmarks);
-                    var blob = new Blob([toJSON], { type:"application/json;charset=utf-8;" });     
+                    var fileData = exporter.exportToNetscape(bookmarks);
+                    var blob = new Blob([fileData], { type:"application/json;charset=utf-8;" });     
                     
                     var downloadLink = angular.element('<a></a>');
                     downloadLink.attr('href',window.URL.createObjectURL(blob));
@@ -30,6 +30,7 @@ var exportBookmarkFactory = function(bookmarksStorage) {
 
 return [
     'bookmarksStorage',
+    'exporter',
     exportBookmarkFactory
 ];
 
