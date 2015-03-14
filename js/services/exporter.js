@@ -36,7 +36,10 @@ var Exporter = function () {
         //PRIVATE="0" 
         //TAGS="javascript,mac,osx,yosemite">JavaScript for Automation Release Notes</A>
 
-        var tags = _.pluck(bookmark.tag, 'text').join(',');
+        var tags = '';
+        if(bookmark.tag.length > 0) {
+            tags = _.pluck(bookmark.tag, 'text').join(',');
+        }
         return '<DT><A HREF="' + bookmark.url + 
             '" ADD_DATE="' + bookmark.date +
             '" TAGS="' + tags +
@@ -46,9 +49,16 @@ var Exporter = function () {
     this.exportToNetscape = function(bookmarks){
 
         var fileData = header();
-        _.each(bookmarks, function(bookmark){
-            fileData += exportBookmark(bookmark);
-        });
+
+        if(!_.isNull(bookmarks) 
+            && toString.call(bookmarks) === "[object Array]"
+            && bookmarks.length > 0){
+            
+            _.each(bookmarks, function(bookmark){
+                fileData += exportBookmark(bookmark);
+            });
+        }
+        
         fileData += footer();
         return fileData;
     };
