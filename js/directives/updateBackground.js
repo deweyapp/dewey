@@ -11,12 +11,9 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
 
     var updateThumbnail = function(element, url){
         var background = 'url(' + url + ')';
-        
-        var thumbnail = $('.thumbnail-loading', element.parent());
-        thumbnail
-            .removeClass('thumbnail-loading')
-            .addClass('thumbnail')
-            .css('background', background);
+
+        var thumbnail = $('.thumbnail', element.parent().parent().parent());
+        thumbnail.css('background', background);
     };
 
     var updateThumbnailColor = function(element){
@@ -27,51 +24,38 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
 
         var background = color ? 'rgb(' + color.join(',') + ')' : 'white';
 
-        var thumbnail = $('.thumbnail-loading', element.parent());
+        var thumbnail = $('.thumbnail-loading', element.parent().parent().parent());
         thumbnail
           .removeClass('thumbnail-loading')
           .addClass('thumbnail')
           .css('background', background);
     };
 
-    var requestThumbnail = function(element, url, tries) {
+    var requestThumbnail = function(element, url) {
 
         return $http({
-            url: 'http://api.page2images.com/restfullink?p2i_url=' +
-            encodeURIComponent(url) +
-            '&p2i_device=6&p2i_size=400x150&p2i_screen=1024x768&p2i_imageformat=jpg&p2i_wait=0&p2i_key=7cd903b37d087238',
-            method: "POST",
+            url: 'http://dewey-server.azurewebsites.net//screenshot?query=' +
+                encodeURIComponent(url),
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             }
         }).success(function(responseData) {
-            if (responseData.status === "processing") {
-                // Server processing results, let's try later in 3 seconds,
-                // but not more than 40 times (120 seconds)
-                if (tries <= 40) {
-                    setTimeout(function() {
-                        requestThumbnail(element, url, ++tries);
-                    }, ((parseInt(responseData.estimated_need_time) || 2) + 1) * 1000);
-                }
-            } else if(responseData.status === "finished" && responseData.image_url){
-                // Finished, let's update thumbnail
-                updateThumbnail(element, responseData.image_url);
-            }
+            updateThumbnail(element, responseData.image_url);
         });
     };
 
     return function(scope, element, attrs) {
-        // request thumbnails separately from favicons
-        if (appSettings.showThumbnails) {
-            requestThumbnail(element, scope.bookmark.url, 0);
-        }
-        else{
-            scope.$watch(attrs.dLoad, function(value) {
-                element.on('load', function() {               
-                    updateThumbnailColor(element);                
-                });
+        scope.$watch(attrs.dLoad, function(value) {
+            element.on('load', function() {       
+
+                updateThumbnailColor(element);
+
+                if (appSettings.showThumbnails) {
+                    requestThumbnail(element, scope.bookmark.url);
+                }
             });
-        }
+        });
     };
 };
 
