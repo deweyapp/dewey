@@ -39,10 +39,7 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
         return $http({
             url: 'http://dewey-server.azurewebsites.net/screenshot?query=' +
             encodeURIComponent(url),
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            }
+            method: "GET"
         }).success(function(responseData) {
             //updateThumbnail(element, responseData.image_url);
             if (responseData.status === "processing") {
