@@ -44,7 +44,19 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
                 'Content-Type': 'application/json; charset=utf-8'
             }
         }).success(function(responseData) {
-            updateThumbnail(element, responseData.image_url);
+            //updateThumbnail(element, responseData.image_url);
+            if (responseData.status === "processing") {
+                // Server processing results, let's try later in 3 seconds,
+                // but not more than 40 times (120 seconds)
+                if (tries <= 40) {
+                    setTimeout(function() {
+                        requestThumbnail(element, url, ++tries);
+                    }, ((parseInt(responseData.estimated_need_time) || 2) + 1) * 1000);
+                }
+            } else if(responseData.status === "finished" && responseData.image_url){
+                // Finished, let's update thumbnail
+                updateThumbnail(element, responseData.image_url);
+            }
         });
     };
 
