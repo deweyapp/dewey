@@ -34,17 +34,14 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
           .css('background', background);
     };
 
-    var requestThumbnail = function(element, url, tries) {
+    var requestThumbnail = function(element, url) {
 
         return $http({
-            url: 'http://api.page2images.com/restfullink?p2i_url=' +
-            encodeURIComponent(url) +
-            '&p2i_device=6&p2i_size=400x150&p2i_screen=1024x768&p2i_imageformat=jpg&p2i_wait=0&p2i_key=7cd903b37d087238',
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            }
+            url: 'http://dewey-server.azurewebsites.net/screenshot?query=' +
+            encodeURIComponent(url),
+            method: "GET"
         }).success(function(responseData) {
+            //updateThumbnail(element, responseData.image_url);
             if (responseData.status === "processing") {
                 // Server processing results, let's try later in 3 seconds,
                 // but not more than 40 times (120 seconds)
@@ -63,7 +60,7 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
     return function(scope, element, attrs) {
         // request thumbnails separately from favicons
         if (appSettings.showThumbnails) {
-            requestThumbnail(element, scope.bookmark.url, 0);
+            requestThumbnail(element, scope.bookmark.url);
         }
         else{
             scope.$watch(attrs.dLoad, function(value) {
