@@ -3,9 +3,10 @@ define(
 'angular',
 './bookmarksStorage',
 './booleanSearchEngine',
-'./settings'
+'./settings',
+'./exporter'
 ],
-function(angular, bookmarksStorage, booleanSearchEngine, settings) { 'use strict';
+function(angular, bookmarksStorage, booleanSearchEngine, settings, exporter) { 'use strict';
 
 // Creates new module 'dewey.filters'
 var module = angular.module('dewey.services', []);
@@ -18,5 +19,8 @@ module.factory('booleanSearchEngine', booleanSearchEngine);
 
 // Register settings service
 module.value('appSettings', settings);
+
+// Register export to Netscape service
+module.factory('exporter', exporter);
 
 });
