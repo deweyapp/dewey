@@ -11,7 +11,7 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
 
     var updateThumbnail = function(element, url){
         var background = 'url(' + url + ')';
-        
+
         var thumbnail = $('.thumbnail-loading', element.parent());
         thumbnail
             .removeClass('thumbnail-loading')
@@ -64,9 +64,13 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
         }
         else{
             scope.$watch(attrs.dLoad, function(value) {
-                element.on('load', function() {               
-                    updateThumbnailColor(element);                
-                });
+                if ( !appSettings.showThumbnails){
+                    updateThumbnailColor(element);
+                }else{
+                    element.on('load', function() {
+                        updateThumbnailColor(element);
+                    });
+                }
             });
         }
     };
