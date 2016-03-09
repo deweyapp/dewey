@@ -726,7 +726,9 @@ label.css-label {
   display: block;
   height: 100%;
   width: 100%;
-  content: ""; }
+  content: "";
+  position: absolute;
+  top: 0; }
 
 /*====================================================
     Styles for Hide Thumbnails Option
