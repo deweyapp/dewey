@@ -45,7 +45,7 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
             if (appSettings.showThumbnails) {
                 // Get url without search or hash, so we will be able to cache
                 var requestedUrl = scope.bookmark.url.split(/[?#]/).shift();
-                var url = 'http://localhost:3000/screenshot?url=' + encodeURIComponent(requestedUrl);
+                var url = 'https://deweyapp.com/screenshot/' + encodeURIComponent(requestedUrl) + '/screenshot.jpg';
                 var thumbnail = element.find('img');
                 thumbnail
                 .prop('src', url)
