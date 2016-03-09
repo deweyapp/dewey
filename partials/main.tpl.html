@@ -43,7 +43,6 @@
               <input id="hide-folders" class="css-checkbox" type="checkbox" ng-checked="hideTopLevelFolders" />
               <label for="hide-folders" class="css-label">Hide Top-level Folders as Tags</label>
             </div>
-            <div class="credits"><p>Screenshots by <a class="important" href="http://www.page2images.com/" target="_blank">Page2Images</a></p></div>
           </form>
         </li>
       </ul> <!-- .col-2 -->
@@ -84,11 +83,13 @@
           <div class="edit-toggle" ng-click="editBookmark(bookmark)"></div>
           <a class="bookmark-link" href="{{bookmark.url}}"></a>
 
-          <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" my-update-background title="{{bookmark.url}}"></div>
+          <div class="thumbnail-loading" style="background: white url(images/loader.gif) no-repeat center center;" title="{{bookmark.url}}" my-update-background >
+              <img alt={{bookmark.url}} crossOrigin="anonymous" width="200px" height="150px" />
+          </div>
 
           <div class="details">
 
-            <img class="favicon" ng-src="http://dewey-server.azurewebsites.net/favicon?query={{getBokmarkUrlDomain(bookmark)}}" alt="{{getBokmarkUrlDomain(bookmark)}}" crossOrigin="anonymous" />
+            <img class="favicon" ng-src="http://localhost:3000/favicon?domain={{getBokmarkUrlDomain(bookmark)}}" alt="{{getBokmarkUrlDomain(bookmark)}}" crossOrigin="anonymous" />
             <h2>{{bookmark.title}}</h2>
 
             <div class="tag-links">
