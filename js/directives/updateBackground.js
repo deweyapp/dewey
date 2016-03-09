@@ -27,9 +27,6 @@ var myUpdateBackgroundFactory = function(appSettings, $http) {
         }
 
         if (favicon.prop('complete')) {
-            if (!favicon.prop('available')) {
-                favicon.hide();
-            }
             updateColor();
         } else {
             favicon
