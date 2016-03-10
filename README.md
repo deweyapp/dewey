@@ -36,6 +36,11 @@ Help us to switch to more [powerful server](https://www.digitalocean.com/pricing
 - [Twitter - @jmwlsn](https://twitter.com/jmwsln)
 - [github.com/jamiewilson](https://github.com/jamiewilson)
 
+### Artem Grygor - Development
+
+- [Twitter - @artemgrygor](https://twitter.com/artemgrygor)
+- [github.com/artemgrygor](https://github.com/artemgrygor)
+
 ## Install
 
 [Chrome Web Store](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) or from [deweyapp.io](https://deweyapp.io)
