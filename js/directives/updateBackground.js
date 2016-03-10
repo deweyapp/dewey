@@ -9,52 +9,57 @@ function($, _, ColorThief) { 'use strict';
 var myUpdateBackgroundFactory = function(appSettings, $http) {
     var thief = new ColorThief();
 
-    var updateThumbnail = function(element, url){
-        var background = 'url(' + url + ')';
+    var updateThumbnailColor = function(element, color){
+        var favicon = element.parent().find('img.favicon');
 
-        var thumbnail = $('.thumbnail', element.parent().parent().parent());
-        thumbnail.css('background', background);
-    };
-
-    var updateThumbnailColor = function(element){
-        var color = null;
-        try {
-            color = thief.getColor(element.get(0));
-        } catch(e) {}
-
-        var background = color ? 'rgb(' + color.join(',') + ')' : 'white';
-
-        var thumbnail = $('.thumbnail-loading', element.parent().parent().parent());
-        thumbnail
-          .removeClass('thumbnail-loading')
-          .addClass('thumbnail')
-          .css('background', background);
-    };
-
-    var requestThumbnail = function(element, url) {
-
-        return $http({
-            url: 'http://dewey-server.azurewebsites.net//screenshot?query=' +
-                encodeURIComponent(url),
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
+        function updateColor() {
+            if (!color) {
+                try {
+                    color = thief.getColor(favicon.get(0));
+                } catch(e) {}
             }
-        }).success(function(responseData) {
-            updateThumbnail(element, responseData.image_url);
-        });
+
+            var background = color ? 'rgb(' + color.join(',') + ')' : 'white';
+
+            element
+            .removeClass('thumbnail-loading')
+            .addClass('thumbnail')
+            .css('background', background);
+        }
+
+        if (favicon.prop('complete')) {
+            updateColor();
+        } else {
+            favicon
+            .on('load', function() {
+                updateColor();
+            })
+            .on('error', function() {
+                favicon.hide();
+                updateColor();
+            });
+        }
     };
 
     return function(scope, element, attrs) {
         scope.$watch(attrs.dLoad, function(value) {
-            element.on('load', function() {       
-
+            if (appSettings.showThumbnails) {
+                // Get url without search or hash, so we will be able to cache
+                var requestedUrl = scope.bookmark.url;
+                var url = 'https://deweyapp.com/screenshot/' + encodeURIComponent(requestedUrl) + '/screenshot.png';
+                var thumbnail = element.find('img');
+                thumbnail
+                .prop('src', url)
+                .on('load', function() {
+                    updateThumbnailColor(element, [255, 255, 255]);
+                })
+                .on('error', function() {
+                    thumbnail.hide();
+                    updateThumbnailColor(element);
+                });
+            } else {
                 updateThumbnailColor(element);
-
-                if (appSettings.showThumbnails) {
-                    requestThumbnail(element, scope.bookmark.url);
-                }
-            });
+            }
         });
     };
 };
