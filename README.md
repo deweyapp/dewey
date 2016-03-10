@@ -5,9 +5,10 @@
 **With Dewey you can:**
 
 - Add custom tags
-- Generate screenshots of your bookmarks (Provided by [Page2Images Website Screenshot](http://www.page2images.com/))
+- Generate screenshots of your bookmarks
 - Search and sort in a much smarter and faster way
-- [How To (Install, Launch, Search, etc.)](docs/how-to-use-dewey.md) →
+- [More about Dewey](https://github.com/deweyapp/dewey-website/blob/master/README.md) →
+- [How To (Install, Launch, Search, etc.)](https://github.com/deweyapp/dewey-website/blob/master/docs/how-to-use-dewey.md) →
 
 ## Donate
 
