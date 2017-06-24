@@ -46,6 +46,15 @@ angular.module('bootstrap-tagsinput', [])
             scope.model.push(event.item);
         });
 
+        //When the tagsinput input is empty, restrict the backspace, 
+        //otherwise this deletes other existing tags. 
+        select.tagsinput('input').on('keydown', function(event){
+          if($(this).val().length == 0 && event.keyCode == 8){
+            event.preventDefault();
+            return false;
+          }
+        });
+
         select.on('itemRemoved', function(event) {
           var idx = scope.model.indexOf(event.item);
           if (idx !== -1)
