@@ -43,7 +43,7 @@ Help us to switch to more [powerful server](https://www.digitalocean.com/pricing
 
 ## Install
 
-[Chrome Web Store](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) or from [deweyapp.io](https://deweyapp.io)
+[Chrome Web Store](https://chrome.google.com/webstore/detail/dewey-bookmarks/aahpfefkmihhdabllidnlipghcjgpkdm) 
 
 ## License
 
